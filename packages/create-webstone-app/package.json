@@ -1,0 +1,23 @@
+{
+  "name": "create-webstone-app",
+  "version": "0.0.1",
+  "description": "Start your next web application with Webstone and configure it as you go.",
+  "author": "Mike Nikles, @mikenikles",
+  "bin": "./bin",
+  "scripts": {
+    "build": "node ./scripts/build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "svelte",
+    "sveltekit",
+    "boilerplate",
+    "starterkit",
+    "web app",
+    "graphql"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.9.2"
+  }
+}
