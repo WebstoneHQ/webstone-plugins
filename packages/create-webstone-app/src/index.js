@@ -6,7 +6,17 @@ import prompts from "prompts";
 const pipe = (...functions) => input => functions.reduce((chain, func) => chain.then(func), Promise.resolve(input));
 
 const displayWelcome = () => new Promise((resolve) => {
-  // TODO: Print ASCII art (Webstone logo) and a welcome message
+  // https://textfancy.com/ascii-art/
+  console.log(`
+  ▄     ▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄    ▄ ▄▄▄▄▄▄▄ 
+  █ █ ▄ █ █       █  ▄    █       █       █       █  █  █ █       █
+  █ ██ ██ █    ▄▄▄█ █▄█   █  ▄▄▄▄▄█▄     ▄█   ▄   █   █▄█ █    ▄▄▄█
+  █       █   █▄▄▄█       █ █▄▄▄▄▄  █   █ █  █ █  █       █   █▄▄▄ 
+  █       █    ▄▄▄█  ▄   ██▄▄▄▄▄  █ █   █ █  █▄█  █  ▄    █    ▄▄▄█
+  █   ▄   █   █▄▄▄█ █▄█   █▄▄▄▄▄█ █ █   █ █       █ █ █   █   █▄▄▄ 
+  █▄▄█ █▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█ █▄▄▄█ █▄▄▄▄▄▄▄█▄█  █▄▄█▄▄▄▄▄▄▄█
+  
+  `);
   resolve();
 });
 
