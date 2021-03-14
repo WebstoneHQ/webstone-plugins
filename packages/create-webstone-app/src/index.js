@@ -56,6 +56,9 @@ const installWebApp = (appDir) => {
   console.log(`Installing web app in ${webAppDir}...`);
 
   try {
+    // An empty directory means `npm init svelte@next` is not asking to overwrite it
+    fs.removeSync(`${webAppDir}/.keep`);
+
     execa("npm init svelte@next", {
       cwd: webAppDir,
       shell: true,
