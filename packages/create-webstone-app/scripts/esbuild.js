@@ -3,14 +3,13 @@ const config = {
     banner: {
       js: '#!/usr/bin/env node'
     },
+    bundle: true,
     entryPoints: ['./src/index.js'],
     logLevel: 'info',
     outfile: 'bin',
     platform: 'node',
   },
-  build: {
-    bundle: true,
-  },
+  build: {},
   dev: {
     watch: true,
   },
