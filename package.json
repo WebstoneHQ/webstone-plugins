@@ -1,0 +1,20 @@
+{
+  "name": "webstone",
+  "version": "0.0.1",
+  "description": "Start your next web application with Webstone and configure it as you go.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebstoneHQ/webstone.git"
+  },
+  "author": "Mike Nikles, @mikenikles",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WebstoneHQ/webstone/issues"
+  },
+  "homepage": "https://github.com/WebstoneHQ/webstone#readme"
+}
