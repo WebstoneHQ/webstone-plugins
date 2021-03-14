@@ -1,3 +1,4 @@
+import execa from "execa";
 import fs from "fs-extra";
 import path from 'path';
 import prompts from "prompts";
@@ -40,8 +41,24 @@ const copyTemplate = (appDir) => {
   return appDir;
 };
 
+const installWebApp = (appDir) => {
+  const webAppDir = `${appDir}/services/web`;
+  console.log(`Installing web app in ${webAppDir}...`);
+
+  try {
+    execa("npm init svelte@next", {
+      cwd: webAppDir,
+      shell: true,
+      stdio: "inherit"
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 pipe(
   displayWelcome,
   createAppDir,
-  copyTemplate
+  copyTemplate,
+  installWebApp
 )();
