@@ -1,3 +1,5 @@
-const builder = 'esbuild';
+const main = () => {
+  console.log("Test")
+};
 
-console.log(`Hello from ${builder}.`);
+main();
