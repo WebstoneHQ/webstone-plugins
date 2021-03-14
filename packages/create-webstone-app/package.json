@@ -19,6 +19,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "esbuild": "^0.9.2"
+    "esbuild": "^0.9.2",
+    "prompts": "^2.4.0"
   }
 }
