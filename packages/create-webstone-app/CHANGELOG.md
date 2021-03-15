@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.0.4
+
+### Patch Changes
+
+- 8662f47: Initialize core and cli packages; add core dependency to the app template.
+
 ## 0.0.3
 
 ### Patch Changes
