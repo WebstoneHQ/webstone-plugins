@@ -4,6 +4,8 @@ importers:
       '@changesets/cli': 2.14.1
     specifiers:
       '@changesets/cli': ^2.14.1
+  packages/cli:
+    specifiers: {}
   packages/core:
     devDependencies:
       '@webstone/cli': link:../cli
@@ -20,6 +22,11 @@ importers:
       execa: ^5.0.0
       fs-extra: ^9.1.0
       prompts: ^2.4.0
+  packages/create-webstone-app/template:
+    devDependencies:
+      '@webstone/core': link:../../core
+    specifiers:
+      '@webstone/core': latest
 lockfileVersion: 5.2
 packages:
   /@babel/code-frame/7.12.13:
