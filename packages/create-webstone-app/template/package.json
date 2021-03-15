@@ -3,6 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "@webstone/core": "latest"
+    "@webstone/core": "0.0.1"
   }
 }
