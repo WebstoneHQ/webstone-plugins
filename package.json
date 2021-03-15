@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "Start your next web application with Webstone and configure it as you go.",
   "private": true,
-  "workspaces": [
-    "./packages/*"
-  ],
   "devDependencies": {
     "@changesets/cli": "^2.14.1"
   },

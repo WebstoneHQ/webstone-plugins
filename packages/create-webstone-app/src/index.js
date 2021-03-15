@@ -51,7 +51,7 @@ const copyTemplate = (appDir) => {
   return appDir;
 };
 
-const installWebApp = (appDir) => {
+const installWebApp = async (appDir) => {
   const webAppDir = `${appDir}/services/web`;
   console.log(`Installing web app in ${webAppDir}...`);
 
@@ -59,13 +59,15 @@ const installWebApp = (appDir) => {
     // An empty directory means `npm init svelte@next` is not asking to overwrite it
     fs.removeSync(`${webAppDir}/.keep`);
 
-    execa("npm init svelte@next", {
+    await execa("npm init svelte@next -y", {
       cwd: webAppDir,
       shell: true,
       stdio: "inherit"
     });
+    return webAppDir;
   } catch (error) {
     console.error(error);
+    process.exit(1);
   }
 };
 
