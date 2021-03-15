@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@webstone/core': link:../../core
     specifiers:
-      '@webstone/core': latest
+      '@webstone/core': 0.0.1
 lockfileVersion: 5.2
 packages:
   /@babel/code-frame/7.12.13:
