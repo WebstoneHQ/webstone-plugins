@@ -4,12 +4,14 @@
   "description": "Start your next web application with Webstone and configure it as you go.",
   "private": true,
   "devDependencies": {
-    "@changesets/cli": "^2.14.1"
+    "@changesets/cli": "^2.14.1",
+    "husky": "^6.0.0"
   },
   "scripts": {
     "changeset": "changeset",
     "release": "changeset publish",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
