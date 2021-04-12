@@ -1,13 +1,15 @@
 import execa from "execa";
 import fs from "fs-extra";
-import path from 'path';
+import path from "path";
 import prompts from "prompts";
 
-const pipe = (...functions) => input => functions.reduce((chain, func) => chain.then(func), Promise.resolve(input));
+const pipe = (...functions) => (input) =>
+  functions.reduce((chain, func) => chain.then(func), Promise.resolve(input));
 
-const displayWelcome = () => new Promise((resolve) => {
-  // https://textfancy.com/ascii-art/
-  console.log(`
+const displayWelcome = () =>
+  new Promise((resolve) => {
+    // https://textfancy.com/ascii-art/
+    console.log(`
   ▄     ▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄    ▄ ▄▄▄▄▄▄▄ 
   █ █ ▄ █ █       █  ▄    █       █       █       █  █  █ █       █
   █ ██ ██ █    ▄▄▄█ █▄█   █  ▄▄▄▄▄█▄     ▄█   ▄   █   █▄█ █    ▄▄▄█
@@ -17,8 +19,8 @@ const displayWelcome = () => new Promise((resolve) => {
   █▄▄█ █▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█ █▄▄▄█ █▄▄▄▄▄▄▄█▄█  █▄▄█▄▄▄▄▄▄▄█
   
   `);
-  resolve();
-});
+    resolve();
+  });
 
 const createAppDir = async (appName = process.argv[2]) => {
   console.log(`Creating app directory...`);
@@ -27,10 +29,10 @@ const createAppDir = async (appName = process.argv[2]) => {
   if (fs.existsSync(appDir)) {
     if (fs.readdirSync(appDir).length > 0) {
       const response = await prompts({
-        type: 'confirm',
-        name: 'value',
+        type: "confirm",
+        name: "value",
         message: `The ./${appDir} directory is not empty. Do you want to overwrite it?`,
-        initial: false
+        initial: false,
       });
 
       if (!response.value) {
@@ -62,7 +64,7 @@ const installWebApp = async (appDir) => {
     await execa("npm init svelte@next -y", {
       cwd: webAppDir,
       shell: true,
-      stdio: "inherit"
+      stdio: "inherit",
     });
     return webAppDir;
   } catch (error) {
@@ -71,9 +73,4 @@ const installWebApp = async (appDir) => {
   }
 };
 
-pipe(
-  displayWelcome,
-  createAppDir,
-  copyTemplate,
-  installWebApp
-)();
+pipe(displayWelcome, createAppDir, copyTemplate, installWebApp)();

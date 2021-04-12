@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 12.x
-      
+
       - name: Install pnpm globally
         run: npm install -g pnpm
 
