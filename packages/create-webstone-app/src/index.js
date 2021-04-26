@@ -61,16 +61,62 @@ const installWebApp = async (appDir) => {
     // An empty directory means `npm init svelte@next` is not asking to overwrite it
     fs.removeSync(`${webAppDir}/.keep`);
 
-    await execa("npm init svelte@next -y", {
+    await execa("npm", ["init", "-y", "svelte@next"], {
       cwd: webAppDir,
       shell: true,
       stdio: "inherit",
     });
-    return webAppDir;
+    return appDir;
   } catch (error) {
     console.error(error);
     process.exit(1);
   }
 };
 
-pipe(displayWelcome, createAppDir, copyTemplate, installWebApp)();
+const installDependencies = async (appDir) => {
+  console.log(`Installing dependencies...`);
+  try {
+    await execa("npm", ["install"], {
+      cwd: appDir,
+      stdio: "inherit",
+    });
+    return appDir;
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
+};
+
+const displayNextSteps = (appDir) =>
+  new Promise((resolve) => {
+    console.log();
+    console.log();
+    console.log("===================================================");
+    console.log("Congratulations 🎉! Your Webstone project is ready.");
+    console.log();
+    console.log("To contribute: https://github.com/WebstoneHQ/webstone");
+    console.log("To chat & get in touch: https://discord.gg/NJRm6eRs");
+    console.log();
+    console.log();
+    console.log(
+      "Thank you for your interest in Webstone, I'd love to hear your feedback. 🙏"
+    );
+    console.log();
+    console.log();
+    console.log(
+      `Next steps: For now, 'cd ${appDir
+        .split("/")
+        .pop()}/services/web' and 'npm run dev' starts the web interface. This will change once the Webstone CLI is ready.`
+    );
+    console.log();
+    resolve();
+  });
+
+pipe(
+  displayWelcome,
+  createAppDir,
+  copyTemplate,
+  installWebApp,
+  installDependencies,
+  displayNextSteps
+)();

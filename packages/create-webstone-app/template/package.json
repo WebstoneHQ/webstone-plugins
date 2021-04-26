@@ -2,6 +2,9 @@
   "name": "webstone-app",
   "version": "0.0.2",
   "private": true,
+  "workspaces": [
+    "services/*"
+  ],
   "devDependencies": {
     "@webstone/core": "0.0.2"
   }
