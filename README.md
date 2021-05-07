@@ -21,6 +21,12 @@ To develop or contribute to Webstone, we use [Gitpod](https://www.gitpod.io). Cl
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/WebstoneHQ/webstone)
 
+### Release a package
+
+Packages configured in `pnpm-workspace.yaml` are released automatically when a pull request is merged into the default branch, as long as there is at least one changeset present for a given package. Please refer to https://github.com/atlassian/changesets for details on changesets.
+
+To add a changeset, run `pnpm changeset` and commit the generated file as part of your pull request.
+
 ## The backstory of Webstone
 
 I ([mikenikles on Twitter](https://twitter.com/mikenikles)) started to write about developer experience & productivity [as far back as 2017](https://www.mikenikles.com/blog/a-mostly-automated-release-process) and continued to do so on a regular basis. In January 2020, I open sourced a [`monorepo-template`](https://github.com/mikenikles/monorepo-template) repo which I had used as a template for a few projects. In summer of 2020, I released the [Cloud Native Web Development](https://www.mikenikles.com/cloud-native-web-development) book and corresponding source code to help web developers go from zero to production. It contains everything from `git init` to monitoring a web application in a productione environment.
