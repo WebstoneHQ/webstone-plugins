@@ -13,6 +13,7 @@
   },
   "scripts": {
     "changeset": "changeset",
+    "dev": "pnpm --recursive --parallel dev",
     "release": "changeset publish",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"

@@ -2,10 +2,19 @@
   "name": "@webstone/cli",
   "version": "0.0.2",
   "description": "The Webstone command line",
-  "main": "index.js",
+  "bin": {
+    "webstone": "./bin",
+    "ws": "./bin"
+  },
   "scripts": {
+    "dev": "node ./scripts/esbuild.js dev",
+    "build": "node ./scripts/esbuild.js build",
+    "prepublishOnly": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mike Nikles, @mikenikles",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.11.19"
+  }
 }
