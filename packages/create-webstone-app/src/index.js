@@ -61,7 +61,7 @@ const installWebApp = async (appDir) => {
     // An empty directory means `npm init svelte@next` is not asking to overwrite it
     fs.removeSync(`${webAppDir}/.keep`);
 
-    await execa("npm", ["init", "-y", "svelte@next"], {
+    await execa("npm", ["init", "svelte@next", "."], {
       cwd: webAppDir,
       shell: true,
       stdio: "inherit",
