@@ -35,4 +35,4 @@ Ever since, I have received feedback from readers who thanked me for putting the
 
 Webstone is the next logial step! With Webstone, I am providing a complete project starter kit you can use to develop your next web application based on modern technologies. It is based on what I see as the next big thing in web development: [Svelte](https://svelte.dev) & [SvelteKit](https://kit.svelte.dev), [GraphQL](https://graphql.org/) and your choice of database and deployment platform (think [Vercel](https://vercel.com), [Netlify](https://www.netlify.com), [Begin](https://begin.com), etc.). It contains features any web application needs, sooner or later. Features such as authentication, persistence, billing, sending emails, etc.
 
-The Webstone project started in 2021. If you are interested, pleaes [join our Discord chat](https://discord.gg/RsNsmG9X).
+The Webstone project started in 2021. If you are interested, pleaes [join our Discord chat](https://discord.gg/WTyAkYe8t3).
