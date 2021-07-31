@@ -12,7 +12,9 @@
     "prettier": "^2.2.1"
   },
   "scripts": {
+    "build": "pnpm --recursive --parallel build",
     "changeset": "changeset",
+    "clean": "rm -fr ./node_modules && pnpm --recursive --parallel clean",
     "dev": "pnpm --recursive --parallel dev",
     "release": "changeset publish",
     "test": "echo \"Error: no test specified\" && exit 1",

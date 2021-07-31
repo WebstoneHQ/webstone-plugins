@@ -5,9 +5,11 @@
   "author": "Mike Nikles, @mikenikles",
   "bin": "./bin",
   "scripts": {
-    "dev": "node ./scripts/esbuild.js dev",
     "build": "node ./scripts/esbuild.js build",
+    "clean": "rm -fr ./dist ./node_modules",
+    "dev": "node ./scripts/esbuild.js dev",
     "prepublishOnly": "pnpm build",
+    "prepare": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
