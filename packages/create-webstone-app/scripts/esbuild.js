@@ -6,7 +6,7 @@ const config = {
     bundle: true,
     entryPoints: ["./src/index.js"],
     logLevel: "info",
-    outfile: "bin",
+    outfile: "./dist/bin",
     platform: "node",
   },
   build: {},
