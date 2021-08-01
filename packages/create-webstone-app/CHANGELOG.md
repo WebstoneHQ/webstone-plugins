@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.0.9
+
+### Patch Changes
+
+- cca9b7f: Remove the node_modules filter when copying the template.
+
 ## 0.0.8
 
 ### Patch Changes
