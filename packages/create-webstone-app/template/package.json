@@ -5,6 +5,9 @@
   "workspaces": [
     "services/*"
   ],
+  "scripts": {
+    "dev": "pnpm --recursive --parallel dev"
+  },
   "devDependencies": {
     "@webstone/core": "latest"
   }
