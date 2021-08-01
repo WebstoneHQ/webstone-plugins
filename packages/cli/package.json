@@ -1,6 +1,6 @@
 {
   "name": "@webstone/cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The Webstone command line",
   "bin": {
     "webstone": "./bin",
