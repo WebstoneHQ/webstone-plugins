@@ -1,6 +1,6 @@
 {
   "name": "create-webstone-app",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Start your next web application with Webstone and configure it as you go.",
   "author": "Mike Nikles, @mikenikles",
   "bin": "./bin",

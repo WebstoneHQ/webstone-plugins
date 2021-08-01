@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.0.6
+
+### Patch Changes
+
+- 2d40fd8: Auto-update the template dependencies.
+
 ## 0.0.5
 
 ### Patch Changes
