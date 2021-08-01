@@ -8,6 +8,6 @@
   "author": "Mike Nikles, @mikenikles",
   "license": "MIT",
   "dependencies": {
-    "@webstone/cli": "workspace:^"
+    "@webstone/cli": "workspace:*"
   }
 }
