@@ -25,7 +25,13 @@ To develop or contribute to Webstone, we use [Gitpod](https://www.gitpod.io). Cl
 
 Packages configured in `pnpm-workspace.yaml` are released automatically when a pull request is merged into the default branch, as long as there is at least one changeset present for a given package. Please refer to https://github.com/atlassian/changesets for details on changesets.
 
-To add a changeset, run `pnpm changeset` and commit the generated file as part of your pull request.
+To add a changeset:
+
+- Run `pnpm changeset`
+- Run `pnpm i` at the project root
+- Commit all files as part of your pull request
+
+When the PR gets merged, the [`.github/workflows/release.yml`](.github/workflows/release.yml) workflow will open a release pull request. Review & merge this to publish the changed packages to the NPM registry.
 
 ## The backstory of Webstone
 
