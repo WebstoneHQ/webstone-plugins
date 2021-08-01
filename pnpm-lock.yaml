@@ -44,7 +44,7 @@ importers:
 
   packages/create-webstone-app/template:
     specifiers:
-      '@webstone/core': workspace:*
+      '@webstone/core': latest
     devDependencies:
       '@webstone/core': link:../../core
 
