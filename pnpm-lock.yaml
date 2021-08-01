@@ -26,7 +26,7 @@ importers:
 
   packages/core:
     specifiers:
-      '@webstone/cli': workspace:^
+      '@webstone/cli': workspace:*
     dependencies:
       '@webstone/cli': link:../cli
 
