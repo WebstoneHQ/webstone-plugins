@@ -49,9 +49,7 @@ const createAppDir = async (appName = process.argv[2]) => {
 const copyTemplate = (appDir) => {
   console.log(`Copying template...`);
   const templateDir = path.join(__dirname, "..", "template");
-  fs.copySync(templateDir, appDir, {
-    filter: (src) => src.indexOf("node_modules") === -1,
-  });
+  fs.copySync(templateDir, appDir);
   return appDir;
 };
 
