@@ -6,6 +6,6 @@
     "services/*"
   ],
   "devDependencies": {
-    "@webstone/core": "workspace:*"
+    "@webstone/core": "latest"
   }
 }
