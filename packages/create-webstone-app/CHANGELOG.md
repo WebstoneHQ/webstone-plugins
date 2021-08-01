@@ -1,5 +1,12 @@
 # create-webstone-app
 
+## 0.0.8
+
+### Patch Changes
+
+- 7b194c0: Use pnpm in the template to simplify commands.
+- 58cbcba: Ignore node_modules when copying the template.
+
 ## 0.0.7
 
 ### Patch Changes
