@@ -42,12 +42,6 @@ importers:
       fs-extra: 9.1.0
       prompts: 2.4.0
 
-  packages/create-webstone-app/template:
-    specifiers:
-      '@webstone/core': latest
-    devDependencies:
-      '@webstone/core': link:../../core
-
 packages:
 
   /@babel/code-frame/7.12.13:

@@ -60,10 +60,10 @@ const installWebApp = async (appDir) => {
   console.log(`Installing web app in ${webAppDir}...`);
 
   try {
-    // An empty directory means `npm init svelte@next` is not asking to overwrite it
+    // An empty directory means `pnpm init svelte@next` is not asking to overwrite it
     fs.removeSync(`${webAppDir}/.keep`);
 
-    await execa("npm", ["init", "svelte@next", "."], {
+    await execa("pnpm", ["init", "svelte@next", "."], {
       cwd: webAppDir,
       shell: true,
       stdio: "inherit",
@@ -78,7 +78,7 @@ const installWebApp = async (appDir) => {
 const installDependencies = async (appDir) => {
   console.log(`Installing dependencies...`);
   try {
-    await execa("npm", ["install"], {
+    await execa("pnpm", ["install"], {
       cwd: appDir,
       stdio: "inherit",
     });
@@ -91,26 +91,21 @@ const installDependencies = async (appDir) => {
 
 const displayNextSteps = (appDir) =>
   new Promise((resolve) => {
-    console.log();
-    console.log();
-    console.log("===================================================");
-    console.log("Congratulations 🎉! Your Webstone project is ready.");
-    console.log();
-    console.log("To contribute: https://github.com/WebstoneHQ/webstone");
-    console.log("To chat & get in touch: https://discord.gg/NJRm6eRs");
-    console.log();
-    console.log();
-    console.log(
-      "Thank you for your interest in Webstone, I'd love to hear your feedback. 🙏"
-    );
-    console.log();
-    console.log();
-    console.log(
-      `Next steps: For now, 'cd ${appDir
-        .split("/")
-        .pop()}/services/web' and 'npm run dev' starts the web interface. This will change once the Webstone CLI is ready.`
-    );
-    console.log();
+    console.log(`
+===================================================
+Congratulations 🎉! Your Webstone project is ready.
+
+To contribute: https://github.com/WebstoneHQ/webstone
+To chat & get in touch: https://discord.gg/NJRm6eRs
+
+
+Thank you for your interest in Webstone, I'd love to hear your feedback 🙏.
+
+
+Next steps: 
+  - cd ${appDir.split("/").pop()}
+  - pnpm dev
+    `);
     resolve();
   });
 
