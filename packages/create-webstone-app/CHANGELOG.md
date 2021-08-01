@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.0.7
+
+### Patch Changes
+
+- 133b0c5: Always use the latest version of the CLI in the template.
+
 ## 0.0.6
 
 ### Patch Changes
