@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "pnpm --recursive --parallel build",
-    "changeset": "changeset",
+    "changeset": "changeset && pnpm install",
     "clean": "rm -fr ./node_modules && pnpm --recursive --parallel clean",
     "dev": "pnpm --recursive --parallel dev",
     "release": "changeset publish",

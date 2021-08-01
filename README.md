@@ -28,7 +28,6 @@ Packages configured in `pnpm-workspace.yaml` are released automatically when a p
 To add a changeset:
 
 - Run `pnpm changeset`
-- Run `pnpm i` at the project root
 - Commit all files as part of your pull request
 
 When the PR gets merged, the [`.github/workflows/release.yml`](.github/workflows/release.yml) workflow will open a release pull request. Review & merge this to publish the changed packages to the NPM registry.
