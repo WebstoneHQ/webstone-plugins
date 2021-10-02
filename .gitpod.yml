@@ -3,13 +3,15 @@ checkoutLocation: webstone
 workspaceLocation: .
 
 tasks:
-  - before: cd webstone
-    init: |
+  - before: |
       npm install -g pnpm
+      cd webstone
+    init: |
       pnpm install
       gp sync-done install
     command: pnpm dev
-  - init: |
+  - before: npm install -g pnpm
+    init: |
       gp sync-await install
       node ./webstone/packages/create-webstone-app/bin webstone-dev-app
     command: |
