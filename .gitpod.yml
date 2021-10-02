@@ -7,7 +7,16 @@ tasks:
     init: |
       npm install -g pnpm
       pnpm install
+      gp sync-done install
     command: pnpm dev
-  - init: mkdir webstone-dev-app
-    command: cd webstone-dev-app
+  - init: |
+      gp sync-await install
+      node ./webstone/packages/create-webstone-app/bin webstone-dev-app
+    command: |
+      cd webstone-dev-app
+      pnpm dev
     openMode: split-right
+
+ports:
+  - port: 3000
+    visibility: public
