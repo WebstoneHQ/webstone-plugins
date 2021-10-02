@@ -1,5 +1,13 @@
+# Learn more about this file at https://www.gitpod.io/docs/references/gitpod-yml
+checkoutLocation: webstone
+workspaceLocation: .
+
 tasks:
-  - init: |
+  - before: cd webstone
+    init: |
       npm install -g pnpm
       pnpm install
     command: pnpm dev
+  - init: mkdir webstone-dev-app
+    command: cd webstone-dev-app
+    openMode: split-right
