@@ -6,7 +6,8 @@
     "services/*"
   ],
   "scripts": {
-    "dev": "pnpm --recursive --parallel dev"
+    "dev": "pnpm --recursive --parallel dev",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
     "@webstone/cli": "latest",
