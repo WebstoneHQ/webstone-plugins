@@ -23,3 +23,7 @@ tasks:
 ports:
   - port: 3000
     visibility: public
+
+vscode:
+  extensions:
+    - svelte.svelte-vscode
