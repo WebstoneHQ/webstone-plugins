@@ -3,8 +3,10 @@
 Start your next web application with Webstone and configure it as you go.
 
 ```
-npm init webstone-app my-project
+pnpm init webstone-app my-project
 ```
+
+> **Note**: Webstone requires the use of `pnpm` (https://pnpm.io). To install it, please run: `npm i -g pnpm`
 
 What you get with the above command is a full-stack web application project - everything you need when you develop a modern web application. More specifically, the project contains:
 

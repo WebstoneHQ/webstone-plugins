@@ -16,9 +16,10 @@
     "changeset": "changeset && pnpm install",
     "clean": "rm -fr ./node_modules && pnpm --recursive --parallel clean",
     "dev": "pnpm --recursive --parallel dev",
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
     "release": "changeset publish",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
