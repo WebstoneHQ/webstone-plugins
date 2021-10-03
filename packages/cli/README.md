@@ -1,7 +1,7 @@
 # Webstone Project CLI
 
-The Webstone CLI is all you need to work with a Webstone project.
+The Webstone CLI provides the necessary commands to extends, test, and deploy your full-stack application.
 
 ## How to use
 
-The CLI is availabe at the root of your project with `npx webstone`, or as an alias `npx ws`.
+The CLI is availabe at the root of your project with `pnpm webstone`, or as an alias `pnpm ws`.
