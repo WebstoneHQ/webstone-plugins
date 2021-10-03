@@ -3,8 +3,14 @@ import fs from "fs-extra";
 import path from "path";
 import prompts from "prompts";
 
+const KEY_SEQUENCE_DOWN = "\u001b[B";
+const KEY_SEQUENCE_ENTER = "\n";
+const KEY_SEQUENCE_RIGHT = "\u001b[C";
+
 const pipe = (...functions) => (input) =>
   functions.reduce((chain, func) => chain.then(func), Promise.resolve(input));
+
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const displayWelcome = () =>
   new Promise((resolve) => {
@@ -61,11 +67,37 @@ const installWebApp = async (appDir) => {
     // An empty directory means `pnpm init svelte@next` is not asking to overwrite it
     fs.removeSync(`${webAppDir}/.keep`);
 
-    await execa("pnpm", ["init", "svelte@next", "."], {
+    const svelteInitProcess = execa("pnpm", ["init", "svelte@next", "."], {
       cwd: webAppDir,
       shell: true,
-      stdio: "inherit",
+      // stdio: "inherit",
     });
+
+    const waitAndWrite = async (content) => {
+      // Thanks to https://github.com/svelte-add/svelte-add/blob/main/projects/create-kit/__init.js
+      await wait(300);
+      svelteInitProcess.stdin.write(content);
+    };
+
+    // It doesn't look like SvelteKit will get a public API to automate the initialization.
+    // What follows is a hacky, not to mention fragile workaround.
+    // Context: https://github.com/sveltejs/kit/issues/2348 and linked issues / PRs
+    await wait(2000);
+    // Which Svelte app template? A) SvelteKit demo app. B) Skeleton project*
+    await waitAndWrite(KEY_SEQUENCE_DOWN);
+    await waitAndWrite(KEY_SEQUENCE_ENTER);
+    // Use TypeScript? No / Yes*
+    await waitAndWrite(KEY_SEQUENCE_RIGHT);
+    await waitAndWrite(KEY_SEQUENCE_ENTER);
+    // Add ESLint for code linting? No / Yes*
+    await waitAndWrite(KEY_SEQUENCE_RIGHT);
+    await waitAndWrite(KEY_SEQUENCE_ENTER);
+    // Add Prettier for code formatting? No / Yes*
+    await waitAndWrite(KEY_SEQUENCE_RIGHT);
+    await waitAndWrite(KEY_SEQUENCE_ENTER);
+    svelteInitProcess.stdin.end();
+
+    await svelteInitProcess;
     return appDir;
   } catch (error) {
     console.error(error);

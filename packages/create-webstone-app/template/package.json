@@ -9,6 +9,7 @@
     "dev": "pnpm --recursive --parallel dev"
   },
   "devDependencies": {
+    "@webstone/cli": "latest",
     "@webstone/core": "latest"
   }
 }
