@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.0.4
+
+### Patch Changes
+
+- 4ff8dfa: Introduce the Webstone CLI skeleton.
+
 ## 0.0.3
 
 ### Patch Changes
