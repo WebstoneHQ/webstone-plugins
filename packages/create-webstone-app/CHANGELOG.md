@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.0.10
+
+### Patch Changes
+
+- 4ff8dfa: Introduce the Webstone CLI skeleton.
+
 ## 0.0.9
 
 ### Patch Changes
