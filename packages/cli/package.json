@@ -21,14 +21,6 @@
     "test:snapupdate": "jest --updateSnapshot",
     "test:watch": "jest --watch"
   },
-  "files": [
-    "bin",
-    "dist",
-    "docs",
-    "README.md",
-    "tsconfig.json",
-    "tslint.json"
-  ],
   "license": "MIT",
   "dependencies": {
     "gluegun": "^4.7.0"

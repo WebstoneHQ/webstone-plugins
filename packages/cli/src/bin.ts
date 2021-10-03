@@ -8,16 +8,17 @@ async function run(argv) {
     .help()
     .version()
     .exclude([
-      "meta",
-      "strings",
-      "filesystem",
-      "semver",
-      "system",
-      "prompt",
+      // "filesystem",
       "http",
-      "template",
-      "patching",
+      // "meta",
       "package-manager",
+      "patching",
+      // "print",
+      "prompt",
+      "semver",
+      "strings",
+      "system",
+      "template",
     ])
     .create();
   const toolbox = await cli.run(argv);
