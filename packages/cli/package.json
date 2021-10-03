@@ -8,7 +8,7 @@
     "ws": "./bin"
   },
   "scripts": {
-    "build": "pnpm test && pnpm format && pnpm lint && pnpm clean && pnpm compile && pnpm copy-templates",
+    "build": "pnpm format && pnpm lint && pnpm clean && pnpm compile && pnpm copy-templates",
     "clean": "rm -rf ./dist",
     "compile": "tsc -p .",
     "copy-templates": "if [ -e ./src/templates ]; then cp -a ./src/templates ./dist/; fi",
