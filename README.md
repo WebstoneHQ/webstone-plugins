@@ -37,7 +37,7 @@ In January 2020, I open sourced a [`monorepo-template`](https://github.com/miken
 
 ### 2020
 
-In summer of 2020, I released the [Cloud Native Web Development](https://www.mikenikles.com/cloud-native-web-development) book and corresponding source code to help web developers go from zero to production. It contains everything from `git init` to monitoring a web application in a productione environment.
+In summer of 2020, I released the [Cloud Native Web Development](https://www.mikenikles.com/cloud-native-web-development) book and corresponding source code to help web developers go from zero to production. It contains everything from `git init` to monitoring a web application in a production environment.
 
 Ever since, I have received feedback from readers who thanked me for putting the source code together and how it saved them weeks of setting up their web app project. It's been encouraging to hear from individuals and from software agencies who are able to cut their time to market significantly.
 

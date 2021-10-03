@@ -30,4 +30,4 @@ The web application is available on port 3000, e.g. http://localhost:3000.
 
 ## Learn more
 
-Please refer to the documentation at https://github.com/WebstoneHQ/webstone for details of what is included, a list of all available CLI commands and how Webstone lets you focus no what matter, rather than dealing with boilerplate code.
+Please refer to the documentation at https://github.com/WebstoneHQ/webstone for details of what is included, a list of all available CLI commands and how Webstone lets you focus on what matters, rather than dealing with boilerplate code.

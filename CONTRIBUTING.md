@@ -55,7 +55,7 @@ This is a development app where you can test changes made to the `webstone` dire
 
 Each package in `webstone/packages/*` contains a `dev` script defined in the `package.json` file. This script watches source files and when it detects a change, generates the package's output. Often, this is either an `esbuild` or `tsc -w` kind of command.
 
-As you change packages, the `webstone-dev-app` project has acess to these changes instantly due to the symlink that exists from the Webstone CLI in `webstone-dev-app/node_modules/@webstone/cli` to the `webstone/packages/cli` directory.
+As you change packages, the `webstone-dev-app` project has access to these changes instantly due to the symlink that exists from the Webstone CLI in `webstone-dev-app/node_modules/@webstone/cli` to the `webstone/packages/cli` directory.
 
 ## Release a package
 
