@@ -12,7 +12,7 @@ async function run(argv) {
       "http",
       // "meta",
       "package-manager",
-      "patching",
+      // "patching",
       // "print",
       "prompt",
       "semver",

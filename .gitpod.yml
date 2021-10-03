@@ -17,6 +17,8 @@ tasks:
     command: |
       cd webstone-dev-app
       pnpm link ../webstone/packages/cli
+      export HMR_HOST=`gp url 3000`
+      pnpm ws dev gitpod web-patch-svelte-config-js
       pnpm dev
     openMode: split-right
 
