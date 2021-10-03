@@ -22,13 +22,12 @@
     "test:watch": "jest --watch"
   },
   "files": [
-    "tsconfig.json",
-    "tslint.json",
-    "build",
-    "LICENSE",
-    "README.md",
+    "bin",
+    "dist",
     "docs",
-    "bin"
+    "README.md",
+    "tsconfig.json",
+    "tslint.json"
   ],
   "license": "MIT",
   "dependencies": {
