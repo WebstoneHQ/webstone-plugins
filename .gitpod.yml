@@ -16,6 +16,7 @@ tasks:
       node ./webstone/packages/create-webstone-app/bin webstone-dev-app
     command: |
       cd webstone-dev-app
+      pnpm link ../webstone/packages/cli
       pnpm dev
     openMode: split-right
 
