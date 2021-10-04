@@ -16,6 +16,7 @@ tasks:
       node ./webstone/packages/create-webstone-app/bin webstone-dev-app
     command: |
       cd webstone-dev-app
+      while [ ! -f ../webstone/packages/cli/dist/bin.js ]; do sleep 1; done
       pnpm link ../webstone/packages/cli
       export HMR_HOST=`gp url 3000`
       pnpm ws dev gitpod web-patch-svelte-config-js
