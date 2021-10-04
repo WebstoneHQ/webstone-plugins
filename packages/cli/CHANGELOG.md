@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.0.7
+
+### Patch Changes
+
+- 1fcc6e1: Add a "ws web svelte-add" command as a wrapper for svelte-add.
+
 ## 0.0.6
 
 ### Patch Changes
