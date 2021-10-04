@@ -17,7 +17,7 @@ async function run(argv) {
       "prompt",
       "semver",
       "strings",
-      "system",
+      // "system",
       "template",
     ])
     .create();
