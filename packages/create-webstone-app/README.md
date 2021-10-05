@@ -21,7 +21,7 @@ pnpm init webstone-app [my-app]
 
 # Start the dev servers
 cd $_
-pnpm dev
+pnpm ws dev
 ```
 
 ## Access the web application
