@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.1.0
+
+### Minor Changes
+
+- 7e5f53a: Add a `webstone dev` command to start services.
+
 ## 0.0.7
 
 ### Patch Changes
