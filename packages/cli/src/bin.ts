@@ -14,11 +14,11 @@ async function run(argv) {
       "package-manager",
       // "patching",
       // "print",
-      "prompt",
+      // "prompt",
       "semver",
-      "strings",
+      // "strings",
       // "system",
-      "template",
+      // "template",
     ])
     .create();
   const toolbox = await cli.run(argv);
