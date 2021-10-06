@@ -1,5 +1,12 @@
 # @webstone/core
 
+## 0.0.9
+
+### Patch Changes
+
+- Updated dependencies [69ea7d6]
+  - @webstone/cli@0.2.0
+
 ## 0.0.8
 
 ### Patch Changes
