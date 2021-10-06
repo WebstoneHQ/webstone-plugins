@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.3.0
+
+### Minor Changes
+
+- db93524: Add a `webstone web delete page` CLI command.
+
 ## 0.2.0
 
 ### Minor Changes
