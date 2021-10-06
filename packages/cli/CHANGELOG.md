@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.2.0
+
+### Minor Changes
+
+- 69ea7d6: Add a `webstone web create page` command.
+
 ## 0.1.0
 
 ### Minor Changes
