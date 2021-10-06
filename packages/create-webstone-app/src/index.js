@@ -134,7 +134,7 @@ Thank you for your interest in Webstone, I'd love to hear your feedback 🙏.
 
 Next steps: 
   - cd ${appDir.split("/").pop()}
-  - pnpm dev
+  - pnpm ws dev
     `);
     resolve();
   });
