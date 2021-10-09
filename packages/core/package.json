@@ -1,6 +1,6 @@
 {
   "name": "@webstone/core",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "scripts": {
     "clean": "rm -fr ./node_modules",
     "test": "echo \"Error: no test specified\" && exit 1"
