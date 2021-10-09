@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.4.0
+
+### Minor Changes
+
+- 1edfbe5: Add a `webstone web configure deployment` CLI command.
+
 ## 0.3.0
 
 ### Minor Changes
