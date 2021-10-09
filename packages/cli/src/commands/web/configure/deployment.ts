@@ -1,7 +1,5 @@
-import type { GluegunCommand, GluegunToolbox } from "gluegun";
-import type { WebToolbox } from "../../../extensions/web/types";
-
-interface WebstoneToolbox extends GluegunToolbox, WebToolbox {}
+import type { GluegunCommand } from "gluegun";
+import type { WebstoneToolbox } from "../../../extensions/web";
 
 const command: GluegunCommand = {
   // @ts-ignore: WebstoneToolbox extends GluegunToolbox, ignore TS error.
