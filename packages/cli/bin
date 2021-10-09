@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 if (process.argv.includes("--tests")) {
   require('ts-node').register({ project: `${__dirname}/tsconfig.json` })
-  require(`${__dirname}/src/bin`).run(process.argv)
+  require(`${__dirname}/src/bin`).run()
 } else {
-  require(`${__dirname}/dist/bin`).run(process.argv);
+  require(`${__dirname}/dist/bin`).run();
 }

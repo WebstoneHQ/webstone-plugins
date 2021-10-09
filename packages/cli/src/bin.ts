@@ -1,6 +1,6 @@
 const { build } = require("gluegun");
 
-async function run(argv) {
+async function run() {
   const cli = build()
     .brand("webstone")
     .src(__dirname)
@@ -21,7 +21,7 @@ async function run(argv) {
       // "template",
     ])
     .create();
-  const toolbox = await cli.run(argv);
+  const toolbox = await cli.run(process.argv);
 
   // Return to use it in tests
   return toolbox;

@@ -12,7 +12,7 @@
     "clean": "rm -rf ./dist",
     "compile": "tsc -p .",
     "copy-templates": "if [ -e ./src/templates ]; then cp -a ./src/templates ./dist/; fi",
-    "dev": "pnpm copy-templates && pnpm dev:watch-src & pnpm dev:watch-templates",
+    "dev": "pnpm clean && pnpm copy-templates && pnpm dev:watch-src & pnpm dev:watch-templates",
     "dev:watch-src": "tsc -w",
     "dev:watch-templates": "npm-watch copy-templates",
     "format": "prettier --write **/*.{js,ts,tsx,json}",
