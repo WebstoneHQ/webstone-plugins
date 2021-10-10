@@ -6,6 +6,7 @@ import { GluegunCommand } from "gluegun";
  * @see https://github.com/svelte-add/svelte-add
  */
 const command: GluegunCommand = {
+  alias: ["sa"],
   description:
     "Delegates to `svelte-add` for integrations such as Tailwind CSS, mdsvex, etc",
   run: async (toolbox) => {

@@ -3,6 +3,7 @@ import type { WebstoneToolbox } from "../../extensions/web";
 import { GluegunCommand } from "gluegun";
 
 const command: GluegunCommand = {
+  alias: ["w"],
   description: "Deploy the web service",
   // @ts-ignore: WebstoneToolbox extends GluegunToolbox, ignore TS error.
   run: async (toolbox: WebstoneToolbox) => {
