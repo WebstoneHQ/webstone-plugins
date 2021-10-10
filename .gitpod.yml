@@ -30,3 +30,4 @@ ports:
 vscode:
   extensions:
     - svelte.svelte-vscode
+    - yzhang.markdown-all-in-one
