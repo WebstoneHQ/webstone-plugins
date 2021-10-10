@@ -35,19 +35,19 @@ const command: GluegunCommand = {
 
     const nextStepsInstructions: string[] = [];
     if (web.configure.deployment.isAnyAdapterInstalled()) {
-      const installedAdapterNpmPackage = web.configure.deployment.getInstalledAdapterPackageName();
-      const installedAdapter = availableAdapters.find(
-        (adapter) => adapter.npmPackage === installedAdapterNpmPackage
-      );
+      const installedAdapter = web.configure.deployment.getInstalledAdapter();
 
-      if (installedAdapterNpmPackage === chosenAdapter.npmPackage) {
+      if (
+        installedAdapter &&
+        installedAdapter?.npmPackage === chosenAdapter.npmPackage
+      ) {
         print.info(`Adapter ${chosenAdapter.name} is already installed.`);
         return;
       }
 
       if (!installedAdapter) {
         print.error(
-          `Adapter ${installedAdapterNpmPackage} should be installed, but isn't... This is an unexpected error, please manually review the "services/web/package.json file."`
+          `An adapter should be installed, but isn't... This is an unexpected error, please manually review the "services/web/package.json file."`
         );
         return;
       }

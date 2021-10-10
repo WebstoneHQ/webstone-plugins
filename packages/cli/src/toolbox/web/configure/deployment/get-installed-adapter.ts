@@ -6,9 +6,13 @@ export default () => {
   const availableAdapterNpmPackages = availableAdapters.map(
     (adapter) => adapter.npmPackage
   );
-  return (
+
+  const installedAdapterNpmPackage =
     Object.keys(webPackageJson.devDependencies).find((devDependency) =>
       availableAdapterNpmPackages.includes(devDependency)
-    ) || ""
+    ) || "";
+
+  return availableAdapters.find(
+    (adapter) => adapter.npmPackage === installedAdapterNpmPackage
   );
 };

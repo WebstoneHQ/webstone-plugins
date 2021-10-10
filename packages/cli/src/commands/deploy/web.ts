@@ -26,8 +26,11 @@ const command: GluegunCommand = {
         stdout: "inherit",
       });
     } else {
+      const installedAdapter = web.configure.deployment.getInstalledAdapter();
       print.highlight(
-        `TODO: Link to deployment docs for the ${web.configure.deployment.getInstalledAdapterPackageName()} adapter.`
+        `Your web service is ready to be deployed. Please follow the instructions at https://github.com/WebstoneHQ/webstone/tree/main/docs/deployment#${installedAdapter!.identifier.substring(
+          "adapter-".length
+        )} to deploy to ${installedAdapter!.name}`
       );
     }
   },
