@@ -1,6 +1,7 @@
 import { GluegunCommand } from "gluegun";
 
 const command: GluegunCommand = {
+  alias: ["p"],
   description: "Delete a web page",
   run: async (toolbox) => {
     const { filesystem, parameters, print, prompt, strings } = toolbox;
