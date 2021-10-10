@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.5.1
+
+### Patch Changes
+
+- a6fe827: Provide command aliases and print available sub-commands for no-op commands.
+
 ## 0.5.0
 
 ### Minor Changes
