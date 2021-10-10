@@ -1,3 +1,3 @@
-import getInstalledAdapterPackageName from "./get-installed-adapter-package-name";
+import getInstalledAdapter from "./get-installed-adapter";
 
-export default () => !!getInstalledAdapterPackageName();
+export default () => !!getInstalledAdapter();
