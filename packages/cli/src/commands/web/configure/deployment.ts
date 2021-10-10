@@ -2,6 +2,7 @@ import type { GluegunCommand } from "gluegun";
 import type { WebstoneToolbox } from "../../../extensions/web";
 
 const command: GluegunCommand = {
+  description: "Configure a web service deployment adapter",
   // @ts-ignore: WebstoneToolbox extends GluegunToolbox, ignore TS error.
   run: async (toolbox: WebstoneToolbox) => {
     const { print, prompt, web } = toolbox;

@@ -21,6 +21,10 @@ What you get with the above command is a full-stack application project - everyt
 - Deployment
   - ⏳️ Your platform of choice
 
+## Documentation
+
+Please refer to the content in the [`docs`](./docs) directory.
+
 ## Contributing
 
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md).

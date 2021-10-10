@@ -1,6 +1,7 @@
 import { GluegunCommand } from "gluegun";
 
 const command: GluegunCommand = {
+  hidden: true,
   run: async (toolbox) => {
     const { patching, print } = toolbox;
     const fileToPatch = "services/web/svelte.config.js";

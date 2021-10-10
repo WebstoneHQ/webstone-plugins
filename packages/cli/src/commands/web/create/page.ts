@@ -1,6 +1,7 @@
 import { GluegunCommand } from "gluegun";
 
 const command: GluegunCommand = {
+  description: "Create a new web page",
   run: async (toolbox) => {
     const { parameters, print, prompt, strings, template } = toolbox;
 

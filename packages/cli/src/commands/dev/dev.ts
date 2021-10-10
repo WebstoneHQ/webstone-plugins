@@ -1,6 +1,7 @@
 import { GluegunCommand } from "gluegun";
 
 const command: GluegunCommand = {
+  description: "Start the dev server(s)",
   run: async (toolbox) => {
     const { filesystem, parameters, print, system } = toolbox;
 
