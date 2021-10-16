@@ -10,7 +10,8 @@
     "dev": "node ./scripts/esbuild.js dev",
     "prepublishOnly": "pnpm build",
     "prepare": "pnpm build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "c8 --all --include=src --reporter=html pnpm test:only",
+    "test:only": "uvu -r tsm tests"
   },
   "keywords": [
     "svelte",
