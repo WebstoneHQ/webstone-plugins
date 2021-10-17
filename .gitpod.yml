@@ -11,19 +11,23 @@ tasks:
       cd webstone
     init: |
       pnpm install
+      pnpx cypress install
       gp sync-done install
     command: pnpm dev
   - before: npm install -g pnpm
     init: |
       gp sync-await install
-      node ./webstone/packages/create-webstone-app/bin webstone-dev-app
+      cd webstone/tests/e2e
+      pnpx cypress run --spec "cypress/integration/1-getting-started/**/**"
     command: |
-      cd webstone-dev-app
-      while [ ! -f ../webstone/packages/cli/dist/bin.js ]; do sleep 1; done
-      pnpm add -w -D ../webstone/packages/cli
-      export HMR_HOST=`gp url 3000`
-      pnpm ws dev gitpod web-patch-svelte-config-js
-      pnpm ws dev
+      echo "TODO: Re-enable the commented lines below in .gitpod.yml"
+    # command: |
+    #   cd /workspace/webstone-dev-app
+    #   while [ ! -f ../webstone/packages/cli/dist/bin.js ]; do sleep 1; done
+    #   pnpm add -w -D ../webstone/packages/cli
+    #   export HMR_HOST=`gp url 3000`
+    #   pnpm ws dev gitpod web-patch-svelte-config-js
+    #   pnpm ws dev
     openMode: split-right
 
 ports:
