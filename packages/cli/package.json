@@ -18,7 +18,8 @@
     "format": "prettier --write **/*.{js,ts,tsx,json}",
     "lint": "tslint -p .",
     "prepublishOnly": "pnpm build",
-    "test:unit": "c8 --all --include=**/src --reporter=html pnpm test:unit:only",
+    "test": "pnpm test:unit",
+    "test:unit": "c8 --all --include=src --reporter=html pnpm test:unit:only",
     "test:unit:only": "uvu -r tsm tests"
   },
   "watch": {

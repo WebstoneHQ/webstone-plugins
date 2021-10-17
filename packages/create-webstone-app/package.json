@@ -10,8 +10,9 @@
     "dev": "node ./scripts/esbuild.js dev",
     "prepublishOnly": "pnpm build",
     "prepare": "pnpm build",
-    "test": "c8 --all --include=src --reporter=html pnpm test:only",
-    "test:only": "uvu -r tsm tests"
+    "test": "pnpm test:unit",
+    "test:unit": "c8 --all --include=src --reporter=html pnpm test:unit:only",
+    "test:unit:only": "uvu -r tsm tests"
   },
   "keywords": [
     "svelte",
