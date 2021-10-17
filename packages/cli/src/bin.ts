@@ -1,6 +1,7 @@
-const { build } = require("gluegun");
+import { WebstoneToolbox } from "./extensions/web";
+import { build } from "gluegun";
 
-async function run() {
+export const run = async () => {
   const cli = build()
     .brand("webstone")
     .src(__dirname)
@@ -21,10 +22,8 @@ async function run() {
       // "template",
     ])
     .create();
-  const toolbox = await cli.run(process.argv);
+  const toolbox = (await cli.run(process.argv)) as WebstoneToolbox;
 
   // Return to use it in tests
   return toolbox;
-}
-
-module.exports = { run };
+};

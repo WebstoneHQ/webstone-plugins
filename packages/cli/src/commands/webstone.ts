@@ -9,4 +9,4 @@ const command: GluegunCommand = {
   },
 };
 
-module.exports = command;
+export default command;

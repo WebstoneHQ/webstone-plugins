@@ -7,13 +7,10 @@ const KEY_SEQUENCE_DOWN = "\u001b[B";
 const KEY_SEQUENCE_ENTER = "\n";
 const KEY_SEQUENCE_RIGHT = "\u001b[C";
 
-const pipe = (...functions) => (input) =>
-  functions.reduce((chain, func) => chain.then(func), Promise.resolve(input));
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-const displayWelcome = () =>
-  new Promise((resolve) => {
+export const displayWelcome = () =>
+  new Promise<void>((resolve) => {
     // https://textfancy.com/ascii-art/
     console.log(`
   ▄     ▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄    ▄ ▄▄▄▄▄▄▄ 
@@ -28,7 +25,7 @@ const displayWelcome = () =>
     resolve();
   });
 
-const createAppDir = async (appName = process.argv[2]) => {
+export const createAppDir = async (appName: string = process.argv[2]) => {
   console.log(`Creating app directory...`);
   const appDir = appName ? appName.toLowerCase().replace(/\s/g, "-") : ".";
 
@@ -42,24 +39,27 @@ const createAppDir = async (appName = process.argv[2]) => {
       });
 
       if (!response.value) {
-        process.exit(1);
+        throw new Error(
+          `Exiting, please empty the ./${appDir} directory or choose a different one to create the Webstone app.`
+        );
       }
 
-      fs.rmSync(appDir, { recursive: true, force: true });
+      await fs.rm(appDir, { recursive: true, force: true });
     }
   }
   fs.mkdirSync(appDir, { recursive: true });
   return appDir;
 };
 
-const copyTemplate = (appDir) => {
-  console.log(`Copying template...`);
-  const templateDir = path.join(__dirname, "..", "template");
-  fs.copySync(templateDir, appDir);
-  return appDir;
-};
+export const copyTemplate = (appDir: string) =>
+  new Promise((resolve) => {
+    console.log(`Copying template...`);
+    const templateDir = path.join(__dirname, "..", "template");
+    fs.copySync(templateDir, appDir);
+    resolve(appDir);
+  });
 
-const installWebApp = async (appDir) => {
+export const installWebApp = async (appDir: string) => {
   const webAppDir = `${appDir}/services/web`;
   console.log(`Installing web app in ${webAppDir}...`);
 
@@ -105,7 +105,7 @@ const installWebApp = async (appDir) => {
   }
 };
 
-const installDependencies = async (appDir) => {
+export const installDependencies = async (appDir: string) => {
   console.log(`Installing dependencies...`);
   try {
     await execa("pnpm", ["install"], {
@@ -119,8 +119,8 @@ const installDependencies = async (appDir) => {
   }
 };
 
-const displayNextSteps = (appDir) =>
-  new Promise((resolve) => {
+export const displayNextSteps = (appDir: string) =>
+  new Promise<void>((resolve) => {
     console.log(`
 ===================================================
 Congratulations 🎉! Your Webstone project is ready.
@@ -138,12 +138,3 @@ Next steps:
     `);
     resolve();
   });
-
-pipe(
-  displayWelcome,
-  createAppDir,
-  copyTemplate,
-  installWebApp,
-  installDependencies,
-  displayNextSteps
-)();

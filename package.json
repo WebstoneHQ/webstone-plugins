@@ -5,11 +5,17 @@
   "private": true,
   "devDependencies": {
     "@changesets/cli": "^2.14.1",
+    "@types/fs-extra": "^9.0.13",
+    "@types/sinon": "^10.0.4",
+    "c8": "^7.10.0",
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "sinon": "^11.1.2",
+    "tsm": "^2.1.2",
+    "uvu": "^0.5.2"
   },
   "scripts": {
     "build": "pnpm --recursive --parallel build",
@@ -19,7 +25,9 @@
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
     "release": "changeset publish",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "pnpm test:unit",
+    "test:unit": "c8 --all --include=**/src --reporter=html pnpm test:unit:only",
+    "test:unit:only": "uvu -r tsm packages tests"
   },
   "repository": {
     "type": "git",
@@ -37,6 +45,7 @@
     }
   },
   "lint-staged": {
+    "*.{js,ts}": "pnpm test --filter \"...[origin/main]\"",
     "*.{css,js,md,ts}": "prettier --write"
   }
 }
