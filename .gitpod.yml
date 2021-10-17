@@ -1,4 +1,7 @@
 # Learn more about this file at https://www.gitpod.io/docs/references/gitpod-yml
+image:
+  file: .gitpod/Dockerfile
+
 checkoutLocation: webstone
 workspaceLocation: .
 
