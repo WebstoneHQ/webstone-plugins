@@ -6,30 +6,35 @@ checkoutLocation: webstone
 workspaceLocation: .
 
 tasks:
-  - before: |
+  - name: Webstone Dev
+    before: |
       npm install -g pnpm
       cd webstone
-    init: |
       pnpm install
       pnpx cypress install
       gp sync-done install
     command: pnpm dev
-  - before: npm install -g pnpm
+  - name: App Dev
+    before: npm install -g pnpm
     init: |
       gp sync-await install
-      cd webstone/tests/e2e
-      pnpx cypress run --spec "cypress/integration/1-getting-started/**/**"
+      node ./webstone/packages/create-webstone-app/bin webstone-dev-app
     command: |
-      echo "TODO: Re-enable the commented lines below in .gitpod.yml"
-    # command: |
-    #   cd /workspace/webstone-dev-app
-    #   while [ ! -f ../webstone/packages/cli/dist/bin.js ]; do sleep 1; done
-    #   pnpm add -w -D ../webstone/packages/cli
-    #   export HMR_HOST=`gp url 3000`
-    #   pnpm ws dev gitpod web-patch-svelte-config-js
-    #   pnpm ws dev
+      cd /workspace/webstone-dev-app
+      while [ ! -f ../webstone/packages/cli/dist/bin.js ]; do sleep 1; done
+      pnpm add -w -D ../webstone/packages/cli
+      export HMR_HOST=`gp url 3000`
+      pnpm ws dev gitpod web-patch-svelte-config-js
+      pnpm ws dev
     openMode: split-right
-
+  - name: App Tests
+    before: |
+      npm install -g pnpm
+      cd webstone
+    command: |
+      gp await-port 3000
+      pnpm test:e2e
+      
 ports:
   - port: 3000
     visibility: public

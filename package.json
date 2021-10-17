@@ -27,6 +27,7 @@
     "prepare": "husky install",
     "release": "changeset publish",
     "test": "pnpm test:unit",
+    "test:e2e": "cypress run --project tests/e2e",
     "test:unit": "c8 --all --include=**/src --reporter=html pnpm test:unit:only",
     "test:unit:only": "uvu -r tsm packages tests"
   },
