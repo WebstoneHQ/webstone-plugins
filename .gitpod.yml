@@ -29,6 +29,10 @@ tasks:
 ports:
   - port: 3000
     visibility: public
+  - port: 5900
+    onOpen: ignore
+  - port: 6080
+    onOpen: ignore
 
 vscode:
   extensions:
