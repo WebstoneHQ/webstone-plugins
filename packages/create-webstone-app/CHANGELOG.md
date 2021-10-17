@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.2.0
+
+### Minor Changes
+
+- 0b94911: Write unit tests for the `create-webstone-app` package.
+
 ## 0.1.0
 
 ### Minor Changes
