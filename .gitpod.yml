@@ -9,15 +9,18 @@ tasks:
   - name: Webstone Dev
     before: |
       npm install -g pnpm
+      gp sync-done pnpm-installed-globally
       cd webstone
       pnpm install
       pnpx cypress install
-      gp sync-done install
-    command: pnpm dev
+      gp sync-done dependencies-installed
+    command: |
+      pnpm dev
   - name: App Dev
-    before: npm install -g pnpm
+    before: |
+      gp sync-await pnpm-installed-globally
     init: |
-      gp sync-await install
+      gp sync-await dependencies-installed
       node ./webstone/packages/create-webstone-app/bin webstone-dev-app
     command: |
       cd /workspace/webstone-dev-app
@@ -29,9 +32,9 @@ tasks:
     openMode: split-right
   - name: App Tests
     before: |
-      npm install -g pnpm
-      cd webstone
+      gp sync-await pnpm-installed-globally
     command: |
+      cd webstone
       gp await-port 3000
       pnpm test:e2e
       
