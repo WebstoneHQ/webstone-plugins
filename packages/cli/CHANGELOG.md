@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.6.0
+
+### Minor Changes
+
+- 0b94911: Write unit tests for the `create-webstone-app` package.
+
 ## 0.5.1
 
 ### Patch Changes
