@@ -23,7 +23,7 @@ tasks:
       gp sync-await dependencies-installed
       node ./webstone/packages/create-webstone-app/bin webstone-dev-app
     command: |
-      cd /workspace/webstone-dev-app
+      cd webstone-dev-app
       while [ ! -f ../webstone/packages/cli/dist/bin.js ]; do sleep 1; done
       pnpm add -w -D ../webstone/packages/cli
       export HMR_HOST=`gp url 3000`
