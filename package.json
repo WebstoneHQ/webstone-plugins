@@ -9,6 +9,7 @@
     "@types/sinon": "^10.0.4",
     "c8": "^7.10.0",
     "commitizen": "^4.2.3",
+    "cypress": "^8.6.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
@@ -26,6 +27,8 @@
     "prepare": "husky install",
     "release": "changeset publish",
     "test": "pnpm test:unit",
+    "test:e2e": "cypress run --config baseUrl=`(gp url 3000)` --project tests/e2e",
+    "test:e2e:open": "cypress open --config baseUrl=`(gp url 3000)` --project tests/e2e",
     "test:unit": "c8 --all --include=**/src --reporter=html pnpm test:unit:only",
     "test:unit:only": "uvu -r tsm packages tests"
   },
