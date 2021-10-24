@@ -3,6 +3,7 @@
 Webstone provides a `pnpm webstone` (or `pnpm ws` for short) CLI, making interacting with your full-stack application simpler and more streamlined.
 
 - [Webstone CLI](#webstone-cli)
+  - [Extend the CLI](#extend-the-cli)
   - [Commands](#commands)
     - [webstone deploy web](#webstone-deploy-web)
     - [webstone dev](#webstone-dev)
@@ -10,6 +11,10 @@ Webstone provides a `pnpm webstone` (or `pnpm ws` for short) CLI, making interac
     - [webstone web create page](#webstone-web-create-page)
     - [webstone web delete page](#webstone-web-delete-page)
     - [webstone web svelte-add](#webstone-web-svelte-add)
+
+## Extend the CLI
+
+To extend the Webstone CLI with your own commands, please refer to [the Plugins documentation](./plugins.md).
 
 ## Commands
 
