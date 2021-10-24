@@ -1,14 +1,15 @@
-# Plugin guide for cli
+# Plugin guide for the Webstone CLI
 
-Plugins allow you to add features to cli, such as commands and
+Plugins allow you to add features to the Webstone CLI, such as commands and
 extensions to the `toolbox` object that provides the majority of the functionality
-used by cli.
+used by command line interface.
 
-Creating a cli plugin is easy. Just create a repo with two folders:
+Creating a CLI plugin is easy. Just create a repo with three optional folders:
 
 ```
 commands/
 extensions/
+templates/
 ```
 
 A command is a file that looks something like this:
@@ -42,8 +43,12 @@ module.exports = (toolbox) => {
 
 This is then accessible in your plugin's commands as `toolbox.bar`.
 
-# Loading a plugin
+## Loading a plugin
 
 To load a particular plugin (which has to start with `webstone-cli-*`),
 install it to your project using `pnpm install --save-dev webstone-cli-PLUGINNAME`,
-and cli will pick it up automatically.
+and the Webstone CLI will pick it up automatically.
+
+## Further reading
+
+To learn more about plugins, please review [the official Gluegun Plugins documentation](https://infinitered.github.io/gluegun/#/plugins).
