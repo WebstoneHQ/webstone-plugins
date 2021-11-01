@@ -6,7 +6,6 @@
   ],
   "labels": ["dependencies"],
   "rangeStrategy": "bump",
-  "separateMultipleMajor": true,
   "timezone": "America/Vancouver",
   "updateNotScheduled": false
 }
