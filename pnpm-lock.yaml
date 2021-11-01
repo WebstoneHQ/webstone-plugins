@@ -37,7 +37,6 @@ importers:
       '@types/node': ^12.7.11
       gluegun: ^4.7.0
       npm-watch: ^0.11.0
-      prettier: ^1.12.1
       ts-node: ^8.4.1
       tslint: ^5.12.0
       tslint-config-prettier: ^1.17.0
@@ -48,7 +47,6 @@ importers:
     devDependencies:
       '@types/node': 12.20.5
       npm-watch: 0.11.0
-      prettier: 1.19.1
       ts-node: 8.10.2_typescript@3.9.10
       tslint: 5.20.1_typescript@3.9.10
       tslint-config-prettier: 1.18.0
