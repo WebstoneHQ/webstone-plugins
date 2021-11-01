@@ -1,0 +1,12 @@
+// Reference docs: https://docs.renovatebot.com/configuration-options
+{
+  "extends": [
+    "config:base",
+    "schedule:weekends"
+  ],
+  "labels": ["dependencies"],
+  "rangeStrategy": "bump",
+  "separateMultipleMajor": true,
+  "timezone": "America/Vancouver",
+  "updateNotScheduled": false
+}
