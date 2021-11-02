@@ -1,5 +1,6 @@
 import { filesystem } from "gluegun";
 import { availableAdapters } from "./adapters";
+import { Adapter } from "./types";
 
 export default () => {
   const webPackageJson = filesystem.read("./services/web/package.json", "json");
@@ -14,5 +15,5 @@ export default () => {
 
   return availableAdapters.find(
     (adapter) => adapter.npmPackage === installedAdapterNpmPackage
-  );
+  ) as Adapter;
 };

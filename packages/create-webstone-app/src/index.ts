@@ -1,3 +1,6 @@
+// FIXME: Does anyone know how to properly type the `pipe` function?
+/* eslint @typescript-eslint/no-explicit-any: "off" */
+
 import {
   createAppDir,
   copyTemplate,
