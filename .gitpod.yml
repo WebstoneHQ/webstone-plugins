@@ -1,3 +1,4 @@
+---
 # Learn more about this file at https://www.gitpod.io/docs/references/gitpod-yml
 image:
   file: .gitpod/Dockerfile
@@ -37,7 +38,7 @@ tasks:
       cd webstone
       gp await-port 3000
       pnpm test:e2e
-      
+
 ports:
   - port: 3000
     visibility: public
@@ -50,3 +51,4 @@ vscode:
   extensions:
     - svelte.svelte-vscode
     - yzhang.markdown-all-in-one
+    - dbaeumer.vscode-eslint

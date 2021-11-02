@@ -63,7 +63,7 @@ test("app dir does not exist", async () => {
   assert.equal(fakeFsMkdirSync.firstCall.lastArg, { recursive: true });
 });
 
-test("app dir exists and is empty", async (context) => {
+test("app dir exists and is empty", async () => {
   const fakeFsExistsSync = sinon.fake.returns(true);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 
@@ -80,7 +80,7 @@ test("app dir exists and is empty", async (context) => {
   assert.equal(fakeFsMkdirSync.firstCall.lastArg, { recursive: true });
 });
 
-test("app dir exists and is not empty, overwrite it", async (context) => {
+test("app dir exists and is not empty, overwrite it", async () => {
   const fakeFsExistsSync = sinon.fake.returns(true);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 
@@ -107,7 +107,7 @@ test("app dir exists and is not empty, overwrite it", async (context) => {
   assert.equal(fakeFsMkdirSync.firstCall.lastArg, { recursive: true });
 });
 
-test("app dir exists and is not empty, do not overwrite it", async (context) => {
+test("app dir exists and is not empty, do not overwrite it", async () => {
   const fakeFsExistsSync = sinon.fake.returns(true);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 

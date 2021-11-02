@@ -5,7 +5,7 @@ export interface WebToolbox {
     configure: {
       deployment: {
         availableAdapters: Adapter[];
-        getInstalledAdapter: () => Adapter | undefined;
+        getInstalledAdapter: () => Adapter;
         installAdapter: (adapter: Adapter) => Promise<void>;
         isAnyAdapterInstalled: () => boolean;
         removeAdapter: (adapter: Adapter) => Promise<void>;
