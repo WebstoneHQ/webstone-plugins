@@ -6,7 +6,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.14.1",
     "@types/fs-extra": "^9.0.13",
-    "@types/sinon": "^10.0.4",
+    "@types/sinon": "^10.0.6",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
     "c8": "^7.10.0",
