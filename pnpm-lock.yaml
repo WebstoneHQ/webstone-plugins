@@ -68,12 +68,12 @@ importers:
       esbuild: ^0.9.2
       execa: ^5.0.0
       fs-extra: ^9.1.0
-      prompts: ^2.4.0
+      prompts: ^2.4.2
     devDependencies:
       esbuild: 0.9.2
       execa: 5.0.0
       fs-extra: 9.1.0
-      prompts: 2.4.0
+      prompts: 2.4.2
 
 packages:
 
@@ -3523,8 +3523,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /prompts/2.4.0:
-    resolution: {integrity: sha512-awZAKrk3vN6CroQukBL+R9051a4R3zCZBlJm/HBfrSZ8iTpYix3VX1vU4mveiLpiwmOJT4wokTF9m6HUk4KqWQ==}
+  /prompts/2.4.2:
+    resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
     engines: {node: '>= 6'}
     dependencies:
       kleur: 3.0.3
