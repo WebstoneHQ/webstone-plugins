@@ -19,7 +19,7 @@ importers:
       lint-staged: ^10.5.4
       prettier: ^2.2.1
       sinon: ^11.1.2
-      tsm: ^2.1.2
+      tsm: ^2.1.4
       typescript: ^3.6.3
       uvu: ^0.5.2
     devDependencies:
@@ -38,7 +38,7 @@ importers:
       lint-staged: 10.5.4
       prettier: 2.2.1
       sinon: 11.1.2
-      tsm: 2.1.2
+      tsm: 2.1.4
       typescript: 3.9.10
       uvu: 0.5.2
 
@@ -4220,8 +4220,8 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
-  /tsm/2.1.2:
-    resolution: {integrity: sha512-1jF8LNTRcPsw15ajZK2ra3RA2PSCdVGvJzF/Q1TCsu1tH2dY59HgNWxhttN2s1mfJUFoattjf9QZ410u5bgtJQ==}
+  /tsm/2.1.4:
+    resolution: {integrity: sha512-gz1zckplzOzHdiY1HVVUoH8bl2eWxbU6uJraB31w1NQ+/kQkjix3ldYHBnWaoNnOL9q8ruS+E2Wckdcw56DzrA==}
     engines: {node: '>=12'}
     hasBin: true
     dependencies:
