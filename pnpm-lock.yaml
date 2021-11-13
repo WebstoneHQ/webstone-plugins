@@ -44,7 +44,7 @@ importers:
 
   packages/cli:
     specifiers:
-      '@types/node': ^12.7.11
+      '@types/node': ^12.20.37
       gluegun: ^4.7.0
       npm-watch: ^0.11.0
       ts-node: ^8.4.1
@@ -52,7 +52,7 @@ importers:
     dependencies:
       gluegun: 4.7.0
     devDependencies:
-      '@types/node': 12.20.5
+      '@types/node': 12.20.37
       npm-watch: 0.11.0
       ts-node: 8.10.2_typescript@3.9.10
       typescript: 3.9.10
@@ -473,6 +473,10 @@ packages:
 
   /@types/minimist/1.2.1:
     resolution: {integrity: sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==}
+    dev: true
+
+  /@types/node/12.20.37:
+    resolution: {integrity: sha512-i1KGxqcvJaLQali+WuypQnXwcplhtNtjs66eNsZpp2P2FL/trJJxx/VWsM0YCL2iMoIJrbXje48lvIQAQ4p2ZA==}
     dev: true
 
   /@types/node/12.20.5:
