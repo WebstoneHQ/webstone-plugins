@@ -18,7 +18,7 @@ importers:
       husky: ^7.0.4
       lint-staged: ^10.5.4
       prettier: ^2.4.1
-      sinon: ^11.1.2
+      sinon: ^12.0.1
       tsm: ^2.1.4
       typescript: ^3.9.10
       uvu: ^0.5.2
@@ -37,7 +37,7 @@ importers:
       husky: 7.0.4
       lint-staged: 10.5.4
       prettier: 2.4.1
-      sinon: 11.1.2
+      sinon: 12.0.1
       tsm: 2.1.4
       typescript: 3.9.10
       uvu: 0.5.2
@@ -434,6 +434,12 @@ packages:
 
   /@sinonjs/fake-timers/7.1.2:
     resolution: {integrity: sha512-iQADsW4LBMISqZ6Ci1dupJL9pprqwcVFTcOsEmQOEhW+KLCVn/Y4Jrvg2k19fIHCp+iFprriYPTdRcQR8NbUPg==}
+    dependencies:
+      '@sinonjs/commons': 1.8.3
+    dev: true
+
+  /@sinonjs/fake-timers/8.1.0:
+    resolution: {integrity: sha512-OAPJUAtgeINhh/TAlUID4QTs53Njm7xzddaVlEs/SXwgtiD1tW22zAB/W1wdqfrpmikgaWQ9Fw6Ws+hsiRm5Vg==}
     dependencies:
       '@sinonjs/commons': 1.8.3
     dev: true
@@ -4048,11 +4054,11 @@ packages:
   /signal-exit/3.0.3:
     resolution: {integrity: sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==}
 
-  /sinon/11.1.2:
-    resolution: {integrity: sha512-59237HChms4kg7/sXhiRcUzdSkKuydDeTiamT/jesUVHshBgL8XAmhgFo0GfK6RruMDM/iRSij1EybmMog9cJw==}
+  /sinon/12.0.1:
+    resolution: {integrity: sha512-iGu29Xhym33ydkAT+aNQFBINakjq69kKO6ByPvTsm3yyIACfyQttRTP03aBP/I8GfhFmLzrnKwNNkr0ORb1udg==}
     dependencies:
       '@sinonjs/commons': 1.8.3
-      '@sinonjs/fake-timers': 7.1.2
+      '@sinonjs/fake-timers': 8.1.0
       '@sinonjs/samsam': 6.0.2
       diff: 5.0.0
       nise: 5.1.0
