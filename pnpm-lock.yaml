@@ -67,12 +67,12 @@ importers:
     specifiers:
       esbuild: ^0.13.13
       execa: ^5.1.1
-      fs-extra: ^9.1.0
+      fs-extra: ^10.0.0
       prompts: ^2.4.2
     devDependencies:
       esbuild: 0.13.13
       execa: 5.1.1
-      fs-extra: 9.1.0
+      fs-extra: 10.0.0
       prompts: 2.4.2
 
 packages:
@@ -2287,6 +2287,15 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.33
+    dev: true
+
+  /fs-extra/10.0.0:
+    resolution: {integrity: sha512-C5owb14u9eJwizKGdchcDUQeFtlSHHthBk8pbX9Vc1PFZrLombudjDnNns88aYslCyF6IY5SUw3Roz6xShcEIQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      graceful-fs: 4.2.6
+      jsonfile: 6.1.0
+      universalify: 2.0.0
     dev: true
 
   /fs-extra/7.0.1:
