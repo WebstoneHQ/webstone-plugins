@@ -11,7 +11,7 @@ importers:
       '@typescript-eslint/parser': ^5.3.0
       c8: ^7.10.0
       commitizen: ^4.2.4
-      cypress: ^8.6.0
+      cypress: ^8.7.0
       cz-conventional-changelog: ^3.3.0
       eslint: ^8.1.0
       eslint-config-prettier: ^8.3.0
@@ -30,7 +30,7 @@ importers:
       '@typescript-eslint/parser': 5.3.0_eslint@8.1.0+typescript@3.9.10
       c8: 7.10.0
       commitizen: 4.2.4
-      cypress: 8.6.0
+      cypress: 8.7.0
       cz-conventional-changelog: 3.3.0
       eslint: 8.1.0
       eslint-config-prettier: 8.3.0_eslint@8.1.0
@@ -1278,8 +1278,8 @@ packages:
       stream-transform: 2.0.4
     dev: true
 
-  /cypress/8.6.0:
-    resolution: {integrity: sha512-F7qEK/6Go5FsqTueR+0wEw2vOVKNgk5847Mys8vsWkzPoEKdxs+7N9Y1dit+zhaZCLtMPyrMwjfA53ZFy+lSww==}
+  /cypress/8.7.0:
+    resolution: {integrity: sha512-b1bMC3VQydC6sXzBMFnSqcvwc9dTZMgcaOzT0vpSD+Gq1yFc+72JDWi55sfUK5eIeNLAtWOGy1NNb6UlhMvB+Q==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     requiresBuild: true
