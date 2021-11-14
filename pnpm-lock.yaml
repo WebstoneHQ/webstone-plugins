@@ -44,7 +44,7 @@ importers:
 
   packages/cli:
     specifiers:
-      '@types/node': ^12.20.37
+      '@types/node': ^16.11.7
       gluegun: ^4.7.0
       npm-watch: ^0.11.0
       ts-node: ^8.4.1
@@ -52,7 +52,7 @@ importers:
     dependencies:
       gluegun: 4.7.0
     devDependencies:
-      '@types/node': 12.20.37
+      '@types/node': 16.11.7
       npm-watch: 0.11.0
       ts-node: 8.10.2_typescript@3.9.10
       typescript: 3.9.10
@@ -475,16 +475,16 @@ packages:
     resolution: {integrity: sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==}
     dev: true
 
-  /@types/node/12.20.37:
-    resolution: {integrity: sha512-i1KGxqcvJaLQali+WuypQnXwcplhtNtjs66eNsZpp2P2FL/trJJxx/VWsM0YCL2iMoIJrbXje48lvIQAQ4p2ZA==}
-    dev: true
-
   /@types/node/12.20.5:
     resolution: {integrity: sha512-5Oy7tYZnu3a4pnJ//d4yVvOImExl4Vtwf0D40iKUlU+XlUsyV9iyFWyCFlwy489b72FMAik/EFwRkNLjjOdSPg==}
     dev: true
 
   /@types/node/14.17.27:
     resolution: {integrity: sha512-94+Ahf9IcaDuJTle/2b+wzvjmutxXAEXU6O81JHblYXUg2BDG+dnBy7VxIPHKAyEEDHzCMQydTJuWvrE+Aanzw==}
+    dev: true
+
+  /@types/node/16.11.7:
+    resolution: {integrity: sha512-QB5D2sqfSjCmTuWcBWyJ+/44bcjO7VbjSbOE0ucoVbAsSNQc4Lt6QkgkVXkTDwkL4z/beecZNDvVX15D4P8Jbw==}
     dev: true
 
   /@types/normalize-package-data/2.4.0:
