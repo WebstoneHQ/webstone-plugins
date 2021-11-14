@@ -15,7 +15,7 @@ importers:
       cz-conventional-changelog: ^3.3.0
       eslint: ^8.2.0
       eslint-config-prettier: ^8.3.0
-      husky: ^6.0.0
+      husky: ^7.0.4
       lint-staged: ^10.5.4
       prettier: ^2.2.1
       sinon: ^11.1.2
@@ -34,7 +34,7 @@ importers:
       cz-conventional-changelog: 3.3.0
       eslint: 8.2.0
       eslint-config-prettier: 8.3.0_eslint@8.2.0
-      husky: 6.0.0
+      husky: 7.0.4
       lint-staged: 10.5.4
       prettier: 2.2.1
       sinon: 11.1.2
@@ -2610,8 +2610,9 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: true
 
-  /husky/6.0.0:
-    resolution: {integrity: sha512-SQS2gDTB7tBN486QSoKPKQItZw97BMOd+Kdb6ghfpBc0yXyzrddI0oDV5MkDAbuB4X2mO3/nj60TRMcYxwzZeQ==}
+  /husky/7.0.4:
+    resolution: {integrity: sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==}
+    engines: {node: '>=12'}
     hasBin: true
     dev: true
 
