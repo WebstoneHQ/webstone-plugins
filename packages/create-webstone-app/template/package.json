@@ -9,7 +9,7 @@
     "dev": "pnpm --recursive --parallel dev",
     "preinstall": "npx only-allow pnpm"
   },
-  "devDependencies": {
+  "dependencies": {
     "@webstone/cli": "latest",
     "@webstone/core": "latest"
   }

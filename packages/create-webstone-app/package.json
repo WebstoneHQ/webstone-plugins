@@ -6,7 +6,7 @@
   "bin": "./bin",
   "scripts": {
     "build": "node ./scripts/esbuild.js build",
-    "clean": "rm -fr ./dist ./node_modules",
+    "clean": "rm -fr ./dist",
     "dev": "node ./scripts/esbuild.js dev",
     "prepublishOnly": "pnpm build",
     "prepare": "pnpm build",

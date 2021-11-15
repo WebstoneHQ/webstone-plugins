@@ -2,7 +2,10 @@
   "name": "@webstone/core",
   "version": "0.0.14",
   "scripts": {
-    "clean": "rm -fr ./node_modules",
+    "build": "pnpm clean && pnpm compile",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p .",
+    "dev": "tsc -w",
     "test": "pnpm test:unit",
     "test:unit": "c8 --all --include=src --reporter=html pnpm test:unit:only",
     "test:unit:only": "uvu -r tsm tests"
