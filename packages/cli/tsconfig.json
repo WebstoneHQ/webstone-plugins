@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": false,
+    "declarationDir": "dist/types",
     "experimentalDecorators": true,
     "lib": [
       "es2015",
@@ -10,19 +11,9 @@
       "es2015.iterable",
       "dom"
     ],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "sourceMap": false,
-    "inlineSourceMap": true,
     "outDir": "dist",
-    "strict": true,
     "target": "es5",
-    "declaration": true,
-    "declarationDir": "dist/types"
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "extends": "../../tsconfig.json"
 }
