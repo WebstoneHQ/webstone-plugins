@@ -1,7 +1,7 @@
 import type { GluegunToolbox } from "gluegun";
 import type { WebToolbox } from "./web/types";
 
-import webConfigureDeployment from "./web/configure/deployment";
+import webConfigureDeployment from "./web/deployment/configure";
 
 export interface WebstoneToolbox extends GluegunToolbox, WebToolbox {}
 

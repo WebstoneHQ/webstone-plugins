@@ -1,4 +1,4 @@
-import type { Adapter } from "../../toolbox/web/configure/deployment/types";
+import type { Adapter } from "../../toolbox/web/deployment/configure/types";
 
 export interface WebToolbox {
   web: {
