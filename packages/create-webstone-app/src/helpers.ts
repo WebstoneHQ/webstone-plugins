@@ -1,5 +1,5 @@
-import execa from "execa";
-import fs from "fs-extra";
+import { execa } from "execa";
+import * as fs from "fs-extra";
 import path from "path";
 import prompts from "prompts";
 
@@ -73,10 +73,10 @@ export const installWebApp = async (appDir: string) => {
       // stdio: "inherit",
     });
 
-    const waitAndWrite = async (content) => {
+    const waitAndWrite = async (content: string) => {
       // Thanks to https://github.com/svelte-add/svelte-add/blob/main/projects/create-kit/__init.js
       await wait(300);
-      svelteInitProcess.stdin.write(content);
+      svelteInitProcess.stdin?.write(content);
     };
 
     // It doesn't look like SvelteKit will get a public API to automate the initialization.
@@ -95,7 +95,7 @@ export const installWebApp = async (appDir: string) => {
     // Add Prettier for code formatting? No / Yes*
     await waitAndWrite(KEY_SEQUENCE_RIGHT);
     await waitAndWrite(KEY_SEQUENCE_ENTER);
-    svelteInitProcess.stdin.end();
+    svelteInitProcess.stdin?.end();
 
     await svelteInitProcess;
     return appDir;
