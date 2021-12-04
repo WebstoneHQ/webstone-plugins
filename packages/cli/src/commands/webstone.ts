@@ -1,7 +1,7 @@
 import { GluegunCommand } from "gluegun";
 
 const command: GluegunCommand = {
-  description: "No-op entry for the webstone CLI.",
+  description: "No-op entry for the webstone CLI",
   run: async (toolbox) => {
     const { print } = toolbox;
 
