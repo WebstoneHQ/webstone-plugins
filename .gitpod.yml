@@ -17,7 +17,11 @@ tasks:
     openMode: split-right
   - name: App Tests
     before: ./webstone/.gitpod/tasks/3-app-tests/before.sh
-    command: ./webstone/.gitpod/tasks/3-app-tests/command.sh
+    command: |
+      ./webstone/.gitpod/tasks/3-app-tests/command.sh
+      cd webstone
+  - name: App Dev (misc)
+    command: cd webstone-dev-app
 
 ports:
   - port: 3000
