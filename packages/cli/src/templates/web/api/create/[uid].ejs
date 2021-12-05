@@ -1,0 +1,26 @@
+import type { RequestHandler } from '@sveltejs/kit';
+import type { Locals } from '$lib/types';
+
+// DELETE {{apiPath}}/:uid
+export const del: RequestHandler<Locals> = async (request) => {
+  return {
+    status: 200,
+    body: `${request.method.toUpperCase()} ${request.path} => Ok.`
+  };
+};
+
+// PATCH {{apiPath}}/:uid
+export const patch: RequestHandler<Locals, FormData> = async (request) => {
+  return {
+    status: 200,
+    body: `${request.method.toUpperCase()} ${request.path} => Ok.`
+  };
+};
+
+// PUT {{apiPath}}/:uid
+export const put: RequestHandler<Locals, FormData> = async (request) => {
+  return {
+    status: 200,
+    body: `${request.method.toUpperCase()} ${request.path} => Ok.`
+  };
+};

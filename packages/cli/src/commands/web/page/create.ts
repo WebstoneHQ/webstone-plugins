@@ -26,7 +26,7 @@ const command: GluegunCommand = {
     const spinner = print.spin(`Creating page "${target}"...`);
 
     await template.generate({
-      template: "web/create/page/new-page.ejs",
+      template: "web/page/create/new-page.ejs",
       target,
       props: {
         name,
