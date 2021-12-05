@@ -1,0 +1,18 @@
+import type { RequestHandler } from '@sveltejs/kit';
+import type { Locals } from '$lib/types';
+
+// GET {{apiPath}}
+export const get: RequestHandler<Locals> = async (request) => {
+  return {
+    status: 200,
+    body: `${request.method.toUpperCase()} ${request.path} => Ok.`
+  };
+};
+
+// POST {{apiPath}}
+export const post: RequestHandler<Locals, FormData> = async (request) => {
+  return {
+    status: 200,
+    body: `${request.method.toUpperCase()} ${request.path} => Ok.`
+  };
+};

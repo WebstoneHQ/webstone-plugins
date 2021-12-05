@@ -16,7 +16,7 @@ What you get with the above command is a full-stack application project - everyt
   - ⏳️ [GraphQL](https://graphql.org)
   - ⏳️ [Prisma](https://www.prisma.io)
 - Backend
-  - ⏳️ [SvelteKit endpoints](https://kit.svelte.dev/docs#routing-endpoints)
+  - ✅ [SvelteKit endpoints](https://kit.svelte.dev/docs#routing-endpoints)
   - ⏳️ Your database of choice
 - Deployment
   - ⏳️ Your platform of choice

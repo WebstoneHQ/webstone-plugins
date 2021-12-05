@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe("web/create/page & web/delete/page", () => {
+describe("web/page/create & web/page/delete", () => {
   it("creates and deletes an About Us page", () => {
     cy.exec(
       "cd ../../../webstone-dev-app && pnpm ws web page create 'About Us'"

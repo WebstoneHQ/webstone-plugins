@@ -6,6 +6,8 @@ Webstone provides a `pnpm webstone` (or `pnpm ws` for short) CLI, making interac
   - [Extend the CLI](#extend-the-cli)
   - [Commands](#commands)
     - [webstone dev](#webstone-dev)
+    - [webstone web api create](#webstone-web-api-create)
+    - [webstone web api delete](#webstone-web-api-delete)
     - [webstone web deployment configure](#webstone-web-deployment-configure)
     - [webstone web deployment deploy](#webstone-web-deployment-deploy)
     - [webstone web dev](#webstone-web-dev)
@@ -44,6 +46,30 @@ webstone dev [service]
 ```
 
 - `--service` - A service to start, e.g. `web`. The list of available services can be found in your Webstone project's `services/` directory. Any of the directory name can be used for the `--service` flag.
+
+### webstone web api create
+
+Creates new API **C**reate, **R**ead, **U**pdate, **D**elete (CRUD) endpoints in your `web` service. E.g.`/api/users`.
+
+**Usage**
+
+```bash
+webstone web api create [api-path]
+```
+
+- `--api-path` - The URL path of the API endpoints to create. For example, `/api/users` generates CRUD endpoints in `services/web/src/routes/api/users/`.
+
+### webstone web api delete
+
+Deletes an API endpoint in your `web` service. E.g.`/api/users`.
+
+**Usage**
+
+```bash
+webstone web api delete [api-path]
+```
+
+- `--api-path` - The URL path of the API endpoints to delete. For example, `/api/users` deletes all endpoints in `services/web/src/routes/api/users/`.
 
 ### webstone web deployment configure
 
