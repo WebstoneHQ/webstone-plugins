@@ -6,7 +6,7 @@ First and foremost, thank you for your interest in contributing to Webstone 🎉
 >
 > Please note that the remaining content refers to contributions made via Gitpod.
 
-To contribute to Webstone, we use [Gitpod](https://www.gitpod.io). Click the button below to start your development environment - no setup required on your local computer.
+To contribute to Webstone, we use [Gitpod](https://www.gitpod.io). Click the button below to start your developer environment - no setup required on your local computer.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/WebstoneHQ/webstone)
 
