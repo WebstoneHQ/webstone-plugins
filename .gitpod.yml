@@ -8,36 +8,16 @@ workspaceLocation: .
 
 tasks:
   - name: Webstone Dev
-    before: |
-      npm install -g pnpm
-      gp sync-done pnpm-installed-globally
-      cd webstone
-      pnpm install
-      pnpx cypress install
-      gp sync-done dependencies-installed
-    command: |
-      pnpm dev
+    before: ./webstone/.gitpod/tasks/1-webstone-dev/before.sh
+    command: ./webstone/.gitpod/tasks/1-webstone-dev/command.sh
   - name: App Dev
-    before: |
-      gp sync-await pnpm-installed-globally
-    init: |
-      gp sync-await dependencies-installed
-      node ./webstone/packages/create-webstone-app/bin webstone-dev-app
-    command: |
-      cd webstone-dev-app
-      while [ ! -f ../webstone/packages/cli/dist/bin.js ]; do sleep 1; done
-      pnpm add -w -D ../webstone/packages/cli
-      export HMR_HOST=`gp url 3000`
-      pnpm ws dev gitpod web-patch-svelte-config-js
-      pnpm ws dev
+    before: ./webstone/.gitpod/tasks/2-app-dev/before.sh
+    init: ./webstone/.gitpod/tasks/2-app-dev/init.sh
+    command: ./webstone/.gitpod/tasks/2-app-dev/command.sh
     openMode: split-right
   - name: App Tests
-    before: |
-      gp sync-await pnpm-installed-globally
-    command: |
-      cd webstone
-      gp await-port 3000
-      pnpm test:e2e
+    before: ./webstone/.gitpod/tasks/3-app-tests/before.sh
+    command: ./webstone/.gitpod/tasks/3-app-tests/command.sh
 
 ports:
   - port: 3000
