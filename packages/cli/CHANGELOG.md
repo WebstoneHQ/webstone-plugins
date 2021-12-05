@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.8.1
+
+### Patch Changes
+
+- 710aa9f: Hotfix for the `webstone web api create` CLI command.
+
 ## 0.8.0
 
 ### Minor Changes
