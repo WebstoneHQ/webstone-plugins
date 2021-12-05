@@ -4,11 +4,11 @@ const command: GluegunCommand = {
   alias: ["c"],
   description: "Create new web API CRUD endpoints",
   run: async (toolbox) => {
-    const { filesystem, parameters, print, prompts, template } = toolbox;
+    const { filesystem, parameters, print, prompt, template } = toolbox;
 
     let apiPath = parameters.first;
     if (!apiPath) {
-      const result = await prompts.ask({
+      const result = await prompt.ask({
         type: "input",
         name: "apiPath",
         message: `What's the API endpoint path (e.g. /api/users)?`,
