@@ -3,14 +3,14 @@
 describe("web/create/page & web/delete/page", () => {
   it("creates and deletes an About Us page", () => {
     cy.exec(
-      "cd ../../../webstone-dev-app && pnpm ws web create page 'About Us'"
+      "cd ../../../webstone-dev-app && pnpm ws web page create 'About Us'"
     )
       .its("code")
       .should("eq", 0);
     cy.visit("/about-us");
     cy.get("h1").should("have.text", "About Us");
     cy.visit("/");
-    cy.exec("cd ../../../webstone-dev-app && pnpm ws web delete page about-us")
+    cy.exec("cd ../../../webstone-dev-app && pnpm ws web page delete about-us")
       .its("code")
       .should("eq", 0);
     cy.visit("/about-us", {
