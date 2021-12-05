@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.7.0
+
+### Minor Changes
+
+- 49c17e6: Restructure the webstone CLI commands pattern.
+
 ## 0.6.0
 
 ### Minor Changes
