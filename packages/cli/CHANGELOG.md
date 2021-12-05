@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.8.0
+
+### Minor Changes
+
+- 19c0161: Add the `webstone web api create` and `webstone web api delete` CLI commands.
+
 ## 0.7.0
 
 ### Minor Changes
