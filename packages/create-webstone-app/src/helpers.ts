@@ -3,12 +3,6 @@ import * as fs from "fs-extra";
 import path from "path";
 import prompts from "prompts";
 
-const KEY_SEQUENCE_DOWN = "\u001b[B";
-const KEY_SEQUENCE_ENTER = "\n";
-const KEY_SEQUENCE_RIGHT = "\u001b[C";
-
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 export const displayWelcome = () =>
   new Promise<void>((resolve) => {
     // https://textfancy.com/ascii-art/
@@ -67,51 +61,26 @@ export const installWebApp = async (appDir: string) => {
     // An empty directory means `pnpm init svelte@next` is not asking to overwrite it
     fs.removeSync(`${webAppDir}/.keep`);
 
-    const svelteInitProcess = execa("pnpm", ["init", "svelte@next", "."], {
-      cwd: webAppDir,
-      shell: true,
-      // stdio: "inherit",
-    });
+    const svelteInitProcess = execa(
+      "pnpm",
+      [
+        "init",
+        "@svelte-add/kit@latest",
+        ".",
+        "--",
+        "--with",
+        "typescript+eslint+prettier+playwright",
+      ],
+      {
+        cwd: webAppDir,
+        shell: true,
+        // stdio: "inherit",
+      }
+    );
 
-    const waitAndWrite = async (content: string) => {
-      // Thanks to https://github.com/svelte-add/svelte-add/blob/main/projects/create-kit/__init.js
-      await wait(300);
-      svelteInitProcess.stdin?.write(content);
-    };
-
-    // It doesn't look like SvelteKit will get a public API to automate the initialization.
-    // What follows is a hacky, not to mention fragile workaround.
-    // Context: https://github.com/sveltejs/kit/issues/2348 and linked issues / PRs
-    await wait(2000);
-    // Which Svelte app template? A) SvelteKit demo app. B) Skeleton project*
-    await waitAndWrite(KEY_SEQUENCE_DOWN);
-    await waitAndWrite(KEY_SEQUENCE_ENTER);
-    // Use TypeScript? No / Yes*
-    await waitAndWrite(KEY_SEQUENCE_RIGHT);
-    await waitAndWrite(KEY_SEQUENCE_ENTER);
-    // Add ESLint for code linting? No / Yes*
-    await waitAndWrite(KEY_SEQUENCE_RIGHT);
-    await waitAndWrite(KEY_SEQUENCE_ENTER);
-    // Add Prettier for code formatting? No / Yes*
-    await waitAndWrite(KEY_SEQUENCE_RIGHT);
-    await waitAndWrite(KEY_SEQUENCE_ENTER);
     svelteInitProcess.stdin?.end();
 
     await svelteInitProcess;
-    return appDir;
-  } catch (error) {
-    console.error(error);
-    process.exit(1);
-  }
-};
-
-export const installDependencies = async (appDir: string) => {
-  console.log(`Installing dependencies...`);
-  try {
-    await execa("pnpm", ["install"], {
-      cwd: appDir,
-      stdio: "inherit",
-    });
     return appDir;
   } catch (error) {
     console.error(error);
