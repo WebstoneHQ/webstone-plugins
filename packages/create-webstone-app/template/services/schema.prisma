@@ -1,0 +1,9 @@
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_CONNECTION")
+}
+
+generator client {
+    provider      = "prisma-client-js"
+    binaryTargets = "native"
+}

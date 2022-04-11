@@ -36,3 +36,4 @@ vscode:
     - svelte.svelte-vscode
     - yzhang.markdown-all-in-one
     - dbaeumer.vscode-eslint
+    - prisma.prisma
