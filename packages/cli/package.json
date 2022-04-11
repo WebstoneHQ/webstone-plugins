@@ -30,6 +30,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@prisma/sdk": "^3.12.0",
     "gluegun": "^4.7.1"
   },
   "devDependencies": {
