@@ -1,6 +1,6 @@
 import { GluegunCommand } from "gluegun";
 import { Toolbox } from "gluegun/build/types/domain/toolbox";
-import { getDMMF } from "@prisma/sdk";
+import { getModel, getQuerySDL } from "../../../lib/sdl-helpers";
 
 const command: GluegunCommand = {
   description: "Generate GraphQL Schema Definition for a Prisma Schema",
@@ -29,14 +29,11 @@ const command: GluegunCommand = {
       print.error(`Couldn't find a model for name ${name}`);
       return;
     }
-    console.log(schema);
+
+    const querySDL = getQuerySDL(schema).join("\n");
+    console.log(querySDL);
     spinner.succeed(`SDL for ${name} generated.`);
   },
 };
-
-async function getModel(name: string) {
-  const models = await getDMMF({ datamodelPath: "services/schema.prisma" });
-  return models.datamodel.models.find((model) => model.name === name);
-}
 
 module.exports = command;
