@@ -88,7 +88,7 @@ export const installWebApp = async (appDir: string) => {
     // Which Svelte app template? A) SvelteKit demo app. B) Skeleton project*
     await waitAndWrite(KEY_SEQUENCE_DOWN);
     await waitAndWrite(KEY_SEQUENCE_ENTER);
-    // Add type checking with TypeScript? No / Yes*
+    // Add type checking with TypeScript? A) JavaScript with JSDoc comments B) Yes, using TypeScript syntax  C) No
     await waitAndWrite(KEY_SEQUENCE_DOWN);
     await waitAndWrite(KEY_SEQUENCE_ENTER);
     // Add ESLint for code linting? No / Yes*
