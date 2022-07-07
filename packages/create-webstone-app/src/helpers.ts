@@ -67,7 +67,7 @@ export const installWebApp = async (appDir: string) => {
     // An empty directory means `pnpm init svelte@next` is not asking to overwrite it
     fs.removeSync(`${webAppDir}/.keep`);
 
-    const svelteInitProcess = execa("pnpm", ["init", "svelte@next", "."], {
+    const svelteInitProcess = execa("pnpm", ["create", "svelte", "."], {
       cwd: webAppDir,
       shell: true,
       // stdio: "inherit",
@@ -83,16 +83,21 @@ export const installWebApp = async (appDir: string) => {
     // What follows is a hacky, not to mention fragile workaround.
     // Context: https://github.com/sveltejs/kit/issues/2348 and linked issues / PRs
     await wait(2000);
+    //Where should we create your project?
+    await waitAndWrite(KEY_SEQUENCE_ENTER);
     // Which Svelte app template? A) SvelteKit demo app. B) Skeleton project*
     await waitAndWrite(KEY_SEQUENCE_DOWN);
     await waitAndWrite(KEY_SEQUENCE_ENTER);
-    // Use TypeScript? No / Yes*
-    await waitAndWrite(KEY_SEQUENCE_RIGHT);
+    // Add type checking with TypeScript? No / Yes*
+    await waitAndWrite(KEY_SEQUENCE_DOWN);
     await waitAndWrite(KEY_SEQUENCE_ENTER);
     // Add ESLint for code linting? No / Yes*
     await waitAndWrite(KEY_SEQUENCE_RIGHT);
     await waitAndWrite(KEY_SEQUENCE_ENTER);
     // Add Prettier for code formatting? No / Yes*
+    await waitAndWrite(KEY_SEQUENCE_RIGHT);
+    await waitAndWrite(KEY_SEQUENCE_ENTER);
+    //Add Playwright for browser testing? No / Yes*
     await waitAndWrite(KEY_SEQUENCE_RIGHT);
     await waitAndWrite(KEY_SEQUENCE_ENTER);
     svelteInitProcess.stdin?.end();
