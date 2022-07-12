@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 importers:
 
@@ -28,8 +28,8 @@ importers:
       '@types/fs-extra': 9.0.13
       '@types/node': 12.12.6
       '@types/sinon': 10.0.6
-      '@typescript-eslint/eslint-plugin': 5.8.0_836011a006f4f5d67178564baf2b6d34
-      '@typescript-eslint/parser': 5.8.0_eslint@8.5.0+typescript@4.5.4
+      '@typescript-eslint/eslint-plugin': 5.8.0_qnqbdiag6t25m4lykzf26k3ngq
+      '@typescript-eslint/parser': 5.8.0_2ogcmk6jnbn3xmgrqg7cazyxl4
       c8: 7.10.0
       commitizen: 4.2.4
       cypress: 9.1.1
@@ -333,11 +333,13 @@ packages:
       uuid: 8.3.2
     dev: true
 
-  /@cypress/xvfb/1.2.4:
+  /@cypress/xvfb/1.2.4_supports-color@8.1.1:
     resolution: {integrity: sha512-skbBzPggOVYCbnGgV+0dmBdW/s77ZkAOXIC1knS8NagwDjBrNC1LuXtQJeiN6l+m7lzmHtaoUw/ctJKdqkG57Q==}
     dependencies:
-      debug: 3.2.7
+      debug: 3.2.7_supports-color@8.1.1
       lodash.once: 4.1.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@eslint/eslintrc/1.0.5:
@@ -480,6 +482,12 @@ packages:
     resolution: {integrity: sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==}
     dev: true
 
+  /@types/keyv/3.1.4:
+    resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
+    dependencies:
+      '@types/node': 16.11.11
+    dev: true
+
   /@types/minimist/1.2.1:
     resolution: {integrity: sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==}
     dev: true
@@ -507,6 +515,12 @@ packages:
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
 
+  /@types/responselike/1.0.0:
+    resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
+    dependencies:
+      '@types/node': 16.11.11
+    dev: true
+
   /@types/semver/6.2.2:
     resolution: {integrity: sha512-RxAwYt4rGwK5GyoRwuP0jT6ZHAVTdz2EqgsHmX0PYNjGsko+OeT4WFXXTs/lM3teJUJodM+SNtAL5/pXIJ61IQ==}
     dev: true
@@ -533,7 +547,7 @@ packages:
     dev: true
     optional: true
 
-  /@typescript-eslint/eslint-plugin/5.8.0_836011a006f4f5d67178564baf2b6d34:
+  /@typescript-eslint/eslint-plugin/5.8.0_qnqbdiag6t25m4lykzf26k3ngq:
     resolution: {integrity: sha512-spu1UW7QuBn0nJ6+psnfCc3iVoQAifjKORgBngKOmC8U/1tbe2YJMzYQqDGYB4JCss7L8+RM2kKLb1B1Aw9BNA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -544,8 +558,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@typescript-eslint/experimental-utils': 5.8.0_eslint@8.5.0+typescript@4.5.4
-      '@typescript-eslint/parser': 5.8.0_eslint@8.5.0+typescript@4.5.4
+      '@typescript-eslint/experimental-utils': 5.8.0_2ogcmk6jnbn3xmgrqg7cazyxl4
+      '@typescript-eslint/parser': 5.8.0_2ogcmk6jnbn3xmgrqg7cazyxl4
       '@typescript-eslint/scope-manager': 5.8.0
       debug: 4.3.3
       eslint: 8.5.0
@@ -559,7 +573,7 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/experimental-utils/5.8.0_eslint@8.5.0+typescript@4.5.4:
+  /@typescript-eslint/experimental-utils/5.8.0_2ogcmk6jnbn3xmgrqg7cazyxl4:
     resolution: {integrity: sha512-KN5FvNH71bhZ8fKtL+lhW7bjm7cxs1nt+hrDZWIqb6ViCffQcWyLunGrgvISgkRojIDcXIsH+xlFfI4RCDA0xA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -577,7 +591,7 @@ packages:
       - typescript
     dev: true
 
-  /@typescript-eslint/parser/5.8.0_eslint@8.5.0+typescript@4.5.4:
+  /@typescript-eslint/parser/5.8.0_2ogcmk6jnbn3xmgrqg7cazyxl4:
     resolution: {integrity: sha512-Gleacp/ZhRtJRYs5/T8KQR3pAQjQI89Dn/k+OzyCKOsLiZH2/Vh60cFBTnFsHNI6WAD+lNUo/xGZ4NeA5u0Ipw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -1313,7 +1327,7 @@ packages:
     requiresBuild: true
     dependencies:
       '@cypress/request': 2.88.10
-      '@cypress/xvfb': 1.2.4
+      '@cypress/xvfb': 1.2.4_supports-color@8.1.1
       '@types/node': 14.17.27
       '@types/sinonjs__fake-timers': 6.0.4
       '@types/sizzle': 2.3.3
@@ -1394,16 +1408,40 @@ packages:
     resolution: {integrity: sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==}
     dev: true
 
-  /debug/2.6.9:
+  /debug/2.6.9_supports-color@5.5.0:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
     dependencies:
       ms: 2.0.0
+      supports-color: 5.5.0
     dev: true
 
-  /debug/3.2.7:
+  /debug/3.2.7_supports-color@5.5.0:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
     dependencies:
       ms: 2.1.2
+      supports-color: 5.5.0
+    dev: true
+
+  /debug/3.2.7_supports-color@8.1.1:
+    resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.1.2
+      supports-color: 8.1.1
     dev: true
 
   /debug/4.3.2:
@@ -2585,6 +2623,8 @@ packages:
     dependencies:
       '@sindresorhus/is': 0.14.0
       '@szmarczak/http-timer': 1.1.2
+      '@types/keyv': 3.1.4
+      '@types/responselike': 1.0.0
       cacheable-request: 6.1.0
       decompress-response: 3.3.0
       duplexer3: 0.1.4
@@ -3436,14 +3476,14 @@ packages:
     requiresBuild: true
     dependencies:
       chokidar: 3.5.2
-      debug: 3.2.7
+      debug: 3.2.7_supports-color@5.5.0
       ignore-by-default: 1.0.1
       minimatch: 3.0.4
       pstree.remy: 1.1.8
       semver: 5.7.1
       supports-color: 5.5.0
       touch: 3.1.0
-      undefsafe: 2.0.3
+      undefsafe: 2.0.3_supports-color@5.5.0
       update-notifier: 5.1.0
     dev: true
 
@@ -4566,10 +4606,12 @@ packages:
     hasBin: true
     dev: true
 
-  /undefsafe/2.0.3:
+  /undefsafe/2.0.3_supports-color@5.5.0:
     resolution: {integrity: sha512-nrXZwwXrD/T/JXeygJqdCO6NZZ1L66HrxM/Z7mIq2oPanoN0F1nLx3lwJMu6AwJY69hdixaFQOuoYsMjE5/C2A==}
     dependencies:
-      debug: 2.6.9
+      debug: 2.6.9_supports-color@5.5.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /unique-string/2.0.0:
