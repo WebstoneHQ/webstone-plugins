@@ -21,6 +21,7 @@
     "prettier": "^2.5.1",
     "sinon": "^12.0.1",
     "tsm": "^2.2.1",
+    "tsx": "^3.8.0",
     "typescript": "^4.5.4",
     "uvu": "^0.5.2"
   },
@@ -38,7 +39,7 @@
     "test:e2e": "cypress run --config baseUrl=`(gp url 3000)` --project tests/e2e",
     "test:e2e:open": "cypress open --config baseUrl=`(gp url 3000)` --project tests/e2e",
     "test:unit": "c8 --all --include=**/src --reporter=html pnpm test:unit:only",
-    "test:unit:only": "uvu -r tsm packages tests"
+    "test:unit:only": "NODE_OPTIONS='--loader tsx' uvu packages tests"
   },
   "repository": {
     "type": "git",
