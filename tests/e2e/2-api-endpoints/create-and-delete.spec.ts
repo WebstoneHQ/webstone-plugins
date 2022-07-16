@@ -1,6 +1,7 @@
 import { APIResponse, expect, test } from "@playwright/test";
 import { execSync } from "child_process";
 import { resolve } from "path";
+import { sleep } from "../globals";
 
 const devAppPath = resolve("../webstone-dev-app");
 
@@ -41,6 +42,8 @@ test.describe("web/api/create & web/api/delete", () => {
     execSync("pnpm ws web api delete /api/users", {
       cwd: devAppPath,
     });
+
+    await sleep(300);
 
     response = await request.get("/api/users");
     expect(response.status()).toEqual(404);
