@@ -24,7 +24,7 @@ tasks:
     command: cd webstone-dev-app
 
 ports:
-  - port: 3000
+  - port: 5173
     visibility: public
   - port: 5900
     onOpen: ignore
