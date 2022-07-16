@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist",
+    "target": "ESNext",
+    "module": "ESNext",
+  },
+  "include": ["src/**/*"],
+  "extends": "../../tsconfig.json"
+}
