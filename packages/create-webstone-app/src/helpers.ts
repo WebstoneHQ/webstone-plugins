@@ -69,8 +69,8 @@ export const installWebApp = async (appDir: string) => {
 
     await create(webAppDir, {
       name: "webstone-app",
-      template: "skeleton", // or 'skeleton'
-      types: "typescript", // or 'typescript' or null;
+      template: "skeleton",
+      types: "typescript",
       prettier: true,
       eslint: true,
       playwright: true,

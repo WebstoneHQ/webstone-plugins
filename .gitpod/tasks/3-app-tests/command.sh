@@ -2,5 +2,5 @@
 set -e
 
 cd webstone
-gp ports await 5173
+gp await-port 5173
 pnpm test:e2e
