@@ -1,13 +1,23 @@
 import { execa } from "execa";
 import fs from "fs-extra";
 import path from "path";
-import prompts from "prompts";
+import chalk from "chalk";
 //@ts-ignore this package doesn't provdide a declaration file
 import { create } from "create-svelte";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
+import { ListrTaskWrapper, ListrRenderer, ListrTask } from "listr2/dist/index";
+import { Listr } from "listr2";
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export interface Ctx {
+  appDir: string;
+  webAppDir: string;
+}
+
+export type WebstoneTask = ListrTaskWrapper<Ctx, typeof ListrRenderer>;
 
 export const displayWelcome = () =>
   new Promise<void>((resolve) => {
@@ -25,13 +35,21 @@ export const displayWelcome = () =>
     resolve();
   });
 
-export const createAppDir = async (appName: string = process.argv[2]) => {
-  console.log(`Creating app directory...`);
-  const appDir = appName ? appName.toLowerCase().replace(/\s/g, "-") : ".";
+const determineAppDirName = async (ctx: Ctx, task: WebstoneTask) => {
+  const appName = process.argv[2];
+  ctx.appDir = appName ? appName.toLowerCase().replace(/\s/g, "-") : ".";
+
+  task.output = `App directory name: ${ctx.appDir}`;
+  task.output = ctx.appDir;
+  return;
+};
+
+const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
+  const appDir = ctx.appDir;
 
   if (fs.existsSync(appDir)) {
     if (fs.readdirSync(appDir).length > 0) {
-      const response = await prompts({
+      const response = await task.prompt({
         type: "confirm",
         name: "value",
         message: `The ./${appDir} directory is not empty. Do you want to overwrite it?`,
@@ -51,20 +69,17 @@ export const createAppDir = async (appName: string = process.argv[2]) => {
   return appDir;
 };
 
-export const copyTemplate = (appDir: string) =>
-  new Promise((resolve) => {
-    console.log(`Copying template...`);
-    const templateDir = path.join(__dirname, "..", "template");
-    fs.copySync(templateDir, appDir);
-    resolve(appDir);
-  });
+const copyTemplate = (ctx: Ctx) => {
+  const templateDir = path.resolve(__dirname, "../template");
+  fs.copySync(templateDir, ctx.appDir);
+};
 
-export const installWebApp = async (appDir: string) => {
-  const webAppDir = `${appDir}/services/web`;
+const initWebApp = async (ctx: Ctx) => {
+  const webAppDir = `${ctx.appDir}/services/web`;
+  ctx.webAppDir = webAppDir;
   console.log(`Installing web app in ${webAppDir}...`);
 
   try {
-    // An empty directory means `pnpm init svelte@next` is not asking to overwrite it
     fs.removeSync(`${webAppDir}/.keep`);
 
     await create(webAppDir, {
@@ -75,31 +90,23 @@ export const installWebApp = async (appDir: string) => {
       eslint: true,
       playwright: true,
     });
-
-    return appDir;
   } catch (error) {
     console.error(error);
     process.exit(1);
   }
 };
 
-export const installDependencies = async (appDir: string) => {
-  console.log(`Installing dependencies...`);
-  try {
-    await execa("pnpm", ["install"], {
-      cwd: appDir,
-      stdio: "inherit",
-    });
-    return appDir;
-  } catch (error) {
-    console.error(error);
-    process.exit(1);
-  }
+const installWebAppDependencies = async (ctx: Ctx) => {
+  const installProcess = execa("npm", ["install"], {
+    cwd: ctx.webAppDir,
+    shell: true,
+  });
+
+  return installProcess;
 };
 
-export const displayNextSteps = (appDir: string) =>
-  new Promise<void>((resolve) => {
-    console.log(`
+export const displayNextSteps = async (ctx: Ctx) => {
+  console.log(`
 ===================================================
 Congratulations 🎉! Your Webstone project is ready.
 
@@ -109,10 +116,68 @@ To chat & get in touch: https://discord.gg/NJRm6eRs
 
 Thank you for your interest in Webstone, I'd love to hear your feedback 🙏.
 
-
 Next steps: 
-  - cd ${appDir.split("/").pop()}
-  - pnpm ws dev
+  - ${chalk.bold(chalk.cyan(`cd ${ctx.appDir.split("/").pop()}`))}
+  - ${chalk.bold(chalk.cyan("pnpm ws dev"))}
     `);
-    resolve();
-  });
+  console.log(ctx.appDir);
+};
+
+const createAppDirTasks: ListrTask[] = [
+  {
+    task: determineAppDirName,
+    title: "Determining app directory name",
+  },
+  {
+    task: createAppDir,
+    title: "Creating app directory",
+  },
+];
+
+const createCopyTemplateTasks: ListrTask[] = [
+  {
+    task: copyTemplate,
+    title: "Copying the template",
+    options: { persistentOutput: true },
+  },
+];
+
+const createInstallWebAppTasks: ListrTask[] = [
+  {
+    task: initWebApp,
+    title: "Initializing the web service",
+  },
+  {
+    task: installWebAppDependencies,
+    title: "Installing dependencies for the web service",
+    options: { bottomBar: true },
+  },
+];
+
+export const tasks = new Listr<Ctx>(
+  [
+    {
+      task(_, task) {
+        return task.newListr(createAppDirTasks);
+      },
+      title: "Creating the application directory",
+    },
+    {
+      task(_, task) {
+        return task.newListr(createCopyTemplateTasks);
+      },
+      title: "Preparing the project structure",
+    },
+    {
+      task(_, task) {
+        return task.newListr(createInstallWebAppTasks);
+      },
+      title: "Installing the application foundation",
+    },
+  ],
+  {
+    rendererOptions: {
+      collapse: false,
+    },
+  }
+);
