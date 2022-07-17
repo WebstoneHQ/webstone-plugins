@@ -43,6 +43,8 @@ test.describe("web/api/create & web/api/delete", () => {
       cwd: devAppPath,
     });
 
+    // The previous `execSync` call to delete /api/users results in a dev server restart.
+    // Let's wait a tiny bit for the restart to complete.
     await sleep(300);
 
     response = await request.get("/api/users");
