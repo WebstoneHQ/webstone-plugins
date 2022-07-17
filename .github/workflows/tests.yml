@@ -10,10 +10,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
 
-      - name: Setup Node.js 14.x
-        uses: actions/setup-node@master
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 14.x
+          node-version: 16
 
       - name: Install pnpm globally
         run: npm install -g pnpm

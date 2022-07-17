@@ -5,6 +5,7 @@
   "private": true,
   "devDependencies": {
     "@changesets/cli": "^2.19.0",
+    "@playwright/test": "^1.23.2",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "12.12.6",
     "@types/sinon": "^10.0.6",
@@ -12,7 +13,6 @@
     "@typescript-eslint/parser": "^5.8.0",
     "c8": "^7.10.0",
     "commitizen": "^4.2.4",
-    "cypress": "^9.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
@@ -35,8 +35,8 @@
     "prepare": "husky install",
     "release": "changeset publish",
     "test": "pnpm test:unit",
-    "test:e2e": "cypress run --config baseUrl=`(gp url 3000)` --project tests/e2e",
-    "test:e2e:open": "cypress open --config baseUrl=`(gp url 3000)` --project tests/e2e",
+    "test:e2e": "pnpx playwright test",
+    "test:e2e:open": "pnpx playwright test --headed",
     "test:unit": "c8 --all --include=**/src --reporter=html pnpm test:unit:only",
     "test:unit:only": "NODE_OPTIONS='--loader tsx' uvu packages tests"
   },
