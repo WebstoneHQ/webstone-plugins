@@ -70,7 +70,7 @@ export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
 };
 
 export const copyTemplate = (ctx: Ctx) => {
-  const templateDir = path.resolve(__dirname, "../template");
+  const templateDir = path.join(__dirname, "..", "template");
   fs.copySync(templateDir, ctx.appDir);
 };
 
@@ -120,7 +120,6 @@ Next steps:
   - ${chalk.bold(chalk.cyan(`cd ${ctx.appDir.split("/").pop()}`))}
   - ${chalk.bold(chalk.cyan("pnpm ws dev"))}
     `);
-  console.log(ctx.appDir);
 };
 
 const createAppDirTasks: ListrTask[] = [

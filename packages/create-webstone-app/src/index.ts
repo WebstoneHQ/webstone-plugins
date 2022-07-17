@@ -4,5 +4,4 @@ import { tasks, displayWelcome, displayNextSteps } from "./helpers.js";
 
 displayWelcome();
 const context = await tasks.run();
-console.log(context);
 displayNextSteps(context);
