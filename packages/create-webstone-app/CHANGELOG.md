@@ -1,5 +1,12 @@
 # create-webstone-app
 
+## 0.2.1
+
+### Patch Changes
+
+- 9354f10: Update Webstone to work with the latest version of SvelteKit.
+- 4fee40d: Migrate from Cypress to Playwright.
+
 ## 0.2.0
 
 ### Minor Changes

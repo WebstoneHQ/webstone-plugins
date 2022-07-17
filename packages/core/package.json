@@ -1,6 +1,6 @@
 {
   "name": "@webstone/core",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "scripts": {
     "build": "pnpm clean && pnpm compile",
     "clean": "rm -rf ./dist",
