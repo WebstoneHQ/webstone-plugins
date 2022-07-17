@@ -20,7 +20,7 @@
     "lint-staged": "^12.1.3",
     "prettier": "^2.5.1",
     "sinon": "^12.0.1",
-    "tsm": "^2.2.1",
+    "tsx": "^3.8.0",
     "typescript": "^4.5.4",
     "uvu": "^0.5.2"
   },
@@ -38,7 +38,7 @@
     "test:e2e": "pnpx playwright test",
     "test:e2e:open": "pnpx playwright test --headed",
     "test:unit": "c8 --all --include=**/src --reporter=html pnpm test:unit:only",
-    "test:unit:only": "uvu -r tsm packages tests"
+    "test:unit:only": "NODE_OPTIONS='--loader tsx' uvu packages tests"
   },
   "repository": {
     "type": "git",

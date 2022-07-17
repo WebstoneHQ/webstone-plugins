@@ -1,13 +1,13 @@
 import { execa } from "execa";
-import * as fs from "fs-extra";
+import fs from "fs-extra";
 import path from "path";
 import prompts from "prompts";
+//@ts-ignore this package doesn't provdide a declaration file
+import { create } from "create-svelte";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
-const KEY_SEQUENCE_DOWN = "\u001b[B";
-const KEY_SEQUENCE_ENTER = "\n";
-const KEY_SEQUENCE_RIGHT = "\u001b[C";
-
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const displayWelcome = () =>
   new Promise<void>((resolve) => {
@@ -67,42 +67,15 @@ export const installWebApp = async (appDir: string) => {
     // An empty directory means `pnpm init svelte@next` is not asking to overwrite it
     fs.removeSync(`${webAppDir}/.keep`);
 
-    const svelteInitProcess = execa("pnpm", ["create", "svelte", "."], {
-      cwd: webAppDir,
-      shell: true,
-      // stdio: "inherit",
+    await create(webAppDir, {
+      name: "webstone-app",
+      template: "skeleton",
+      types: "typescript",
+      prettier: true,
+      eslint: true,
+      playwright: true,
     });
 
-    const waitAndWrite = async (content: string) => {
-      // Thanks to https://github.com/svelte-add/svelte-add/blob/main/projects/create-kit/__init.js
-      await wait(300);
-      svelteInitProcess.stdin?.write(content);
-    };
-
-    // It doesn't look like SvelteKit will get a public API to automate the initialization.
-    // What follows is a hacky, not to mention fragile workaround.
-    // Context: https://github.com/sveltejs/kit/issues/2348 and linked issues / PRs
-    await wait(2000);
-    //Where should we create your project?
-    await waitAndWrite(KEY_SEQUENCE_ENTER);
-    // Which Svelte app template? A) SvelteKit demo app. B) Skeleton project*
-    await waitAndWrite(KEY_SEQUENCE_DOWN);
-    await waitAndWrite(KEY_SEQUENCE_ENTER);
-    // Add type checking with TypeScript? A) JavaScript with JSDoc comments B) Yes, using TypeScript syntax  C) No
-    await waitAndWrite(KEY_SEQUENCE_DOWN);
-    await waitAndWrite(KEY_SEQUENCE_ENTER);
-    // Add ESLint for code linting? No / Yes*
-    await waitAndWrite(KEY_SEQUENCE_RIGHT);
-    await waitAndWrite(KEY_SEQUENCE_ENTER);
-    // Add Prettier for code formatting? No / Yes*
-    await waitAndWrite(KEY_SEQUENCE_RIGHT);
-    await waitAndWrite(KEY_SEQUENCE_ENTER);
-    //Add Playwright for browser testing? No / Yes*
-    await waitAndWrite(KEY_SEQUENCE_RIGHT);
-    await waitAndWrite(KEY_SEQUENCE_ENTER);
-    svelteInitProcess.stdin?.end();
-
-    await svelteInitProcess;
     return appDir;
   } catch (error) {
     console.error(error);

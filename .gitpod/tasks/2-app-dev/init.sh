@@ -2,4 +2,4 @@
 set -e
 
 gp sync-await dependencies-installed
-node ./webstone/packages/create-webstone-app/bin webstone-dev-app
+node ./webstone/packages/create-webstone-app/bin.js webstone-dev-app
