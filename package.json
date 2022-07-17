@@ -5,7 +5,7 @@
   "private": true,
   "devDependencies": {
     "@changesets/cli": "^2.19.0",
-    "@playwright/test": "^1.23.2",
+    "@playwright/test": "^1.23.4",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "12.12.6",
     "@types/sinon": "^10.0.6",
