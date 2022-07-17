@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.2.2
+
+### Patch Changes
+
+- 0665efd: Use create-svelte to instantiate the Webstone app.
+
 ## 0.2.1
 
 ### Patch Changes
