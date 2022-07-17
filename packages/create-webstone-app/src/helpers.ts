@@ -14,7 +14,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export interface Ctx {
   appDir: string;
-  webAppDir: string;
+  webAppDir?: string;
 }
 
 export type WebstoneTask = ListrTaskWrapper<Ctx, typeof ListrRenderer>;
@@ -44,7 +44,7 @@ const determineAppDirName = async (ctx: Ctx, task: WebstoneTask) => {
   return;
 };
 
-const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
+export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
   const appDir = ctx.appDir;
 
   if (fs.existsSync(appDir)) {
@@ -69,7 +69,7 @@ const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
   return appDir;
 };
 
-const copyTemplate = (ctx: Ctx) => {
+export const copyTemplate = (ctx: Ctx) => {
   const templateDir = path.resolve(__dirname, "../template");
   fs.copySync(templateDir, ctx.appDir);
 };
