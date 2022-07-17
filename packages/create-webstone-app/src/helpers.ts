@@ -84,12 +84,14 @@ const initWebApp = async (ctx: Ctx) => {
 
     await create(webAppDir, {
       name: "webstone-app",
-      template: "skeleton", // or 'skeleton'
-      types: "typescript", // or 'typescript' or null;
+      template: "skeleton",
+      types: "typescript",
       prettier: true,
       eslint: true,
       playwright: true,
     });
+
+    return appDir;
   } catch (error) {
     console.error(error);
     process.exit(1);
