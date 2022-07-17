@@ -5,5 +5,5 @@ npm install -g pnpm
 gp sync-done pnpm-installed-globally
 cd webstone
 pnpm install
-pnpx cypress install
+pnpx playwright install
 gp sync-done dependencies-installed
