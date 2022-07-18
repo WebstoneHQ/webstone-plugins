@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.2.3
+
+### Patch Changes
+
+- ac92329: Use listr2 to create the Webstone project.
+
 ## 0.2.2
 
 ### Patch Changes
