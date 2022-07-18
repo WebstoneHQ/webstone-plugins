@@ -3,7 +3,8 @@ import path from "path";
 import sinon from "sinon";
 import { test } from "uvu";
 import * as assert from "uvu/assert";
-import { copyTemplate, Ctx } from "../../src/helpers";
+import { Ctx } from "../../src/helpers";
+import { copyTemplate } from "../../src/tasks/2-prepare-project-structure";
 
 const context: Ctx = {
   appDir: "test-dir",

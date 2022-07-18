@@ -12,7 +12,7 @@ const determineAppDirName = async (ctx: Ctx, task: WebstoneTask) => {
   return;
 };
 
-const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
+export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
   const appDir = ctx.appDir;
 
   if (fs.existsSync(appDir)) {
