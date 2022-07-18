@@ -1,4 +1,7 @@
 import { Listr } from "listr2";
+import Enquirer from "enquirer";
+
+const enquirer = new Enquirer();
 
 import { Ctx } from "../helpers.js";
 import { tasks as checkSystemRequirements } from "./0-check-system-requirements/index.js";
@@ -14,6 +17,7 @@ export const tasks = new Listr<Ctx>(
     ...installAppDependenciesTasks,
   ],
   {
+    injectWrapper: { enquirer },
     rendererOptions: {
       collapse: false,
     },
