@@ -4,7 +4,7 @@
   "description": "Start your next web application with Webstone and configure it as you go.",
   "private": true,
   "devDependencies": {
-    "@changesets/cli": "^2.19.0",
+    "@changesets/cli": "^2.23.2",
     "@playwright/test": "^1.23.4",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "12.12.6",
