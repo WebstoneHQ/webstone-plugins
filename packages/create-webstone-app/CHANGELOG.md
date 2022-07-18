@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.2.5
+
+### Patch Changes
+
+- 7abe8c3: Run a system requirements check before creating a Webstone app.
+
 ## 0.2.4
 
 ### Patch Changes
