@@ -25,7 +25,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "12.12.6",
+    "@types/node": "12.20.55",
     "chalk": "^5.0.1",
     "create-svelte": "latest",
     "enquirer": "^2.3.6",
