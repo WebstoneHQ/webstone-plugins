@@ -90,8 +90,6 @@ const initWebApp = async (ctx: Ctx) => {
       eslint: true,
       playwright: true,
     });
-
-    return appDir;
   } catch (error) {
     console.error(error);
     process.exit(1);
@@ -99,7 +97,7 @@ const initWebApp = async (ctx: Ctx) => {
 };
 
 const installWebAppDependencies = async (ctx: Ctx) => {
-  const installProcess = execa("npm", ["install"], {
+  const installProcess = execa("pnpm", ["install"], {
     cwd: ctx.webAppDir,
     shell: true,
   });
