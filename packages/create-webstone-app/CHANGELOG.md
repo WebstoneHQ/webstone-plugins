@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.2.4
+
+### Patch Changes
+
+- 0bd597b: Move prod dependencies out of devDependencies.
+
 ## 0.2.3
 
 ### Patch Changes
