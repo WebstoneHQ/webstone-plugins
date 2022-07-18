@@ -11,7 +11,7 @@ importers:
       '@types/sinon': ^10.0.6
       '@typescript-eslint/eslint-plugin': ^5.30.6
       '@typescript-eslint/parser': ^5.30.6
-      c8: ^7.10.0
+      c8: ^7.11.3
       commitizen: ^4.2.5
       cz-conventional-changelog: ^3.3.0
       eslint: ^8.20.0
