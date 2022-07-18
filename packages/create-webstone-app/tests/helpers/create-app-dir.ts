@@ -1,9 +1,8 @@
 import fs from "fs-extra";
-import prompts from "prompts";
 import sinon from "sinon";
 import { test } from "uvu";
 import * as assert from "uvu/assert";
-import { createAppDir } from "../../src/helpers";
+import { createAppDir, Ctx, WebstoneTask } from "../../src/helpers";
 
 test.before.each(() => {
   sinon.replace(console, "log", sinon.fake());
@@ -14,6 +13,14 @@ test.after.each(() => {
 });
 
 test("app dir does not exist, no app dir provided", async () => {
+  const fakeListrTask: Partial<WebstoneTask> = {
+    output: "",
+  };
+
+  const fakeContext: Ctx = {
+    appDir: ".",
+  };
+
   const fakeFsExistsSync = sinon.fake.returns(false);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 
@@ -24,7 +31,10 @@ test("app dir does not exist, no app dir provided", async () => {
   process.argv[2] = undefined;
 
   try {
-    const appDir = await createAppDir();
+    const appDir = await createAppDir(
+      fakeContext,
+      fakeListrTask as WebstoneTask
+    );
     assert.is(appDir, ".");
   } finally {
     process.argv[2] = originalProcessArgv2;
@@ -36,13 +46,20 @@ test("app dir does not exist, no app dir provided", async () => {
 });
 
 test("app dir does not exist, app dir with space", async () => {
+  const fakeListrTask: Partial<WebstoneTask> = {
+    output: "",
+  };
+
+  const fakeContext: Ctx = {
+    appDir: "test-app",
+  };
   const fakeFsExistsSync = sinon.fake.returns(false);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 
   const fakeFsMkdirSync = sinon.fake();
   sinon.replace(fs, "mkdirSync", fakeFsMkdirSync);
 
-  const appDir = await createAppDir("Test App");
+  const appDir = await createAppDir(fakeContext, fakeListrTask as WebstoneTask);
   assert.is(appDir, "test-app");
   assert.is(fakeFsExistsSync.firstCall.firstArg, "test-app");
   assert.is(fakeFsMkdirSync.firstCall.firstArg, "test-app");
@@ -50,13 +67,21 @@ test("app dir does not exist, app dir with space", async () => {
 });
 
 test("app dir does not exist", async () => {
+  const fakeListrTask: Partial<WebstoneTask> = {
+    output: "",
+  };
+
+  const fakeContext: Ctx = {
+    appDir: "test-app",
+  };
+
   const fakeFsExistsSync = sinon.fake.returns(false);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 
   const fakeFsMkdirSync = sinon.fake();
   sinon.replace(fs, "mkdirSync", fakeFsMkdirSync);
 
-  const appDir = await createAppDir("test-app");
+  const appDir = await createAppDir(fakeContext, fakeListrTask as WebstoneTask);
   assert.is(appDir, "test-app");
   assert.is(fakeFsExistsSync.firstCall.firstArg, "test-app");
   assert.is(fakeFsMkdirSync.firstCall.firstArg, "test-app");
@@ -64,6 +89,14 @@ test("app dir does not exist", async () => {
 });
 
 test("app dir exists and is empty", async () => {
+  const fakeListrTask: Partial<WebstoneTask> = {
+    output: "",
+  };
+
+  const fakeContext: Ctx = {
+    appDir: "test-app",
+  };
+
   const fakeFsExistsSync = sinon.fake.returns(true);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 
@@ -73,7 +106,7 @@ test("app dir exists and is empty", async () => {
   const fakeFsMkdirSync = sinon.fake();
   sinon.replace(fs, "mkdirSync", fakeFsMkdirSync);
 
-  const appDir = await createAppDir("test-app");
+  const appDir = await createAppDir(fakeContext, fakeListrTask as WebstoneTask);
   assert.is(appDir, "test-app");
   assert.is(fakeFsReaddirSync.firstCall.firstArg, "test-app");
   assert.is(fakeFsMkdirSync.firstCall.firstArg, "test-app");
@@ -81,6 +114,15 @@ test("app dir exists and is empty", async () => {
 });
 
 test("app dir exists and is not empty, overwrite it", async () => {
+  const fakeListrPrompt = sinon.fake.returns({ value: true });
+  const fakeListrTask: Partial<WebstoneTask> = {
+    output: "",
+    prompt: fakeListrPrompt,
+  };
+
+  const fakeContext: Ctx = {
+    appDir: "test-app",
+  };
   const fakeFsExistsSync = sinon.fake.returns(true);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 
@@ -89,15 +131,12 @@ test("app dir exists and is not empty, overwrite it", async () => {
   ]);
   sinon.replace(fs, "readdirSync", fakeFsReaddirSync);
 
-  const fakePromptsConfirm = sinon.fake.returns(true);
-  sinon.replace(prompts.prompts, "confirm", fakePromptsConfirm);
-
   const fakeFsMkdirSync = sinon.fake();
   sinon.replace(fs, "mkdirSync", fakeFsMkdirSync);
 
-  const appDir = await createAppDir("test-app");
+  const appDir = await createAppDir(fakeContext, fakeListrTask as WebstoneTask);
   assert.is(appDir, "test-app");
-  assert.equal(fakePromptsConfirm.firstCall.firstArg, {
+  assert.equal(fakeListrPrompt.firstCall.firstArg, {
     type: "confirm",
     name: "value",
     message: `The ./test-app directory is not empty. Do you want to overwrite it?`,
@@ -108,6 +147,15 @@ test("app dir exists and is not empty, overwrite it", async () => {
 });
 
 test("app dir exists and is not empty, do not overwrite it", async () => {
+  const fakeListrPrompt = sinon.fake.returns({ value: false });
+  const fakeListrTask: Partial<WebstoneTask> = {
+    output: "",
+    prompt: fakeListrPrompt,
+  };
+
+  const fakeContext: Ctx = {
+    appDir: "test-app",
+  };
   const fakeFsExistsSync = sinon.fake.returns(true);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 
@@ -116,11 +164,8 @@ test("app dir exists and is not empty, do not overwrite it", async () => {
   ]);
   sinon.replace(fs, "readdirSync", fakeFsReaddirSync);
 
-  const fakePromptsConfirm = sinon.fake.returns(false);
-  sinon.replace(prompts.prompts, "confirm", fakePromptsConfirm);
-
   try {
-    await createAppDir("test-app");
+    await createAppDir(fakeContext, fakeListrTask as WebstoneTask);
     assert.unreachable();
   } catch (error) {
     assert.is(

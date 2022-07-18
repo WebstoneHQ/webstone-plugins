@@ -26,11 +26,12 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "12.12.6",
-    "@types/prompts": "^2.0.14",
+    "chalk": "^5.0.1",
     "create-svelte": "latest",
+    "enquirer": "^2.3.6",
     "execa": "^6.0.0",
     "fs-extra": "^10.0.0",
-    "prompts": "^2.4.2",
+    "listr2": "^4.0.5",
     "typescript": "^4.5.4"
   }
 }

@@ -1,7 +1,11 @@
 import sinon from "sinon";
 import { test } from "uvu";
 import * as assert from "uvu/assert";
-import { displayNextSteps } from "../../src/helpers";
+import { Ctx, displayNextSteps } from "../../src/helpers";
+
+const context: Ctx = {
+  appDir: "test-dir",
+};
 
 test.after(() => {
   sinon.restore();
@@ -11,7 +15,7 @@ test("displayNextSteps", async () => {
   const fakeConsoleLog = sinon.fake();
   sinon.replace(console, "log", fakeConsoleLog);
 
-  await displayNextSteps("test-dir");
+  await displayNextSteps(context);
   assert.ok(fakeConsoleLog.calledOnce);
   assert.ok(
     (fakeConsoleLog.firstCall.firstArg as string).includes(
