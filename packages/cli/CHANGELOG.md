@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.8.3
+
+### Patch Changes
+
+- 0665efd: Use create-svelte to instantiate the Webstone app.
+
 ## 0.8.2
 
 ### Patch Changes
