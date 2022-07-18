@@ -2,7 +2,8 @@ import fs from "fs-extra";
 import sinon from "sinon";
 import { test } from "uvu";
 import * as assert from "uvu/assert";
-import { createAppDir, Ctx, WebstoneTask } from "../../src/helpers";
+import { Ctx, WebstoneTask } from "../../src/helpers";
+import { createAppDir } from "../../src/tasks/1-create-app-directory";
 
 test.before.each(() => {
   sinon.replace(console, "log", sinon.fake());
