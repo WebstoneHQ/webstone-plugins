@@ -1,10 +1,14 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "outDir": "./dist",
+    "outDir": "./dist/compiled",
+    "declarationDir": "./dist/compiled/dts",
+    "isolatedModules": true,
+    "declaration": true,
     "target": "ESNext",
     "module": "ESNext",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "moduleResolution": "Node"
   },
   "include": ["src/**/*"],
   "extends": "../../tsconfig.json"
