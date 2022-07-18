@@ -30,7 +30,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "gluegun": "^4.7.1"
+    "gluegun": "^5.1.2"
   },
   "devDependencies": {
     "npm-watch": "^0.11.0"
