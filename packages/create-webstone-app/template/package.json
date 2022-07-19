@@ -10,7 +10,7 @@
     "preinstall": "npx only-allow pnpm",
     "test": "pnpm test:unit",
     "test:unit": "c8 --all --include=**/src --reporter=html pnpm test:unit:only",
-    "test:unit:only": "NODE_OPTIONS='--loader tsx' uvu packages tests"
+    "test:unit:only": "NODE_OPTIONS='--loader tsx' uvu services tests"
   },
   "dependencies": {
     "@webstone/cli": "latest",
