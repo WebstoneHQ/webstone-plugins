@@ -4,7 +4,14 @@ import { execa } from "execa";
 import fs from "fs-extra";
 import { ListrTask } from "listr2/dist/index";
 
+//@ts-expect-error Runner doesn't provide a declaration file
+import * as Runner from "jscodeshift/src/Runner.js";
+
 import { Ctx } from "../../helpers";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const initWebApp = async (ctx: Ctx) => {
   const webAppDir = `${ctx.appDir}/services/web`;
@@ -22,6 +29,12 @@ const initWebApp = async (ctx: Ctx) => {
       eslint: true,
       playwright: true,
     });
+
+    await Runner.run(
+      path.join(__dirname, "../../../../codemods/playwright-config.ts"),
+      `${webAppDir}/playwright.config.ts`,
+      { parser: "ts", extension: "ts", print: true }
+    );
   } catch (error) {
     console.error(error);
     process.exit(1);
