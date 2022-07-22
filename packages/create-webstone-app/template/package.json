@@ -7,18 +7,10 @@
   ],
   "scripts": {
     "dev": "pnpm --recursive --parallel dev",
-    "preinstall": "npx only-allow pnpm",
-    "test": "pnpm test:unit",
-    "test:unit": "c8 --all --include=**/src --reporter=html pnpm test:unit:only",
-    "test:unit:only": "NODE_OPTIONS='--loader tsx' uvu services tests"
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@webstone/cli": "latest",
     "@webstone/core": "latest"
-  },
-  "devDependencies": {
-    "c8": "^7.11.3",
-    "tsx": "^3.8.0",
-    "uvu": "^0.5.6"
   }
 }
