@@ -1,5 +1,12 @@
 # create-webstone-app
 
+## 0.2.6
+
+### Patch Changes
+
+- 3070a28: resolve prompt, created by enquirer, correctly
+- 77db1c4: fix issue with clearing directory while creating an app
+
 ## 0.2.5
 
 ### Patch Changes
