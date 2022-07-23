@@ -19,12 +19,11 @@ export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
     if (fs.readdirSync(appDir).length > 0) {
       const response = await task.prompt({
         type: "confirm",
-        name: "value",
         message: `The ./${appDir} directory is not empty. Do you want to overwrite it?`,
         initial: false,
       });
 
-      if (!response.value) {
+      if (!response) {
         throw new Error(
           `Exiting, please empty the ./${appDir} directory or choose a different one to create the Webstone app.`
         );
@@ -33,6 +32,7 @@ export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
       await fs.rm(appDir, { recursive: true, force: true });
     }
   }
+  task.output = appDir;
   fs.mkdirSync(appDir, { recursive: true });
   return appDir;
 };

@@ -115,7 +115,7 @@ test("app dir exists and is empty", async () => {
 });
 
 test("app dir exists and is not empty, overwrite it", async () => {
-  const fakeListrPrompt = sinon.fake.returns({ value: true });
+  const fakeListrPrompt = sinon.fake.returns(true);
   const fakeListrTask: Partial<WebstoneTask> = {
     output: "",
     prompt: fakeListrPrompt,
@@ -139,7 +139,6 @@ test("app dir exists and is not empty, overwrite it", async () => {
   assert.is(appDir, "test-app");
   assert.equal(fakeListrPrompt.firstCall.firstArg, {
     type: "confirm",
-    name: "value",
     message: `The ./test-app directory is not empty. Do you want to overwrite it?`,
     initial: false,
   });
@@ -148,7 +147,7 @@ test("app dir exists and is not empty, overwrite it", async () => {
 });
 
 test("app dir exists and is not empty, do not overwrite it", async () => {
-  const fakeListrPrompt = sinon.fake.returns({ value: false });
+  const fakeListrPrompt = sinon.fake.returns(false);
   const fakeListrTask: Partial<WebstoneTask> = {
     output: "",
     prompt: fakeListrPrompt,
