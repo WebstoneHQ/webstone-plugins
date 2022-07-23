@@ -29,7 +29,7 @@ export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
         );
       }
 
-      await fs.rm(appDir, { recursive: true, force: true });
+      await fs.emptyDir(appDir);
     }
   }
   task.output = appDir;
