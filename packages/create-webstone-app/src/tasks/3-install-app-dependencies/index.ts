@@ -2,6 +2,7 @@
 import { create } from "create-svelte";
 import { execa } from "execa";
 import fs from "fs-extra";
+import glob from "fast-glob";
 import { ListrTask } from "listr2/dist/index";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
@@ -33,7 +34,7 @@ const initWebApp = async (ctx: Ctx) => {
 };
 
 const setUpTestFramework = async (ctx: Ctx) => {
-  const codeshiftProcess = await execa(
+  await execa(
     "npx",
     [
       "jscodeshift",
@@ -56,7 +57,12 @@ const setUpTestFramework = async (ctx: Ctx) => {
       shell: true,
     }
   );
-  return codeshiftProcess;
+
+  const tests = await glob(`${ctx.webAppDir as string}/tests/**/*`);
+
+  tests.forEach((globPath: string) => {
+    fs.renameSync(globPath, globPath.replace(".ts", ".e2e.ts"));
+  });
 };
 
 const installWebAppDependencies = async (ctx: Ctx) => {

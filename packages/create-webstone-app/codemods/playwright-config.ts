@@ -13,7 +13,7 @@ export default function adjustPlaywright(file: FileInfo, api: API) {
         path.value.properties.push({
           type: "Property",
           key: { type: "Identifier", name: "testMatch" },
-          value: { type: "Literal", value: ".*e2e.(js|ts|mjs)" },
+          value: { type: "Literal", value: "**/*.e2e.ts" },
           kind: "init",
         });
       }
