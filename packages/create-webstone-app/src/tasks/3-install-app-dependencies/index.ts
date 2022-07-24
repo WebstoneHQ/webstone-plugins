@@ -3,8 +3,12 @@ import { create } from "create-svelte";
 import { execa } from "execa";
 import fs from "fs-extra";
 import { ListrTask } from "listr2/dist/index";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 
 import { Ctx } from "../../helpers";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const initWebApp = async (ctx: Ctx) => {
   const webAppDir = `${ctx.appDir}/services/web`;
@@ -28,6 +32,33 @@ const initWebApp = async (ctx: Ctx) => {
   }
 };
 
+const setUpTestFramework = async (ctx: Ctx) => {
+  const codeshiftProcess = await execa(
+    "npx",
+    [
+      "jscodeshift",
+      "-t",
+      path.join(
+        __dirname,
+        "..",
+        "..",
+        "..",
+        "codemods",
+        "playwright-config.ts"
+      ),
+      "--extensions=ts",
+      "--parser=ts",
+      "'playwright.config.ts'",
+      "--print",
+    ],
+    {
+      cwd: ctx.webAppDir,
+      shell: true,
+    }
+  );
+  return codeshiftProcess;
+};
+
 const installWebAppDependencies = async (ctx: Ctx) => {
   const installProcess = execa("pnpm", ["install"], {
     cwd: ctx.webAppDir,
@@ -41,6 +72,10 @@ const createInstallWebAppTasks: ListrTask[] = [
   {
     task: initWebApp,
     title: "Initializing the web service",
+  },
+  {
+    task: setUpTestFramework,
+    title: "Configuring Testing Framework",
   },
   {
     task: installWebAppDependencies,
