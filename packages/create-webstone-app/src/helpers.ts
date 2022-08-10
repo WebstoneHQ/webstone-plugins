@@ -1,9 +1,12 @@
 import chalk from "chalk";
+import fs from "fs-extra";
+import path from "path";
 
 import { ListrTaskWrapper, ListrRenderer } from "listr2/dist/index";
 
 export interface Ctx {
   appDir: string;
+  isSveltekit: boolean;
   webAppDir?: string;
 }
 
@@ -40,4 +43,14 @@ Next steps:
   - ${chalk.bold(chalk.cyan(`cd ${ctx.appDir.split("/").pop()}`))}
   - ${chalk.bold(chalk.cyan("pnpm ws dev"))}
     `);
+};
+
+export const isSveltekit = (appDir: string) => {
+  if (fs.existsSync(path.join(appDir, "package.json"))) {
+    const packageJson = fs.readJsonSync(path.join(appDir, "package.json"));
+    if (packageJson.devDependencies["@sveltejs/kit"]) {
+      return true;
+    }
+  }
+  return false;
 };
