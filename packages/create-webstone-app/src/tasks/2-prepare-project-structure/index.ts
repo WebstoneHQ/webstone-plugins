@@ -18,9 +18,9 @@ import { Ctx } from "../../helpers";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const copyTemplate = (ctx: Ctx) => {
+  ctx.webAppDir = `${ctx.appDir}/services/web`;
   if (ctx.isSveltekit) {
     ctx.tempDir = temporaryDirectory({ prefix: "webstone" });
-    ctx.webAppDir = `${ctx.appDir}/services/web`;
     ignorePaths.forEach((pathString: string) => {
       fs.existsSync(path.join(ctx.appDir, pathString)) &&
         fs.rmdirSync(path.join(ctx.appDir, pathString));
