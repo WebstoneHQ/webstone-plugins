@@ -8,9 +8,13 @@ import { Ctx } from "../../helpers";
 
 const initWebApp = async (ctx: Ctx) => {
   const webAppDir = `${ctx.appDir}/services/web`;
-  ctx.webAppDir = webAppDir;
   console.log(`Installing web app in ${webAppDir}...`);
-
+  if (ctx.isSveltekit) {
+    fs.emptyDirSync(ctx.webAppDir);
+    fs.moveSync(ctx.tempDir, ctx.webAppDir, { overwrite: true });
+    fs.removeSync(ctx.tempDir);
+    return;
+  }
   try {
     fs.removeSync(`${webAppDir}/.keep`);
 

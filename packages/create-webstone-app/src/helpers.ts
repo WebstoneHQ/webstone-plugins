@@ -7,7 +7,8 @@ import { ListrTaskWrapper, ListrRenderer } from "listr2/dist/index";
 export interface Ctx {
   appDir: string;
   isSveltekit: boolean;
-  webAppDir?: string;
+  tempDir: string;
+  webAppDir: string;
 }
 
 export type WebstoneTask = ListrTaskWrapper<Ctx, typeof ListrRenderer>;
