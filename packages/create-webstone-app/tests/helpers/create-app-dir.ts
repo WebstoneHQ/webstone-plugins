@@ -18,7 +18,7 @@ test("app dir does not exist, no app dir provided", async () => {
     output: "",
   };
 
-  const fakeContext: Ctx = {
+  const fakeContext: Partial<Ctx> = {
     appDir: ".",
   };
 
@@ -51,7 +51,7 @@ test("app dir does not exist, app dir with space", async () => {
     output: "",
   };
 
-  const fakeContext: Ctx = {
+  const fakeContext: Partial<Ctx> = {
     appDir: "test-app",
   };
   const fakeFsExistsSync = sinon.fake.returns(false);
@@ -72,7 +72,7 @@ test("app dir does not exist", async () => {
     output: "",
   };
 
-  const fakeContext: Ctx = {
+  const fakeContext: Partial<Ctx> = {
     appDir: "test-app",
   };
 
@@ -94,7 +94,7 @@ test("app dir exists and is empty", async () => {
     output: "",
   };
 
-  const fakeContext: Ctx = {
+  const fakeContext: Partial<Ctx> = {
     appDir: "test-app",
   };
 
@@ -121,7 +121,7 @@ test("app dir exists and is not empty, overwrite it", async () => {
     prompt: fakeListrPrompt,
   };
 
-  const fakeContext: Ctx = {
+  const fakeContext: Partial<Ctx> = {
     appDir: "test-app",
   };
   const fakeFsExistsSync = sinon.fake.returns(true);
@@ -153,7 +153,7 @@ test("app dir exists and is not empty, do not overwrite it", async () => {
     prompt: fakeListrPrompt,
   };
 
-  const fakeContext: Ctx = {
+  const fakeContext: Partial<Ctx> = {
     appDir: "test-app",
   };
   const fakeFsExistsSync = sinon.fake.returns(true);
