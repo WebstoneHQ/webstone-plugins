@@ -49,17 +49,13 @@ Next steps:
 };
 
 export const isSveltekit = (appDir: string) => {
-  try {
-    if (fs.existsSync(path.join(appDir, "package.json"))) {
-      const packageJson = fs.readJsonSync(path.join(appDir, "package.json"));
-      if (packageJson.devDependencies["@sveltejs/kit"]) {
-        return true;
-      }
+  if (fs.existsSync(path.join(appDir, "package.json"))) {
+    const packageJson = fs.readJsonSync(path.join(appDir, "package.json"));
+    if (packageJson.devDependencies["@sveltejs/kit"]) {
+      return true;
     }
-    return false;
-  } catch (e) {
-    return false;
   }
+  return false;
 };
 
 export const checkCorrectSveltekitVersion = (version: string) => {

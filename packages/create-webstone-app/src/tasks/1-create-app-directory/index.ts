@@ -1,7 +1,12 @@
 import fs from "fs-extra";
 import { ListrTask } from "listr2/dist/index";
 
-import { Ctx, isSveltekit, WebstoneTask } from "../../helpers.js";
+import {
+  checkCorrectSveltekitVersion,
+  Ctx,
+  isSveltekit,
+  WebstoneTask,
+} from "../../helpers.js";
 
 const determineAppDirName = async (ctx: Ctx, task: WebstoneTask) => {
   const appName = process.argv[2];
@@ -27,6 +32,11 @@ export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
       if (!isSveltekitResponse) {
         throw new Error("Exiting, app is already a Sveltekit project");
       }
+      checkCorrectSveltekitVersion(
+        fs.readJsonSync(`${appDir}/package.json`).devDependencies[
+          "@sveltejs/kit"
+        ]
+      );
       return appDir;
     }
     if (fs.readdirSync(appDir).length > 0) {

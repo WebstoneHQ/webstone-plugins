@@ -15,7 +15,7 @@ test.after.each(() => {
 test("successfully recognize Sveltekit app", async () => {
   const fakePackageJson = {
     devDependencies: {
-      "@sveltejs/kit": "1.0.0",
+      "@sveltejs/kit": "1.0.0-next.999",
     },
   };
   const fakeReadJsonSync = sinon.fake.returns(fakePackageJson);
@@ -43,7 +43,7 @@ test("recognize, that project is not a sveltekit app", async () => {
 });
 
 test("no package.json provided", async () => {
-  const fakeExists = sinon.fake.returns(true);
+  const fakeExists = sinon.fake.returns(false);
   sinon.replace(fs, "existsSync", fakeExists);
 
   assert.equal(isSveltekit("testapp"), false);
@@ -61,7 +61,7 @@ test("wrong version of sveltekit", async () => {
 });
 
 test("correct version of sveltekit", async () => {
-  assert.ok(checkCorrectSveltekitVersion("1.0.0-next.405"));
+  assert.ok(checkCorrectSveltekitVersion("1.0.0-next.999"));
 });
 
 test.run();
