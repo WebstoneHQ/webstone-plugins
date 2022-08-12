@@ -4,6 +4,8 @@ import path from "path";
 
 import { ListrTaskWrapper, ListrRenderer } from "listr2/dist/index";
 
+const minimalVersion = 405;
+
 export interface Ctx {
   appDir: string;
   isSveltekit: boolean;
@@ -58,4 +60,17 @@ export const isSveltekit = (appDir: string) => {
   } catch (e) {
     return false;
   }
+};
+
+export const checkCorrectSveltekitVersion = (version: string) => {
+  const versionRegex = /^1\.0\.0-next\.(\d{3})$/;
+  const error = Error(
+    `Please upgrade to a Sveltekit Version greater than 1.0.0-next.${minimalVersion}`
+  );
+  if (version === "next") return true;
+  const matches = version.match(versionRegex);
+  if (!matches) throw error;
+  const [, kitVersion] = matches;
+  if (parseInt(kitVersion) < minimalVersion) throw error;
+  return true;
 };

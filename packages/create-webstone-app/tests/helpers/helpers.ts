@@ -2,7 +2,7 @@ import sinon from "sinon";
 import { test } from "uvu";
 import * as assert from "uvu/assert";
 import fs from "fs-extra";
-import { isSveltekit } from "../../src/helpers";
+import { isSveltekit, checkCorrectSveltekitVersion } from "../../src/helpers";
 
 test.before.each(() => {
   sinon.replace(console, "log", sinon.fake());
@@ -47,6 +47,21 @@ test("no package.json provided", async () => {
   sinon.replace(fs, "existsSync", fakeExists);
 
   assert.equal(isSveltekit("testapp"), false);
+});
+
+test("wrong version of sveltekit", async () => {
+  try {
+    checkCorrectSveltekitVersion("1.0.0.next.0");
+  } catch (e) {
+    assert.match(
+      e.message,
+      /Please upgrade to a Sveltekit Version greater than 1.0.0-next.\d{3}/
+    );
+  }
+});
+
+test("correct version of sveltekit", async () => {
+  assert.ok(checkCorrectSveltekitVersion("1.0.0-next.405"));
 });
 
 test.run();
