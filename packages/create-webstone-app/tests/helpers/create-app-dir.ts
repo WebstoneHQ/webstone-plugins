@@ -98,7 +98,9 @@ test("app dir exists and is empty", async () => {
     appDir: "test-app",
   };
 
-  const fakeFsExistsSync = sinon.fake.returns(true);
+  const fakeFsExistsSync = sinon.stub();
+  fakeFsExistsSync.onFirstCall().returns(true);
+  fakeFsExistsSync.onSecondCall().returns(false);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 
   const fakeFsReaddirSync = sinon.fake.returns([]);
@@ -124,7 +126,9 @@ test("app dir exists and is not empty, overwrite it", async () => {
   const fakeContext: Partial<Ctx> = {
     appDir: "test-app",
   };
-  const fakeFsExistsSync = sinon.fake.returns(true);
+  const fakeFsExistsSync = sinon.stub();
+  fakeFsExistsSync.onFirstCall().returns(true);
+  fakeFsExistsSync.onSecondCall().returns(false);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 
   const fakeFsReaddirSync = sinon.fake.returns([
@@ -156,7 +160,9 @@ test("app dir exists and is not empty, do not overwrite it", async () => {
   const fakeContext: Partial<Ctx> = {
     appDir: "test-app",
   };
-  const fakeFsExistsSync = sinon.fake.returns(true);
+  const fakeFsExistsSync = sinon.stub();
+  fakeFsExistsSync.onFirstCall().returns(true);
+  fakeFsExistsSync.onSecondCall().returns(false);
   sinon.replace(fs, "existsSync", fakeFsExistsSync);
 
   const fakeFsReaddirSync = sinon.fake.returns([
