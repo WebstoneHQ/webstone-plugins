@@ -63,7 +63,7 @@ importers:
     specifiers:
       '@types/node': 16.11.7
       chalk: 5.0.1
-      create-svelte: 2.0.0-next.149
+      create-svelte: 2.0.0-next.159
       enquirer: 2.3.6
       execa: 6.1.0
       fs-extra: 10.1.0
@@ -72,7 +72,7 @@ importers:
       typescript: ^4.7.4
     dependencies:
       chalk: 5.0.1
-      create-svelte: 2.0.0-next.149
+      create-svelte: 2.0.0-next.159
       enquirer: 2.3.6
       execa: 6.1.0
       fs-extra: 10.1.0
@@ -1218,8 +1218,8 @@ packages:
     dev: true
     optional: true
 
-  /create-svelte/2.0.0-next.149:
-    resolution: {integrity: sha512-Oi2rNryn02ZkmqcihtcQMbqWqb1L3FODrZNYZgyaGLm+4lrJL1NVI7sef43N8+qc1ArMXM61qdbEz9SL3Rn8Ag==}
+  /create-svelte/2.0.0-next.159:
+    resolution: {integrity: sha512-zM6L7k9jS7h0LV21qIl3k1ovywzUok78aNQ7VYmdZvBGS4kde/V/bsHX1kfCJ3FghEALyn4rJmhSqVaH2MMFWQ==}
     hasBin: true
     dependencies:
       kleur: 4.1.5
