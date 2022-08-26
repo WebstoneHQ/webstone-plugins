@@ -63,7 +63,7 @@ importers:
     specifiers:
       '@types/node': 16.11.7
       chalk: 5.0.1
-      create-svelte: next
+      create-svelte: 2.0.0-next.163
       enquirer: 2.3.6
       execa: 6.1.0
       fs-extra: 10.1.0
