@@ -5,7 +5,7 @@
   "private": true,
   "devDependencies": {
     "@changesets/cli": "^2.23.2",
-    "@playwright/test": "^1.23.4",
+    "@playwright/test": "^1.25.0",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "16.11.7",
     "@types/sinon": "^10.0.12",
@@ -35,8 +35,8 @@
     "prepare": "husky install",
     "release": "changeset publish",
     "test": "pnpm test:unit",
-    "test:e2e": "pnpm playwright test",
-    "test:e2e:open": "pnpm playwright test --headed",
+    "test:e2e": "pnpx playwright test",
+    "test:e2e:open": "pnpx playwright test --headed",
     "test:unit": "c8 --all --include=**/src --reporter=html pnpm test:unit:only",
     "test:unit:only": "NODE_OPTIONS='--loader tsx' uvu packages tests"
   },
