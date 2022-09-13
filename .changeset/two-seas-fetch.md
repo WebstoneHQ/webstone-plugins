@@ -3,4 +3,4 @@
 "create-webstone-app": minor
 ---
 
-Implement new Routing Changes from Sveltekit version 406
+Implement latest Sveltekit breaking changes
