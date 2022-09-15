@@ -1,6 +1,9 @@
 import esbuild from "esbuild";
 import { nodeExternalsPlugin } from "esbuild-node-externals";
 
+/**
+ * @type {Object.<string, esbuild.BuildOptions>} */
+
 const config = {
   shared: {
     format: "esm",
