@@ -8,7 +8,7 @@ import { Ctx } from "../../helpers";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const copyTemplate = (ctx: Ctx) => {
-  const templateDir = path.join(__dirname, "../../..", "template");
+  const templateDir = path.join(__dirname, "..", "template");
   fs.copySync(templateDir, ctx.appDir);
 };
 
