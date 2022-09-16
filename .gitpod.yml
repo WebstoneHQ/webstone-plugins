@@ -25,6 +25,7 @@ tasks:
 ports:
   - port: 5173
     visibility: public
+    onOpen: ignore
   - port: 5900
     onOpen: ignore
   - port: 6080
