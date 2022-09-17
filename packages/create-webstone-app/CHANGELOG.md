@@ -1,5 +1,12 @@
 # create-webstone-app
 
+## 0.3.0
+
+### Minor Changes
+
+- 4556a68: Switch from tsc to esbuild for the create-webstone-app.
+- 412041a: Implement latest Sveltekit breaking changes
+
 ## 0.2.6
 
 ### Patch Changes
