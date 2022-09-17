@@ -6,7 +6,6 @@ const devAppPath = resolve("../webstone-dev-app");
 
 test.describe("web/page/create & web/page/delete", () => {
   test("creates and deletes an About Us page", async ({ page }) => {
-    console.log(devAppPath);
     execSync("pnpm ws web page create 'About Us'", {
       cwd: devAppPath,
     });
