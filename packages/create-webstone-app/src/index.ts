@@ -1,5 +1,5 @@
-import { displayWelcome, displayNextSteps } from "./helpers.js";
-import { tasks } from "./tasks/index.js";
+import { displayWelcome, displayNextSteps } from "./helpers";
+import { tasks } from "./tasks/index";
 
 displayWelcome();
 const context = await tasks.run();
