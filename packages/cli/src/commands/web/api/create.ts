@@ -42,14 +42,14 @@ const command: GluegunCommand = {
 
     await template.generate({
       template: "web/api/create/index.ejs",
-      target: `${targetDir}/index.ts`,
+      target: `${targetDir}/+server.ts`,
       props: {
         apiPath,
       },
     });
     await template.generate({
       template: "web/api/create/[uid].ejs",
-      target: `${targetDir}/[uid].ts`,
+      target: `${targetDir}/[uid]/+server.ts`,
       props: {
         apiPath,
       },

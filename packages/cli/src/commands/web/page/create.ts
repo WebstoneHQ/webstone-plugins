@@ -22,7 +22,7 @@ const command: GluegunCommand = {
     }
 
     const filename = strings.kebabCase(name);
-    const target = `services/web/src/routes/${filename}/index.svelte`;
+    const target = `services/web/src/routes/${filename}/+page.svelte`;
     const spinner = print.spin(`Creating page "${target}"...`);
 
     await template.generate({

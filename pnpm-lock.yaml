@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@changesets/cli': ^2.23.2
-      '@playwright/test': ^1.23.4
+      '@playwright/test': ^1.25.0
       '@types/fs-extra': ^9.0.13
       '@types/node': 16.11.7
       '@types/sinon': ^10.0.12
@@ -25,7 +25,7 @@ importers:
       uvu: ^0.5.6
     devDependencies:
       '@changesets/cli': 2.23.2
-      '@playwright/test': 1.23.4
+      '@playwright/test': 1.25.1
       '@types/fs-extra': 9.0.13
       '@types/node': 16.11.7
       '@types/sinon': 10.0.12
@@ -63,7 +63,7 @@ importers:
     specifiers:
       '@types/node': 16.11.7
       chalk: 5.0.1
-      create-svelte: 2.0.0-next.149
+      create-svelte: 2.0.0-next.177
       enquirer: 2.3.6
       execa: 6.1.0
       fs-extra: 10.1.0
@@ -71,7 +71,7 @@ importers:
       typescript: ^4.7.4
     dependencies:
       chalk: 5.0.1
-      create-svelte: 2.0.0-next.149
+      create-svelte: 2.0.0-next.177
       enquirer: 2.3.6
       execa: 6.1.0
       fs-extra: 10.1.0
@@ -483,13 +483,13 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@playwright/test/1.23.4:
-    resolution: {integrity: sha512-iIsoMJDS/lyuhw82FtcV/B3PXikgVD3hNe5hyvOpRM0uRr1OIpN3LgPeRbBjhzBWmyf6RgRg5fqK5sVcpA03yA==}
+  /@playwright/test/1.25.1:
+    resolution: {integrity: sha512-IJ4X0yOakXtwkhbnNzKkaIgXe6df7u3H3FnuhI9Jqh+CdO0e/lYQlDLYiyI9cnXK8E7UAppAWP+VqAv6VX7HQg==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
       '@types/node': 16.11.7
-      playwright-core: 1.23.4
+      playwright-core: 1.25.1
     dev: true
 
   /@sinonjs/commons/1.8.3:
@@ -1216,8 +1216,8 @@ packages:
     dev: true
     optional: true
 
-  /create-svelte/2.0.0-next.149:
-    resolution: {integrity: sha512-Oi2rNryn02ZkmqcihtcQMbqWqb1L3FODrZNYZgyaGLm+4lrJL1NVI7sef43N8+qc1ArMXM61qdbEz9SL3Rn8Ag==}
+  /create-svelte/2.0.0-next.177:
+    resolution: {integrity: sha512-3nw04rdxmtkuQFWVIPV423hvGzVyFxYN32VQFAgjwkMs7rU9Z1DJ86YOLPfxN0iN4yvDuaKMmKDdsGcPnD9iGg==}
     hasBin: true
     dependencies:
       kleur: 4.1.5
@@ -3297,8 +3297,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /playwright-core/1.23.4:
-    resolution: {integrity: sha512-h5V2yw7d8xIwotjyNrkLF13nV9RiiZLHdXeHo+nVJIYGVlZ8U2qV0pMxNJKNTvfQVT0N8/A4CW6/4EW2cOcTiA==}
+  /playwright-core/1.25.1:
+    resolution: {integrity: sha512-lSvPCmA2n7LawD2Hw7gSCLScZ+vYRkhU8xH0AapMyzwN+ojoDqhkH/KIEUxwNu2PjPoE/fcE0wLAksdOhJ2O5g==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true

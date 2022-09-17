@@ -2,24 +2,21 @@ import type { RequestHandler } from '@sveltejs/kit';
 
 // DELETE {{apiPath}}/:uid
 export const DELETE: RequestHandler = async (event) => {
-  return {
-    status: 200,
-    body: `${event.request.method.toUpperCase()} ${event.url.pathname} => Ok.`
-  };
+	return new Response(`${event.request.method.toUpperCase()} ${event.url.pathname} => Ok.`, {
+		status: 200
+	});
 };
 
 // PATCH {{apiPath}}/:uid
 export const PATCH: RequestHandler = async (event) => {
-  return {
-    status: 200,
-    body: `${event.request.method.toUpperCase()} ${event.url.pathname} => Ok.`
-  };
+	return new Response(`${event.request.method.toUpperCase()} ${event.url.pathname} => Ok.`, {
+		status: 200
+	});
 };
 
 // PUT {{apiPath}}/:uid
 export const PUT: RequestHandler = async (event) => {
-  return {
-    status: 200,
-    body: `${event.request.method.toUpperCase()} ${event.url.pathname} => Ok.`
-  };
+	return new Response(`${event.request.method.toUpperCase()} ${event.url.pathname} => Ok.`, {
+		status: 200
+	});
 };
