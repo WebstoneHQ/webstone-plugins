@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.9.0
+
+### Minor Changes
+
+- 412041a: Implement latest Sveltekit breaking changes
+
 ## 0.8.3
 
 ### Patch Changes
