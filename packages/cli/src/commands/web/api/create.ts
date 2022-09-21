@@ -22,7 +22,7 @@ const command: GluegunCommand = {
     }
 
     const filePath = apiPath.toLowerCase().replace(/^\//, "");
-    const targetDir = `services/web/src/routes/${filePath}`;
+    const targetDir = `src/routes/${filePath}`;
 
     if (filesystem.exists(targetDir) === "dir") {
       print.info(`The ${apiPath} API endpoint already exists.`);
@@ -30,10 +30,10 @@ const command: GluegunCommand = {
     }
 
     const spinner = print.spin(`Creating API endpoint at "${targetDir}"...`);
-    if (filesystem.exists("services/web/src/lib/types.d.ts") !== "file") {
+    if (filesystem.exists("src/lib/types.d.ts") !== "file") {
       await template.generate({
         template: "web/api/create/lib-types.d.ejs",
-        target: "services/web/src/lib/types.d.ts",
+        target: "src/lib/types.d.ts",
         props: {
           apiPath,
         },

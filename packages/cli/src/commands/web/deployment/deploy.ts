@@ -17,12 +17,12 @@ const command: GluegunCommand = {
     }
 
     const buildSpinner = print.spin(`Building the web service...`);
-    await system.run(`pnpm build --filter ./services/web`);
+    await system.run(`pnpm build`);
     buildSpinner.succeed();
 
     if (parameters.options.preview) {
       print.info(`Previewing the web service...`);
-      await system.exec(`pnpm preview --filter ./services/web`, {
+      await system.exec(`pnpm preview`, {
         stdout: "inherit",
       });
     } else {

@@ -22,7 +22,7 @@ const command: GluegunCommand = {
     const svelteAddCommand = `npx svelte-add@latest ${parameters.first}`;
     print.highlight(`Delegating to svelte-add: ${svelteAddCommand}`);
     const result = await system.run(svelteAddCommand, {
-      cwd: "./services/web",
+      cwd: "./",
     });
     print.info(result);
   },

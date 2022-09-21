@@ -59,7 +59,7 @@ Creates new API **C**reate, **R**ead, **U**pdate, **D**elete (CRUD) endpoints in
 webstone web api create [api-path]
 ```
 
-- `[api-path]` - The URL path of the API endpoints to create. For example, `/api/users` generates CRUD endpoints in `services/web/src/routes/api/users/`. If no API path is provided, you will be prompted to provide one interactively.
+- `[api-path]` - The URL path of the API endpoints to create. For example, `/api/users` generates CRUD endpoints in `src/routes/api/users/`. If no API path is provided, you will be prompted to provide one interactively.
 
 ### webstone web api delete
 
@@ -71,7 +71,7 @@ Deletes an API endpoint in your `web` service. E.g.`/api/users`.
 webstone web api delete [api-path]
 ```
 
-- `[api-path]` - The URL path of the API endpoints to delete. For example, `/api/users` deletes all endpoints in `services/web/src/routes/api/users/`. If no API path is provided, you will be prompted to provide one interactively.
+- `[api-path]` - The URL path of the API endpoints to delete. For example, `/api/users` deletes all endpoints in `src/routes/api/users/`. If no API path is provided, you will be prompted to provide one interactively.
 
 ### webstone web deployment configure
 

@@ -22,7 +22,7 @@ const command: GluegunCommand = {
     }
 
     const filePath = apiPath.toLowerCase().replace(/^\//, "");
-    const targetDir = `services/web/src/routes/${filePath}`;
+    const targetDir = `src/routes/${filePath}`;
 
     const spinner = print.spin(`Removing API endpoint at "${targetDir}"...`);
     filesystem.remove(targetDir);

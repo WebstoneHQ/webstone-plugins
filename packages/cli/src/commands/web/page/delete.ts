@@ -22,7 +22,7 @@ const command: GluegunCommand = {
     }
 
     const filename = strings.kebabCase(name);
-    const target = `services/web/src/routes/${filename}`;
+    const target = `src/routes/${filename}`;
     const spinner = print.spin(`Removing page "${target}"...`);
     filesystem.remove(target);
     spinner.succeed(`Page deleted at: ${target}`);

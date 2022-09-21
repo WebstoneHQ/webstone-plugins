@@ -7,7 +7,7 @@ const command: GluegunCommand = {
     const { print, system } = toolbox;
 
     print.info(`Starting web service...`);
-    await system.exec(`pnpm run dev --filter ./services/web`, {
+    await system.exec(`pnpm run dev`, {
       stdout: "inherit",
     });
   },

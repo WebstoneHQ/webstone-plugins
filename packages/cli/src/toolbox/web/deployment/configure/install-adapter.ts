@@ -11,7 +11,7 @@ export default async (adapter: Adapter) => {
   );
   await add(`${adapter.npmPackage}${adapter.npmPackageVersion || ""}`, {
     dev: true,
-    dir: "./services/web",
+    dir: "./",
   });
   spinner.succeed(`Adapter added: ${adapter.npmPackage}`);
 };

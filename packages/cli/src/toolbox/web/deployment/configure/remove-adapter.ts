@@ -9,7 +9,7 @@ export default async (adapter: Adapter) => {
   );
   await remove(adapter.npmPackage, {
     dev: true,
-    dir: "./services/web",
+    dir: "./",
   });
   spinner.succeed(`Adapter removed: ${adapter.npmPackage}`);
 };

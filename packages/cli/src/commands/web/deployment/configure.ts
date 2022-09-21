@@ -48,7 +48,7 @@ const command: GluegunCommand = {
 
       if (!installedAdapter) {
         print.error(
-          `An adapter should be installed, but isn't... This is an unexpected error, please manually review the "services/web/package.json file."`
+          `An adapter should be installed, but isn't... This is an unexpected error, please manually review the "package.json file."`
         );
         return;
       }
