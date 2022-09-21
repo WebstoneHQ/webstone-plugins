@@ -1,20 +1,15 @@
 //@ts-ignore this package doesn't provdide a declaration file
 import { create } from "create-svelte";
 import { execa } from "execa";
-import fs from "fs-extra";
 import { ListrTask } from "listr2/dist/index";
 
 import { Ctx } from "../../helpers";
 
 const initWebApp = async (ctx: Ctx) => {
-  const webAppDir = `${ctx.appDir}/services/web`;
-  ctx.webAppDir = webAppDir;
-  console.log(`Installing web app in ${webAppDir}...`);
+  console.log(`Installing web app in ${ctx.appDir}...`);
 
   try {
-    fs.removeSync(`${webAppDir}/.keep`);
-
-    await create(webAppDir, {
+    await create(ctx.appDir, {
       name: "webstone-app",
       template: "skeleton",
       types: "typescript",
@@ -30,7 +25,7 @@ const initWebApp = async (ctx: Ctx) => {
 
 const installWebAppDependencies = async (ctx: Ctx) => {
   const installProcess = execa("pnpm", ["install"], {
-    cwd: ctx.webAppDir,
+    cwd: ctx.appDir,
     shell: true,
   });
 
