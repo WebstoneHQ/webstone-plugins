@@ -6,7 +6,7 @@ import { Ctx, WebstoneTask } from "../../helpers";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const copyReadme = async (ctx: Ctx, task: WebstoneTask) => {
+export const copyReadme = async (ctx: Ctx, task: WebstoneTask) => {
   const hasReadme = fs.existsSync(`${ctx.appDir}/README.md`);
   if (hasReadme) {
     const response = await task.prompt({
