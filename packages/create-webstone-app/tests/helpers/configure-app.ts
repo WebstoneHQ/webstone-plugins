@@ -1,26 +1,26 @@
-// import fs from "fs-extra";
-// import sinon from "sinon";
-// import { test } from "uvu";
-// import * as assert from "uvu/assert";
-// import { Ctx, WebstoneTask } from "../../src/helpers";
-// import { copyReadme } from "../../src/tasks/3-configure-app";
+import fs from "fs-extra";
+import sinon from "sinon";
+import { test } from "uvu";
+import * as assert from "uvu/assert";
+import { Ctx } from "../../src/helpers";
+import { copyReadme } from "../../src/tasks/3-configure-app";
 
-// test.after.each(() => {
-//   sinon.restore();
-// });
+test.after.each(() => {
+  sinon.restore();
+});
 
-// test("Replace existing Readme", async () => {
-//   const fakeFsExistsSync = sinon.fake.returns(true);
-//   sinon.replace(fs, "existsSync", fakeFsExistsSync);
+test("Check if Readme gets replaced", async () => {
+  const fakeCopySync = sinon.fake();
+  sinon.replace(fs, "copySync", fakeCopySync);
 
-//   const fakePrompt = sinon.fake.returns(Promise<true>);
+  const fakeContext: Ctx = {
+    appDir: "test-app",
+  };
 
-//   const fakeListrTask: Partial<WebstoneTask> = {
-//     prompt: fakePrompt,
-//   };
-//   const fakeContext: Ctx = {
-//     appDir: "test-app",
-//   };
+  await copyReadme(fakeContext);
 
-//   await copyReadme(fakeContext, <WebstoneTask>fakeListrTask);
-// });
+  assert.is(fakeCopySync.callCount, 1);
+  assert.ok(
+    (fakeCopySync.firstCall.args[0] as string).includes("template/README.md")
+  );
+});
