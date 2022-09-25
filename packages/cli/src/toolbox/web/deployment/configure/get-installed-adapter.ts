@@ -1,9 +1,9 @@
-import { filesystem } from "gluegun";
+import { filesystem } from "@webstone/gluegun";
 import { availableAdapters } from "./adapters";
 import { Adapter } from "./types";
 
 export default () => {
-  const webPackageJson = filesystem.read("./services/web/package.json", "json");
+  const webPackageJson = filesystem.read("./package.json", "json");
   const availableAdapterNpmPackages = availableAdapters.map(
     (adapter) => adapter.npmPackage
   );

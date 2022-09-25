@@ -4,7 +4,6 @@ import { ListrTaskWrapper, ListrRenderer } from "listr2/dist/index";
 
 export interface Ctx {
   appDir: string;
-  webAppDir?: string;
 }
 
 export type WebstoneTask = ListrTaskWrapper<Ctx, typeof ListrRenderer>;

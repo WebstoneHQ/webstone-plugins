@@ -1,4 +1,4 @@
-import type { GluegunCommand } from "gluegun";
+import type { GluegunCommand } from "@webstone/gluegun";
 import type { WebstoneToolbox } from "../../../extensions/web";
 
 const command: GluegunCommand = {
@@ -48,7 +48,7 @@ const command: GluegunCommand = {
 
       if (!installedAdapter) {
         print.error(
-          `An adapter should be installed, but isn't... This is an unexpected error, please manually review the "services/web/package.json file."`
+          `An adapter should be installed, but isn't... This is an unexpected error, please manually review the "package.json file."`
         );
         return;
       }

@@ -1,6 +1,6 @@
 import type { Adapter } from "./types";
 
-import { print } from "gluegun";
+import { print } from "@webstone/gluegun";
 import remove from "../../../pnpm/remove";
 
 export default async (adapter: Adapter) => {
@@ -9,7 +9,7 @@ export default async (adapter: Adapter) => {
   );
   await remove(adapter.npmPackage, {
     dev: true,
-    dir: "./services/web",
+    dir: "./",
   });
   spinner.succeed(`Adapter removed: ${adapter.npmPackage}`);
 };

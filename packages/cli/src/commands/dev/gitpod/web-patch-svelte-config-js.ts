@@ -1,10 +1,10 @@
-import { GluegunCommand } from "gluegun";
+import { GluegunCommand } from "@webstone/gluegun";
 
 const command: GluegunCommand = {
   hidden: true,
   run: async (toolbox) => {
     const { patching, print } = toolbox;
-    const fileToPatch = "services/web/vite.config.ts";
+    const fileToPatch = "vite.config.ts";
     print.info(`Patching ${fileToPatch}...`);
     await patching.patch(fileToPatch, {
       insert: `,

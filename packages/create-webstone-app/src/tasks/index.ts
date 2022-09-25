@@ -4,18 +4,12 @@ import Enquirer from "enquirer";
 const enquirer = new Enquirer();
 
 import { Ctx } from "../helpers";
-import { tasks as checkSystemRequirements } from "./0-check-system-requirements/index";
 import { tasks as createAppDirectoryTasks } from "./1-create-app-directory/index";
-import { tasks as prepareProjectStructureTasks } from "./2-prepare-project-structure/index";
-import { tasks as installAppDependenciesTasks } from "./3-install-app-dependencies/index";
+import { tasks as installAppDependenciesTasks } from "./2-install-app-dependencies/index";
+import { tasks as configureApp } from "./3-configure-app";
 
 export const tasks = new Listr<Ctx>(
-  [
-    ...checkSystemRequirements,
-    ...createAppDirectoryTasks,
-    ...prepareProjectStructureTasks,
-    ...installAppDependenciesTasks,
-  ],
+  [...createAppDirectoryTasks, ...installAppDependenciesTasks, ...configureApp],
   {
     injectWrapper: { enquirer },
     rendererOptions: {

@@ -12,7 +12,7 @@
       "dom"
     ],
     "outDir": "dist",
-    "target": "es5",
+    "target": "ES6",
   },
   "include": ["src/**/*"],
   "extends": "../../tsconfig.json"

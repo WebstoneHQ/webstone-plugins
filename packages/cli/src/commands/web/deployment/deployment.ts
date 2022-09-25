@@ -1,4 +1,4 @@
-import { GluegunCommand } from "gluegun";
+import { GluegunCommand } from "@webstone/gluegun";
 
 const command: GluegunCommand = {
   description: "No-op entry for the `webstone web deployment` command.",

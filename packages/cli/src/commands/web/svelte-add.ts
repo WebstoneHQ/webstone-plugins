@@ -1,4 +1,4 @@
-import { GluegunCommand } from "gluegun";
+import { GluegunCommand } from "@webstone/gluegun";
 
 /**
  * This is a wrapper for `npx svelte-add@latest <integration>`.
@@ -22,7 +22,7 @@ const command: GluegunCommand = {
     const svelteAddCommand = `npx svelte-add@latest ${parameters.first}`;
     print.highlight(`Delegating to svelte-add: ${svelteAddCommand}`);
     const result = await system.run(svelteAddCommand, {
-      cwd: "./services/web",
+      cwd: "./",
     });
     print.info(result);
   },

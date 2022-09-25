@@ -1,4 +1,4 @@
-import { GluegunCommand } from "gluegun";
+import { GluegunCommand } from "@webstone/gluegun";
 
 const command: GluegunCommand = {
   alias: ["d"],
@@ -7,7 +7,7 @@ const command: GluegunCommand = {
     const { print, system } = toolbox;
 
     print.info(`Starting web service...`);
-    await system.exec(`pnpm run dev --filter ./services/web`, {
+    await system.exec(`pnpm run dev`, {
       stdout: "inherit",
     });
   },
