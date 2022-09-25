@@ -46,10 +46,10 @@ importers:
 
   packages/cli:
     specifiers:
-      '@webstone/gluegun': ^0.0.2
+      '@webstone/gluegun': ^0.0.3
       npm-watch: ^0.11.0
     dependencies:
-      '@webstone/gluegun': 0.0.2
+      '@webstone/gluegun': 0.0.3
     devDependencies:
       npm-watch: 0.11.0
 
@@ -735,8 +735,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@webstone/gluegun/0.0.2:
-    resolution: {integrity: sha512-8Rn3bk2r2sXq32UJfs3C4YIYU9hq+jKVjOjWBRR8HQkr44ra0jtglwqIx8lbBDE9f80443S7TZC9/0QhvBwl+w==}
+  /@webstone/gluegun/0.0.3:
+    resolution: {integrity: sha512-2Nn8QrSBSthhUMEkRI3PYo7VDEIep5NJB/rufap2ILAK+6r8EFPFTptidUj1gaEhITn7gwj4lXd/tv9ypf+0CA==}
     hasBin: true
     dependencies:
       apisauce: 2.1.6
@@ -747,7 +747,7 @@ packages:
       cross-spawn: 7.0.3
       ejs: 3.1.8
       enquirer: 2.3.6
-      execa: 6.1.0
+      execa: 5.1.1
       fs-jetpack: 5.0.0
       lodash.camelcase: 4.3.0
       lodash.kebabcase: 4.1.1
@@ -2107,7 +2107,6 @@ packages:
       onetime: 5.1.2
       signal-exit: 3.0.7
       strip-final-newline: 2.0.0
-    dev: true
 
   /execa/6.1.0:
     resolution: {integrity: sha512-QVWlX2e50heYJcCPG0iWtf8r0xjEYfz/OYLGDYH+IyjWezzPNxz63qNFOu0l4YftGWuizFVZHHs8PrLU5p2IDA==}
@@ -2523,7 +2522,6 @@ packages:
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
-    dev: true
 
   /human-signals/3.0.1:
     resolution: {integrity: sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==}
@@ -2734,7 +2732,6 @@ packages:
   /is-stream/2.0.1:
     resolution: {integrity: sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==}
     engines: {node: '>=8'}
-    dev: true
 
   /is-stream/3.0.0:
     resolution: {integrity: sha512-LnQR4bZ9IADDRSkvpqMGvt/tEJWclzklNgSw48V5EAaAeDd6qGvN8ei6k5p0tvxSR171VmGyHuTiAOfxAbr8kA==}
@@ -3290,7 +3287,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       path-key: 3.1.1
-    dev: true
 
   /npm-run-path/5.1.0:
     resolution: {integrity: sha512-sJOdmRGrY2sjNTRMbSvluQqg+8X7ZK61yvzBEIDhz4f8z1TZFYABsqjjCBd/0PUNE9M6QDgHJXQkGUEm7Q+l9Q==}
@@ -4016,7 +4012,6 @@ packages:
   /strip-final-newline/2.0.0:
     resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
     engines: {node: '>=6'}
-    dev: true
 
   /strip-final-newline/3.0.0:
     resolution: {integrity: sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==}

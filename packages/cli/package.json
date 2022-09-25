@@ -33,6 +33,6 @@
     "npm-watch": "^0.11.0"
   },
   "dependencies": {
-    "@webstone/gluegun": "^0.0.2"
+    "@webstone/gluegun": "^0.0.3"
   }
 }
