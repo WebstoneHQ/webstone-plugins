@@ -2,8 +2,8 @@
 
 Start your next web application with Webstone and configure it as you go.
 
-```
-pnpm init webstone-app my-project
+```bash
+pnpm create webstone-app my-project
 ```
 
 > **Note**: Webstone requires the use of `pnpm` (https://pnpm.io). To install it, please run: `npm i -g pnpm`
