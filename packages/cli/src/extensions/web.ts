@@ -1,4 +1,4 @@
-import type { GluegunToolbox } from "gluegun";
+import type { GluegunToolbox } from "@webstone/gluegun";
 import type { WebToolbox } from "./web/types";
 
 import webConfigureDeployment from "./web/deployment/configure";

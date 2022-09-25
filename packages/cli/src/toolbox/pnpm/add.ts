@@ -1,6 +1,6 @@
 import type { PnpmOptions } from "./types";
 
-import { system } from "gluegun";
+import { system } from "@webstone/gluegun";
 
 export default async (packageName: string, options?: PnpmOptions) => {
   const dev = options?.dev ? "-D " : "";

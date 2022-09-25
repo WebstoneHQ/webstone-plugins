@@ -1,4 +1,4 @@
-import { GluegunCommand } from "gluegun";
+import { GluegunCommand } from "@webstone/gluegun";
 
 /**
  * This is a wrapper for `npx svelte-add@latest <integration>`.

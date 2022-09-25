@@ -1,5 +1,5 @@
 import { WebstoneToolbox } from "./extensions/web";
-import { build } from "gluegun";
+import { build } from "@webstone/gluegun";
 
 export const run = async () => {
   const cli = build()

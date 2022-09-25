@@ -1,4 +1,4 @@
-import type { GluegunCommand } from "gluegun";
+import type { GluegunCommand } from "@webstone/gluegun";
 import type { WebstoneToolbox } from "../../../extensions/web";
 
 const command: GluegunCommand = {

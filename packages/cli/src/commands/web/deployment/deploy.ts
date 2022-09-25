@@ -1,6 +1,6 @@
 import type { WebstoneToolbox } from "../../../extensions/web";
 
-import { GluegunCommand } from "gluegun";
+import { GluegunCommand } from "@webstone/gluegun";
 
 const command: GluegunCommand = {
   alias: ["d"],

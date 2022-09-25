@@ -1,4 +1,4 @@
-import { filesystem } from "gluegun";
+import { filesystem } from "@webstone/gluegun";
 import { availableAdapters } from "./adapters";
 import { Adapter } from "./types";
 

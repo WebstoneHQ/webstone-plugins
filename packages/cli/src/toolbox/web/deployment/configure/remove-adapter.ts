@@ -1,6 +1,6 @@
 import type { Adapter } from "./types";
 
-import { print } from "gluegun";
+import { print } from "@webstone/gluegun";
 import remove from "../../../pnpm/remove";
 
 export default async (adapter: Adapter) => {
