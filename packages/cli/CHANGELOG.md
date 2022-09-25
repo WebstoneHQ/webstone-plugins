@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.10.0
+
+### Minor Changes
+
+- f7a4f1f: remove monorepo approach
+
 ## 0.9.0
 
 ### Minor Changes
