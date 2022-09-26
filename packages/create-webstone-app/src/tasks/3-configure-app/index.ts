@@ -3,15 +3,19 @@ import fs from "fs-extra";
 import { ListrTask } from "listr2";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
-import { Ctx } from "../../helpers";
+import { Ctx, determinePackageManager } from "../../helpers";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const installCLI = async (ctx: Ctx) => {
-  const installProcess = execa("pnpm", ["add", "-D", "@webstone/cli"], {
-    shell: true,
-    cwd: ctx.appDir,
-  });
+  const installProcess = execa(
+    determinePackageManager(),
+    ["add", "-D", "@webstone/cli"],
+    {
+      shell: true,
+      cwd: ctx.appDir,
+    }
+  );
 
   return installProcess.stdout;
 };

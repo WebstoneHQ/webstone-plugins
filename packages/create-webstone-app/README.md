@@ -17,11 +17,11 @@ Start your next web application with Webstone and configure it as you go.
 
 ```sh
 # Create a new project
-pnpm init webstone-app [my-app]
+[npm|pnpm|yarn] init webstone-app [my-app]
 
 # Start the dev servers
 cd $_
-pnpm ws dev
+[npx|pnpm|yarn] ws dev
 ```
 
 ## Access the web application
