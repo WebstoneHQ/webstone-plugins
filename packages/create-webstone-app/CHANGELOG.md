@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.4.0
+
+### Minor Changes
+
+- f7a4f1f: remove monorepo approach
+
 ## 0.3.0
 
 ### Minor Changes
