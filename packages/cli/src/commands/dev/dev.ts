@@ -1,30 +1,16 @@
 import { GluegunCommand } from "@webstone/gluegun";
+import { determinePackageManager } from "../../helpers";
 
 const command: GluegunCommand = {
   alias: ["d"],
-  description: "Start the dev server(s)",
+  description: "Start the dev server",
   run: async (toolbox) => {
-    const { filesystem, parameters, print, system } = toolbox;
+    const { print, system } = toolbox;
+    print.info("Starting dev server...");
 
-    const servicesToStart = filesystem
-      .subdirectories("./services/")
-      .filter((serviceDir) =>
-        parameters.first ? serviceDir.includes(parameters.first) : true
-      );
-
-    print.info(
-      `Starting services: ${servicesToStart
-        .map((service) => service.substring("services/".length))
-        .join(", ")}...`
-    );
-    await system.exec(
-      `pnpm run dev ${servicesToStart
-        .map((service) => `--filter ./${service}`)
-        .join(" ")}`,
-      {
-        stdout: "inherit",
-      }
-    );
+    await system.exec(`${determinePackageManager()} run dev`, {
+      stdout: "inherit",
+    });
   },
 };
 

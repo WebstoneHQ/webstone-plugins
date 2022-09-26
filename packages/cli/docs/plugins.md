@@ -45,8 +45,8 @@ This is then accessible in your plugin's commands as `toolbox.bar`.
 
 ## Loading a plugin
 
-To load a particular plugin (which has to start with `webstone-cli-*`),
-install it to your project using `pnpm install --save-dev webstone-cli-PLUGINNAME`,
+To load a particular plugin (which has to start with `webstone-*`),
+install it to your project using `[npx|pnpm|yarn] install --save-dev webstone-PLUGINNAME`,
 and the Webstone CLI will pick it up automatically.
 
 ## Further reading

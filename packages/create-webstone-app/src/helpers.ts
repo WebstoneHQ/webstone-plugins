@@ -9,6 +9,10 @@ export interface Ctx {
 type PackageManagers = "npm" | "pnpm" | "yarn";
 export type WebstoneTask = ListrTaskWrapper<Ctx, typeof ListrRenderer>;
 
+/**
+ * If you modify this function, also change it in
+ * webstone/packages/cli/src/determine-package-manager.ts
+ */
 export const determinePackageManager = (): PackageManagers => {
   if (process.env.npm_execpath?.endsWith("npm-cli.js")) {
     return "npm";

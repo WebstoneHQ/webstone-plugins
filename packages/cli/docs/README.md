@@ -1,6 +1,6 @@
 # Webstone CLI
 
-Webstone provides a `pnpm webstone` (or `pnpm ws` for short) CLI, making interacting with your full-stack application simpler and more streamlined.
+Webstone provides a `[npx|pnpm|yarn] webstone` (or `[npx|pnpm|yarn] ws` for short) CLI, making interacting with your full-stack application simpler and more streamlined.
 
 - [Webstone CLI](#webstone-cli)
   - [Extend the CLI](#extend-the-cli)

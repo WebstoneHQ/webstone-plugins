@@ -4,7 +4,7 @@ The Webstone CLI provides the necessary commands to extend, test, and deploy you
 
 ## How to use
 
-The CLI is available at the root of your project with `pnpm webstone`, or as an alias `pnpm ws`.
+The CLI is available at the root of your project with `[npx|pnpm|yarn] webstone`, or as an alias `[npx|pnpm|yarn] ws`.
 
 ## Documentation
 

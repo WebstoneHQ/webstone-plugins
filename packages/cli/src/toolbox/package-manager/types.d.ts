@@ -1,4 +1,4 @@
-export type PnpmOptions = {
+export type PkgMngrOptions = {
   dev: boolean;
   dir: string;
 };
