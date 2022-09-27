@@ -3,7 +3,7 @@ import sinon from "sinon";
 import { test } from "uvu";
 import * as assert from "uvu/assert";
 import { Ctx, WebstoneTask } from "../../src/helpers";
-import { createAppDir } from "../../src/tasks/1-create-app-directory";
+import { createAppDir } from "../../src/tasks/1-create-directory";
 
 test.before.each(() => {
   sinon.replace(console, "log", sinon.fake());
