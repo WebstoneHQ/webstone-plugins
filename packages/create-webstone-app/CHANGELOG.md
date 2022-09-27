@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.4.1
+
+### Patch Changes
+
+- 241c146: Use the user's preferred package manager (npm, pnpm, or yarn).
+
 ## 0.4.0
 
 ### Minor Changes
