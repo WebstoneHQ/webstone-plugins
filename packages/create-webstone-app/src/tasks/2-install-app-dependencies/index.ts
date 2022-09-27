@@ -6,17 +6,13 @@ import { ListrTask } from "listr2/dist/index";
 import { Ctx, determinePackageManager } from "../../helpers";
 
 const initWebApp = async (ctx: Ctx) => {
-  console.log(`Installing web app in ${ctx.appDir}...`);
-
   try {
-    await create(ctx.appDir, {
-      name: "webstone-app",
-      template: "skeleton",
-      types: "typescript",
-      prettier: true,
-      eslint: true,
-      playwright: true,
-    });
+    if (ctx.type === "application") {
+      await createApplication(ctx.appDir);
+    } else {
+      await createPlugin(ctx.appDir);
+    }
+    return;
   } catch (error) {
     console.error(error);
     process.exit(1);
@@ -39,7 +35,7 @@ const createInstallWebAppTasks: ListrTask[] = [
   },
   {
     task: installWebAppDependencies,
-    title: "Installing dependencies for the web service",
+    title: "Installing dependencies",
     options: { bottomBar: true },
   },
 ];
@@ -52,3 +48,25 @@ export const tasks: ListrTask[] = [
     title: "Installing the application foundation",
   },
 ];
+
+const createApplication = async (appDir: string) => {
+  return await create(appDir, {
+    name: "webstone-app",
+    template: "skeleton",
+    types: "typescript",
+    prettier: true,
+    eslint: true,
+    playwright: true,
+  });
+};
+
+const createPlugin = async (appDir: string) => {
+  return await create(appDir, {
+    name: "webstone-plugin",
+    template: "skeletonlib",
+    types: "typescript",
+    prettier: true,
+    eslint: true,
+    playwright: true,
+  });
+};
