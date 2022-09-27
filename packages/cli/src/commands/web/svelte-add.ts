@@ -14,7 +14,7 @@ const command: GluegunCommand = {
 
     if (parameters.first === undefined) {
       print.error(
-        "Please provide an integration, i.e. `pnpm webstone web svelte-add tailwindcss`. For available integrations, please visit https://github.com/svelte-add/svelte-add."
+        "Please provide an integration, i.e. `[npx|pnpm|yarn] webstone web svelte-add tailwindcss`. For available integrations, please visit https://github.com/svelte-add/svelte-add."
       );
       return;
     }

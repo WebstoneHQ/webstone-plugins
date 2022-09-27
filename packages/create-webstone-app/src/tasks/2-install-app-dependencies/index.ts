@@ -3,7 +3,7 @@ import { create } from "create-svelte";
 import { execa } from "execa";
 import { ListrTask } from "listr2/dist/index";
 
-import { Ctx } from "../../helpers";
+import { Ctx, determinePackageManager } from "../../helpers";
 
 const initWebApp = async (ctx: Ctx) => {
   console.log(`Installing web app in ${ctx.appDir}...`);
@@ -24,7 +24,7 @@ const initWebApp = async (ctx: Ctx) => {
 };
 
 const installWebAppDependencies = async (ctx: Ctx) => {
-  const installProcess = execa("pnpm", ["install"], {
+  const installProcess = execa(determinePackageManager(), ["install"], {
     cwd: ctx.appDir,
     shell: true,
   });

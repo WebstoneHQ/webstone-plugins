@@ -1,7 +1,7 @@
 import type { Adapter } from "./types";
 
 import { print } from "@webstone/gluegun";
-import remove from "../../../pnpm/remove";
+import remove from "../../../package-manager/remove";
 
 export default async (adapter: Adapter) => {
   const spinner = print.spin(

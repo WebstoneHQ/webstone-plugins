@@ -1,4 +1,5 @@
 import { GluegunCommand } from "@webstone/gluegun";
+import { determinePackageManager } from "../../../helpers";
 
 const command: GluegunCommand = {
   alias: ["d"],
@@ -7,7 +8,7 @@ const command: GluegunCommand = {
     const { print, system } = toolbox;
 
     print.info(`Starting web service...`);
-    await system.exec(`pnpm run dev`, {
+    await system.exec(`${determinePackageManager()} run dev`, {
       stdout: "inherit",
     });
   },

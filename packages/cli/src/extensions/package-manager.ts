@@ -1,10 +1,10 @@
 import type { GluegunToolbox } from "@webstone/gluegun";
 
-import add from "../toolbox/pnpm/add";
-import remove from "../toolbox/pnpm/remove";
+import add from "../toolbox/package-manager/add";
+import remove from "../toolbox/package-manager/remove";
 
 export default (toolbox: GluegunToolbox) => {
-  toolbox.pnpm = {
+  toolbox.pkgMngr = {
     add,
     remove,
   };
