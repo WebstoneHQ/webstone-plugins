@@ -32,6 +32,6 @@ export const configureApp: ListrTask[] = [
   },
   {
     task: installCLI,
-    title: "Install Webstone CLI",
+    title: "Install dependencies",
   },
 ];

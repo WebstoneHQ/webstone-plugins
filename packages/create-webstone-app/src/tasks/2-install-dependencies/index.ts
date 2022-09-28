@@ -1,9 +1,8 @@
 //@ts-ignore this package doesn't provdide a declaration file
 import { create } from "create-svelte";
-import { execa } from "execa";
 import { ListrTask } from "listr2/dist/index";
 
-import { Ctx, determinePackageManager } from "../../helpers";
+import { Ctx } from "../../helpers";
 
 const initWebApp = async (ctx: Ctx) => {
   try {
@@ -19,24 +18,10 @@ const initWebApp = async (ctx: Ctx) => {
   }
 };
 
-const installWebAppDependencies = async (ctx: Ctx) => {
-  const installProcess = execa(determinePackageManager(), ["install"], {
-    cwd: ctx.appDir,
-    shell: true,
-  });
-
-  return installProcess;
-};
-
 const createInstallWebAppTasks: ListrTask[] = [
   {
     task: initWebApp,
-    title: "Initializing the web service",
-  },
-  {
-    task: installWebAppDependencies,
-    title: "Installing dependencies",
-    options: { bottomBar: true },
+    title: "Initializing web application",
   },
 ];
 
