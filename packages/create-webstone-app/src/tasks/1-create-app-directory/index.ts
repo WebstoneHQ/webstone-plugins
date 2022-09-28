@@ -19,7 +19,7 @@ export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
     if (fs.readdirSync(appDir).length > 0) {
       const response = await task.prompt({
         type: "confirm",
-        message: `The ./${appDir} directory is not empty. Do you want to overwrite it?`,
+        message: `The ./${appDir} directory is not empty. Do you want to continue?`,
         initial: false,
       });
 
@@ -28,8 +28,6 @@ export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
           `Exiting, please empty the ./${appDir} directory or choose a different one to create the Webstone app.`
         );
       }
-
-      await fs.emptyDir(appDir);
     }
   }
   task.output = appDir;
