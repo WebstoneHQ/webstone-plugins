@@ -33,6 +33,12 @@ export const copyFiles = async (ctx: Ctx) => {
   fs.copySync(cliPath, `${ctx.appDir}/src/lib/cli`);
 };
 
+export const adjustConfigFiles = async (ctx: Ctx) => {
+  const packageJson = await fs.readJSON(`${ctx.appDir}/package.json`);
+  packageJson.scripts.build = `${packageJson.scripts.build} && tsc -p tsconfig.cli.json`;
+  return await fs.writeJSON(`${ctx.appDir}/package.json`, packageJson);
+};
+
 export const configurePlugin: ListrTask[] = [
   {
     enabled(ctx: Ctx) {
@@ -42,7 +48,11 @@ export const configurePlugin: ListrTask[] = [
     title: "adding configuration files",
   },
   {
+    task: adjustConfigFiles,
+    title: "adjusting configuration files",
+  },
+  {
     task: installDeps,
-    title: "Install dependencies",
+    title: "installing dependencies",
   },
 ];
