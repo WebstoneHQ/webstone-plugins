@@ -44,7 +44,6 @@ export const adjustConfigFiles = async (ctx: Ctx) => {
   const tsconfig = await fs.readFile(`${ctx.appDir}/tsconfig.json`, "utf-8");
 
   const tsconfigJson = json5.parse(tsconfig);
-  console.log({ tsconfigJson });
   tsconfigJson.exclude = [
     ...["./node_modules/**", "./svelte-kit/[!ambient.d.ts]**"],
     "./src/lib/cli/**/*",
