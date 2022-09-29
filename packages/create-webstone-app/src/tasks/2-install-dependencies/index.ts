@@ -36,7 +36,7 @@ export const tasks: ListrTask[] = [
 
 const createApplication = async (appDir: string) => {
   return await create(appDir, {
-    name: "webstone-app",
+    name: getAppName(appDir),
     template: "skeleton",
     types: "typescript",
     prettier: true,
@@ -47,11 +47,18 @@ const createApplication = async (appDir: string) => {
 
 const createPlugin = async (appDir: string) => {
   return await create(appDir, {
-    name: "webstone-plugin",
+    name: getAppName(appDir),
     template: "skeletonlib",
     types: "typescript",
     prettier: true,
     eslint: true,
     playwright: true,
   });
+};
+
+const getAppName = (appDir: string) => {
+  if (appDir === ".") {
+    return process.cwd().split("/").pop();
+  }
+  return appDir;
 };
