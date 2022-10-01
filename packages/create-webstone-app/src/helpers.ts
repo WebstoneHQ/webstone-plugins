@@ -30,6 +30,13 @@ export const determinePackageManager = (): PackageManagers => {
   }
 };
 
+export const getAppName = (appDir: string) => {
+  if (appDir === ".") {
+    return process.cwd().split("/").pop();
+  }
+  return appDir;
+};
+
 export const displayWelcome = () =>
   new Promise<void>((resolve) => {
     // https://textfancy.com/ascii-art/

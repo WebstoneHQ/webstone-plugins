@@ -1,8 +1,7 @@
 //@ts-ignore this package doesn't provdide a declaration file
 import { create } from "create-svelte";
 import { ListrTask } from "listr2/dist/index";
-
-import { Ctx } from "../../helpers";
+import { Ctx, getAppName } from "../../helpers";
 
 const initWebApp = async (ctx: Ctx) => {
   try {
@@ -54,11 +53,4 @@ const createPlugin = async (appDir: string) => {
     eslint: true,
     playwright: true,
   });
-};
-
-const getAppName = (appDir: string) => {
-  if (appDir === ".") {
-    return process.cwd().split("/").pop();
-  }
-  return appDir;
 };

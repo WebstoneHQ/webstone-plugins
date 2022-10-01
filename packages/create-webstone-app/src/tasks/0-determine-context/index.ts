@@ -12,10 +12,14 @@ const optionDefinitons: CommandLineArgs.OptionDefinition[] = [
 ];
 
 const determineAppDirName = async (ctx: Ctx, task: WebstoneTask) => {
+  let appName = "";
   if (process.argv[2] && process.argv[2].startsWith("--")) {
-    throw new Error("Please provide a name for the project");
+    appName = ".";
   }
-  const appName = process.argv[2];
+  if (!appName) {
+    appName = process.argv[2];
+    console.warn("No app name provided, using current directory");
+  }
   ctx.appDir = appName ? appName.toLowerCase().replace(/\s/g, "-") : ".";
 
   task.output = `App directory name: ${ctx.appDir}`;
