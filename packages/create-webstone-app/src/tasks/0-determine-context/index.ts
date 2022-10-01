@@ -57,12 +57,12 @@ const getMetadata = async (ctx: Ctx, task: WebstoneTask) => {
 
 const contextTasks: ListrTask[] = [
   {
-    task: getMetadata,
-    title: "Detecting project type",
-  },
-  {
     task: determineAppDirName,
     title: "Determining app directory name",
+  },
+  {
+    task: getMetadata,
+    title: "Detecting project type",
   },
 ];
 
