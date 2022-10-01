@@ -42,6 +42,18 @@ export const copyFiles = async (ctx: Ctx) => {
       `webstone-${getAppName(ctx.appDir)}`
     )
   );
+
+  const packageJSONPath = path.join(
+    __dirname,
+    "..",
+    "template",
+    "plugin",
+    "package.json"
+  );
+  fs.copySync(
+    packageJSONPath,
+    path.join(ctx.appDir, "src", "lib", "cli", "package.json")
+  );
 };
 
 export const adjustConfigFiles = async (ctx: Ctx) => {
