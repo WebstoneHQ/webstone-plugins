@@ -11,6 +11,18 @@ const optionDefinitons: CommandLineArgs.OptionDefinition[] = [
   },
 ];
 
+const determineAppDirName = async (ctx: Ctx, task: WebstoneTask) => {
+  if (process.argv[2] && process.argv[2].startsWith("--")) {
+    throw new Error("Please provide a name for the project");
+  }
+  const appName = process.argv[2];
+  ctx.appDir = appName ? appName.toLowerCase().replace(/\s/g, "-") : ".";
+
+  task.output = `App directory name: ${ctx.appDir}`;
+  task.output = ctx.appDir;
+  return;
+};
+
 const getMetadata = async (ctx: Ctx, task: WebstoneTask) => {
   let type: "application" | "plugin";
   const optionDefinitions = CommandLineArgs(optionDefinitons, {
@@ -43,9 +55,22 @@ const getMetadata = async (ctx: Ctx, task: WebstoneTask) => {
   return { type, extendCLI };
 };
 
-export const tasks: ListrTask[] = [
+const contextTasks: ListrTask[] = [
   {
     task: getMetadata,
-    title: "Getting meta information",
+    title: "Detecting project type",
+  },
+  {
+    task: determineAppDirName,
+    title: "Determining app directory name",
+  },
+];
+
+export const tasks: ListrTask[] = [
+  {
+    title: "Determining application context",
+    task(_, task) {
+      return task.newListr(contextTasks);
+    },
   },
 ];
