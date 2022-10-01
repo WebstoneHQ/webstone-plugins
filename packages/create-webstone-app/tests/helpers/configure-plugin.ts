@@ -23,7 +23,7 @@ test("Check if tsconfig gets replaced", async () => {
 
   await copyFiles(<Ctx>fakeContext);
 
-  assert.is(fakeCopySync.callCount, 2);
+  assert.is(fakeCopySync.callCount, 3);
   assert.ok(fakeCopySync.firstCall.args[0].endsWith("tsconfig.json"));
   assert.ok(fakeCopySync.firstCall.args[1].endsWith("tsconfig.cli.json"));
 });
