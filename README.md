@@ -42,6 +42,8 @@ No matter who authors a plugin, each plugin is created with the following comman
 [npm|yarn|pnpm] create webstone-app my-plugin --type=plugin
 ```
 
+Note: If you ommit the `--type` argument, the CLI will ask whether you want to create a new app or a plugin.
+
 The following diagram illustrates the Webstoe ecosystem.
 
 <picture>
