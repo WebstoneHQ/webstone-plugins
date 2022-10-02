@@ -10,8 +10,9 @@
 		"skipLibCheck": true,
 		"sourceMap": false,
 		"strict": true,
-		"outDir": "./package/cli/",
+		"outDir": "./package/",
 		"declaration": false,
+		"rootDir": ".",
 		"noImplicitAny": false
 	},
 	"include": ["src/lib/cli/**/*"]
