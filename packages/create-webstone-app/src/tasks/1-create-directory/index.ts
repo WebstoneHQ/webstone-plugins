@@ -3,15 +3,6 @@ import { ListrTask } from "listr2/dist/index";
 
 import { Ctx, WebstoneTask } from "../../helpers";
 
-const determineAppDirName = async (ctx: Ctx, task: WebstoneTask) => {
-  const appName = process.argv[2];
-  ctx.appDir = appName ? appName.toLowerCase().replace(/\s/g, "-") : ".";
-
-  task.output = `App directory name: ${ctx.appDir}`;
-  task.output = ctx.appDir;
-  return;
-};
-
 export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
   const appDir = ctx.appDir;
 
@@ -35,22 +26,9 @@ export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
   return appDir;
 };
 
-const createAppDirTasks: ListrTask[] = [
-  {
-    task: determineAppDirName,
-    title: "Determining app directory name",
-  },
-  {
-    task: createAppDir,
-    title: "Creating app directory",
-  },
-];
-
 export const tasks: ListrTask[] = [
   {
-    task(_, task) {
-      return task.newListr(createAppDirTasks);
-    },
+    task: createAppDir,
     title: "Creating the application directory",
   },
 ];

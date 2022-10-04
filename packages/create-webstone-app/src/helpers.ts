@@ -4,6 +4,8 @@ import { ListrTaskWrapper, ListrRenderer } from "listr2/dist/index";
 
 export interface Ctx {
   appDir: string;
+  type: "application" | "plugin";
+  extendsCLI: boolean;
 }
 
 type PackageManagers = "npm" | "pnpm" | "yarn";
@@ -26,6 +28,13 @@ export const determinePackageManager = (): PackageManagers => {
     );
     return "npm";
   }
+};
+
+export const getAppName = (appDir: string) => {
+  if (appDir === ".") {
+    return process.cwd().split("/").pop();
+  }
+  return appDir;
 };
 
 export const displayWelcome = () =>

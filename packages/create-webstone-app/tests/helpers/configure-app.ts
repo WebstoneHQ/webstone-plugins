@@ -3,7 +3,7 @@ import sinon from "sinon";
 import { test } from "uvu";
 import * as assert from "uvu/assert";
 import { Ctx } from "../../src/helpers";
-import { copyReadme } from "../../src/tasks/3-configure-app";
+import { copyReadme } from "../../src/tasks/3-configure-app/application";
 
 test.after.each(() => {
   sinon.restore();
