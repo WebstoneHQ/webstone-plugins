@@ -85,6 +85,9 @@ export const configurePlugin: ListrTask[] = [
     title: "adding configuration files",
   },
   {
+    enabled(ctx: Ctx) {
+      return ctx.extendsCLI;
+    },
     task: adjustConfigFiles,
     title: "adjusting configuration files",
   },
