@@ -29,7 +29,8 @@ export const copyFiles = async (ctx: Ctx) => {
     "plugin",
     "tsconfig.json"
   );
-  // const cliPath = path.join(__dirname, "..", "template", "plugin", "cli");
+
+  const cliPath = path.join(ctx.appDir, "src", "lib", "cli");
   fs.copySync(tsconfigPath, `${ctx.appDir}/tsconfig.cli.json`);
 
   const appDirectoryName = getAppName(ctx.appDir)?.startsWith("webstone-")
@@ -38,31 +39,13 @@ export const copyFiles = async (ctx: Ctx) => {
 
   fs.copySync(
     path.join(__dirname, "..", "template", "plugin", "command.ts"),
-    path.join(
-      ctx.appDir,
-      "src",
-      "lib",
-      "cli",
-      "commands",
-      appDirectoryName,
-      "command.ts"
-    ),
+    path.join(cliPath, "commands", appDirectoryName, "command.ts"),
     { recursive: true }
   );
   fs.copySync(
     path.join(__dirname, "..", "template", "plugin", "extension.ts"),
-    path.join(
-      ctx.appDir,
-      "src",
-      "lib",
-      "cli",
-      "extensions",
-      appDirectoryName,
-      "extension.ts"
-    ),
-    {
-      recursive: true,
-    }
+    path.join(cliPath, "extensions", appDirectoryName, "extension.ts"),
+    { recursive: true }
   );
 
   const packageJSONPath = path.join(
