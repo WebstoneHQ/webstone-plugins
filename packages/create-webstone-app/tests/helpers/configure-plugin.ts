@@ -17,17 +17,13 @@ test("Check if tsconfig gets replaced", async () => {
   const fakeCopySync = sinon.fake();
   sinon.replace(fs, "copySync", fakeCopySync);
 
-  const fakemkdirSync = sinon.fake();
-
   const fakeContext: Partial<Ctx> = {
     appDir: "test-app",
   };
 
-  sinon.replace(fs, "mkdirSync", fakemkdirSync);
-
   await copyFiles(<Ctx>fakeContext);
 
-  assert.is(fakeCopySync.callCount, 5);
+  assert.is(fakeCopySync.callCount, 4);
   assert.ok(fakeCopySync.firstCall.args[0].endsWith("tsconfig.json"));
   assert.ok(fakeCopySync.firstCall.args[1].endsWith("tsconfig.cli.json"));
 });
