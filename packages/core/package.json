@@ -26,6 +26,7 @@
   "author": "Mike Nikles, @mikenikles",
   "license": "MIT",
   "dependencies": {
+    "@loancrate/prisma-schema-parser": "^2.0.0",
     "@webstone/cli": "workspace:*"
   },
   "devDependencies": {
