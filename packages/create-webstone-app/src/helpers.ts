@@ -32,7 +32,7 @@ export const determinePackageManager = (): PackageManagers => {
 
 export const getAppName = (appDir: string) => {
   if (appDir === ".") {
-    return process.cwd().split("/").pop();
+    return process.cwd().split("/").pop() || "webstone-app";
   }
   return appDir;
 };
