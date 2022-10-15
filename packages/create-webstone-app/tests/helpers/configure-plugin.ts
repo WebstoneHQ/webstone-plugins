@@ -23,9 +23,15 @@ test("Check if tsconfig gets replaced", async () => {
 
   await copyFiles(<Ctx>fakeContext);
 
-  assert.is(fakeCopySync.callCount, 3);
+  assert.is(fakeCopySync.callCount, 4);
   assert.ok(fakeCopySync.firstCall.args[0].endsWith("tsconfig.json"));
   assert.ok(fakeCopySync.firstCall.args[1].endsWith("tsconfig.cli.json"));
+  assert.ok(fakeCopySync.secondCall.args[0].endsWith("command.ts"));
+  assert.ok(fakeCopySync.secondCall.args[1].endsWith("command.ts"));
+  assert.ok(fakeCopySync.thirdCall.args[0].endsWith("extension.ts"));
+  assert.ok(fakeCopySync.thirdCall.args[1].endsWith("extension.ts"));
+  assert.ok(fakeCopySync.getCall(3).args[0].endsWith("package.json"));
+  assert.ok(fakeCopySync.getCall(3).args[1].endsWith("package.json"));
 });
 
 test("Check if package.json & tsconfig are modified", async () => {
