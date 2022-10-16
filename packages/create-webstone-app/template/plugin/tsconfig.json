@@ -12,8 +12,8 @@
 		"strict": true,
 		"outDir": "./package/",
 		"declaration": false,
-		"rootDir": ".",
+		"rootDir": "./src/lib",
 		"noImplicitAny": false
 	},
-	"include": ["src/lib/cli/**/*"]
+	"include": ["./src/lib/cli/**/*.ts"]
 }
