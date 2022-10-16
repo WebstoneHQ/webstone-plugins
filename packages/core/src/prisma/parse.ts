@@ -1,15 +1,24 @@
 import { readFileSync } from "fs";
-import {
-  parsePrismaSchema as schemaParser,
-  PrismaSchema,
-} from "@loancrate/prisma-schema-parser";
+import { parsePrismaSchema as schemaParser } from "@loancrate/prisma-schema-parser";
 
-export const parsePrismaSchema = (schemaPath: string) => {
-  const file = readFileSync(schemaPath, { encoding: "utf-8" });
-  return schemaParser(file);
+export type getModelFromSchemaOptions = {
+  schemaPath?: string;
 };
 
-export const getModelFromSchema = (schema: PrismaSchema, modelName: string) => {
+const getModelFromSchemaDefaults: getModelFromSchemaOptions = {
+  schemaPath: "prisma/schema.prisma",
+};
+
+export const getModelFromSchema = (
+  modelName: string,
+  options?: getModelFromSchemaOptions
+) => {
+  const resolvedOptions = {
+    ...getModelFromSchemaDefaults,
+    ...options,
+  };
+  const file = readFileSync(resolvedOptions.schemaPath, { encoding: "utf-8" });
+  const schema = schemaParser(file);
   const model = schema.declarations.find(
     (schema) => schema.kind === "model" && schema.name.value === modelName
   );
