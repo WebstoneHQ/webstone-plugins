@@ -1,11 +1,24 @@
 {
   "name": "@webstone/core",
   "version": "0.0.21",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "./dist"
+  ],
   "scripts": {
     "build": "pnpm clean && pnpm compile",
     "clean": "rm -rf ./dist",
-    "compile": "tsc -p .",
-    "dev": "tsc -w",
+    "compile": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "dev": "npm run compile -- --watch src",
     "test": "pnpm test:unit",
     "test:unit": "c8 --all --include=src --reporter=html pnpm test:unit:only",
     "test:unit:only": "NODE_OPTIONS='--loader tsx' uvu tests"
@@ -14,5 +27,8 @@
   "license": "MIT",
   "dependencies": {
     "@webstone/cli": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^6.2.3"
   }
 }
