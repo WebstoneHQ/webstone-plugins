@@ -29,6 +29,6 @@ export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
 export const tasks: ListrTask[] = [
   {
     task: createAppDir,
-    title: "Creating the application directory",
+    title: "Creating the directory",
   },
 ];

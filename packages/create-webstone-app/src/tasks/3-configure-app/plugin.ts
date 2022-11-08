@@ -83,16 +83,10 @@ export const adjustConfigFiles = async (ctx: Ctx) => {
 
 export const configurePlugin: ListrTask[] = [
   {
-    enabled(ctx: Ctx) {
-      return ctx.extendsCLI;
-    },
     task: copyFiles,
     title: "adding configuration files",
   },
   {
-    enabled(ctx: Ctx) {
-      return ctx.extendsCLI;
-    },
     task: adjustConfigFiles,
     title: "adjusting configuration files",
   },
