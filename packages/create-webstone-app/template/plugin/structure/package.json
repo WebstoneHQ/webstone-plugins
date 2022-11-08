@@ -1,0 +1,24 @@
+{
+  "name": "webstone-reference-plugin",
+  "version": "0.0.1",
+  "description": "Reference Plugin for webstone",
+  "scripts": {
+    "build": "pnpm --recursive --parallel build",
+    "changeset": "changeset && pnpm install",
+    "clean": "pnpm --recursive --parallel clean",
+    "dev": "pnpm --recursive --parallel dev",
+    "format": "pnpm --recursive format",
+    "preinstall": "npx only-allow pnpm",
+    "release": "changeset publish"
+  },
+  "keywords": [
+    "webstone",
+    "plugin"
+  ],
+  "author": "Cahllagerfeld",
+  "license": "MIT",
+  "devDependencies": {
+    "@changesets/cli": "^2.25.2",
+    "rimraf": "^3.0.2"
+  }
+}
