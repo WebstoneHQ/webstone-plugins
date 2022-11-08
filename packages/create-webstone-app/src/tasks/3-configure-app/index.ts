@@ -1,7 +1,7 @@
 import { ListrTask } from "listr2";
 import { Ctx } from "../../helpers";
 import { configureApp } from "./application";
-// import { configurePlugin } from "./plugin";
+import { configurePlugin } from "./plugin";
 
 export const configureTasks: ListrTask[] = [
   {
@@ -13,13 +13,13 @@ export const configureTasks: ListrTask[] = [
     },
     title: "Configuring your Webstone application",
   },
-  // {
-  //   enabled(ctx: Ctx) {
-  //     return ctx.type === "plugin";
-  //   },
-  //   task(_, task) {
-  //     return task.newListr(configurePlugin);
-  //   },
-  //   title: "Configuring your Webstone plugin",
-  // },
+  {
+    enabled(ctx: Ctx) {
+      return ctx.type === "plugin";
+    },
+    task(_, task) {
+      return task.newListr(configurePlugin);
+    },
+    title: "Configuring your Webstone plugin",
+  },
 ];

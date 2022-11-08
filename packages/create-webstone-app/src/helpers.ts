@@ -29,9 +29,11 @@ export const determinePackageManager = (): PackageManagers => {
   }
 };
 
-export const getAppName = (appDir: string) => {
+export const getAppName = (appDir: string, isPlugin = false) => {
   if (appDir === ".") {
-    return process.cwd().split("/").pop() || "webstone-app";
+    return process.cwd().split("/").pop() || isPlugin
+      ? "webstone-plugin"
+      : "webstone-app";
   }
   return appDir;
 };

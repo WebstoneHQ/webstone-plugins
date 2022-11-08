@@ -56,16 +56,8 @@ const getMetadata = async (ctx: Ctx, task: WebstoneTask) => {
     });
   }
 
-  let extendCLI = false;
-  if (type === "plugin") {
-    extendCLI = await task.prompt({
-      type: "Confirm",
-      message: "Do you want to extend the CLI",
-      initial: false,
-    });
-  }
   ctx.type = type;
-  return { type, extendCLI };
+  return { type };
 };
 
 const contextTasks: ListrTask[] = [
