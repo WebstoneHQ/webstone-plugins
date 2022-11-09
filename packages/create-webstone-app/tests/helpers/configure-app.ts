@@ -15,6 +15,7 @@ test("Check if Readme gets replaced", async () => {
 
   const fakeContext: Ctx = {
     appDir: "test-app",
+    type: "application",
   };
 
   await copyReadme(fakeContext);
