@@ -1,5 +1,5 @@
 {
-	"name": "webstone-plugin-cli-rest",
+	"name": "webstone-plugin-cli-template",
 	"version": "0.0.1",
 	"description": "",
 	"scripts": {
@@ -14,7 +14,7 @@
 	"keywords": [
 		"webstone",
 		"plugin",
-		"reference"
+		"template"
 	],
 	"watch": {
 		"copy-templates": {

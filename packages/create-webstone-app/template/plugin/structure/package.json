@@ -1,7 +1,7 @@
 {
-	"name": "webstone-reference-plugin",
+	"name": "webstone-template-plugin",
 	"version": "0.0.1",
-	"description": "Reference Plugin for webstone",
+	"description": "Template Plugin for Webstone - PLEASE UPDATE THIS",
 	"scripts": {
 		"build": "pnpm --recursive --parallel build",
 		"changeset": "changeset && pnpm install",

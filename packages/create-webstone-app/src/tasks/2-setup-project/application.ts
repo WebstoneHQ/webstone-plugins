@@ -1,4 +1,4 @@
-//@ts-ignore this package doesn't provdide a declaration file
+//@ts-ignore this package doesn't provide a declaration file
 import { create } from "create-svelte";
 import { Ctx, getAppName } from "../../helpers";
 
