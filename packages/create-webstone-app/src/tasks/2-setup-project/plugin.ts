@@ -16,7 +16,7 @@ export const copyTemplate = (ctx: Ctx) => {
   );
 };
 
-export const renameChildPackage = (ctx: Ctx) => {
+export const renameCliPackage = (ctx: Ctx) => {
   const cliPackageJson = fs.readJSONSync(
     path.join(ctx.appDir, "packages", "cli", "package.json")
   );
@@ -39,11 +39,11 @@ export const renameMainPackage = (ctx: Ctx) => {
 };
 
 export const renamePackages = async (ctx: Ctx) => {
-  renameChildPackage(ctx);
+  renameCliPackage(ctx);
   renameMainPackage(ctx);
 };
 
-export const createCLINamespace = (ctx: Ctx) => {
+export const createCliNamespace = (ctx: Ctx) => {
   fs.renameSync(
     path.join(ctx.appDir, "packages", "cli", "src", "commands", "placeholder"),
     path.join(
@@ -76,10 +76,10 @@ export const configurePlugin: ListrTask[] = [
   },
   {
     task: renamePackages,
-    title: "setting package names",
+    title: "Setting package names",
   },
   {
-    task: createCLINamespace,
+    task: createCliNamespace,
     title: "Creating CLI Namespace",
   },
   {
