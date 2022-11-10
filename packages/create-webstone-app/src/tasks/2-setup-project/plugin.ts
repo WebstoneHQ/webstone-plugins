@@ -38,9 +38,18 @@ export const renameMainPackage = (ctx: Ctx) => {
   });
 };
 
+export const setPrivateTrue = (ctx: Ctx) => {
+  const packageJson = fs.readJSONSync(path.join(ctx.appDir, "package.json"));
+  packageJson.private = true;
+  fs.writeJSONSync(path.join(ctx.appDir, "package.json"), packageJson, {
+    spaces: "\t",
+  });
+};
+
 export const renamePackages = async (ctx: Ctx) => {
   renameCliPackage(ctx);
   renameMainPackage(ctx);
+  setPrivateTrue(ctx);
 };
 
 export const createCliNamespace = (ctx: Ctx) => {
