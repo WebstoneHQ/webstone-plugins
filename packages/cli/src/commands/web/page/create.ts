@@ -1,5 +1,7 @@
 import { GluegunCommand } from "@webstone/gluegun";
 
+export type PageType = "page" | "pageLoad" | "pageServer";
+
 const command: GluegunCommand = {
   alias: ["c"],
   description: "Create a new web page",
@@ -14,6 +16,30 @@ const command: GluegunCommand = {
         message: `What's the page name?`,
       });
       if (result && result.name) name = result.name;
+    }
+
+    const types = await prompt.ask({
+      type: "multiselect",
+      name: "types",
+      message: "What types of page do you want to create?",
+      choices: [
+        { name: "page", message: "Page" },
+        { name: "pageLoad", message: "Page Load" },
+        { name: "pageServer", message: "Page Server" },
+      ],
+    });
+
+    const ejsMap = {
+      page: "page.ejs",
+      pageLoad: "page-load.ejs",
+      pageServer: "page-server.ejs",
+    };
+
+    console.log(ejsMap);
+
+    if (types.types.length < 1) {
+      print.error("You must select at least one type of page to create");
+      return;
     }
 
     if (!name) {
