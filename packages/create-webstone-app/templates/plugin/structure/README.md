@@ -19,7 +19,7 @@ In many cases, you want to create a Webstone plugin to provide UI components to 
 
 ## Development
 
-Please make sure have [pnpm](https://pnpm.io/) installed:
+Please make sure you have [pnpm](https://pnpm.io/) installed:
 
 ```
 npm i -g pnpm
