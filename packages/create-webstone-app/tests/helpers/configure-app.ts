@@ -22,6 +22,8 @@ test("Check if Readme gets replaced", async () => {
 
   assert.is(fakeCopySync.callCount, 1);
   assert.ok(
-    (fakeCopySync.firstCall.args[0] as string).includes("template/README.md")
+    (fakeCopySync.firstCall.args[0] as string).includes(
+      "templates/application/README.md"
+    )
   );
 });

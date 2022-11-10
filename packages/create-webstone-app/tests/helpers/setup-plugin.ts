@@ -27,7 +27,7 @@ test("Check if the plugin template gets copied properly", async () => {
   assert.is(fakeCopySync.callCount, 1);
   assert.ok(
     (fakeCopySync.firstCall.args[0] as string).includes(
-      "template/plugin/structure"
+      "templates/plugin/structure"
     )
   );
 });

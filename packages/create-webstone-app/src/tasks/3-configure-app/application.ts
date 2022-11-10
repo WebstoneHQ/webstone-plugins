@@ -21,7 +21,13 @@ export const installCLI = async (ctx: Ctx) => {
 };
 
 export const copyReadme = async (ctx: Ctx) => {
-  const templateDir = path.join(__dirname, "..", "template", "README.md");
+  const templateDir = path.join(
+    __dirname,
+    "..",
+    "templates",
+    "application",
+    "README.md"
+  );
   fs.copySync(templateDir, `${ctx.appDir}/README.md`);
 };
 

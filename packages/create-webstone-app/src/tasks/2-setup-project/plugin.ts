@@ -11,7 +11,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export const copyTemplate = (ctx: Ctx) => {
   const appDir = ctx.appDir;
   fs.copySync(
-    path.join(__dirname, "..", "template", "plugin", "structure"),
+    path.join(__dirname, "..", "templates", "plugin", "structure"),
     appDir
   );
 };
