@@ -27,7 +27,16 @@ const command: GluegunCommand = {
       type: "multiselect",
       name: "types",
       message: "What types of page do you want to create?",
-      choices: ["+page.svelte", "+page.ts", "+page.server.ts"],
+      choices: [
+        "+page.svelte",
+        "+page.ts",
+        "+page.server.ts",
+        "+layout.svelte",
+        "+layout.ts",
+        "+layout.server.ts",
+        "+server.ts",
+        "+error.svelte",
+      ],
     })) as {
       types: string[];
     };
@@ -42,7 +51,7 @@ const command: GluegunCommand = {
       const target = `src/routes/${directoryName}/${type}`;
       const spinner = print.spin(`Creating file "${target}"...`);
       await template.generate({
-        template: `web/page/create/${type}.ejs`,
+        template: `web/route/create/${type}.ejs`,
         target,
         props: {
           name,
