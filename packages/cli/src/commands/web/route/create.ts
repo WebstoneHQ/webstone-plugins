@@ -1,7 +1,5 @@
 import { GluegunCommand } from "@webstone/gluegun";
 
-export type PageType = "page" | "pageLoad" | "pageServer";
-
 const command: GluegunCommand = {
   alias: ["c"],
   description: "Create a new web page",
