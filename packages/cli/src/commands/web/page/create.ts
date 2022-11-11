@@ -18,47 +18,38 @@ const command: GluegunCommand = {
       if (result && result.name) name = result.name;
     }
 
-    const types = await prompt.ask({
-      type: "multiselect",
-      name: "types",
-      message: "What types of page do you want to create?",
-      choices: [
-        { name: "page", message: "Page" },
-        { name: "pageLoad", message: "Page Load" },
-        { name: "pageServer", message: "Page Server" },
-      ],
-    });
-
-    const ejsMap = {
-      page: "page.ejs",
-      pageLoad: "page-load.ejs",
-      pageServer: "page-server.ejs",
-    };
-
-    console.log(ejsMap);
-
-    if (types.types.length < 1) {
-      print.error("You must select at least one type of page to create");
-      return;
-    }
-
     if (!name) {
       print.error("Please provide a page name.");
       return;
     }
 
-    const filename = strings.kebabCase(name);
-    const target = `src/routes/${filename}/+page.svelte`;
-    const spinner = print.spin(`Creating page "${target}"...`);
+    const typesPrompt = (await prompt.ask({
+      type: "multiselect",
+      name: "types",
+      message: "What types of page do you want to create?",
+      choices: ["+page.svelte", "+page.ts", "+page.server.ts"],
+    })) as {
+      types: string[];
+    };
 
-    await template.generate({
-      template: "web/page/create/new-page.ejs",
-      target,
-      props: {
-        name,
-      },
-    });
-    spinner.succeed(`Page created at: ${target}`);
+    if (typesPrompt.types.length < 1) {
+      print.error("You must select at least one type of page to create");
+      return;
+    }
+
+    for (const type of typesPrompt.types) {
+      const directoryName = strings.kebabCase(name || "");
+      const target = `src/routes/${directoryName}/${type}`;
+      const spinner = print.spin(`Creating file "${target}"...`);
+      await template.generate({
+        template: `web/page/create/${type}.ejs`,
+        target,
+        props: {
+          name,
+        },
+      });
+      spinner.succeed(`File created at: ${target}`);
+    }
   },
 };
 
