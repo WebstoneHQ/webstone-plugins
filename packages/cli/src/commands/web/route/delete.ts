@@ -1,4 +1,8 @@
-import { GluegunCommand } from "@webstone/gluegun";
+import {
+  GluegunCommand,
+  GluegunFilesystem,
+  GluegunPrint,
+} from "@webstone/gluegun";
 
 const command: GluegunCommand = {
   alias: ["d"],
@@ -26,11 +30,7 @@ const command: GluegunCommand = {
     const existingFiles = filesystem.list(`src/routes/${name}`);
 
     if (!existingFiles || existingFiles.length < 1) {
-      print.newline();
-      const target = `src/routes/${filename}`;
-      const spinner = print.spin(`Removing route "${target}"...`);
-      filesystem.remove(target);
-      spinner.succeed(`Route deleted at: ${target}`);
+      deleteAll(filename, print, filesystem);
       return;
     }
 
@@ -44,11 +44,7 @@ const command: GluegunCommand = {
     };
 
     if (filesPrompt.files.length == existingFiles.length) {
-      print.newline();
-      const target = `src/routes/${filename}`;
-      const spinner = print.spin(`Removing route "${target}"...`);
-      filesystem.remove(target);
-      spinner.succeed(`Route deleted at: ${target}`);
+      deleteAll(filename, print, filesystem);
       return;
     }
 
@@ -63,3 +59,16 @@ const command: GluegunCommand = {
 };
 
 module.exports = command;
+
+function deleteAll(
+  filename: string,
+  print: GluegunPrint,
+  filesystem: GluegunFilesystem
+) {
+  print.newline();
+  const target = `src/routes/${filename}`;
+  const spinner = print.spin(`Removing route "${target}"...`);
+  filesystem.remove(target);
+  spinner.succeed(`Route deleted at: ${target}`);
+  return;
+}
