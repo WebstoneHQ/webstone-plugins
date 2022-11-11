@@ -22,10 +22,43 @@ const command: GluegunCommand = {
     }
 
     const filename = strings.kebabCase(name);
-    const target = `src/routes/${filename}`;
-    const spinner = print.spin(`Removing route "${target}"...`);
-    filesystem.remove(target);
-    spinner.succeed(`Route deleted at: ${target}`);
+
+    const existingFiles = filesystem.list(`src/routes/${name}`);
+
+    if (!existingFiles || existingFiles.length < 1) {
+      print.newline();
+      const target = `src/routes/${filename}`;
+      const spinner = print.spin(`Removing route "${target}"...`);
+      filesystem.remove(target);
+      spinner.succeed(`Route deleted at: ${target}`);
+      return;
+    }
+
+    const filesPrompt = (await prompt.ask({
+      type: "multiselect",
+      name: "files",
+      message: "What files do you want to delete?",
+      choices: existingFiles,
+    })) as {
+      files: string[];
+    };
+
+    if (filesPrompt.files.length == existingFiles.length) {
+      print.newline();
+      const target = `src/routes/${filename}`;
+      const spinner = print.spin(`Removing route "${target}"...`);
+      filesystem.remove(target);
+      spinner.succeed(`Route deleted at: ${target}`);
+      return;
+    }
+
+    for (const file of filesPrompt.files) {
+      print.newline();
+      const target = `src/routes/${filename}/${file}`;
+      const spinner = print.spin(`Removing file "${target}"...`);
+      filesystem.remove(target);
+      spinner.succeed(`File deleted at: ${target}`);
+    }
   },
 };
 
