@@ -1,0 +1,38 @@
+{
+	"name": "webstone-plugin-cli-template",
+	"version": "0.0.1",
+	"description": "",
+	"private": true,
+	"scripts": {
+		"clean": "rimraf build",
+		"copy-templates": "copyfiles ./src/templates/* ./build/templates",
+		"format": "prettier --plugin-search-dir . --write .",
+		"build": "tsc -p tsconfig.json",
+		"dev": "pnpm clean && pnpm copy-templates && run-p dev:watch-src dev:watch-templates",
+		"dev:watch-src": "tsc -p tsconfig.json --watch",
+		"dev:watch-templates": "npm-watch copy-templates"
+	},
+	"keywords": [
+		"webstone",
+		"plugin",
+		"template"
+	],
+	"watch": {
+		"copy-templates": {
+			"patterns": [
+				"src/templates"
+			],
+			"extensions": "ejs"
+		}
+	},
+	"author": "Cahllagerfeld",
+	"license": "MIT",
+	"devDependencies": {
+		"copyfiles": "^2.4.1",
+		"gluegun": "^5.1.2",
+		"npm-run-all": "^4.1.5",
+		"npm-watch": "^0.11.0",
+		"prettier": "^2.6.2",
+		"typescript": "^4.7.4"
+	}
+}

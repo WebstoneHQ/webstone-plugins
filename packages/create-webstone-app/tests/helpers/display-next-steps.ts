@@ -5,6 +5,7 @@ import { Ctx, displayNextSteps } from "../../src/helpers";
 
 const context: Ctx = {
   appDir: "test-dir",
+  type: "application",
 };
 
 test.after(() => {

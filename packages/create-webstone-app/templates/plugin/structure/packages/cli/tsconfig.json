@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"target": "ES6",
+		"outDir": "./build",
+		"module": "commonjs",
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"skipLibCheck": true,
+		"declaration": true,
+		"moduleResolution": "Node",
+		"rootDir": "src",
+		"declarationDir": "./build/types"
+	},
+	"include": ["src/**/*.ts"],
+	"exclude": ["src/fixtures", "src/**/*.test.ts"]
+}

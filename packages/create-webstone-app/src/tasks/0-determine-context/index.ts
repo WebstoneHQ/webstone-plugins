@@ -1,5 +1,6 @@
 import { ListrTask } from "listr2/dist/index";
 import CommandLineArgs from "command-line-args";
+import { execa } from "execa";
 
 import { Ctx, WebstoneTask } from "../../helpers";
 
@@ -27,6 +28,15 @@ const determineAppDirName = async (ctx: Ctx, task: WebstoneTask) => {
   return;
 };
 
+const checkPnpm = async () => {
+  const pnpmVersion = await execa("pnpm", ["-v"]);
+  if (pnpmVersion.failed) {
+    throw new Error(
+      "pnpm is not installed, please install it first (npm i -g pnpm)"
+    );
+  }
+};
+
 const getMetadata = async (ctx: Ctx, task: WebstoneTask) => {
   let type: "application" | "plugin";
   const optionDefinitions = CommandLineArgs(optionDefinitons, {
@@ -46,17 +56,8 @@ const getMetadata = async (ctx: Ctx, task: WebstoneTask) => {
     });
   }
 
-  let extendCLI = false;
-  if (type === "plugin") {
-    extendCLI = await task.prompt({
-      type: "Confirm",
-      message: "Do you want to extend the CLI",
-      initial: false,
-    });
-  }
-  ctx.extendsCLI = extendCLI;
   ctx.type = type;
-  return { type, extendCLI };
+  return { type };
 };
 
 const contextTasks: ListrTask[] = [
@@ -67,6 +68,11 @@ const contextTasks: ListrTask[] = [
   {
     task: getMetadata,
     title: "Detecting project type",
+  },
+  {
+    task: checkPnpm,
+    title: "Checking for pnpm",
+    enabled: (ctx: Ctx) => ctx.type === "plugin",
   },
 ];
 

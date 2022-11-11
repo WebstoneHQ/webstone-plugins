@@ -19,6 +19,7 @@ test("app dir does not exist, no app dir provided", async () => {
   };
 
   const fakeContext: Ctx = {
+    type: "application",
     appDir: ".",
   };
 
@@ -52,6 +53,7 @@ test("app dir does not exist, app dir with space", async () => {
   };
 
   const fakeContext: Ctx = {
+    type: "application",
     appDir: "test-app",
   };
   const fakeFsExistsSync = sinon.fake.returns(false);
@@ -95,6 +97,7 @@ test("app dir exists and is empty", async () => {
   };
 
   const fakeContext: Ctx = {
+    type: "application",
     appDir: "test-app",
   };
 
@@ -122,6 +125,7 @@ test("app dir exists and is not empty, continue?", async () => {
   };
 
   const fakeContext: Ctx = {
+    type: "application",
     appDir: "test-app",
   };
   const fakeFsExistsSync = sinon.fake.returns(true);
@@ -154,6 +158,7 @@ test("app dir exists and is not empty, do not continue", async () => {
   };
 
   const fakeContext: Ctx = {
+    type: "application",
     appDir: "test-app",
   };
   const fakeFsExistsSync = sinon.fake.returns(true);

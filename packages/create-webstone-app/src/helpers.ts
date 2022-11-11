@@ -5,7 +5,6 @@ import { ListrTaskWrapper, ListrRenderer } from "listr2/dist/index";
 export interface Ctx {
   appDir: string;
   type: "application" | "plugin";
-  extendsCLI: boolean;
 }
 
 type PackageManagers = "npm" | "pnpm" | "yarn";
@@ -30,9 +29,11 @@ export const determinePackageManager = (): PackageManagers => {
   }
 };
 
-export const getAppName = (appDir: string) => {
+export const getAppName = (appDir: string, isPlugin = false) => {
   if (appDir === ".") {
-    return process.cwd().split("/").pop() || "webstone-app";
+    return process.cwd().split("/").pop() || isPlugin
+      ? "webstone-plugin"
+      : "webstone-app";
   }
   return appDir;
 };

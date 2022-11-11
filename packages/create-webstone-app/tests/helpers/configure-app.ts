@@ -15,12 +15,15 @@ test("Check if Readme gets replaced", async () => {
 
   const fakeContext: Ctx = {
     appDir: "test-app",
+    type: "application",
   };
 
   await copyReadme(fakeContext);
 
   assert.is(fakeCopySync.callCount, 1);
   assert.ok(
-    (fakeCopySync.firstCall.args[0] as string).includes("template/README.md")
+    (fakeCopySync.firstCall.args[0] as string).includes(
+      "templates/application/README.md"
+    )
   );
 });

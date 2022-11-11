@@ -1,0 +1,8 @@
+.pnpm-debug.log
+coverage
+node_modules
+package-lock.json
+yarn.lock
+packages/**/dist
+packages/**/build
+tests/e2e/test-results
