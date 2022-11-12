@@ -11,6 +11,7 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   root: true,
   rules: {
+    "require-yield": "off",
     "@typescript-eslint/ban-ts-comment": [
       "error",
       {
