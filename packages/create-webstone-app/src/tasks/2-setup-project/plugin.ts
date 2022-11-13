@@ -55,6 +55,24 @@ export const createCliNamespace = (ctx: Ctx) => {
       getAppName(ctx.appDir)
     )
   );
+  fs.renameSync(
+    path.join(
+      ctx.appDir,
+      "packages",
+      "cli",
+      "src",
+      "extensions",
+      "placeholder"
+    ),
+    path.join(
+      ctx.appDir,
+      "packages",
+      "cli",
+      "src",
+      "extensions",
+      getAppName(ctx.appDir)
+    )
+  );
 };
 
 const setWebPackagePrivateTrue = (ctx: Ctx) => {
