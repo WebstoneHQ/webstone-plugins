@@ -4,7 +4,8 @@ const command: GluegunCommand = {
   alias: ["c"],
   description: "Create a new web page",
   run: async (toolbox) => {
-    const { parameters, print, prompt, strings, template } = toolbox;
+    const { parameters, print, prompt, strings, template, filesystem } =
+      toolbox;
 
     let name = parameters.first;
     if (!name) {
@@ -21,20 +22,31 @@ const command: GluegunCommand = {
       return;
     }
 
+    const directoryName = strings.kebabCase(name || "");
+
+    // huge thank you to the Svelte language tools repo! https://github.com/sveltejs/language-tools/tree/master/packages/svelte-vscode/src/sveltekit/generateFiles/templates
+    const allChoices = [
+      "+page.svelte",
+      "+page.ts",
+      "+page.server.ts",
+      "+layout.svelte",
+      "+layout.ts",
+      "+layout.server.ts",
+      "+server.ts",
+      "+error.svelte",
+    ];
+
+    const existingFiles = filesystem.list(`src/routes/${directoryName}`);
+
+    const choices = allChoices.filter((choice) => {
+      return !existingFiles?.includes(choice);
+    });
+
     const typesPrompt = (await prompt.ask({
       type: "multiselect",
       name: "types",
       message: "What types of page do you want to create?",
-      choices: [
-        "+page.svelte",
-        "+page.ts",
-        "+page.server.ts",
-        "+layout.svelte",
-        "+layout.ts",
-        "+layout.server.ts",
-        "+server.ts",
-        "+error.svelte",
-      ],
+      choices: choices,
     })) as {
       types: string[];
     };
@@ -45,9 +57,14 @@ const command: GluegunCommand = {
     }
 
     for (const type of typesPrompt.types) {
-      const directoryName = strings.kebabCase(name || "");
       const target = `src/routes/${directoryName}/${type}`;
       const spinner = print.spin(`Creating file "${target}"...`);
+
+      if (existingFiles?.includes(type)) {
+        spinner.fail(`File "${target}" already exists, skipping...`);
+        continue;
+      }
+
       await template.generate({
         template: `web/route/create/${type}.ejs`,
         target,
