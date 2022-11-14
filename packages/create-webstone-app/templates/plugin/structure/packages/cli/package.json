@@ -7,7 +7,8 @@
 		"clean": "rimraf build",
 		"copy-templates": "copyfiles ./src/templates/* ./build/templates",
 		"format": "prettier --plugin-search-dir . --write .",
-		"build": "tsc -p tsconfig.json",
+		"build": "npm run clean && run-s build:cli copy-templates",
+		"build:cli": "tsc -p tsconfig.json",
 		"dev": "pnpm clean && pnpm copy-templates && run-p dev:watch-src dev:watch-templates",
 		"dev:watch-src": "tsc -p tsconfig.json --watch",
 		"dev:watch-templates": "npm-watch copy-templates"
