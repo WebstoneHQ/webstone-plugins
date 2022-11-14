@@ -3,4 +3,5 @@ coverage
 node_modules
 package-lock.json
 packages/**/dist
+packages/**/build
 tests/e2e/test-results

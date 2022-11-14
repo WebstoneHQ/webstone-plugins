@@ -1,0 +1,49 @@
+{
+	"name": "webstone-plugin-cli-core",
+	"version": "0.0.1",
+	"description": "",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"private": true,
+	"files": [
+		"build",
+		"dist"
+	],
+	"scripts": {
+		"clean": "rimraf build dist",
+		"copy-templates": "copyfiles ./src/templates/* ./build/templates",
+		"format": "prettier --plugin-search-dir . --write .",
+		"build": "npm run clean && run-p build:cli build:lib copy-templates",
+		"build:lib": "tsup src/lib/index.ts --format cjs --dts --clean  --minify",
+		"build:cli": "tsc -p tsconfig.json",
+		"dev": "pnpm clean && pnpm copy-templates && run-p dev:watch-src dev:watch-templates dev:lib",
+		"dev:watch-src": "tsc -p tsconfig.json --watch",
+		"dev:watch-templates": "npm-watch copy-templates",
+		"dev:lib": "npm run build:lib -- --watch src/lib"
+	},
+	"keywords": [
+		"webstone",
+		"plugin",
+		"template"
+	],
+	"watch": {
+		"copy-templates": {
+			"patterns": [
+				"src/templates"
+			],
+			"extensions": "ejs"
+		}
+	},
+	"author": "Cahllagerfeld",
+	"license": "MIT",
+	"devDependencies": {
+		"copyfiles": "^2.4.1",
+		"gluegun": "^5.1.2",
+		"npm-run-all": "^4.1.5",
+		"npm-watch": "^0.11.0",
+		"prettier": "^2.6.2",
+		"rimraf": "^3.0.2",
+		"tsup": "^6.2.3",
+		"typescript": "^4.7.4"
+	}
+}
