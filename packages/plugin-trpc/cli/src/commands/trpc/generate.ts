@@ -4,7 +4,7 @@ import { getPrismaModelByName } from '../../lib/generate';
 const command: GluegunCommand = {
 	name: 'generate',
 	alias: ['g'],
-	description: 'Generate TRPC model',
+	description: 'Generate tRPC model',
 	hidden: false,
 	dashed: false,
 	run: async (toolbox) => {

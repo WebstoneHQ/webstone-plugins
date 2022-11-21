@@ -3,7 +3,7 @@ import { GluegunCommand } from '@webstone/gluegun';
 const command: GluegunCommand = {
 	name: 'init',
 	alias: ['i'],
-	description: 'Initialize TRPC',
+	description: 'Initialize webstone tRPC',
 	hidden: false,
 	dashed: false,
 	run: async (toolbox) => {
@@ -11,10 +11,19 @@ const command: GluegunCommand = {
 
 		const containsTrpc = filesystem.isDirectory(`${process.cwd()}/src/lib/server/trpc`);
 		if (containsTrpc) {
-			print.error('TRPC seems to be already initialized');
+			print.warning('tRPC seems to be already initialized, skipping...');
+			return;
 		}
 
-		const spinner = print.spin('Initializing TRPC...');
+		const isWebPackageInstalled = filesystem.exists(
+			`${process.cwd()}/node_modules/webstone-plugin-web-trpc`
+		);
+		if (!isWebPackageInstalled) {
+			print.error('Webstone tRPC Web package is not installed');
+			return;
+		}
+
+		const spinner = print.spin('Initializing tRPC...');
 		await template.generate({
 			template: 'base/router.ts.ejs',
 			target: 'src/lib/server/trpc/router.ts'
@@ -24,7 +33,7 @@ const command: GluegunCommand = {
 			target: 'src/lib/server/trpc/trpc.ts'
 		});
 
-		spinner.succeed('TRPC initialized');
+		spinner.succeed('tRPC initialized');
 	}
 };
 
