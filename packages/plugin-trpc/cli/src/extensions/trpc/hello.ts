@@ -1,4 +1,4 @@
-import { GluegunToolbox } from 'gluegun';
+import { GluegunToolbox } from '@webstone/gluegun';
 
 const extension = (toolbox: GluegunToolbox) => {
 	const { print } = toolbox;
