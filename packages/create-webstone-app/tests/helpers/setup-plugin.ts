@@ -60,7 +60,7 @@ test("Check if the cli package gets renamed properly", async () => {
   );
   assert.is(
     fakeWriteJSONSync.firstCall.args[1].name,
-    "webstone-plugin-cli-dummy"
+    "webstone-plugin-dummy-cli"
   );
 });
 
