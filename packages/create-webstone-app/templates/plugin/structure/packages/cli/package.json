@@ -1,11 +1,11 @@
 {
-	"name": "webstone-plugin-cli-template",
+	"name": "webstone-plugin-template-cli",
 	"version": "0.0.1",
 	"description": "",
 	"private": true,
 	"scripts": {
 		"clean": "rimraf build",
-		"copy-templates": "copyfiles ./src/templates/* ./build/templates",
+		"copy-templates": "copyfiles -u 2 ./src/templates/* ./src/templates/**/* build/templates",
 		"format": "prettier --plugin-search-dir . --write .",
 		"build": "npm run clean && run-s build:cli copy-templates",
 		"build:cli": "tsc -p tsconfig.json",

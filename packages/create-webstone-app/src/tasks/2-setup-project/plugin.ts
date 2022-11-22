@@ -20,7 +20,7 @@ export const renameCliPackage = (ctx: Ctx) => {
   const cliPackageJson = fs.readJSONSync(
     path.join(ctx.appDir, "packages", "cli", "package.json")
   );
-  cliPackageJson.name = `webstone-plugin-cli-${getAppName(ctx.appDir)}`;
+  cliPackageJson.name = `webstone-plugin-${getAppName(ctx.appDir)}-cli`;
   fs.writeJSONSync(
     path.join(ctx.appDir, "packages", "cli", "package.json"),
     cliPackageJson,
@@ -92,7 +92,7 @@ const setWebPackagePrivateTrue = (ctx: Ctx) => {
 const createSveltekitPackage = async (ctx: Ctx) => {
   fs.removeSync(path.join(ctx.appDir, "packages", "web", ".gitkeep"));
   await create(path.join(ctx.appDir, "packages", "web"), {
-    name: `webstone-plugin-web-${getAppName(ctx.appDir)}`,
+    name: `webstone-plugin-${getAppName(ctx.appDir)}-web`,
     template: "skeletonlib",
     types: "typescript",
     prettier: true,
