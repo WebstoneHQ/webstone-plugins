@@ -1,5 +1,5 @@
 import { GluegunCommand } from '@webstone/gluegun';
-import { getPrismaModelByName, parsePrismaSchema } from '../../lib/generate';
+import { getPrismaModelByName, parsePrismaSchema, generateZodSchema } from '../../lib/generate';
 
 const command: GluegunCommand = {
 	name: 'generate',
@@ -42,12 +42,13 @@ const command: GluegunCommand = {
 			}
 
 			const spinner = print.spin('Generating model');
+			const target = `src/lib/server/trpc/subrouters/${strings.snakeCase(
+				strings.singular(modelName)
+			)}.ts`;
 
 			await template.generate({
 				template: 'subrouter.ejs',
-				target: `src/lib/server/trpc/subrouters/${strings.snakeCase(
-					strings.singular(modelName)
-				)}.ts`,
+				target,
 				props: {
 					capitalizedPlural: strings.upperFirst(strings.plural(modelName)),
 					capitalizedSingular: strings.upperFirst(strings.singular(modelName))
@@ -55,6 +56,8 @@ const command: GluegunCommand = {
 			});
 
 			spinner.succeed('Generated model');
+
+			generateZodSchema(model);
 		} catch (error) {
 			print.error(error);
 		}
