@@ -1,0 +1,27 @@
+import { router, publicProcedure } from '../trpc';
+import { z } from 'webstone-plugin-web-trpc';
+
+export const postRouter = router({
+	create<%=props.capitalizedSingular%>: publicProcedure
+		.input(
+			z.object({
+				title: z.string()
+			})
+		)
+		.mutation(({ input }) => {
+			return input;
+		}),
+	getAll<%=props.capitalizedPlural%>: publicProcedure.query(() => {
+		return [];
+	}),
+	get<%=props.capitalizedSingular%> : publicProcedure.input(z.string()).query(({ input }) => {
+		return input;
+	}),
+	update<%=props.capitalizedSingular%>: publicProcedure.input(z.object({})).mutation(({ input }) => {
+		return input;
+	}),
+	delete<%=props.capitalizedSingular%>: publicProcedure.input(z.string()).mutation(({ input }) => {
+		return input;
+	})
+});
+
