@@ -18,7 +18,7 @@ importers:
       eslint-config-prettier: ^8.5.0
       husky: ^7.0.4
       lint-staged: ^12.5.0
-      prettier: ^2.5.1
+      prettier: ^2.8.1
       sinon: ^12.0.1
       tsx: ^3.8.0
       typescript: ^4.7.4
@@ -38,7 +38,7 @@ importers:
       eslint-config-prettier: 8.5.0_eslint@8.20.0
       husky: 7.0.4
       lint-staged: 12.5.0
-      prettier: 2.7.1
+      prettier: 2.8.1
       sinon: 12.0.1
       tsx: 3.8.0
       typescript: 4.7.4
@@ -3615,8 +3615,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.7.1:
-    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+  /prettier/2.8.1:
+    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
