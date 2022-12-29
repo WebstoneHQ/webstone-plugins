@@ -1,5 +1,12 @@
 # @webstone/cli
 
+## 0.11.0
+
+### Minor Changes
+
+- 369bc5b: create all types of routes
+- ab65f24: set up plugins for webstone
+
 ## 0.10.0
 
 ### Minor Changes

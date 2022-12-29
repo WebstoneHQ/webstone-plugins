@@ -1,5 +1,14 @@
 # @webstone/core
 
+## 0.0.22
+
+### Patch Changes
+
+- b5f7835: use tsup to bundle package for esm and cjs
+- Updated dependencies [369bc5b]
+- Updated dependencies [ab65f24]
+  - @webstone/cli@0.11.0
+
 ## 0.0.21
 
 ### Patch Changes
