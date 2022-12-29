@@ -1,5 +1,5 @@
 import { GluegunCommand } from '@webstone/gluegun';
-import { getPrismaModelByName, parsePrismaSchema, generateZodSchema } from '../../lib/generate';
+import { getModelByName, getAllModels } from '../../lib/generate';
 
 const command: GluegunCommand = {
 	name: 'generate',
@@ -8,17 +8,15 @@ const command: GluegunCommand = {
 	hidden: false,
 	dashed: false,
 	run: async (toolbox) => {
-		const { print, parameters, prompt, strings, template } = toolbox;
+		const { print, parameters, prompt } = toolbox;
 		try {
-			const allModels = parsePrismaSchema();
-
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			let modelName = parameters.first!;
 
 			if (!modelName) {
-				const modelNames = allModels.declarations
-					.filter((declaration) => declaration.kind === 'model')
-					.map((model) => model.kind === 'model' && model.name.value);
+				const modelNames = getAllModels()
+					.filter((model) => model.type === 'model')
+					.map((model) => model.type === 'model' && model.name);
 
 				if (!modelNames) {
 					print.error('No models found in prisma/schema.prisma');
@@ -34,30 +32,12 @@ const command: GluegunCommand = {
 				modelName = result.model;
 			}
 
-			const model = getPrismaModelByName(modelName, allModels);
+			const model = getModelByName(modelName);
 
 			if (!model) {
 				print.error(`Model ${modelName} not found`);
 				return;
 			}
-
-			const spinner = print.spin('Generating model');
-			const target = `src/lib/server/trpc/subrouters/${strings.snakeCase(
-				strings.singular(modelName)
-			)}.ts`;
-
-			await template.generate({
-				template: 'subrouter.ejs',
-				target,
-				props: {
-					capitalizedPlural: strings.upperFirst(strings.plural(modelName)),
-					capitalizedSingular: strings.upperFirst(strings.singular(modelName))
-				}
-			});
-
-			spinner.succeed('Generated model');
-
-			generateZodSchema(model);
 		} catch (error) {
 			print.error(error);
 		}
