@@ -20,5 +20,6 @@ const createApplication = async (appDir: string) => {
     prettier: true,
     eslint: true,
     playwright: true,
+    vitest: false,
   });
 };

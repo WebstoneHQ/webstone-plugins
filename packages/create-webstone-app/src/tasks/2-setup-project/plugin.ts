@@ -98,6 +98,7 @@ const createSveltekitPackage = async (ctx: Ctx) => {
     prettier: true,
     eslint: true,
     playwright: true,
+    vitest: false,
   });
 };
 
