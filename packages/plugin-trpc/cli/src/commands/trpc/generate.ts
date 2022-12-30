@@ -1,5 +1,5 @@
 import { GluegunCommand } from '@webstone/gluegun';
-import { getModelByName, getAllModels, populateSubrouterFile } from '../../lib/generate';
+import { getModelByName, getAllModels, populateSubrouterFile, getIDType } from '../../lib/generate';
 import { Project } from 'ts-morph';
 
 const command: GluegunCommand = {
@@ -9,10 +9,12 @@ const command: GluegunCommand = {
 	hidden: false,
 	dashed: false,
 	run: async (toolbox) => {
-		const { print, parameters, prompt } = toolbox;
+		const { print, parameters, prompt, template, strings } = toolbox;
 		try {
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			let modelName = parameters.first!;
+
+			const spinner = print.spin(`Generating tRPC for model "${modelName}..."`);
 
 			if (!modelName) {
 				const modelNames = getAllModels()
@@ -41,17 +43,31 @@ const command: GluegunCommand = {
 			}
 			if (model.type !== 'model') return;
 
+			const idFieldType = getIDType(model);
+
+			const subrouterFilename = `${strings.singular(model.name.toLowerCase())}-router`;
+			const subrouterTarget = `src/lib/server/trpc/subrouters/${subrouterFilename}.ts`;
+			const zodModelName = `${strings.lowerCase(modelName)}Model`;
+
+			await template.generate({
+				template: 'subrouter.ejs',
+				target: subrouterTarget,
+				props: {
+					capitalizedPlural: strings.upperFirst(strings.plural(modelName)),
+					capitalizedSingular: strings.upperFirst(strings.singular(modelName)),
+					lowercaseSingular: strings.lowerCase(modelName),
+					zodModelName,
+					idFieldType
+				}
+			});
+
 			const project = new Project({
 				tsConfigFilePath: 'tsconfig.json'
 			});
 
-			const subRouter = project.createSourceFile(
-				`src/lib/server/trpc/subrouters/${modelName.toLowerCase()}.ts`,
-				'',
-				{ overwrite: true }
-			);
+			const subRouter = project.getSourceFileOrThrow(subrouterTarget);
 
-			populateSubrouterFile(subRouter, model);
+			populateSubrouterFile(subRouter, model, zodModelName);
 
 			subRouter.formatText({
 				tabSize: 1
@@ -60,6 +76,8 @@ const command: GluegunCommand = {
 			// const indexRouter = project.getSourceFileOrThrow('src/lib/server/trpc/router.ts');
 
 			project.saveSync();
+
+			spinner.succeed(`Generated tRPC for model "${modelName}"`);
 		} catch (error) {
 			print.error(error);
 		}

@@ -48,23 +48,32 @@ export const mapZodType = (prop: Field) => {
 	return `${zodType}${modifiers.join('.')}`;
 };
 
-export const populateSubrouterFile = (sourceFile: SourceFile, model: Model) => {
+export const getIDType = (model: Model) => {
+	const idField = model.properties.find(
+		(prop) => prop.type === 'field' && prop.attributes?.find((attr) => attr.name === 'id')
+	);
+	if (idField?.type !== 'field') throw new Error('ID field not found');
+	return idField ? mapZodType(idField) : 'z.unknown()';
+};
+
+export const populateSubrouterFile = (sourceFile: SourceFile, model: Model, modelName?: string) => {
 	sourceFile.addImportDeclaration({
 		moduleSpecifier: 'webstone-plugin-web-trpc',
 		namedImports: ['z']
 	});
 
-	generateSchemaForModel(sourceFile, model);
+	generateSchemaForModel(sourceFile, model, modelName);
 };
 
-const generateSchemaForModel = (sourceFile: SourceFile, model: Model) => {
-	sourceFile.addVariableStatement({
+const generateSchemaForModel = (sourceFile: SourceFile, model: Model, modelName?: string) => {
+	const zodModelDeclaration = sourceFile.addVariableStatement({
 		declarationKind: VariableDeclarationKind.Const,
 		isExported: true,
 		leadingTrivia: (writer) => writer.blankLineIfLastNot(),
+		trailingTrivia: (writer) => writer.blankLineIfLastNot(),
 		declarations: [
 			{
-				name: model.name,
+				name: modelName || `${model.name.toLowerCase()}Model`,
 				initializer: (writer) => {
 					writer
 						.write('z.object(')
@@ -84,4 +93,5 @@ const generateSchemaForModel = (sourceFile: SourceFile, model: Model) => {
 			}
 		]
 	});
+	zodModelDeclaration.setOrder(2);
 };
