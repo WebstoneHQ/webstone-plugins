@@ -8,7 +8,7 @@ importers:
       '@playwright/test': ^1.25.0
       '@types/fs-extra': ^9.0.13
       '@types/node': 16.11.7
-      '@types/sinon': ^10.0.12
+      '@types/sinon': ^10.0.13
       '@typescript-eslint/eslint-plugin': ^5.30.6
       '@typescript-eslint/parser': ^5.30.6
       c8: ^7.11.3
@@ -28,7 +28,7 @@ importers:
       '@playwright/test': 1.25.1
       '@types/fs-extra': 9.0.13
       '@types/node': 16.11.7
-      '@types/sinon': 10.0.12
+      '@types/sinon': 10.0.13
       '@typescript-eslint/eslint-plugin': 5.30.6_b7n364ggt6o4xlkgyoaww3ph3q
       '@typescript-eslint/parser': 5.30.6_he2ccbldppg44uulnyq4rwocfa
       c8: 7.11.3
@@ -92,6 +92,9 @@ importers:
       esbuild: 0.15.7
       esbuild-node-externals: 1.5.0_esbuild@0.15.7
       typescript: 4.7.4
+
+  packages/create-webstone-app/template/plugin:
+    specifiers: {}
 
 packages:
 
@@ -612,8 +615,8 @@ packages:
     resolution: {integrity: sha512-KQf+QAMWKMrtBMsB8/24w53tEsxllMj6TuA80TT/5igJalLI/zm0L3oXRbIAl4Ohfc85gyHX/jhMwsVkmhLU4A==}
     dev: true
 
-  /@types/sinon/10.0.12:
-    resolution: {integrity: sha512-uWf4QJ4oky/GckJ1MYQxU52cgVDcXwBhDkpvLbi4EKoLPqLE4MOH6T/ttM33l3hi0oZ882G6oIzWv/oupRYSxQ==}
+  /@types/sinon/10.0.13:
+    resolution: {integrity: sha512-UVjDqJblVNQYvVNUsj0PuYYw0ELRmgt1Nt5Vk0pT5f16ROGfcKJY8o1HVuMOJOpD727RrGB9EGvoaTQE5tgxZQ==}
     dependencies:
       '@types/sinonjs__fake-timers': 8.1.2
     dev: true
