@@ -1,5 +1,5 @@
 import { GluegunCommand } from '@webstone/gluegun';
-import { getModelByName, getAllModels } from '../../lib/generate';
+import { getModelByName, getAllModels, populateSubrouterFile } from '../../lib/generate';
 import { Project } from 'ts-morph';
 
 const command: GluegunCommand = {
@@ -39,6 +39,7 @@ const command: GluegunCommand = {
 				print.error(`Model ${modelName} not found`);
 				return;
 			}
+			if (model.type !== 'model') return;
 
 			const project = new Project({
 				tsConfigFilePath: 'tsconfig.json'
@@ -50,9 +51,10 @@ const command: GluegunCommand = {
 				{ overwrite: true }
 			);
 
-			subRouter.addImportDeclaration({
-				moduleSpecifier: 'webstone-plugin-web-trpc',
-				namedImports: ['z']
+			populateSubrouterFile(subRouter, model);
+
+			subRouter.formatText({
+				tabSize: 1
 			});
 
 			// const indexRouter = project.getSourceFileOrThrow('src/lib/server/trpc/router.ts');
