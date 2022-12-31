@@ -4,6 +4,6 @@ const defaultRouter = router({
 	greeting: publicProcedure.query(() => 'hello webstone tRPC')
 });
 
-const appRouter = mergeRouters(defaultRouter);
+export const appRouter = mergeRouters(defaultRouter);
 
 export type AppRouter = typeof appRouter;

@@ -122,7 +122,8 @@ importers:
       '@sveltejs/adapter-auto': ^1.0.0
       '@sveltejs/kit': ^1.0.1
       '@sveltejs/package': ^1.0.1
-      '@trpc/server': 10.7.0
+      '@trpc/client': ^10.7.0
+      '@trpc/server': ^10.7.0
       '@typescript-eslint/eslint-plugin': ^5.47.1
       '@typescript-eslint/parser': ^5.47.1
       eslint: ^8.30.0
@@ -137,6 +138,7 @@ importers:
       vite: ^4.0.3
       zod: ^3.20.2
     dependencies:
+      '@trpc/client': 10.7.0_@trpc+server@10.7.0
       '@trpc/server': 10.7.0
       zod: 3.20.2
     devDependencies:
@@ -998,6 +1000,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@trpc/client/10.7.0_@trpc+server@10.7.0:
+    resolution: {integrity: sha512-xCPc2hp37REJst6TXMkJvdc85CHvxpVY6YVdZIjl7uCYoQcrstwy8AWi7ElB3x7e19Cweke+9CAaUXKwAE1AKQ==}
+    peerDependencies:
+      '@trpc/server': 10.7.0
+    dependencies:
+      '@trpc/server': 10.7.0
+    dev: false
 
   /@trpc/server/10.7.0:
     resolution: {integrity: sha512-kFhlqhzZt5PwVRRDci8oJKMMFGjjq9189stT6bvS9xuuLjRzzwhMShRi99sm/jqhdjWmlXyO3Ncx0rnghUvH+w==}

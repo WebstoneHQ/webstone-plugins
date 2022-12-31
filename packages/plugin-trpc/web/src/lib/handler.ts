@@ -1,9 +1,9 @@
 import type { Handle } from '@sveltejs/kit';
-import type { Dict } from '@trpc/server';
+import type { AnyRouter, Dict } from '@trpc/server';
 import { resolveHTTPResponse } from '@trpc/server/http';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const createTrpcHandler = (endpointURL: string, router: any): Handle => {
+export const createTrpcHandler = (endpointURL = '/trpc', router: AnyRouter): Handle => {
 	const trpcHandler: Handle = async ({ event, resolve }) => {
 		if (event.url.pathname.startsWith(endpointURL)) {
 			const request = event.request as Request & {
