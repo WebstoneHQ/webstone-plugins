@@ -1,7 +1,9 @@
-import { router, publicProcedure } from './trpc';
+import { router, publicProcedure, mergeRouters } from './trpc';
 
-const appRouter = router({
+const defaultRouter = router({
 	greeting: publicProcedure.query(() => 'hello webstone tRPC')
 });
+
+const appRouter = mergeRouters(defaultRouter);
 
 export type AppRouter = typeof appRouter;

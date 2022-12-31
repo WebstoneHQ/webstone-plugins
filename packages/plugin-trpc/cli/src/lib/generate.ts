@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { getSchema, Field, Model } from '@mrleebo/prisma-ast';
-import { SourceFile, VariableDeclarationKind } from 'ts-morph';
+import { SourceFile, SyntaxKind, VariableDeclarationKind } from 'ts-morph';
 
 export const getModelByName = (modelName: string) => {
 	const schema = getSchema(readFileSync('prisma/schema.prisma', { encoding: 'utf8' }));
@@ -94,4 +94,34 @@ const generateSchemaForModel = (sourceFile: SourceFile, model: Model, modelName?
 		]
 	});
 	zodModelDeclaration.setOrder(2);
+};
+
+export const prepareApprouter = (
+	sourceFile: SourceFile,
+	routerName: string,
+	routerFile: string
+) => {
+	const existingImport = sourceFile.getImportDeclaration((declaration) => {
+		return declaration.getModuleSpecifierValue() === `./subrouters/${routerFile}`;
+	});
+
+	if (!existingImport) {
+		sourceFile.addImportDeclaration({
+			moduleSpecifier: `./subrouters/${routerFile}`,
+			namedImports: [routerName]
+		});
+	}
+
+	const appRouterDeclaration = sourceFile.getVariableDeclaration('appRouter');
+
+	const existingArgument = appRouterDeclaration
+		?.getInitializerIfKindOrThrow(SyntaxKind.CallExpression)
+		.getArguments()
+		.find((arg) => arg.getText() === routerName);
+
+	if (!existingArgument) {
+		appRouterDeclaration
+			?.getInitializerIfKindOrThrow(SyntaxKind.CallExpression)
+			.addArgument(routerName);
+	}
 };

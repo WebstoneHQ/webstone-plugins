@@ -1,5 +1,11 @@
 import { GluegunCommand } from '@webstone/gluegun';
-import { getModelByName, getAllModels, populateSubrouterFile, getIDType } from '../../lib/generate';
+import {
+	getModelByName,
+	getAllModels,
+	populateSubrouterFile,
+	getIDType,
+	prepareApprouter
+} from '../../lib/generate';
 import { Project } from 'ts-morph';
 
 const command: GluegunCommand = {
@@ -73,7 +79,9 @@ const command: GluegunCommand = {
 				tabSize: 1
 			});
 
-			// const indexRouter = project.getSourceFileOrThrow('src/lib/server/trpc/router.ts');
+			const indexRouter = project.getSourceFileOrThrow('src/lib/server/trpc/router.ts');
+
+			prepareApprouter(indexRouter, `${strings.lowerCase(modelName)}Router`, subrouterFilename);
 
 			project.saveSync();
 
