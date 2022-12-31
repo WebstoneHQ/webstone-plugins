@@ -1,5 +1,18 @@
 # create-webstone-app
 
+## 0.5.0
+
+### Minor Changes
+
+- b3774cb: introduce new plugin-structure
+- ab65f24: set up plugins for webstone
+
+### Patch Changes
+
+- 14975da: Apply missed code from the new plugin structure PR.
+- dfdf5d4: Warn instead of force-emptying the app directory if it's not empty.
+- e2f49b9: bump sveltekit-version to stable
+
 ## 0.4.1
 
 ### Patch Changes
