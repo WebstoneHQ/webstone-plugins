@@ -4,7 +4,9 @@ import { SourceFile, SyntaxKind, VariableDeclarationKind } from 'ts-morph';
 
 export const getModelByName = (modelName: string) => {
 	const schema = getSchema(readFileSync('prisma/schema.prisma', { encoding: 'utf8' }));
-	return schema.list.find((item) => item.type === 'model' && item.name === modelName);
+	return schema.list.find(
+		(item) => item.type === 'model' && item.name.toLowerCase() === modelName.toLowerCase()
+	);
 };
 
 export const getAllModels = () => {

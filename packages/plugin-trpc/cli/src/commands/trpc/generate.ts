@@ -20,8 +20,6 @@ const command: GluegunCommand = {
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			let modelName = parameters.first!;
 
-			const spinner = print.spin(`Generating tRPC for model "${modelName}..."`);
-
 			if (!modelName) {
 				const modelNames = getAllModels()
 					.filter((model) => model.type === 'model')
@@ -48,6 +46,8 @@ const command: GluegunCommand = {
 				return;
 			}
 			if (model.type !== 'model') return;
+
+			const spinner = print.spin(`Generating tRPC for model "${modelName}..."`);
 
 			const idFieldType = getIDType(model);
 
@@ -82,6 +82,10 @@ const command: GluegunCommand = {
 			const indexRouter = project.getSourceFileOrThrow('src/lib/server/trpc/router.ts');
 
 			prepareApprouter(indexRouter, `${strings.lowerCase(modelName)}Router`, subrouterFilename);
+
+			indexRouter.formatText({
+				tabSize: 1
+			});
 
 			project.saveSync();
 
