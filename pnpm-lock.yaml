@@ -71,7 +71,7 @@ importers:
       create-svelte: ^2.0.1
       enquirer: 2.3.6
       esbuild: ^0.16.10
-      esbuild-node-externals: ^1.5.0
+      esbuild-node-externals: ^1.6.0
       execa: 6.1.0
       fs-extra: 10.1.0
       json5: ^2.2.1
@@ -90,7 +90,7 @@ importers:
       '@types/command-line-args': 5.2.0
       '@types/node': 16.11.7
       esbuild: 0.16.10
-      esbuild-node-externals: 1.5.0_esbuild@0.16.10
+      esbuild-node-externals: 1.6.0_esbuild@0.16.10
       typescript: 4.7.4
 
 packages:
@@ -2012,14 +2012,15 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-node-externals/1.5.0_esbuild@0.16.10:
-    resolution: {integrity: sha512-9394Ne2t2Z243BWeNBRkXEYVMOVbQuzp7XSkASZTOQs0GSXDuno5aH5OmzEXc6GMuln5zJjpkZpgwUPW0uRKgw==}
+  /esbuild-node-externals/1.6.0_esbuild@0.16.10:
+    resolution: {integrity: sha512-LmQnnDVMVTvMmPBpBDrCtub7CVW9aavBvF4ZjOLRNy/+ODoHz3kLjvDdMS/UKn1eJ5WrlAImiYsD3hF4YKyGkw==}
+    engines: {node: '>=12'}
     peerDependencies:
-      esbuild: 0.12 - 0.15
+      esbuild: 0.12 - 0.16
     dependencies:
       esbuild: 0.16.10
       find-up: 5.0.0
-      tslib: 2.3.1
+      tslib: 2.4.1
     dev: true
 
   /esbuild-openbsd-64/0.14.49:
@@ -4028,13 +4029,13 @@ packages:
   /rxjs/7.5.6:
     resolution: {integrity: sha512-dnyv2/YsXhnm461G+R/Pe5bWP41Nm6LBXEYWI6eiFP4fiwx6WRI/CD0zbdVAudd9xwLEF2IDcKXLHit0FYjUzw==}
     dependencies:
-      tslib: 2.4.0
+      tslib: 2.4.1
     dev: false
 
   /rxjs/7.6.0:
     resolution: {integrity: sha512-DDa7d8TFNUalGC9VqXvQ1euWNN7sc63TrUCuM9J998+ViviahMIjKSOU7rfcgFOF+FCD71BhDRv4hrFz+ImDLQ==}
     dependencies:
-      tslib: 2.4.0
+      tslib: 2.4.1
     dev: true
 
   /sade/1.8.1:
@@ -4469,12 +4470,8 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
-  /tslib/2.3.1:
-    resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
-    dev: true
-
-  /tslib/2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+  /tslib/2.4.1:
+    resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
 
   /tsup/6.2.3:
     resolution: {integrity: sha512-J5Pu2Dx0E1wlpIEsVFv9ryzP1pZ1OYsJ2cBHZ7GrKteytNdzaSz5hmLX7/nAxtypq+jVkVvA79d7S83ETgHQ5w==}
