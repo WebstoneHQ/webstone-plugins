@@ -73,7 +73,7 @@ const command: GluegunCommand = {
 
 			const subRouter = project.getSourceFileOrThrow(subrouterTarget);
 
-			populateSubrouterFile(subRouter, model, zodModelName);
+			populateSubrouterFile(subRouter, model);
 
 			subRouter.formatText({
 				tabSize: 1
