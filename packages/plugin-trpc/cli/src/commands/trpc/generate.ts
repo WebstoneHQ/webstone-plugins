@@ -7,6 +7,7 @@ import {
 	prepareApprouter
 } from '../../lib/generate';
 import { Project } from 'ts-morph';
+import { generateRouterFilename, generateZodModelName } from '../../lib/naming';
 
 const command: GluegunCommand = {
 	name: 'generate',
@@ -51,9 +52,9 @@ const command: GluegunCommand = {
 
 			const idFieldType = getIDType(model);
 
-			const subrouterFilename = `${strings.singular(model.name.toLowerCase())}-router`;
+			const subrouterFilename = generateRouterFilename(model.name);
 			const subrouterTarget = `src/lib/server/trpc/subrouters/${subrouterFilename}.ts`;
-			const zodModelName = `${strings.lowerCase(modelName)}Model`;
+			const zodModelName = generateZodModelName(model.name);
 
 			await template.generate({
 				template: 'subrouter.ejs',

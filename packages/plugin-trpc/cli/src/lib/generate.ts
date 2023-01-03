@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 import { getSchema, Field, Model, Enum } from '@mrleebo/prisma-ast';
 import { SourceFile, SyntaxKind, VariableDeclarationKind } from 'ts-morph';
+import { generateZodEnumName, generateZodModelName } from './naming';
 
 const scalarTypes = ['Int', 'String', 'BigInt', 'DateTime', 'Float', 'Decimal', 'Boolean'];
 
@@ -29,7 +30,7 @@ export const generateModelSchema = (sourceFile: SourceFile, model: Model) => {
 		trailingTrivia: (writer) => writer.blankLineIfLastNot(),
 		declarations: [
 			{
-				name: `${model.name.toLowerCase()}Model`,
+				name: generateZodModelName(model.name),
 				initializer: (writer) => {
 					writer
 						.write('z.object(')
@@ -63,7 +64,7 @@ export const generateEnumSchema = (sourceFile: SourceFile, enumModel: Enum) => {
 		trailingTrivia: (writer) => writer.blankLineIfLastNot(),
 		declarations: [
 			{
-				name: `${enumModel.name.toLowerCase()}Enum`,
+				name: generateZodEnumName(enumModel.name),
 				initializer: (writer) => {
 					writer.write(`z.enum(['${enumValues.join("', '")}'])`);
 				}
