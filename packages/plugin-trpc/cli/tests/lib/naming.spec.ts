@@ -3,7 +3,9 @@ import * as assert from 'uvu/assert';
 import {
 	generateZodEnumName,
 	generateZodModelName,
-	generateRouterFilename
+	generateRouterFilename,
+	generateEnumFilename,
+	generateModelFilename
 } from '../../src/lib/naming';
 
 test('Generate Zod Model Name', async () => {
@@ -19,6 +21,16 @@ test('Generate Zod Enum Name', async () => {
 test('Generate Subrouter filename', async () => {
 	const filename = generateRouterFilename('User');
 	assert.is(filename, 'user-router');
+});
+
+test('Generate Model filename', async () => {
+	const filename = generateModelFilename('User');
+	assert.is(filename, 'user-model');
+});
+
+test('Generate Enum filename', async () => {
+	const filename = generateEnumFilename('Role');
+	assert.is(filename, 'role-enum');
 });
 
 test.run();

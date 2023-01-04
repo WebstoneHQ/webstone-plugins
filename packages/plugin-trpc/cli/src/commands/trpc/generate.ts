@@ -72,13 +72,7 @@ const command: GluegunCommand = {
 				tsConfigFilePath: 'tsconfig.json'
 			});
 
-			const subRouter = project.getSourceFileOrThrow(subrouterTarget);
-
-			populateSubrouterFile(subRouter, model);
-
-			subRouter.formatText({
-				tabSize: 1
-			});
+			populateSubrouterFile(project, model);
 
 			const indexRouter = project.getSourceFileOrThrow('src/lib/server/trpc/router.ts');
 

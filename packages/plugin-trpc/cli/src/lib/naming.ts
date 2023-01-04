@@ -9,3 +9,11 @@ export const generateZodEnumName = (name: string) => {
 export const generateRouterFilename = (name: string) => {
 	return `${name.toLowerCase()}-router`;
 };
+
+export const generateModelFilename = (name: string) => {
+	return `${name.toLowerCase()}-model`;
+};
+
+export const generateEnumFilename = (name: string) => {
+	return `${name.toLowerCase()}-enum`;
+};

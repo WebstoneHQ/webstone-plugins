@@ -1,7 +1,13 @@
 import { readFileSync } from 'fs';
 import { getSchema, Field, Model, Enum } from '@mrleebo/prisma-ast';
-import { SourceFile, SyntaxKind, VariableDeclarationKind } from 'ts-morph';
-import { generateZodEnumName, generateZodModelName } from './naming';
+import { Project, SourceFile, SyntaxKind, VariableDeclarationKind } from 'ts-morph';
+import {
+	generateEnumFilename,
+	generateModelFilename,
+	generateRouterFilename,
+	generateZodEnumName,
+	generateZodModelName
+} from './naming';
 
 const scalarTypes = ['Int', 'String', 'BigInt', 'DateTime', 'Float', 'Decimal', 'Boolean'];
 
@@ -23,6 +29,11 @@ export const getAllEnums = () => {
 };
 
 export const generateModelSchema = (sourceFile: SourceFile, model: Model) => {
+	sourceFile.addImportDeclaration({
+		moduleSpecifier: 'webstone-plugin-web-trpc',
+		namedImports: ['z']
+	});
+
 	return sourceFile.addVariableStatement({
 		declarationKind: VariableDeclarationKind.Const,
 		isExported: true,
@@ -53,6 +64,11 @@ export const generateModelSchema = (sourceFile: SourceFile, model: Model) => {
 };
 
 export const generateEnumSchema = (sourceFile: SourceFile, enumModel: Enum) => {
+	sourceFile.addImportDeclaration({
+		moduleSpecifier: 'webstone-plugin-web-trpc',
+		namedImports: ['z']
+	});
+
 	const enumValues = enumModel.enumerators.map(
 		(enumerator) => enumerator.type === 'enumerator' && enumerator.name
 	);
@@ -117,13 +133,27 @@ export const getIDType = (model: Model) => {
 	return idField ? mapZodType(idField) : 'z.unknown()';
 };
 
-export const populateSubrouterFile = (sourceFile: SourceFile, model: Model) => {
-	sourceFile.addImportDeclaration({
+export const populateSubrouterFile = (project: Project, model: Model) => {
+	const subrouterFilename = generateRouterFilename(model.name);
+	const subrouterTarget = `src/lib/server/trpc/subrouters/${subrouterFilename}.ts`;
+
+	generateSchemaForModel(project, model, new Set());
+
+	const subRouter = project.getSourceFileOrThrow(subrouterTarget);
+
+	subRouter.addImportDeclaration({
 		moduleSpecifier: 'webstone-plugin-web-trpc',
 		namedImports: ['z']
 	});
 
-	generateSchemaForModel(sourceFile, model, new Set());
+	subRouter.formatText({
+		tabSize: 1
+	});
+
+	subRouter.addImportDeclaration({
+		moduleSpecifier: `../models/${generateModelFilename(model.name)}`,
+		namedImports: [generateZodModelName(model.name)]
+	});
 };
 
 const getNonScalarFields = (model: Model) => {
@@ -141,11 +171,7 @@ function determineEnum(field: Field) {
 	return enumType;
 }
 
-const generateSchemaForModel = (
-	sourceFile: SourceFile,
-	model: Model,
-	generatedEntities: Set<string>
-) => {
+const generateSchemaForModel = (project: Project, model: Model, generatedEntities: Set<string>) => {
 	generatedEntities.add(model.name);
 	const nonScalarFields = getNonScalarFields(model);
 	nonScalarFields.forEach((field) => {
@@ -153,6 +179,15 @@ const generateSchemaForModel = (
 		const enumType = determineEnum(field);
 		if (enumType && enumType.type === 'enum') {
 			if (generatedEntities.has(enumType.name)) return;
+			const sourceFile = project.createSourceFile(
+				`src/lib/server/trpc/models/${
+					enumType && enumType.type === 'enum'
+						? generateEnumFilename(enumType.name)
+						: generateModelFilename(model.name)
+				}.ts`,
+				'',
+				{ overwrite: true }
+			);
 			generateEnumSchema(sourceFile, enumType);
 			generatedEntities.add(enumType.name);
 		} else {
@@ -160,12 +195,17 @@ const generateSchemaForModel = (
 			if (generatedEntities.has(field.fieldType as string)) return;
 			if (dependantModel && dependantModel.type === 'model') {
 				generatedEntities.add(dependantModel.name);
-				generateSchemaForModel(sourceFile, dependantModel, generatedEntities);
+				generateSchemaForModel(project, dependantModel, generatedEntities);
 			}
 		}
 	});
-	const zodModelDeclaration = generateModelSchema(sourceFile, model);
-	zodModelDeclaration.setOrder(2);
+
+	const mainModelFile = project.createSourceFile(
+		`src/lib/server/trpc/models/${generateModelFilename(model.name)}.ts`,
+		'',
+		{ overwrite: true }
+	);
+	generateModelSchema(mainModelFile, model);
 };
 
 export const prepareApprouter = (
