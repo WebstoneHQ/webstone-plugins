@@ -34,6 +34,25 @@ export const generateModelSchema = (sourceFile: SourceFile, model: Model) => {
 		namedImports: ['z']
 	});
 
+	const nonScalarFileds = getNonScalarFields(model);
+
+	nonScalarFileds.forEach((field) => {
+		if (field.type !== 'field') return;
+		const isEnum = determineEnum(field);
+		if (isEnum && isEnum.type === 'enum') {
+			sourceFile.addImportDeclaration({
+				moduleSpecifier: `../models/${generateEnumFilename(isEnum.name)}`,
+				namedImports: [generateZodEnumName(isEnum.name)]
+			});
+		}
+		if (!isEnum) {
+			sourceFile.addImportDeclaration({
+				moduleSpecifier: `../models/${generateModelFilename(field.fieldType as string)}`,
+				namedImports: [generateZodModelName(field.fieldType as string)]
+			});
+		}
+	});
+
 	return sourceFile.addVariableStatement({
 		declarationKind: VariableDeclarationKind.Const,
 		isExported: true,
@@ -115,9 +134,16 @@ export const mapZodType = (prop: Field) => {
 		case 'Boolean':
 			zodType = 'z.boolean()';
 			break;
-		default:
-			zodType = 'z.unknown()';
-			break;
+	}
+
+	if (!zodType) {
+		const isEnum = determineEnum(prop);
+		if (isEnum && isEnum.type === 'enum') {
+			zodType = `${generateZodEnumName(isEnum.name)}`;
+		}
+		if (!isEnum) {
+			zodType = `${generateZodModelName(prop.fieldType as string)}`;
+		}
 	}
 
 	if (prop.array) modifiers = [...modifiers, 'array()'];
