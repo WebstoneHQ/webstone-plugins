@@ -1,5 +1,9 @@
 # Webstone
 
+> **Warning**
+>
+> This project is released as pre-beta. We do our best to not break anything, but can't guarantee it. We welcome feedback via [Discussions](https://github.com/WebstoneHQ/webstone/discussions) and are happy to prioritize new plugins based on community demand.
+
 Webstone provides a CLI and an ecosystem of plugins to develop your full-stack web application.
 
 Use the CLI to add REST API endpoints and/or pages. Need a payment integration? Install a payment plugin and use the CLI to create the necessary files and code.
@@ -27,6 +31,7 @@ pnpm create webstone-app my-project
 This creates a skeleton [SvelteKit](https://kit.svelte.dev) app and installs the `@webstone/cli` Webstone CLI dev dependency.
 
 > **Note**
+>
 > You can also run the above command in an existing SvelteKit project!
 >
 > This allows anyone to benefit from the Webstone plugin ecosystem, even if you already have an app.
