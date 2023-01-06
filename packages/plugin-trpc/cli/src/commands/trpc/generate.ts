@@ -1,13 +1,8 @@
 import { GluegunCommand } from '@webstone/gluegun';
-import {
-	getModelByName,
-	getAllModels,
-	populateSubrouterFile,
-	getIDType,
-	prepareApprouter
-} from '../../lib/generate';
+import { populateSubrouterFile, getIDType, prepareApprouter } from '../../lib/generate';
 import { Project } from 'ts-morph';
-import { generateRouterFilename, generateZodModelName } from '../../lib/naming';
+import { generateCompleteModelName, generateRouterFilename } from '../../lib/naming';
+import { getAllModels, getModelByName } from '../../lib/parser';
 
 const command: GluegunCommand = {
 	name: 'generate',
@@ -54,7 +49,7 @@ const command: GluegunCommand = {
 
 			const subrouterFilename = generateRouterFilename(model.name);
 			const subrouterTarget = `src/lib/server/trpc/subrouters/${subrouterFilename}.ts`;
-			const zodModelName = generateZodModelName(model.name);
+			const zodModelName = generateCompleteModelName(model.name);
 
 			await template.generate({
 				template: 'subrouter.ejs',

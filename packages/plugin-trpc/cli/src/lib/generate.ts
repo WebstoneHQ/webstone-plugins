@@ -1,32 +1,17 @@
-import { readFileSync } from 'fs';
-import { getSchema, Field, Model, Enum } from '@mrleebo/prisma-ast';
+import { Field, Model, Enum } from '@mrleebo/prisma-ast';
 import { Project, SourceFile, SyntaxKind, VariableDeclarationKind } from 'ts-morph';
 import {
+	generateCompleteModelName,
 	generateEnumFilename,
+	generateEnumName,
 	generateModelFilename,
 	generateRouterFilename,
 	generateZodEnumName,
 	generateZodModelName
 } from './naming';
+import { getAllEnums, getModelByName } from './parser';
 
 const scalarTypes = ['Int', 'String', 'BigInt', 'DateTime', 'Float', 'Decimal', 'Boolean'];
-
-export const getModelByName = (modelName: string) => {
-	const schema = getSchema(readFileSync('prisma/schema.prisma', { encoding: 'utf8' }));
-	return schema.list.find(
-		(item) => item.type === 'model' && item.name.toLowerCase() === modelName.toLowerCase()
-	);
-};
-
-export const getAllModels = () => {
-	const schema = getSchema(readFileSync('prisma/schema.prisma', { encoding: 'utf8' }));
-	return schema.list.filter((item) => item.type === 'model');
-};
-
-export const getAllEnums = () => {
-	const schema = getSchema(readFileSync('prisma/schema.prisma', { encoding: 'utf8' }));
-	return schema.list.filter((item) => item.type === 'enum');
-};
 
 export const generateModelSchema = (sourceFile: SourceFile, model: Model) => {
 	sourceFile.addImportDeclaration({
@@ -36,37 +21,26 @@ export const generateModelSchema = (sourceFile: SourceFile, model: Model) => {
 
 	const nonScalarFileds = getNonScalarFields(model);
 
-	nonScalarFileds.forEach((field) => {
-		if (field.type !== 'field') return;
-		const isEnum = determineEnum(field);
-		if (isEnum && isEnum.type === 'enum') {
-			sourceFile.addImportDeclaration({
-				moduleSpecifier: `../models/${generateEnumFilename(isEnum.name)}`,
-				namedImports: [generateZodEnumName(isEnum.name)]
-			});
-		}
-		if (!isEnum) {
-			sourceFile.addImportDeclaration({
-				moduleSpecifier: `../models/${generateModelFilename(field.fieldType as string)}`,
-				namedImports: [generateZodModelName(field.fieldType as string)]
-			});
-		}
-	});
-
-	return sourceFile.addVariableStatement({
+	sourceFile.addVariableStatement({
 		declarationKind: VariableDeclarationKind.Const,
 		isExported: true,
 		leadingTrivia: (writer) => writer.blankLineIfLastNot(),
 		trailingTrivia: (writer) => writer.blankLineIfLastNot(),
 		declarations: [
 			{
-				name: generateZodModelName(model.name),
+				name:
+					nonScalarFileds.length > 0
+						? generateZodModelName(model.name)
+						: generateCompleteModelName(model.name),
 				initializer: (writer) => {
 					writer
 						.write('z.object(')
 						.inlineBlock(() => {
 							model.properties
 								.filter((prop) => prop.type === 'field')
+								.filter(
+									(prop) => prop.type === 'field' && scalarTypes.includes(prop.fieldType as string)
+								)
 								.forEach((prop) => {
 									if (prop.type !== 'field') return;
 									writer
@@ -80,6 +54,85 @@ export const generateModelSchema = (sourceFile: SourceFile, model: Model) => {
 			}
 		]
 	});
+
+	if (nonScalarFileds.length > 0) {
+		nonScalarFileds.forEach((field) => {
+			if (field.type !== 'field') return;
+			const isEnum = determineEnum(field);
+			if (isEnum && isEnum.type === 'enum') {
+				sourceFile.addImportDeclaration({
+					moduleSpecifier: `../models/${generateEnumFilename(isEnum.name)}`,
+					namedImports: [generateZodEnumName(isEnum.name), generateEnumName(isEnum.name)]
+				});
+			}
+			if (!isEnum) {
+				sourceFile.addImportDeclarations([
+					{
+						moduleSpecifier: `../models/${generateModelFilename(field.fieldType as string)}`,
+						namedImports: [`Complete${field.fieldType}Model`]
+					},
+					{
+						moduleSpecifier: `../models/${generateModelFilename(field.fieldType as string)}`,
+						namedImports: [`${field.fieldType as string}WithRelations`],
+						isTypeOnly: true
+					}
+				]);
+			}
+		});
+		sourceFile.addInterface({
+			isExported: true,
+			name: `${model.name}WithRelations`,
+			leadingTrivia: (writer) => writer.blankLineIfLastNot(),
+			trailingTrivia: (writer) => writer.blankLineIfLastNot(),
+			extends: [`z.infer<typeof ${generateZodModelName(model.name)}>`],
+			properties: nonScalarFileds.map((field) => {
+				let type = '';
+				if (field.type !== 'field') return { name: '', type: 'any' };
+				const isEnum = determineEnum(field);
+				if (isEnum && isEnum.type === 'enum') {
+					type = `${generateEnumName(isEnum.name)}${field.array ? '[]' : ''}${
+						field.optional ? ' | null' : ''
+					}`;
+				} else {
+					type = `${field.fieldType as string}WithRelations${field.array ? '[]' : ''}${
+						field.optional ? ' | null' : ''
+					}`;
+				}
+				return {
+					hasQuestionToken: field.optional,
+					name: field.name,
+					type
+				};
+			})
+		});
+
+		sourceFile.addVariableStatement({
+			declarationKind: VariableDeclarationKind.Const,
+			isExported: true,
+			leadingTrivia: (writer) => writer.blankLineIfLastNot(),
+			trailingTrivia: (writer) => writer.blankLineIfLastNot(),
+			declarations: [
+				{
+					name: `Complete${model.name}Model`,
+					type: `z.ZodSchema<${model.name}WithRelations>`,
+					initializer: (writer) => {
+						writer
+							.write(`z.lazy(() => ${generateZodModelName(model.name)}.extend(`)
+							.inlineBlock(() => {
+								nonScalarFileds.forEach((prop) => {
+									if (prop.type !== 'field') return;
+									writer
+										.write(`${prop.name}: ${mapZodType(prop)}`)
+										.write(',')
+										.newLine();
+								});
+							})
+							.write('))');
+					}
+				}
+			]
+		});
+	}
 };
 
 export const generateEnumSchema = (sourceFile: SourceFile, enumModel: Enum) => {
@@ -92,6 +145,16 @@ export const generateEnumSchema = (sourceFile: SourceFile, enumModel: Enum) => {
 		(enumerator) => enumerator.type === 'enumerator' && enumerator.name
 	);
 
+	sourceFile.addEnum({
+		isExported: true,
+		name: generateEnumName(enumModel.name),
+		leadingTrivia: (writer) => writer.blankLineIfLastNot(),
+		trailingTrivia: (writer) => writer.blankLineIfLastNot(),
+		members: enumValues.map((value) => ({
+			name: value ? value : ''
+		}))
+	});
+
 	sourceFile.addVariableStatement({
 		declarationKind: VariableDeclarationKind.Const,
 		isExported: true,
@@ -99,9 +162,9 @@ export const generateEnumSchema = (sourceFile: SourceFile, enumModel: Enum) => {
 		trailingTrivia: (writer) => writer.blankLineIfLastNot(),
 		declarations: [
 			{
-				name: generateZodEnumName(enumModel.name),
+				name: `${generateZodEnumName(enumModel.name)}`,
 				initializer: (writer) => {
-					writer.write(`z.enum(['${enumValues.join("', '")}'])`);
+					writer.write(`z.nativeEnum(${generateEnumName(enumModel.name)})`);
 				}
 			}
 		]
@@ -142,7 +205,7 @@ export const mapZodType = (prop: Field) => {
 			zodType = `${generateZodEnumName(isEnum.name)}`;
 		}
 		if (!isEnum) {
-			zodType = `${generateZodModelName(prop.fieldType as string)}`;
+			zodType = `Complete${prop.fieldType}Model`;
 		}
 	}
 
@@ -178,7 +241,7 @@ export const populateSubrouterFile = (project: Project, model: Model) => {
 
 	subRouter.addImportDeclaration({
 		moduleSpecifier: `../models/${generateModelFilename(model.name)}`,
-		namedImports: [generateZodModelName(model.name)]
+		namedImports: [generateCompleteModelName(model.name)]
 	});
 };
 

@@ -5,7 +5,9 @@ import {
 	generateZodModelName,
 	generateRouterFilename,
 	generateEnumFilename,
-	generateModelFilename
+	generateModelFilename,
+	generateCompleteModelName,
+	generateEnumName
 } from '../../src/lib/naming';
 
 test('Generate Zod Model Name', async () => {
@@ -15,7 +17,7 @@ test('Generate Zod Model Name', async () => {
 
 test('Generate Zod Enum Name', async () => {
 	const enumName = generateZodEnumName('Role');
-	assert.is(enumName, 'roleEnum');
+	assert.is(enumName, 'roleEnumModel');
 });
 
 test('Generate Subrouter filename', async () => {
@@ -31,6 +33,16 @@ test('Generate Model filename', async () => {
 test('Generate Enum filename', async () => {
 	const filename = generateEnumFilename('Role');
 	assert.is(filename, 'role-enum');
+});
+
+test('Generate Enum Name', async () => {
+	const enumName = generateEnumName('Role');
+	assert.is(enumName, 'roleEnum');
+});
+
+test('Generate Complete Name', async () => {
+	const completeName = generateCompleteModelName('User');
+	assert.is(completeName, 'CompleteUserModel');
 });
 
 test.run();
