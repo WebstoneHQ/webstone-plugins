@@ -7,79 +7,83 @@ import { getAllModels, getModelByName } from '../../lib/parser';
 const command: GluegunCommand = {
 	name: 'generate',
 	alias: ['g'],
-	description: 'Generate tRPC model',
+	description: 'Generate one or more tRPC model(s)',
 	hidden: false,
 	dashed: false,
 	run: async (toolbox) => {
 		const { print, parameters, prompt, template, strings } = toolbox;
 		try {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			let modelName = parameters.first!;
+			let modelNames = parameters.first?.split(',');
 
-			if (!modelName) {
-				const modelNames = getAllModels()
+			if (!modelNames) {
+				const prismaModelNames = getAllModels()
 					.filter((model) => model.type === 'model')
 					.map((model) => model.type === 'model' && model.name);
 
-				if (!modelNames) {
+				if (!prismaModelNames) {
 					print.error('No models found in prisma/schema.prisma');
 					return;
 				}
 
 				const result = await prompt.ask({
-					type: 'select',
-					name: 'model',
-					message: 'Please select model',
-					choices: modelNames as string[]
+					type: 'multiselect',
+					name: 'models',
+					message: 'Please select your model(s)',
+					choices: prismaModelNames as string[]
 				});
-				modelName = result.model;
+				modelNames = result.models as unknown as string[];
 			}
 
-			const model = getModelByName(modelName);
+			const models = modelNames.map((modelName) => getModelByName(modelName));
 
-			if (!model) {
-				print.error(`Model ${modelName} not found`);
-				return;
-			}
-			if (model.type !== 'model') return;
-
-			const spinner = print.spin(`Generating tRPC for model "${modelName}..."`);
-
-			const idFieldType = getIDType(model);
-
-			const subrouterFilename = generateRouterFilename(model.name);
-			const subrouterTarget = `src/lib/server/trpc/subrouters/${subrouterFilename}.ts`;
-			const zodModelName = generateCompleteModelName(model.name);
-
-			await template.generate({
-				template: 'subrouter.ejs',
-				target: subrouterTarget,
-				props: {
-					capitalizedPlural: strings.upperFirst(strings.plural(modelName)),
-					capitalizedSingular: strings.upperFirst(strings.singular(modelName)),
-					lowercaseSingular: strings.lowerCase(modelName),
-					zodModelName,
-					idFieldType
+			for (let index = 0; index < models.length; index++) {
+				const model = models[index];
+				const modelName = modelNames[index];
+				if (!model) {
+					print.error(`Model ${modelName} not found, skipping...`);
+					continue;
 				}
-			});
 
-			const project = new Project({
-				tsConfigFilePath: 'tsconfig.json'
-			});
+				if (model.type !== 'model') return;
 
-			populateSubrouterFile(project, model);
+				const spinner = print.spin(`Generating tRPC for model "${modelName}..."`);
 
-			const indexRouter = project.getSourceFileOrThrow('src/lib/server/trpc/router.ts');
+				const idFieldType = getIDType(model);
 
-			prepareApprouter(indexRouter, `${strings.lowerCase(modelName)}Router`, subrouterFilename);
+				const subrouterFilename = generateRouterFilename(model.name);
+				const subrouterTarget = `src/lib/server/trpc/subrouters/${subrouterFilename}.ts`;
+				const zodModelName = generateCompleteModelName(model.name);
 
-			indexRouter.formatText({
-				tabSize: 1
-			});
+				await template.generate({
+					template: 'subrouter.ejs',
+					target: subrouterTarget,
+					props: {
+						capitalizedPlural: strings.upperFirst(strings.plural(modelName)),
+						capitalizedSingular: strings.upperFirst(strings.singular(modelName)),
+						lowercaseSingular: strings.lowerCase(modelName),
+						zodModelName,
+						idFieldType
+					}
+				});
 
-			project.saveSync();
+				const project = new Project({
+					tsConfigFilePath: 'tsconfig.json'
+				});
 
-			spinner.succeed(`Generated tRPC for model "${modelName}"`);
+				populateSubrouterFile(project, model);
+
+				const indexRouter = project.getSourceFileOrThrow('src/lib/server/trpc/router.ts');
+
+				prepareApprouter(indexRouter, `${strings.lowerCase(modelName)}Router`, subrouterFilename);
+
+				indexRouter.formatText({
+					tabSize: 1
+				});
+
+				project.saveSync();
+
+				spinner.succeed(`Generated tRPC for model "${modelName}"`);
+			}
 		} catch (error) {
 			print.error(error);
 		}
