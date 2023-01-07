@@ -66,7 +66,7 @@ importers:
     specifiers:
       '@types/command-line-args': ^5.2.0
       '@types/node': 16.11.7
-      chalk: 5.0.1
+      chalk: 5.2.0
       command-line-args: ^5.2.1
       create-svelte: ^2.0.1
       enquirer: 2.3.6
@@ -78,7 +78,7 @@ importers:
       listr2: 4.0.5
       typescript: ^4.7.4
     dependencies:
-      chalk: 5.0.1
+      chalk: 5.2.0
       command-line-args: 5.2.1
       create-svelte: 2.0.1
       enquirer: 2.3.6
@@ -1302,8 +1302,8 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  /chalk/5.0.1:
-    resolution: {integrity: sha512-Fo07WOYGqMfCWHOzSXOt2CxDbC6skS/jO9ynEcmpANMoPrD+W1r1K6Vx7iNm+AQmETU1Xr2t+n8nzkV9t6xh3w==}
+  /chalk/5.2.0:
+    resolution: {integrity: sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: false
 
