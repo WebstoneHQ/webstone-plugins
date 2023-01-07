@@ -11,11 +11,18 @@ const command: GluegunCommand = {
 	hidden: false,
 	dashed: false,
 	run: async (toolbox) => {
-		const { print, parameters, prompt, template, strings } = toolbox;
+		const { print, parameters, prompt, template, strings, filesystem } = toolbox;
 		try {
 			let modelNames = parameters.first?.split(',');
 
 			if (!modelNames) {
+				if (!filesystem.exists('prisma/schema.prisma')) {
+					print.error(
+						'Please create a prisma/schema.prisma file. To learn more, see https://www.prisma.io/docs/concepts/components/prisma-schema.'
+					);
+					return;
+				}
+
 				const prismaModelNames = getAllModels()
 					.filter((model) => model.type === 'model')
 					.map((model) => model.type === 'model' && model.name);
