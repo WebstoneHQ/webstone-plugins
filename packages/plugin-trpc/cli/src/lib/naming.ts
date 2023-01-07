@@ -19,9 +19,9 @@ export const generateRouterFilename = (name: string) => {
 };
 
 export const generateModelFilename = (name: string) => {
-	return `${name.toLowerCase()}-model`;
+	return `${name.toLowerCase()}`;
 };
 
 export const generateEnumFilename = (name: string) => {
-	return `${name.toLowerCase()}-enum`;
+	return `${name.toLowerCase()}`;
 };

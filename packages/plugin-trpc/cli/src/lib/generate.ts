@@ -61,7 +61,7 @@ export const generateModelSchema = (sourceFile: SourceFile, model: Model) => {
 			const isEnum = determineEnum(field);
 			if (isEnum && isEnum.type === 'enum') {
 				sourceFile.addImportDeclaration({
-					moduleSpecifier: `../models/${generateEnumFilename(isEnum.name)}`,
+					moduleSpecifier: `../enums/${generateEnumFilename(isEnum.name)}`,
 					namedImports: [generateZodEnumName(isEnum.name), generateEnumName(isEnum.name)]
 				});
 			}
@@ -269,10 +269,10 @@ const generateSchemaForModel = (project: Project, model: Model, generatedEntitie
 		if (enumType && enumType.type === 'enum') {
 			if (generatedEntities.has(enumType.name)) return;
 			const sourceFile = project.createSourceFile(
-				`src/lib/server/trpc/models/${
+				`src/lib/server/trpc/${
 					enumType && enumType.type === 'enum'
-						? generateEnumFilename(enumType.name)
-						: generateModelFilename(model.name)
+						? `enums/${generateEnumFilename(enumType.name)}`
+						: `models/${generateModelFilename(model.name)}`
 				}.ts`,
 				'',
 				{ overwrite: true }

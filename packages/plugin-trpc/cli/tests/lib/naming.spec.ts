@@ -27,12 +27,12 @@ test('Generate Subrouter filename', async () => {
 
 test('Generate Model filename', async () => {
 	const filename = generateModelFilename('User');
-	assert.is(filename, 'user-model');
+	assert.is(filename, 'user');
 });
 
 test('Generate Enum filename', async () => {
 	const filename = generateEnumFilename('Role');
-	assert.is(filename, 'role-enum');
+	assert.is(filename, 'role');
 });
 
 test('Generate Enum Name', async () => {
