@@ -13,7 +13,7 @@ const command: GluegunCommand = {
 	run: async (toolbox) => {
 		const { print, parameters, prompt, template, strings, filesystem } = toolbox;
 		try {
-			let modelNames = parameters.first?.split(',');
+			let modelNames = parameters.string?.split(',').map((modelName) => modelName.trim());
 
 			if (!modelNames) {
 				if (!filesystem.exists('prisma/schema.prisma')) {
