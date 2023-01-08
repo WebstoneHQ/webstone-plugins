@@ -1,9 +1,50 @@
-import type { Handle } from '@sveltejs/kit';
-import type { AnyRouter, Dict } from '@trpc/server';
-import { resolveHTTPResponse } from '@trpc/server/http';
+import type { Handle, RequestEvent } from '@sveltejs/kit';
+import type {
+	AnyRouter,
+	Dict,
+	inferRouterContext,
+	inferRouterError,
+	TRPCError
+} from '@trpc/server';
+import type { HTTPRequest } from '@trpc/server/dist/http/internals/types';
+import { resolveHTTPResponse, type ResponseMeta } from '@trpc/server/http';
+import type { TRPCResponse } from '@trpc/server/rpc';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const createTrpcHandler = (endpointURL = '/trpc', router: AnyRouter): Handle => {
+export const createTrpcHandler = <Router extends AnyRouter>({
+	endpointURL = '/trpc',
+	router,
+	createContext,
+	responseMeta,
+	onError
+}: {
+	/**
+	 * URL the Handler is mounted on
+	 */
+	endpointURL: string;
+
+	/**
+	 * TRPC router
+	 */
+	router: Router;
+	createContext?: (event: RequestEvent) => Promise<inferRouterContext<Router>>;
+	responseMeta?: (options: {
+		data: TRPCResponse<unknown, inferRouterError<Router>>[];
+		ctx?: inferRouterContext<Router>;
+		paths?: string[];
+		type: 'query' | 'mutation' | 'subscription' | 'unknown';
+		errors: TRPCError[];
+	}) => ResponseMeta;
+
+	onError?: (options: {
+		error: TRPCError;
+		type: 'query' | 'mutation' | 'subscription' | 'unknown';
+		path?: string;
+		input: unknown;
+		ctx?: inferRouterContext<Router>;
+		req: HTTPRequest;
+	}) => void;
+}): Handle => {
 	const trpcHandler: Handle = async ({ event, resolve }) => {
 		if (event.url.pathname.startsWith(endpointURL)) {
 			const request = event.request as Request & {
@@ -21,7 +62,9 @@ export const createTrpcHandler = (endpointURL = '/trpc', router: AnyRouter): Han
 				router,
 				req,
 				path: event.url.pathname.substring(endpointURL.length + 1),
-				createContext: async () => null
+				createContext: async () => createContext?.(event),
+				responseMeta,
+				onError
 			});
 
 			const { status, headers, body } = httpResponse as {
