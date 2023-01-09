@@ -2,8 +2,14 @@ import { test } from 'uvu';
 import * as assert from 'uvu/assert';
 import sinon from 'sinon';
 import fs from 'node:fs';
-import { getNonScalarFields, determineEnum, mapZodType } from '../../src/lib/generate';
+import {
+	getNonScalarFields,
+	determineEnum,
+	mapZodType,
+	prepareApprouter
+} from '../../src/lib/generate';
 import { Field, Model } from '@mrleebo/prisma-ast';
+import { Project, SourceFile } from 'ts-morph';
 
 test.after.each(() => {
 	sinon.restore();
@@ -196,6 +202,100 @@ test('map zod type to boolean', async () => {
 
 	const mappedType = mapZodType(field);
 	assert.is(mappedType, 'z.boolean()');
+});
+
+test('map zod type to BigInt', async () => {
+	const field: Field = {
+		type: 'field',
+		fieldType: 'BigInt',
+		name: 'bigIntField'
+	};
+
+	const mappedType = mapZodType(field);
+	assert.is(mappedType, 'z.bigint()');
+});
+
+test('map zod type to DateTime', async () => {
+	const field: Field = {
+		type: 'field',
+		fieldType: 'DateTime',
+		name: 'dateField'
+	};
+
+	const mappedType = mapZodType(field);
+	assert.is(mappedType, 'z.date()');
+});
+
+test('map zod type to Float', async () => {
+	const field: Field = {
+		type: 'field',
+		fieldType: 'Float',
+		name: 'floatField'
+	};
+
+	const mappedType = mapZodType(field);
+	assert.is(mappedType, 'z.number()');
+});
+
+test('map zod type to Float', async () => {
+	const field: Field = {
+		type: 'field',
+		fieldType: 'Float',
+		name: 'floatField'
+	};
+
+	const mappedType = mapZodType(field);
+	assert.is(mappedType, 'z.number()');
+});
+
+test('map zod type to Decimal', async () => {
+	const field: Field = {
+		type: 'field',
+		fieldType: 'Decimal',
+		name: 'decimalField'
+	};
+
+	const mappedType = mapZodType(field);
+	assert.is(mappedType, 'z.number()');
+});
+
+test('should import and extend the approuter', async () => {
+	const project = new Project({ useInMemoryFileSystem: true });
+
+	const sourceFile: SourceFile = project.createSourceFile(
+		'/testRouter.ts',
+		`
+		import { router, publicProcedure, mergeRouters } from './trpc';
+
+		const defaultRouter = router({
+		greeting: publicProcedure.query(() => 'hello webstone tRPC')
+		});
+
+		export const appRouter = mergeRouters(defaultRouter);
+
+		export type AppRouter = typeof appRouter;
+
+	`
+	);
+
+	prepareApprouter(sourceFile, 'testRouter', 'testRouter');
+
+	const imports = sourceFile.getImportDeclarations();
+
+	const namedImports = imports.flatMap((imp) =>
+		imp.getNamedImports().map((namedImp) => namedImp.getText())
+	);
+
+	const moduleSpecifiers = imports.map((imp) => imp.getModuleSpecifierValue());
+
+	assert.is(imports.length, 2);
+	assert.is(namedImports.length, 4);
+
+	// check named imports
+	assert.ok(namedImports.includes('testRouter'));
+
+	// check module specifiers
+	assert.ok(moduleSpecifiers.includes('./subrouters/testRouter'));
 });
 
 test.run();
