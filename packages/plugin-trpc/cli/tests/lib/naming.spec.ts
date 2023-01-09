@@ -10,37 +10,37 @@ import {
 	generateEnumName
 } from '../../src/lib/naming';
 
-test('Generate Zod Model Name', async () => {
+test('should return zod model name', async () => {
 	const modelName = generateZodModelName('User');
 	assert.is(modelName, 'userModel');
 });
 
-test('Generate Zod Enum Name', async () => {
+test('should return zod enum name', async () => {
 	const enumName = generateZodEnumName('Role');
 	assert.is(enumName, 'roleEnumModel');
 });
 
-test('Generate Subrouter filename', async () => {
+test('should return subrouter filename', async () => {
 	const filename = generateRouterFilename('User');
 	assert.is(filename, 'user-router');
 });
 
-test('Generate Model filename', async () => {
+test('should return model filename', async () => {
 	const filename = generateModelFilename('User');
 	assert.is(filename, 'user');
 });
 
-test('Generate Enum filename', async () => {
+test('should return enum filename', async () => {
 	const filename = generateEnumFilename('Role');
 	assert.is(filename, 'role');
 });
 
-test('Generate Enum Name', async () => {
+test('should return enum name', async () => {
 	const enumName = generateEnumName('Role');
 	assert.is(enumName, 'roleEnum');
 });
 
-test('Generate Complete Name', async () => {
+test('should return complete name', async () => {
 	const completeName = generateCompleteModelName('User');
 	assert.is(completeName, 'CompleteUserModel');
 });

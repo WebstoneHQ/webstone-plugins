@@ -8,7 +8,7 @@ test.after.each(() => {
 	sinon.restore();
 });
 
-test('get all enums', async () => {
+test('should get all enums', async () => {
 	const fakeReadFileSync = sinon.fake.returns(`
 	generator client {
 		provider = "prisma-client-js"
@@ -21,7 +21,7 @@ test('get all enums', async () => {
 	  
 	  model User {
 		id     Int     @id @default(autoincrement())
-		// createdAt DateTime @default(now())
+		createdAt DateTime @default(now())
 		email  String  @unique
 		name   String?
 		role   Role?   @default(USER)
@@ -51,7 +51,7 @@ test('get all enums', async () => {
 	assert.is(enums[0].type, 'enum');
 });
 
-test('', async () => {
+test('should return all models', async () => {
 	const fakeReadFileSync = sinon.fake.returns(`
 	generator client {
 		provider = "prisma-client-js"
@@ -64,7 +64,7 @@ test('', async () => {
 
 	  model User {
 		id     Int     @id @default(autoincrement())
-		// createdAt DateTime @default(now())
+		createdAt DateTime @default(now())
 		email  String  @unique
 		name   String?
 		role   Role?   @default(USER)
@@ -93,7 +93,7 @@ test('', async () => {
 	assert.is(models[0].type === 'model' && models[0].name, 'User');
 });
 
-test('get model by name', async () => {
+test('should get single model by name', async () => {
 	const fakeReadFileSync = sinon.fake.returns(`
 	generator client {
 		provider = "prisma-client-js"
@@ -135,6 +135,47 @@ test('get model by name', async () => {
 	assert.is(model?.type, 'model');
 	assert.is(model?.type === 'model' && model?.name, 'User');
 	assert.is(model?.type === 'model' && model?.properties.length, 7);
+});
+
+test("should return undefined if models doesn't exist", async () => {
+	const fakeReadFileSync = sinon.fake.returns(`
+	generator client {
+		provider = "prisma-client-js"
+	  }
+
+	  datasource db {
+		provider = "postgresql"
+		url      = env("DATABASE_URL")
+	  }
+
+	  model User {
+		id     Int     @id @default(autoincrement())
+		createdAt DateTime @default(now())
+		email  String  @unique
+		name   String?
+		role   Role?   @default(USER)
+		postId Int?
+		posts  Post[]
+	  }
+
+	  model Post {
+		id     Int  @id @default(autoincrement())
+		user   User @relation(fields: [userId], references: [id])
+		role   Role
+		userId Int
+	  }
+
+	  enum Role {
+		USER
+		ADMIN
+	  }
+`);
+
+	sinon.replace(fs, 'readFileSync', fakeReadFileSync);
+
+	const model = getModelByName('User2');
+
+	assert.not.ok(model);
 });
 
 test.run();

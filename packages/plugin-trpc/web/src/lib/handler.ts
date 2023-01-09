@@ -1,3 +1,5 @@
+// thank you icflorescu for the inspiration in https://github.com/icflorescu/trpc-sveltekit/blob/main/package/src/server.ts
+
 import type { Handle, RequestEvent } from '@sveltejs/kit';
 import type {
 	AnyRouter,

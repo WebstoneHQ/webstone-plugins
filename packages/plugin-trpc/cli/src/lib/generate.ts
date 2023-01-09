@@ -245,13 +245,13 @@ export const populateSubrouterFile = (project: Project, model: Model) => {
 	});
 };
 
-const getNonScalarFields = (model: Model) => {
+export const getNonScalarFields = (model: Model) => {
 	return model.properties.filter(
 		(prop) => prop.type === 'field' && !scalarTypes.includes(prop.fieldType as string)
 	);
 };
 
-function determineEnum(field: Field) {
+export function determineEnum(field: Field) {
 	const fieldName = field.fieldType;
 	const allEnums = getAllEnums();
 	const enumType = allEnums.find(
