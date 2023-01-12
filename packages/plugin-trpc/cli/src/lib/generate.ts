@@ -12,6 +12,7 @@ import {
 import { getAllEnums, getModelByName } from './parser';
 
 const scalarTypes = ['Int', 'String', 'BigInt', 'DateTime', 'Float', 'Decimal', 'Boolean'];
+const nullishAttributes = ['default'];
 
 export const generateModelSchema = (sourceFile: SourceFile, model: Model) => {
 	sourceFile.addImportDeclaration({
@@ -211,6 +212,8 @@ export const mapZodType = (prop: Field) => {
 
 	if (prop.array) modifiers = [...modifiers, 'array()'];
 	if (prop.optional) modifiers = [...modifiers, 'nullish()'];
+	if (prop.attributes && prop.attributes.find((attr) => nullishAttributes.includes(attr.name)))
+		modifiers = [...modifiers, 'nullish()'];
 	return `${zodType}${modifiers.join('.')}`;
 };
 
