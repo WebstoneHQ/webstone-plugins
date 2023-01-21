@@ -68,7 +68,7 @@ importers:
       '@types/node': 16.11.7
       chalk: 5.0.1
       command-line-args: ^5.2.1
-      create-svelte: ^2.0.1
+      create-svelte: ^2.3.1
       enquirer: 2.3.6
       esbuild: ^0.16.10
       esbuild-node-externals: ^1.5.0
@@ -80,7 +80,7 @@ importers:
     dependencies:
       chalk: 5.0.1
       command-line-args: 5.2.1
-      create-svelte: 2.0.1
+      create-svelte: 2.3.1
       enquirer: 2.3.6
       execa: 6.1.0
       fs-extra: 10.1.0
@@ -1507,8 +1507,8 @@ packages:
     dev: true
     optional: true
 
-  /create-svelte/2.0.1:
-    resolution: {integrity: sha512-yTX7ywx6Kr/kuV8yNaWXhm/nD6kYzaujApx1pfCC0U+0u1qE7OpZtn+fr6zGix1+ZM9103aWjM7G/fV7jqQTXg==}
+  /create-svelte/2.3.1:
+    resolution: {integrity: sha512-t90F358ctK0D27ZGl2LqvMw5+EQ2uNQbcsWnA5gE8clfGI86ih0duA+OhxyElXMioGodlqedP6ZkgtE49l9V5w==}
     hasBin: true
     dependencies:
       kleur: 4.1.5
