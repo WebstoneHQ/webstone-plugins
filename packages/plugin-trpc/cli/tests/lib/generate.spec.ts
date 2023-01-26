@@ -6,7 +6,8 @@ import {
 	getNonScalarFields,
 	determineEnum,
 	mapZodType,
-	prepareApprouter
+	prepareApprouter,
+	getIDType
 } from '../../src/lib/generate';
 import { Field, Model } from '@mrleebo/prisma-ast';
 import { Project, SourceFile } from 'ts-morph';
@@ -298,4 +299,99 @@ test('should import and extend the approuter', async () => {
 	assert.ok(moduleSpecifiers.includes('./subrouters/testRouter'));
 });
 
-test.run();
+test('should return string as id type', async () => {
+	const model: Model = {
+		name: 'TestModel',
+		type: 'model',
+		properties: [
+			{
+				type: 'field',
+				fieldType: 'String',
+				name: 'stringField',
+				attributes: [
+					{
+						name: 'id',
+						type: 'attribute',
+						kind: 'field'
+					}
+				]
+			},
+			{
+				type: 'field',
+				fieldType: 'Non-Scalar',
+				name: 'nonScalarField'
+			},
+			{
+				type: 'field',
+				fieldType: 'Int',
+				name: 'numberField'
+			}
+		]
+	};
+
+	const idType = getIDType(model);
+	assert.is(idType, 'z.string()');
+});
+
+test('should return number as id type', async () => {
+	const model: Model = {
+		name: 'TestModel',
+		type: 'model',
+		properties: [
+			{
+				type: 'field',
+				fieldType: 'Int',
+				name: 'stringField',
+				attributes: [
+					{
+						name: 'id',
+						type: 'attribute',
+						kind: 'field'
+					}
+				]
+			},
+			{
+				type: 'field',
+				fieldType: 'Non-Scalar',
+				name: 'nonScalarField'
+			},
+			{
+				type: 'field',
+				fieldType: 'Int',
+				name: 'numberField'
+			}
+		]
+	};
+
+	const idType = getIDType(model);
+	assert.is(idType, 'z.number().int()');
+});
+
+test('should return error, because no ID provided', async () => {
+	try {
+		const model: Model = {
+			name: 'TestModel',
+			type: 'model',
+			properties: [
+				{
+					type: 'field',
+					fieldType: 'Int',
+					name: 'stringField'
+				},
+				{
+					type: 'field',
+					fieldType: 'Non-Scalar',
+					name: 'nonScalarField'
+				},
+				{
+					type: 'field',
+					fieldType: 'Int',
+					name: 'numberField'
+				}
+			]
+		};
+		getIDType(model);
+	} catch (error) {
+		assert.is(error.message, 'ID field not found');
+	}
+});
