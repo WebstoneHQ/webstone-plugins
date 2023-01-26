@@ -16,6 +16,14 @@ const command: GluegunCommand = {
 			let modelNames =
 				parameters.string && parameters.string?.split(',').map((modelName) => modelName.trim());
 
+			// check if the trpc plugin is initialized
+			if (!filesystem.exists('src/lib/server/trpc/router.ts')) {
+				print.error(
+					"Please initialize the trpc plugin first, by running '<package-manager> webstone trpc init'"
+				);
+				return;
+			}
+
 			if (!modelNames) {
 				if (!filesystem.exists('prisma/schema.prisma')) {
 					print.error(
