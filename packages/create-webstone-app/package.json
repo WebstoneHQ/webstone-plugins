@@ -37,7 +37,7 @@
     "create-svelte": "^2.0.1",
     "enquirer": "2.3.6",
     "execa": "6.1.0",
-    "fs-extra": "10.1.0",
+    "fs-extra": "11.1.0",
     "json5": "^2.2.1",
     "listr2": "4.0.5"
   }
