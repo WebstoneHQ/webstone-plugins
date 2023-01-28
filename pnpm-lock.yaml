@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@changesets/cli': ^2.26.0
-      '@playwright/test': ^1.29.1
+      '@playwright/test': ^1.30.0
       '@types/fs-extra': ^9.0.13
       '@types/node': 16.11.7
       '@types/sinon': ^10.0.13
@@ -25,7 +25,7 @@ importers:
       uvu: ^0.5.6
     devDependencies:
       '@changesets/cli': 2.26.0
-      '@playwright/test': 1.29.1
+      '@playwright/test': 1.30.0
       '@types/fs-extra': 9.0.13
       '@types/node': 16.11.7
       '@types/sinon': 10.0.13
@@ -711,13 +711,13 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@playwright/test/1.29.1:
-    resolution: {integrity: sha512-iQxk2DX5U9wOGV3+/Jh9OHPsw5H3mleUL2S4BgQuwtlAfK3PnKvn38m4Rg9zIViGHVW24opSm99HQm/UFLEy6w==}
+  /@playwright/test/1.30.0:
+    resolution: {integrity: sha512-SVxkQw1xvn/Wk/EvBnqWIq6NLo1AppwbYOjNLmyU0R1RoQ3rLEBtmjTnElcnz8VEtn11fptj1ECxK0tgURhajw==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
       '@types/node': 16.11.7
-      playwright-core: 1.29.1
+      playwright-core: 1.30.0
     dev: true
 
   /@sinonjs/commons/1.8.3:
@@ -3787,8 +3787,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /playwright-core/1.29.1:
-    resolution: {integrity: sha512-20Ai3d+lMkWpI9YZYlxk8gxatfgax5STW8GaMozAHwigLiyiKQrdkt7gaoT9UQR8FIVDg6qVXs9IoZUQrDjIIg==}
+  /playwright-core/1.30.0:
+    resolution: {integrity: sha512-7AnRmTCf+GVYhHbLJsGUtskWTE33SwMZkybJ0v6rqR1boxq2x36U7p1vDRV7HO2IwTZgmycracLxPEJI49wu4g==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
