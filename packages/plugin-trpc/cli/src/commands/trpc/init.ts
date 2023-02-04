@@ -3,7 +3,7 @@ import { GluegunCommand } from '@webstone/gluegun';
 const command: GluegunCommand = {
 	name: 'init',
 	alias: ['i'],
-	description: 'Initialize webstone tRPC',
+	description: 'Initialize the tRPC Webstone plugin',
 	hidden: false,
 	dashed: false,
 	run: async (toolbox) => {

@@ -1,5 +1,5 @@
 {
-	"name": "webstone-plugin-web-trpc",
+	"name": "webstone-plugin-trpc-web",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
@@ -7,7 +7,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"format": "prettier --plugin-search-dir . --write .",
+		"prepublishOnly": "pnpm remove webstone-plugin-trpc-cli @webstone/cli"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.29.1",
@@ -16,6 +17,7 @@
 		"@sveltejs/package": "^1.0.1",
 		"@typescript-eslint/eslint-plugin": "^5.47.1",
 		"@typescript-eslint/parser": "^5.47.1",
+		"@webstone/cli": "workspace:^0.11.0",
 		"eslint": "^8.30.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -25,7 +27,8 @@
 		"svelte-check": "^3.0.1",
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.4",
-		"vite": "^4.0.3"
+		"vite": "^4.0.3",
+		"webstone-plugin-trpc-cli": "workspace:^0.0.1"
 	},
 	"type": "module",
 	"private": true,

@@ -1,6 +1,6 @@
 ---
-"webstone-plugin-cli-trpc": minor
-"webstone-plugin-web-trpc": minor
+"webstone-plugin-trpc-cli": minor
+"webstone-plugin-trpc-web": minor
 ---
 
-Initialize packages
+Release a beta version of the tRPC Webstone Plugin.

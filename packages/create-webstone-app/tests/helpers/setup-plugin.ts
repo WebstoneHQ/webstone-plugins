@@ -38,7 +38,7 @@ test("Check if the cli package gets renamed properly", async () => {
     type: "plugin",
   };
   const fakeReadJSONSync = sinon.fake.returns({
-    name: "webstone-plugin-cli-placeholder",
+    name: "webstone-plugin-placeholder-cli",
   });
   const fakeWriteJSONSync = sinon.fake();
   sinon.replace(fs, "readJSONSync", fakeReadJSONSync);
@@ -60,7 +60,7 @@ test("Check if the cli package gets renamed properly", async () => {
   );
   assert.is(
     fakeWriteJSONSync.firstCall.args[1].name,
-    "webstone-plugin-cli-dummy"
+    "webstone-plugin-dummy-cli"
   );
 });
 

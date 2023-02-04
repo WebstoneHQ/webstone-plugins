@@ -126,6 +126,7 @@ importers:
       '@trpc/server': ^10.7.0
       '@typescript-eslint/eslint-plugin': ^5.47.1
       '@typescript-eslint/parser': ^5.47.1
+      '@webstone/cli': workspace:^0.11.0
       eslint: ^8.30.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-svelte3: ^4.0.0
@@ -136,6 +137,7 @@ importers:
       tslib: ^2.4.1
       typescript: ^4.9.4
       vite: ^4.0.3
+      webstone-plugin-trpc-cli: workspace:^0.0.1
       zod: ^3.20.2
     dependencies:
       '@trpc/client': 10.7.0_@trpc+server@10.7.0
@@ -148,6 +150,7 @@ importers:
       '@sveltejs/package': 1.0.1_niwyv7xychq2ag6arq5eqxbomm
       '@typescript-eslint/eslint-plugin': 5.47.1_txmweb6yn7coi7nfrp22gpyqmy
       '@typescript-eslint/parser': 5.47.1_lzzuuodtsqwxnvqeq4g4likcqa
+      '@webstone/cli': link:../../cli
       eslint: 8.30.0
       eslint-config-prettier: 8.5.0_eslint@8.30.0
       eslint-plugin-svelte3: 4.0.0_khrjkzzv5v2x7orkj5o7sxbz3a
@@ -158,6 +161,7 @@ importers:
       tslib: 2.4.1
       typescript: 4.9.4
       vite: 4.0.3
+      webstone-plugin-trpc-cli: link:../cli
 
 packages:
 
