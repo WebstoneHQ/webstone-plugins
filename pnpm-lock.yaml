@@ -7,7 +7,7 @@ importers:
       '@changesets/cli': ^2.26.0
       '@playwright/test': ^1.29.1
       '@types/fs-extra': ^9.0.13
-      '@types/node': 16.11.7
+      '@types/node': 16.18.12
       '@types/sinon': ^10.0.13
       '@typescript-eslint/eslint-plugin': ^5.47.1
       '@typescript-eslint/parser': ^5.47.1
@@ -27,7 +27,7 @@ importers:
       '@changesets/cli': 2.26.0
       '@playwright/test': 1.29.1
       '@types/fs-extra': 9.0.13
-      '@types/node': 16.11.7
+      '@types/node': 16.18.12
       '@types/sinon': 10.0.13
       '@typescript-eslint/eslint-plugin': 5.47.1_573ruzxqaftooheozigq7fvohu
       '@typescript-eslint/parser': 5.47.1_he2ccbldppg44uulnyq4rwocfa
@@ -65,7 +65,7 @@ importers:
   packages/create-webstone-app:
     specifiers:
       '@types/command-line-args': ^5.2.0
-      '@types/node': 16.11.7
+      '@types/node': 16.18.12
       chalk: 5.0.1
       command-line-args: ^5.2.1
       create-svelte: ^2.0.1
@@ -88,7 +88,7 @@ importers:
       listr2: 4.0.5_enquirer@2.3.6
     devDependencies:
       '@types/command-line-args': 5.2.0
-      '@types/node': 16.11.7
+      '@types/node': 16.18.12
       esbuild: 0.16.10
       esbuild-node-externals: 1.5.0_esbuild@0.16.10
       typescript: 4.7.4
@@ -339,10 +339,10 @@ packages:
       '@commitlint/execute-rule': 17.0.0
       '@commitlint/resolve-extends': 17.0.3
       '@commitlint/types': 17.0.0
-      '@types/node': 16.11.7
+      '@types/node': 16.18.12
       chalk: 4.1.2
       cosmiconfig: 7.0.1
-      cosmiconfig-typescript-loader: 2.0.2_t4lrjbt3sxauai4t5o275zsepa
+      cosmiconfig-typescript-loader: 2.0.2_fpjdbchesupqm2c7y5fxzrfd7a
       lodash: 4.17.21
       resolve-from: 5.0.0
       typescript: 4.7.4
@@ -716,7 +716,7 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
-      '@types/node': 16.11.7
+      '@types/node': 16.18.12
       playwright-core: 1.29.1
     dev: true
 
@@ -771,7 +771,7 @@ packages:
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
-      '@types/node': 16.11.7
+      '@types/node': 16.18.12
     dev: true
 
   /@types/is-ci/3.0.0:
@@ -796,8 +796,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node/16.11.7:
-    resolution: {integrity: sha512-QB5D2sqfSjCmTuWcBWyJ+/44bcjO7VbjSbOE0ucoVbAsSNQc4Lt6QkgkVXkTDwkL4z/beecZNDvVX15D4P8Jbw==}
+  /@types/node/16.18.12:
+    resolution: {integrity: sha512-vzLe5NaNMjIE3mcddFVGlAXN1LEWueUsMsOJWaT6wWMJGyljHAWHznqfnKUQWGzu7TLPrGvWdNAsvQYW+C0xtw==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1475,16 +1475,16 @@ packages:
       safe-buffer: 5.1.2
     dev: true
 
-  /cosmiconfig-typescript-loader/2.0.2_t4lrjbt3sxauai4t5o275zsepa:
+  /cosmiconfig-typescript-loader/2.0.2_fpjdbchesupqm2c7y5fxzrfd7a:
     resolution: {integrity: sha512-KmE+bMjWMXJbkWCeY4FJX/npHuZPNr9XF9q9CIQ/bpFwi1qHfCmSiKarrCcRa0LO4fWjk93pVoeRtJAkTGcYNw==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@types/node': '*'
       typescript: '>=3'
     dependencies:
-      '@types/node': 16.11.7
+      '@types/node': 16.18.12
       cosmiconfig: 7.0.1
-      ts-node: 10.9.1_t4lrjbt3sxauai4t5o275zsepa
+      ts-node: 10.9.1_fpjdbchesupqm2c7y5fxzrfd7a
       typescript: 4.7.4
     transitivePeerDependencies:
       - '@swc/core'
@@ -4433,7 +4433,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-node/10.9.1_t4lrjbt3sxauai4t5o275zsepa:
+  /ts-node/10.9.1_fpjdbchesupqm2c7y5fxzrfd7a:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -4452,7 +4452,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
-      '@types/node': 16.11.7
+      '@types/node': 16.18.12
       acorn: 8.7.1
       acorn-walk: 8.2.0
       arg: 4.1.3
