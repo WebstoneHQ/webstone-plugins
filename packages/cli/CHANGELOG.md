@@ -1,5 +1,11 @@
 # @webstone/cli
 
+## 0.11.1
+
+### Patch Changes
+
+- 5df3a8c: change naming scheme for plugins
+
 ## 0.11.0
 
 ### Minor Changes

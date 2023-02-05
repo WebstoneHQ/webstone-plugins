@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.5.1
+
+### Patch Changes
+
+- 5df3a8c: change naming scheme for plugins
+
 ## 0.5.0
 
 ### Minor Changes
