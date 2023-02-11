@@ -14,7 +14,7 @@
     "c8": "^7.11.3",
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.20.0",
+    "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
