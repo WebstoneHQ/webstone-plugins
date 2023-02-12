@@ -102,6 +102,24 @@ const createSveltekitPackage = async (ctx: Ctx) => {
   });
 };
 
+const copyWebPackageReadme = async (ctx: Ctx) => {
+  // NOTE: This has to happen after `createSveltekitPackage`, otherwise the README.md
+  // gets replaced by the default SvelteKit README.md.
+  fs.copySync(
+    path.join(
+      __dirname,
+      "..",
+      "templates",
+      "plugin",
+      "structure",
+      "packages",
+      "web",
+      "README.md"
+    ),
+    path.join(ctx.appDir, "packages", "web", "README.md")
+  );
+};
+
 export const configurePlugin: ListrTask[] = [
   {
     task: copyTemplate,
@@ -118,6 +136,10 @@ export const configurePlugin: ListrTask[] = [
   {
     task: createSveltekitPackage,
     title: "Creating SvelteKit Package",
+  },
+  {
+    task: copyWebPackageReadme,
+    title: "Copying the web package readme file",
   },
   {
     task: setWebPackagePrivateTrue,
