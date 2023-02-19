@@ -121,7 +121,7 @@ importers:
       '@playwright/test': ^1.29.1
       '@sveltejs/adapter-auto': ^1.0.0
       '@sveltejs/kit': ^1.0.1
-      '@sveltejs/package': ^1.0.1
+      '@sveltejs/package': ^2.0.0
       '@trpc/client': ^10.7.0
       '@trpc/server': ^10.7.0
       '@typescript-eslint/eslint-plugin': ^5.47.1
@@ -147,7 +147,7 @@ importers:
       '@playwright/test': 1.29.1
       '@sveltejs/adapter-auto': 1.0.0_@sveltejs+kit@1.0.1
       '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.3
-      '@sveltejs/package': 1.0.1_niwyv7xychq2ag6arq5eqxbomm
+      '@sveltejs/package': 2.0.1_niwyv7xychq2ag6arq5eqxbomm
       '@typescript-eslint/eslint-plugin': 5.47.1_txmweb6yn7coi7nfrp22gpyqmy
       '@typescript-eslint/parser': 5.47.1_lzzuuodtsqwxnvqeq4g4likcqa
       '@webstone/cli': link:../../cli
@@ -162,53 +162,6 @@ importers:
       typescript: 4.9.4
       vite: 4.0.3
       webstone-plugin-trpc-cli: link:../cli
-
-  packages/plugin-trpc/web/package:
-    specifiers:
-      '@playwright/test': ^1.29.1
-      '@sveltejs/adapter-auto': ^1.0.0
-      '@sveltejs/kit': ^1.0.1
-      '@sveltejs/package': ^1.0.1
-      '@trpc/client': ^10.7.0
-      '@trpc/server': ^10.7.0
-      '@typescript-eslint/eslint-plugin': ^5.47.1
-      '@typescript-eslint/parser': ^5.47.1
-      '@webstone/cli': workspace:^0.11.0
-      eslint: ^8.30.0
-      eslint-config-prettier: ^8.5.0
-      eslint-plugin-svelte3: ^4.0.0
-      prettier: ^2.8.1
-      prettier-plugin-svelte: ^2.9.0
-      svelte: ^3.55.0
-      svelte-check: ^3.0.1
-      tslib: ^2.4.1
-      typescript: ^4.9.4
-      vite: ^4.0.3
-      webstone-plugin-trpc-cli: workspace:^0.0.1
-      zod: ^3.20.2
-    dependencies:
-      '@trpc/client': 10.7.0_@trpc+server@10.7.0
-      '@trpc/server': 10.7.0
-      zod: 3.20.2
-    devDependencies:
-      '@playwright/test': 1.29.1
-      '@sveltejs/adapter-auto': 1.0.0_@sveltejs+kit@1.0.1
-      '@sveltejs/kit': 1.0.1_svelte@3.55.0+vite@4.0.3
-      '@sveltejs/package': 1.0.1_niwyv7xychq2ag6arq5eqxbomm
-      '@typescript-eslint/eslint-plugin': 5.47.1_axni7f4fgvh6tlufnh6hwgsifq
-      '@typescript-eslint/parser': 5.47.1_iukboom6ndih5an6iafl45j2fe
-      '@webstone/cli': link:../../../cli
-      eslint: 8.31.0
-      eslint-config-prettier: 8.5.0_eslint@8.31.0
-      eslint-plugin-svelte3: 4.0.0_6go7qzsvzihesfwmyvq3tnl5qq
-      prettier: 2.8.1
-      prettier-plugin-svelte: 2.9.0_ajxj753sv7dbwexjherrch25ta
-      svelte: 3.55.0
-      svelte-check: 3.0.1_svelte@3.55.0
-      tslib: 2.4.1
-      typescript: 4.9.4
-      vite: 4.0.3
-      webstone-plugin-trpc-cli: link:../../cli
 
 packages:
 
@@ -950,8 +903,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/package/1.0.1_niwyv7xychq2ag6arq5eqxbomm:
-    resolution: {integrity: sha512-iYoDz4AEJQUfdKUfBcwtYEGYkf4NMByQL3Sl2ESnu+IXsLNsHvhH0zUDhAmUmAgcrH8fVjiR7FuJeyh+7EQtiw==}
+  /@sveltejs/package/2.0.1_niwyv7xychq2ag6arq5eqxbomm:
+    resolution: {integrity: sha512-DkDQrNTNSdGpE9u03tXr+K6BXfdw1jQfmU1EtmXv3o1+OzWei/866wp+1lCAI+8A2bpjAuCNgvI3j0Sy+glhwQ==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     peerDependencies:
@@ -961,7 +914,7 @@ packages:
       kleur: 4.1.5
       sade: 1.8.1
       svelte: 3.55.0
-      svelte2tsx: 0.5.20_niwyv7xychq2ag6arq5eqxbomm
+      svelte2tsx: 0.6.1_niwyv7xychq2ag6arq5eqxbomm
     transitivePeerDependencies:
       - typescript
     dev: true
@@ -2659,16 +2612,6 @@ packages:
       eslint: '>=7.0.0'
     dependencies:
       eslint: 8.31.0
-    dev: true
-
-  /eslint-plugin-svelte3/4.0.0_6go7qzsvzihesfwmyvq3tnl5qq:
-    resolution: {integrity: sha512-OIx9lgaNzD02+MDFNLw0GEUbuovNcglg+wnd/UY0fbZmlQSz7GlQiQ1f+yX0XvC07XPcDOnFcichqI3xCwp71g==}
-    peerDependencies:
-      eslint: '>=8.0.0'
-      svelte: ^3.2.0
-    dependencies:
-      eslint: 8.31.0
-      svelte: 3.55.0
     dev: true
 
   /eslint-plugin-svelte3/4.0.0_khrjkzzv5v2x7orkj5o7sxbz3a:
@@ -5262,11 +5205,11 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
-  /svelte2tsx/0.5.20_niwyv7xychq2ag6arq5eqxbomm:
-    resolution: {integrity: sha512-yNHmN/uoAnJ7d1XqVohiNA6TMFOxibHyEddUAHVt1PiLXtbwAJF3WaGYlg8QbOdoXzOVsVNCAlqRUIdULUm+OA==}
+  /svelte2tsx/0.6.1_niwyv7xychq2ag6arq5eqxbomm:
+    resolution: {integrity: sha512-O/1+5UyChfmhp1/GUv8b8iveTrn6eZwHxEXc+rw7LMKRidr9KHk5w/EiliLjDUwHa2VA6CoEty+CQylROVU4Sw==}
     peerDependencies:
-      svelte: ^3.24
-      typescript: ^4.1.2
+      svelte: ^3.55
+      typescript: ^4.9.4
     dependencies:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
