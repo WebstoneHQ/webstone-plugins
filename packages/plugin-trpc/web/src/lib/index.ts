@@ -1,4 +1,4 @@
-export * from './handler';
+export * from './plugin/handler';
 export { z } from 'zod';
 export * from '@trpc/server';
-export * from './client';
+export * from './plugin/client';

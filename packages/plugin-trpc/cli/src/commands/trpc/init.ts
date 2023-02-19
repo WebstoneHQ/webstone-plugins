@@ -16,7 +16,7 @@ const command: GluegunCommand = {
 		}
 
 		const isWebPackageInstalled = filesystem.exists(
-			`${process.cwd()}/node_modules/webstone-plugin-web-trpc`
+			`${process.cwd()}/node_modules/webstone-plugin-trpc-web`
 		);
 		if (!isWebPackageInstalled) {
 			print.error('Webstone tRPC Web package is not installed');

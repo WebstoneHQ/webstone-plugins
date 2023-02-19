@@ -16,7 +16,7 @@ const nullishAttributes = ['default'];
 
 export const generateModelSchema = (sourceFile: SourceFile, model: Model) => {
 	sourceFile.addImportDeclaration({
-		moduleSpecifier: 'webstone-plugin-web-trpc',
+		moduleSpecifier: 'webstone-plugin-trpc-web',
 		namedImports: ['z']
 	});
 
@@ -138,7 +138,7 @@ export const generateModelSchema = (sourceFile: SourceFile, model: Model) => {
 
 export const generateEnumSchema = (sourceFile: SourceFile, enumModel: Enum) => {
 	sourceFile.addImportDeclaration({
-		moduleSpecifier: 'webstone-plugin-web-trpc',
+		moduleSpecifier: 'webstone-plugin-trpc-web',
 		namedImports: ['z']
 	});
 
@@ -234,7 +234,7 @@ export const populateSubrouterFile = (project: Project, model: Model) => {
 	const subRouter = project.getSourceFileOrThrow(subrouterTarget);
 
 	subRouter.addImportDeclaration({
-		moduleSpecifier: 'webstone-plugin-web-trpc',
+		moduleSpecifier: 'webstone-plugin-trpc-web',
 		namedImports: ['z']
 	});
 
