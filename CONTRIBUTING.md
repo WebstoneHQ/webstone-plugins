@@ -2,17 +2,17 @@
 
 First and foremost, thank you for your interest in contributing to Webstone 🎉!
 
-> **Local development**: If you prefer to work on your local computer, the best advice is to run the commands in [`.gitpod.yml`](./.gitpod.yml). Things like installing `pnpm` globally, installing dependencies, creating a development app to test your Webstone changes, etc. The main thing to keep in mind is that the Webstone framework is checked out in a `webstone` directory and the development app lives in a sibling directory called `webstone-dev-app`.
+> **Local development**: If you prefer to work on your local computer, the best advice is to run the commands in [`.gitpod.yml`](./.gitpod.yml). Things like installing `pnpm` globally, installing dependencies, creating a development app to test your Webstone Plugins changes, etc. The main thing to keep in mind is that the Webstone Plugins code is checked out in a `webstone` directory and the development app lives in a sibling directory called `webstone-dev-app`.
 >
 > Please note that the remaining content refers to contributions made via Gitpod.
 
-To contribute to Webstone, we use [Gitpod](https://www.gitpod.io). Click the button below to start your developer environment - no setup required on your local computer.
+To contribute to Webstone Plugins, we use [Gitpod](https://www.gitpod.io). Click the button below to start your developer environment - no setup required on your local computer.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/WebstoneHQ/webstone)
 
 ## Directory structure
 
-Your Webstone workspace contains the following directory structure:
+Your Webstone Plugins workspace contains the following directory structure:
 
 ```
 /workspace/
@@ -22,7 +22,7 @@ Your Webstone workspace contains the following directory structure:
 
 ### `webstone`
 
-This is where you find the Webstone framework source code. It's the content of the https://github.com/WebstoneHQ/webstone repository.
+This is where you find the Webstone Plugins source code. It's the content of the https://github.com/WebstoneHQ/webstone repository.
 
 The most important directories within are:
 
@@ -43,7 +43,7 @@ This is what `pnpm` downloads when a developer runs `pnpm init webstone-app my-w
 
 **`core` and `cli`**
 
-These are the only two Webstone dependencies used in the `create-webstone-app/template/package.json` file. As Webstone evolves, it is the job of the `core` package to depend on additional Webstone packages. With that, the developer experience for Webstone apps is as simple as it gets with only two dependencies needed.
+These are the only two Webstone dependencies used in the `create-webstone-app/template/package.json` file. As Webstone Plugins evolves, it is the job of the `core` package to depend on additional Webstone packages. With that, the developer experience for Webstone apps is as simple as it gets with only two dependencies needed.
 
 _Fun fact_: Thanks to this simplicity, any regular SvelteKit web application can be turned into a Webstone project by adding the `@webstone/cli` and `@webstone/core` dependencies. Once installed, the Webstone CLI can be leveraged to further develop the project.
 
