@@ -20,7 +20,7 @@ export const renameCliPackage = (ctx: Ctx) => {
   const cliPackageJson = fs.readJSONSync(
     path.join(ctx.appDir, "packages", "cli", "package.json")
   );
-  cliPackageJson.name = `webstone-plugin-cli-${getAppName(ctx.appDir)}`;
+  cliPackageJson.name = `webstone-plugin-${getAppName(ctx.appDir)}-cli`;
   fs.writeJSONSync(
     path.join(ctx.appDir, "packages", "cli", "package.json"),
     cliPackageJson,
@@ -92,7 +92,7 @@ const setWebPackagePrivateTrue = (ctx: Ctx) => {
 const createSveltekitPackage = async (ctx: Ctx) => {
   fs.removeSync(path.join(ctx.appDir, "packages", "web", ".gitkeep"));
   await create(path.join(ctx.appDir, "packages", "web"), {
-    name: `webstone-plugin-web-${getAppName(ctx.appDir)}`,
+    name: `webstone-plugin-${getAppName(ctx.appDir)}-web`,
     template: "skeletonlib",
     types: "typescript",
     prettier: true,
@@ -100,6 +100,24 @@ const createSveltekitPackage = async (ctx: Ctx) => {
     playwright: true,
     vitest: false,
   });
+};
+
+const copyWebPackageReadme = async (ctx: Ctx) => {
+  // NOTE: This has to happen after `createSveltekitPackage`, otherwise the README.md
+  // gets replaced by the default SvelteKit README.md.
+  fs.copySync(
+    path.join(
+      __dirname,
+      "..",
+      "templates",
+      "plugin",
+      "structure",
+      "packages",
+      "web",
+      "README.md"
+    ),
+    path.join(ctx.appDir, "packages", "web", "README.md")
+  );
 };
 
 export const configurePlugin: ListrTask[] = [
@@ -118,6 +136,10 @@ export const configurePlugin: ListrTask[] = [
   {
     task: createSveltekitPackage,
     title: "Creating SvelteKit Package",
+  },
+  {
+    task: copyWebPackageReadme,
+    title: "Copying the web package readme file",
   },
   {
     task: setWebPackagePrivateTrue,

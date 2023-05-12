@@ -1,5 +1,9 @@
 # Webstone Plugins
 
+> **Warning**
+>
+> This project is released as pre-beta. We do our best to not break anything, but can't guarantee it. We welcome feedback via [Discussions](https://github.com/WebstoneHQ/webstone/discussions) and are happy to prioritize new plugins based on community demand.
+
 Webstone Plugins is a CLI and an growing list of plugins to develop your full-stack web application.
 
 There is a core `webstone` CLI which can be extended with plugins either by the Webstone Plugins core team or anyone in the community. You can also create private Webstone Plugin components accessible to your team only.
