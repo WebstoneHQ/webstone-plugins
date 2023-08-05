@@ -1,45 +1,72 @@
 # Contributing
 
-First and foremost, thank you for your interest in contributing to Webstone 🎉!
+First and foremost, thank you for your interest in contributing to Webstone Plugins 🎉!
 
-> **Local development**: If you prefer to work on your local computer, the best advice is to run the commands in [`.gitpod.yml`](./.gitpod.yml). Things like installing `pnpm` globally, installing dependencies, creating a development app to test your Webstone Plugins changes, etc. The main thing to keep in mind is that the Webstone Plugins code is checked out in a `webstone` directory and the development app lives in a sibling directory called `webstone-dev-app`.
->
-> Please note that the remaining content refers to contributions made via Gitpod.
+To contribute to Webstone Plugins, we use [Devbox](https://github.com/jetpack-io/devbox). Click the button below to start your development environment - no setup required on your local computer.
 
-To contribute to Webstone Plugins, we use [Gitpod](https://www.gitpod.io). Click the button below to start your developer environment - no setup required on your local computer.
+[![Open In Devbox.sh](https://jetpack.io/img/devbox/open-in-devbox.svg)](https://devbox.sh/github.com/WebstoneHQ/webstone-plugins)
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/WebstoneHQ/webstone)
+> Please note that the remaining content refers to contributions made via Devbox.
+
+## Local development (with Devbox)
+
+Devbox also works locally. To get started, install it:
+
+```shell
+curl -fsSL https://get.jetpack.io/devbox | bash
+```
+
+Next, open a new Devbox Shell:
+
+```shell
+devbox shell
+```
+
+This installs all required dependencies and provides you with helpful scripts. To see a list of available scripts:
+
+```shell
+devbox run -l
+```
+
+## Local development (without Devbox)
+
+If you prefer to install dependencies on your own, please refer to `devbox.json` for a list of required packages. The `package.json` file contains helpful `scripts` you can execute to build, run, and test Webstone Plugins and the dev app (see below).
 
 ## Directory structure
 
 Your Webstone Plugins workspace contains the following directory structure:
 
 ```
-/workspace/
-├── webstone
-└── webstone-dev-app
+./webstone-plugins
+├── _dev-app
+├── packages
+└── tests
 ```
 
-### `webstone`
+### `_dev-app`
 
-This is where you find the Webstone Plugins source code. It's the content of the https://github.com/WebstoneHQ/webstone repository.
+This is a development app where you can test changes made to the `webstone` directory above. The dev app's Webstone CLI is symlinked to the `../packages/cli` package. The app runs on port 5173.
+
+### `packages`
+
+This is where you find the Webstone Plugins source code.
 
 The most important directories within are:
 
-<!-- `tree -L 3 -I '__tests__|dist|docs|node_modules|scripts|src' -d` -->
+<!-- `tree -L 2 -I 'tests|dist|docs|node_modules|scripts|src' -d ./packages` -->
 
 ```
-/workspace/webstone/
-└── packages
-    ├── cli
-    ├── core
-    └── create-webstone-app
-        └── template
+./packages
+├── cli
+├── core
+├── create-webstone-app
+│   └── templates
+└── plugin-*
 ```
 
 **`create-webstone-app`**
 
-This is what `pnpm` downloads when a developer runs `pnpm init webstone-app my-web-app`. The `bin` script defined in the `package.json` is what gets executed. The `template` directory is the monorepo structure of the final project, e.g. the content of `my-web-app` in the previous `pnpm init` command or the content of the `webstone-dev-app` directory discussed in the next section.
+This is what `pnpm` downloads when a developer runs `pnpm init webstone-app my-web-app`. The `bin` script defined in the `package.json` is what gets executed. The `template` directory is the monorepo structure of the final project, e.g. the content of `my-web-app` in the previous `pnpm init` command or the content of the `_dev-app` directory discussed above.
 
 **`core` and `cli`**
 
@@ -47,15 +74,11 @@ These are the only two Webstone dependencies used in the `create-webstone-app/te
 
 _Fun fact_: Thanks to this simplicity, any regular SvelteKit web application can be turned into a Webstone project by adding the `@webstone/cli` and `@webstone/core` dependencies. Once installed, the Webstone CLI can be leveraged to further develop the project.
 
-### `webstone-dev-app`
-
-This is a development app where you can test changes made to the `webstone` directory above. The dev app's Webstone CLI is symlinked to the `webstone/packages/cli` package. The app runs on port 3000. To preview the web app, use the "Remote Explorer" panel on the left-hand side to open port 3000 in a new browser tab or run `gp url 3000` to get the URL.
-
 ## Test framework changes
 
 Each package in `webstone/packages/*` contains a `dev` script defined in the `package.json` file. This script watches source files and when it detects a change, generates the package's output. Often, this is either an `esbuild` or `tsc -w` kind of command.
 
-As you change packages, the `webstone-dev-app` project has access to these changes instantly due to the symlink that exists from the Webstone CLI in `webstone-dev-app/node_modules/@webstone/cli` to the `webstone/packages/cli` directory.
+As you change packages, the `_dev-app` project has access to these changes instantly due to the symlink that exists from the Webstone CLI in `_dev-app/node_modules/@webstone/cli` to the `./packages/cli` directory.
 
 ## Release a package
 

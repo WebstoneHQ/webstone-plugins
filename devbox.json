@@ -1,0 +1,19 @@
+{
+  "packages": [
+    "nodejs@latest",
+    "nodePackages.pnpm@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "sh ./.config/devbox/init.sh"
+    ],
+    "scripts": {
+      "dev-app:configure-and-start": [
+        "sh ./.config/devbox/scripts/dev-app-configure-and-start.sh"
+      ],
+      "plugins:test": [
+        "sh ./.config/devbox/scripts/test.sh"
+      ]
+    }
+  }
+}
