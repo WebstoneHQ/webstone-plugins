@@ -1,0 +1,17 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "nodePackages.pnpm@latest": {
+      "last_modified": "2023-07-23T03:35:12Z",
+      "resolved": "github:NixOS/nixpkgs/af8cd5ded7735ca1df1a1174864daab75feeb64a#nodePackages.pnpm",
+      "source": "devbox-search",
+      "version": "8.6.9"
+    },
+    "nodejs@latest": {
+      "last_modified": "2023-07-23T03:35:12Z",
+      "resolved": "github:NixOS/nixpkgs/af8cd5ded7735ca1df1a1174864daab75feeb64a#nodejs_20",
+      "source": "devbox-search",
+      "version": "20.5.0"
+    }
+  }
+}

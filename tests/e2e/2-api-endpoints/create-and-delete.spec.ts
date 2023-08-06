@@ -3,7 +3,7 @@ import { execSync } from "child_process";
 import { resolve } from "path";
 import { sleep } from "../globals";
 
-const devAppPath = resolve("../webstone-dev-app");
+const devAppPath = resolve("./_dev-app");
 
 test.describe("web/api/create & web/api/delete", () => {
   test("creates and deletes CRUD API endpoints for /api/users", async ({

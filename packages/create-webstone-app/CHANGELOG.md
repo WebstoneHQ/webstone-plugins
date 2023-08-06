@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.5.2
+
+### Patch Changes
+
+- a119120: Add README.md templates for plugin cli and web directories.
+
 ## 0.5.1
 
 ### Patch Changes

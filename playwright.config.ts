@@ -2,6 +2,7 @@
 import { type PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
+  testIgnore: "**/_dev-app/**",
   use: {
     baseURL: "http://localhost:5173",
     screenshot: "only-on-failure",
