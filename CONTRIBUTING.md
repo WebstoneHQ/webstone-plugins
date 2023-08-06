@@ -28,6 +28,13 @@ This installs all required dependencies and provides you with helpful scripts. T
 devbox run -l
 ```
 
+Open multiple terminals and execute the following commands within `devbox shell`:
+
+1. `pnpm dev`
+   - This starts the dev environment and watches all Webstone Plugins files for changes.
+1. `devbox run dev-app:configure-and-start`
+   - Creates a new `_dev-app` directory and starts its dev server. Use this app to test your Webstone Plugins code changes.
+
 ## Local development (without Devbox)
 
 If you prefer to install dependencies on your own, please refer to `devbox.json` for a list of required packages. The `package.json` file contains helpful `scripts` you can execute to build, run, and test Webstone Plugins and the dev app (see below).

@@ -11,8 +11,8 @@
       "dev-app:configure-and-start": [
         "sh ./.config/devbox/scripts/dev-app-configure-and-start.sh"
       ],
-      "plugins:test": [
-        "sh ./.config/devbox/scripts/test.sh"
+      "test:plugins": [
+        "sh ./.config/devbox/scripts/test-plugins.sh"
       ]
     }
   }
