@@ -26,19 +26,19 @@
   "license": "MIT",
   "devDependencies": {
     "@types/command-line-args": "^5.2.0",
-    "@types/node": "16.11.7",
-    "esbuild": "^0.16.10",
-    "esbuild-node-externals": "^1.5.0",
-    "typescript": "^4.7.4"
+    "@types/node": "20.4.8",
+    "esbuild": "^0.18.18",
+    "esbuild-node-externals": "^1.8.0",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
-    "chalk": "5.0.1",
+    "chalk": "5.3.0",
     "command-line-args": "^5.2.1",
-    "create-svelte": "^2.0.1",
-    "enquirer": "2.3.6",
-    "execa": "6.1.0",
-    "fs-extra": "10.1.0",
-    "json5": "^2.2.1",
-    "listr2": "4.0.5"
+    "create-svelte": "^5.0.4",
+    "enquirer": "2.4.1",
+    "execa": "7.2.0",
+    "fs-extra": "11.1.1",
+    "json5": "^2.2.3",
+    "listr2": "6.6.1"
   }
 }
