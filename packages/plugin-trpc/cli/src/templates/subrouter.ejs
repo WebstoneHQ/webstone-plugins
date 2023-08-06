@@ -1,0 +1,22 @@
+import { router, publicProcedure } from '../trpc';
+
+export const <%=props.lowercaseSingular%>Router = router({
+	create<%=props.capitalizedSingular%>: publicProcedure
+		.input(<%=props.zodModelName%>)
+		.mutation(({ input }) => {
+			return input;
+		}),
+	getAll<%=props.capitalizedPlural%>: publicProcedure.query(() => {
+		return [];
+	}),
+	get<%=props.capitalizedSingular%> : publicProcedure.input(<%=props.idFieldType%>).query(({ input }) => {
+		return input;
+	}),
+	update<%=props.capitalizedSingular%>: publicProcedure.input(<%=props.zodModelName%>).mutation(({ input }) => {
+		return input;
+	}),
+	delete<%=props.capitalizedSingular%>: publicProcedure.input(<%=props.idFieldType%>).mutation(({ input }) => {
+		return input;
+	})
+});
+

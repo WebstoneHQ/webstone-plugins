@@ -29,7 +29,7 @@
     "changeset": "changeset && pnpm install",
     "clean": "pnpm --recursive --parallel clean",
     "clean:nodemodules": "find . -type d -name \"node_modules\" -exec rm -fr {} +",
-    "dev": "pnpm --recursive --parallel dev",
+    "dev": "pnpm --recursive --parallel --filter !./packages/plugin-*/web dev",
     "lint": "eslint . --fix --ignore-path .gitignore --max-warnings 0",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
