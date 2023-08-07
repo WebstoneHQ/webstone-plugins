@@ -14,7 +14,7 @@ export const installCLI = async (ctx: Ctx) => {
     {
       shell: true,
       cwd: ctx.appDir,
-    }
+    },
   );
 
   return installProcess.stdout;
@@ -26,7 +26,7 @@ export const copyReadme = async (ctx: Ctx) => {
     "..",
     "templates",
     "application",
-    "README.md"
+    "README.md",
   );
   fs.copySync(templateDir, `${ctx.appDir}/README.md`);
 };

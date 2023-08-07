@@ -14,7 +14,7 @@ const command: GluegunCommand = {
       name: "adapter",
       message: `Where would you like to deploy the "web" service to?`,
       choices: availableAdapters.map(
-        (adapter) => `${adapter.name} (${adapter.npmPackage})`
+        (adapter) => `${adapter.name} (${adapter.npmPackage})`,
       ),
     });
     let adapterIdentifier = "";
@@ -27,7 +27,7 @@ const command: GluegunCommand = {
     }
 
     const chosenAdapter = availableAdapters.find((availableAdapter) =>
-      adapterIdentifier.includes(availableAdapter.npmPackage)
+      adapterIdentifier.includes(availableAdapter.npmPackage),
     );
     if (!chosenAdapter) {
       print.error(`The chosen adapter ${adapterIdentifier} is not available.`);
@@ -48,17 +48,17 @@ const command: GluegunCommand = {
 
       if (!installedAdapter) {
         print.error(
-          `An adapter should be installed, but isn't... This is an unexpected error, please manually review the "package.json file."`
+          `An adapter should be installed, but isn't... This is an unexpected error, please manually review the "package.json file."`,
         );
         return;
       }
       const isReplaceInstalledAdapter = await prompt.confirm(
-        `The ${installedAdapter.name} adapter is already installed. Would you like to replace it with ${chosenAdapter.name}?`
+        `The ${installedAdapter.name} adapter is already installed. Would you like to replace it with ${chosenAdapter.name}?`,
       );
       if (isReplaceInstalledAdapter) {
         await web.configure.deployment.removeAdapter(installedAdapter);
         nextStepsInstructions.push(
-          `- to completely remove the ${installedAdapter.name} adapter: ${installedAdapter.nextStepsDocsLink}`
+          `- to completely remove the ${installedAdapter.name} adapter: ${installedAdapter.nextStepsDocsLink}`,
         );
       } else {
         return;
@@ -67,12 +67,12 @@ const command: GluegunCommand = {
 
     await web.configure.deployment.installAdapter(chosenAdapter);
     nextStepsInstructions.push(
-      `- to finalize the configuration of the newly installed ${chosenAdapter.name} adapter, undo the changes at: ${chosenAdapter.nextStepsDocsLink}`
+      `- to finalize the configuration of the newly installed ${chosenAdapter.name} adapter, undo the changes at: ${chosenAdapter.nextStepsDocsLink}`,
     );
     print.highlight(
       `\nPlease perform the following next steps by reading the docs:\n${nextStepsInstructions.join(
-        "\n"
-      )}`
+        "\n",
+      )}`,
     );
   },
 };

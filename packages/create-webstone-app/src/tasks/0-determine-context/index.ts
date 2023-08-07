@@ -32,7 +32,7 @@ const checkPnpm = async () => {
   const pnpmVersion = await execa("pnpm", ["-v"]);
   if (pnpmVersion.failed) {
     throw new Error(
-      "pnpm is not installed, please install it first (npm i -g pnpm)"
+      "pnpm is not installed, please install it first (npm i -g pnpm)",
     );
   }
 };

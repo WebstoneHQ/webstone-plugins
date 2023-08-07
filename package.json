@@ -1,7 +1,7 @@
 {
-  "name": "webstone",
+  "name": "webstone-plugins",
   "version": "0.0.1",
-  "description": "Start your next web application with Webstone and configure it as you go.",
+  "description": "Start your next web application with Webstone Plugins and configure it as you go.",
   "private": true,
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
@@ -57,9 +57,8 @@
   },
   "lint-staged": {
     "*.{js,ts}": [
-      "pnpm lint",
-      "pnpm test --filter \"...[origin/main]\""
+      "pnpm lint"
     ],
-    "*.{css,js,md,ts}": "prettier --write"
+    "*": "prettier --ignore-unknown --write"
   }
 }

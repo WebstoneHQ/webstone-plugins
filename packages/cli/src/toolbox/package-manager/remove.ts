@@ -9,7 +9,7 @@ export default async (packageName: string, options?: PkgMngrOptions) => {
     `${determinePackageManager()} remove ${dev}${packageName}`,
     {
       cwd: options?.dir || "",
-    }
+    },
   );
   return { success: true, stdout };
 };

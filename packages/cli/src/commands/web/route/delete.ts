@@ -63,7 +63,7 @@ module.exports = command;
 function deleteAll(
   filename: string,
   print: GluegunPrint,
-  filesystem: GluegunFilesystem
+  filesystem: GluegunFilesystem,
 ) {
   print.newline();
   const target = `src/routes/${filename}`;

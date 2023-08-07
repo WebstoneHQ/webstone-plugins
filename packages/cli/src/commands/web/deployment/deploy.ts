@@ -12,7 +12,7 @@ const command: GluegunCommand = {
 
     if (!web.configure.deployment.isAnyAdapterInstalled()) {
       print.warning(
-        "No deployment adapter configured. Please run `[npx|pnpm|yarn] webstone web configure deployment` to fix this before you deploy the application."
+        "No deployment adapter configured. Please run `[npx|pnpm|yarn] webstone web configure deployment` to fix this before you deploy the application.",
       );
       return;
     }
@@ -30,8 +30,8 @@ const command: GluegunCommand = {
       const installedAdapter = web.configure.deployment.getInstalledAdapter();
       print.highlight(
         `Your web service is ready to be deployed. Please follow the instructions at https://github.com/WebstoneHQ/webstone/tree/main/docs/deployment#${installedAdapter.identifier.substring(
-          "adapter-".length
-        )} to deploy to ${installedAdapter.name}`
+          "adapter-".length,
+        )} to deploy to ${installedAdapter.name}`,
       );
     }
   },
