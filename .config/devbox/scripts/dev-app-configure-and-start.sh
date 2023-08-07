@@ -11,15 +11,31 @@ set -e
   while [ ! -f ../packages/cli/dist/bin.js ]; do sleep 1; done
   pnpm add -D ../packages/cli
 
-  # Install all plugin-*/cli packages
+  # Install all plugin-*/cli packages (without nested monorepo)
+  # This is for the plugin-trpc package. If / when we migrate that to a monorepo, we can remove this code
   for FILE in $(find ../packages/plugin-*/cli/package.json)
   do
     DIR=`dirname $FILE`
     pnpm add -D $DIR
   done
 
-  # Install all plugin-*/web packages
+  # Install all plugin-*/web packages (without nested monorepo)
+  # This is for the plugin-trpc package. If / when we migrate that to a monorepo, we can remove this code
   for FILE in $(find ../packages/plugin-*/web/package.json)
+  do
+    DIR=`dirname $FILE`
+    pnpm add -D $DIR
+  done
+
+  # Install all plugin-*/cli packages (with nested monorepo)
+  for FILE in $(find ../packages/plugin-*/packages/cli/package.json)
+  do
+    DIR=`dirname $FILE`
+    pnpm add -D $DIR
+  done
+
+  # Install all plugin-*/web packages (with nested monorepo)
+  for FILE in $(find ../packages/plugin-*/packages/web/package.json)
   do
     DIR=`dirname $FILE`
     pnpm add -D $DIR

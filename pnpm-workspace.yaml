@@ -1,4 +1,4 @@
 packages:
   - "packages/**"
-  - "!_dev-app"
+  - "!_dev-app/**"
   - "!packages/create-webstone-app/templates/**"
