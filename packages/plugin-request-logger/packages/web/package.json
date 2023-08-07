@@ -50,6 +50,5 @@
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"type": "module",
-	"private": true
+	"type": "module"
 }

@@ -1,12 +1,16 @@
-# XYZ Web - Webstone Plugin
+# `xyz` Web - Webstone Plugin
 
 > **_Search & replace `XYZ` in this file with your plugin name._**
+
+## About
+
+> **What is this package about? What challenges does it solve?**
 
 ## Installation
 
 Install this plugin with the following command:
 
-```
+```shell
 npm install -D webstone-plugin-XYZ-web
 ```
 
@@ -16,4 +20,4 @@ npm install -D webstone-plugin-XYZ-web
 
 ## Learn more about Webstone Plugins
 
-This plugin is part of a wider ecosystem called [Webstone Plugins](https://github.com/WebstoneHQ/webstone).
+This plugin is part of a wider ecosystem called [Webstone Plugins](https://github.com/WebstoneHQ/webstone-plugins).
