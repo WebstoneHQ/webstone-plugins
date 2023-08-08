@@ -18,6 +18,8 @@ jobs:
 
       - name: Install devbox
         uses: jetpack-io/devbox-install-action@v0.5.0
+        with:
+          enable-cache: true
 
       - name: Install Dependencies
         run: devbox run -- pnpm install --frozen-lockfile
