@@ -3,6 +3,9 @@
 	"version": "0.0.1",
 	"description": "",
 	"private": true,
+  "engines": {
+    "node": ">=20.5.0"
+  },
 	"scripts": {
 		"clean": "rimraf build",
 		"copy-templates": "copyfiles -u 2 ./src/templates/* ./src/templates/**/* build/templates",
