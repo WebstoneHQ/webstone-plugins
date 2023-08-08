@@ -1,5 +1,12 @@
 # @webstone/cli
 
+## 0.12.0
+
+### Minor Changes
+
+- 770120d: Accept a `--types` option for `ws web route create` to bypass the interactive prompt. One or more values are accepted, comma-separated. Valid options are: `+page.svelte`, `+page.ts`, `+page.server.ts`, `+layout.svelte`, `+layout.ts`, `+layout.server.ts`, `+layout.server.ts`, `+error.svelte`.
+- 23575e3: Release the webstone-plugin-request-logger package.
+
 ## 0.11.1
 
 ### Patch Changes

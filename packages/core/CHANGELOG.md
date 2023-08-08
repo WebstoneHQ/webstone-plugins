@@ -1,5 +1,17 @@
 # @webstone/core
 
+## 0.1.0
+
+### Minor Changes
+
+- 23575e3: Release the webstone-plugin-request-logger package.
+
+### Patch Changes
+
+- Updated dependencies [770120d]
+- Updated dependencies [23575e3]
+  - @webstone/cli@0.12.0
+
 ## 0.0.23
 
 ### Patch Changes

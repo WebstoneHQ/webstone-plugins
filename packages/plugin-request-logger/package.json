@@ -1,6 +1,6 @@
 {
 	"name": "webstone-plugin-request-logger",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "Template Plugin for Webstone - PLEASE UPDATE THIS",
 	"scripts": {
 		"build": "pnpm --recursive --parallel build",
