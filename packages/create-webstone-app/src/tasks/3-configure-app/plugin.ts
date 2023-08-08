@@ -32,12 +32,14 @@ const installWebDevDependencies = async (ctx: Ctx) => {
 };
 
 const configureWebPrepublishOnlyScript = async (ctx: Ctx) => {
+  const prepublishOnlyCommands = [
+    `pnpm remove webstone-plugin-${getAppName(ctx.appDir)}-cli @webstone/cli`,
+    "pnpm package",
+  ];
   const packageJson = fs.readJSONSync(
     path.join(ctx.appDir, "packages", "web", "package.json"),
   );
-  packageJson.scripts.prepublishOnly = `pnpm remove webstone-plugin-${getAppName(
-    ctx.appDir,
-  )}-cli @webstone/cli`;
+  packageJson.scripts.prepublishOnly = prepublishOnlyCommands.join(" && ");
   fs.writeJSONSync(
     path.join(ctx.appDir, "packages", "web", "package.json"),
     packageJson,

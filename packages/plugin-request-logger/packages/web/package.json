@@ -6,7 +6,7 @@
 		"build": "vite build && npm run package",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
-		"prepublishOnly": "pnpm remove webstone-plugin-request-logger-cli @webstone/cli",
+		"prepublishOnly": "pnpm remove webstone-plugin-request-logger-cli @webstone/cli && pnpm package",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
