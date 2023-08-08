@@ -21,5 +21,5 @@ export const tasks = new Listr<Ctx>(
     rendererOptions: {
       collapse: false,
     },
-  }
+  },
 );

@@ -1,6 +1,6 @@
 # Webstone Plugin
 
-This is a monorepo managed by [pnpm](https://pnpm.io/) that contains two optional, independent parts that make up a [Webstone](https://github.com/WebstoneHQ/webstone/) plugin:
+This is a monorepo managed by [pnpm](https://pnpm.io/) that contains two optional, independent parts that make up a [Webstone Plugins](https://github.com/WebstoneHQ/webstone-plugins/) plugin:
 
 - `packages/cli` ([docs](#cli))
 - `packages/web` ([docs](#web))

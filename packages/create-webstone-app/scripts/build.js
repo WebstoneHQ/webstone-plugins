@@ -33,11 +33,7 @@ switch (mode) {
     await esbuild.build(config).catch(() => process.exit(1));
     break;
   case "dev": {
-    const context = await esbuild
-      .context({
-        ...config.shared,
-      })
-      .catch(() => process.exit(1));
+    const context = await esbuild.context(config).catch(() => process.exit(1));
     await context.watch();
     break;
   }

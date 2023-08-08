@@ -13,7 +13,7 @@ export const determinePackageManager = (): PackageManagers => {
     return "yarn";
   } else {
     console.warn(
-      `Could not determine package manager based on "process.env.npm_execpath". Value for env variable: ${process.env.npm_execpath}. Using npm as a fallback. Please report this as a bug, we'd love to make it more resilient.`
+      `Could not determine package manager based on "process.env.npm_execpath". Value for env variable: ${process.env.npm_execpath}. Using npm as a fallback. Please report this as a bug, we'd love to make it more resilient.`,
     );
     return "npm";
   }

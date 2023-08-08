@@ -35,7 +35,7 @@ test("app dir does not exist, no app dir provided", async () => {
   try {
     const appDir = await createAppDir(
       fakeContext,
-      fakeListrTask as WebstoneTask
+      fakeListrTask as WebstoneTask,
     );
     assert.is(appDir, ".");
   } finally {
@@ -175,7 +175,7 @@ test("app dir exists and is not empty, do not continue", async () => {
   } catch (error) {
     assert.is(
       error.message,
-      `Exiting, please empty the ./test-app directory or choose a different one to create the Webstone app.`
+      `Exiting, please empty the ./test-app directory or choose a different one to create the Webstone app.`,
     );
   }
 });

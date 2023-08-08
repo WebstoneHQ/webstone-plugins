@@ -27,8 +27,8 @@ test("Check if the plugin template gets copied properly", async () => {
   assert.is(fakeCopySync.callCount, 1);
   assert.ok(
     (fakeCopySync.firstCall.args[0] as string).includes(
-      "templates/plugin/structure"
-    )
+      "templates/plugin/structure",
+    ),
   );
 });
 
@@ -49,18 +49,18 @@ test("Check if the cli package gets renamed properly", async () => {
   assert.is(fakeReadJSONSync.callCount, 1);
   assert.ok(
     (fakeReadJSONSync.firstCall.args[0] as string).includes(
-      "packages/cli/package.json"
-    )
+      "packages/cli/package.json",
+    ),
   );
   assert.is(fakeWriteJSONSync.callCount, 1);
   assert.ok(
     (fakeWriteJSONSync.firstCall.args[0] as string).includes(
-      "packages/cli/package.json"
-    )
+      "packages/cli/package.json",
+    ),
   );
   assert.is(
     fakeWriteJSONSync.firstCall.args[1].name,
-    "webstone-plugin-dummy-cli"
+    "webstone-plugin-dummy-cli",
   );
 });
 
@@ -81,11 +81,11 @@ test("Check if the main package gets renamed properly", async () => {
 
   assert.is(fakeReadJSONSync.callCount, 1);
   assert.ok(
-    (fakeReadJSONSync.firstCall.args[0] as string).includes("package.json")
+    (fakeReadJSONSync.firstCall.args[0] as string).includes("package.json"),
   );
   assert.is(fakeWriteJSONSync.callCount, 1);
   assert.ok(
-    (fakeWriteJSONSync.firstCall.args[0] as string).includes("package.json")
+    (fakeWriteJSONSync.firstCall.args[0] as string).includes("package.json"),
   );
   assert.is(fakeWriteJSONSync.firstCall.args[1].name, "webstone-plugin-dummy");
 });

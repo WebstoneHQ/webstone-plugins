@@ -48,7 +48,7 @@ const promptForName = async ({
 
 const promptForFileTypes = async (
   { filesystem, parameters, print, prompt, strings }: PromptForTypesParameters,
-  name: string
+  name: string,
 ) => {
   // huge thank you to the Svelte language tools repo! https://github.com/sveltejs/language-tools/tree/master/packages/svelte-vscode/src/sveltekit/generateFiles/templates
   const allChoices = [
@@ -125,7 +125,7 @@ const command: GluegunCommand = {
       // eslint-disable-next-line no-var
       var { directoryName, existingFiles, types } = await promptForFileTypes(
         { filesystem, parameters, print, prompt, strings },
-        name
+        name,
       );
     } catch (error: unknown) {
       print.error(error instanceof Error ? error.message : String(error));

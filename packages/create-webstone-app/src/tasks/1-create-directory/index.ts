@@ -16,7 +16,7 @@ export const createAppDir = async (ctx: Ctx, task: WebstoneTask) => {
 
       if (!response) {
         throw new Error(
-          `Exiting, please empty the ./${appDir} directory or choose a different one to create the Webstone app.`
+          `Exiting, please empty the ./${appDir} directory or choose a different one to create the Webstone app.`,
         );
       }
     }

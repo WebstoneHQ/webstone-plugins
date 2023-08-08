@@ -12,13 +12,13 @@ export const copyTemplate = (ctx: Ctx) => {
   const appDir = ctx.appDir;
   fs.copySync(
     path.join(__dirname, "..", "templates", "plugin", "structure"),
-    appDir
+    appDir,
   );
 };
 
 export const renameCliPackage = (ctx: Ctx) => {
   const cliPackageJson = fs.readJSONSync(
-    path.join(ctx.appDir, "packages", "cli", "package.json")
+    path.join(ctx.appDir, "packages", "cli", "package.json"),
   );
   cliPackageJson.name = `webstone-plugin-${getAppName(ctx.appDir)}-cli`;
   fs.writeJSONSync(
@@ -26,7 +26,7 @@ export const renameCliPackage = (ctx: Ctx) => {
     cliPackageJson,
     {
       spaces: "\t",
-    }
+    },
   );
 };
 
@@ -52,8 +52,8 @@ export const createCliNamespace = (ctx: Ctx) => {
       "cli",
       "src",
       "commands",
-      getAppName(ctx.appDir)
-    )
+      getAppName(ctx.appDir),
+    ),
   );
   fs.renameSync(
     path.join(
@@ -62,7 +62,7 @@ export const createCliNamespace = (ctx: Ctx) => {
       "cli",
       "src",
       "extensions",
-      "placeholder"
+      "placeholder",
     ),
     path.join(
       ctx.appDir,
@@ -70,14 +70,14 @@ export const createCliNamespace = (ctx: Ctx) => {
       "cli",
       "src",
       "extensions",
-      getAppName(ctx.appDir)
-    )
+      getAppName(ctx.appDir),
+    ),
   );
 };
 
 const setWebPackagePrivateTrue = (ctx: Ctx) => {
   const packageJson = fs.readJSONSync(
-    path.join(ctx.appDir, "packages", "web", "package.json")
+    path.join(ctx.appDir, "packages", "web", "package.json"),
   );
   packageJson.private = true;
   fs.writeJSONSync(
@@ -85,7 +85,7 @@ const setWebPackagePrivateTrue = (ctx: Ctx) => {
     packageJson,
     {
       spaces: "\t",
-    }
+    },
   );
 };
 
@@ -114,9 +114,9 @@ const copyWebPackageReadme = async (ctx: Ctx) => {
       "structure",
       "packages",
       "web",
-      "README.md"
+      "README.md",
     ),
-    path.join(ctx.appDir, "packages", "web", "README.md")
+    path.join(ctx.appDir, "packages", "web", "README.md"),
   );
 };
 

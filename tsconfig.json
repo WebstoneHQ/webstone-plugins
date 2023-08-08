@@ -9,6 +9,6 @@
     "sourceMap": false,
     "inlineSourceMap": true,
     "strict": true,
-    "declaration": true,
-  },
+    "declaration": true
+  }
 }

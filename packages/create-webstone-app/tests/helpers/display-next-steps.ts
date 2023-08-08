@@ -20,16 +20,16 @@ test("displayNextSteps", async () => {
   assert.ok(fakeConsoleLog.calledOnce);
   assert.ok(
     (fakeConsoleLog.firstCall.firstArg as string).includes(
-      "https://github.com/WebstoneHQ/webstone"
-    )
+      "https://github.com/WebstoneHQ/webstone",
+    ),
   );
   assert.ok(
     (fakeConsoleLog.firstCall.firstArg as string).includes(
-      "https://discord.gg/NJRm6eRs"
-    )
+      "https://discord.gg/NJRm6eRs",
+    ),
   );
   assert.ok(
-    (fakeConsoleLog.firstCall.firstArg as string).includes("cd test-dir")
+    (fakeConsoleLog.firstCall.firstArg as string).includes("cd test-dir"),
   );
 });
 

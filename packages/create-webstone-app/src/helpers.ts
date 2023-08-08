@@ -23,7 +23,7 @@ export const determinePackageManager = (): PackageManagers => {
     return "yarn";
   } else {
     console.warn(
-      `Could not determine package manager based on "process.env.npm_execpath". Value for env variable: ${process.env.npm_execpath}. Using npm as a fallback. Please report this as a bug, we'd love to make it more resilient.`
+      `Could not determine package manager based on "process.env.npm_execpath". Value for env variable: ${process.env.npm_execpath}. Using npm as a fallback. Please report this as a bug, we'd love to make it more resilient.`,
     );
     return "npm";
   }
@@ -31,9 +31,13 @@ export const determinePackageManager = (): PackageManagers => {
 
 export const getAppName = (appDir: string, isPlugin = false) => {
   if (appDir === ".") {
-    return process.cwd().split("/").pop() || isPlugin
-      ? "webstone-plugin"
-      : "webstone-app";
+    const appName = process.cwd().split("/").pop();
+    if (appName) {
+      return appName.startsWith("plugin-")
+        ? appName.substring("plugin-".length)
+        : appName;
+    }
+    return isPlugin ? "webstone-plugin" : "webstone-app";
   }
   return appDir;
 };
@@ -74,7 +78,7 @@ Thank you for your interest in Webstone, I'd love to hear your feedback 🙏.
 Next steps: 
   - ${chalk.bold(chalk.cyan(`cd ${ctx.appDir.split("/").pop()}`))}
   - ${chalk.bold(
-    chalk.cyan(wsDevCommandPerPackageManager[determinePackageManager()])
+    chalk.cyan(wsDevCommandPerPackageManager[determinePackageManager()]),
   )}
     `);
 };

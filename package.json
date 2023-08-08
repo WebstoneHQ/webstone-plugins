@@ -1,7 +1,7 @@
 {
-  "name": "webstone",
+  "name": "webstone-plugins",
   "version": "0.0.1",
-  "description": "Start your next web application with Webstone and configure it as you go.",
+  "description": "Start your next web application with Webstone Plugins and configure it as you go.",
   "private": true,
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
@@ -29,7 +29,7 @@
     "changeset": "changeset && pnpm install",
     "clean": "pnpm --recursive --parallel clean",
     "clean:nodemodules": "find . -type d -name \"node_modules\" -exec rm -fr {} +",
-    "dev": "pnpm --recursive --parallel --filter !./packages/plugin-*/web dev",
+    "dev": "pnpm --recursive --parallel --filter !./packages/plugin-*/web --filter !./packages/plugin-*/packages/web dev",
     "lint": "eslint . --fix --ignore-path .gitignore --max-warnings 0",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
@@ -57,9 +57,8 @@
   },
   "lint-staged": {
     "*.{js,ts}": [
-      "pnpm lint",
-      "pnpm test --filter \"...[origin/main]\""
+      "pnpm lint"
     ],
-    "*.{css,js,md,ts}": "prettier --write"
+    "*": "prettier --ignore-unknown --write"
   }
 }
