@@ -1,6 +1,6 @@
 {
 	"name": "webstone-plugin-request-logger-web",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -34,7 +34,7 @@
 		"@sveltejs/package": "^2.2.0",
 		"@typescript-eslint/eslint-plugin": "^6.3.0",
 		"@typescript-eslint/parser": "^6.3.0",
-		"@webstone/cli": "^0.11.1",
+		"@webstone/cli": "^0.12.0",
 		"eslint": "^8.46.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte": "^2.32.4",

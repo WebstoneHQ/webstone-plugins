@@ -1,5 +1,15 @@
 # create-webstone-app
 
+## 0.6.0
+
+### Minor Changes
+
+- 23575e3: Release the webstone-plugin-request-logger package.
+
+### Patch Changes
+
+- 0dfcb69: Update dependencies.
+
 ## 0.5.2
 
 ### Patch Changes
