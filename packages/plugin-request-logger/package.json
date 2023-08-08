@@ -3,6 +3,9 @@
 	"version": "0.1.0",
 	"description": "Template Plugin for Webstone - PLEASE UPDATE THIS",
 	"private": true,
+  "engines": {
+    "node": ">=20.5.0"
+  },
 	"scripts": {
 		"build": "pnpm --recursive --parallel build",
 		"changeset": "changeset && pnpm install",
