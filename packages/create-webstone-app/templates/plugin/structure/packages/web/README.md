@@ -1,4 +1,4 @@
-# `xyz` Web - Webstone Plugin
+# `xyz` (Web) - Webstone Plugin
 
 > **_Search & replace `XYZ` in this file with your plugin name._**
 

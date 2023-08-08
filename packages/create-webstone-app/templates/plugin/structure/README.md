@@ -1,21 +1,21 @@
 # Webstone Plugin
 
-This is a monorepo managed by [pnpm](https://pnpm.io/) that contains two optional, independent parts that make up a [Webstone Plugins](https://github.com/WebstoneHQ/webstone-plugins/) plugin:
+This is a monorepo managed by [pnpm](https://pnpm.io/) that contains two optional, independent parts that make up a [Webstone](https://github.com/WebstoneHQ/webstone/) plugin:
 
 - `packages/cli` ([docs](#cli))
 - `packages/web` ([docs](#web))
 
-Your plugin could only extend the Webstone CLI, only extend the web aspect of Webstone, or both.
+Your plugin could only extend the Webstone CLI, only extend the web aspect of Webstone Plugins, or both.
 
 ## CLI
 
-Webstone provides a `webstone` CLI used by developers to enhance their projects. You can extend this CLI with `packages/cli`.
+Webstone Plugins provides a `webstone` CLI used by developers to enhance their projects. You can extend this CLI with `packages/cli`.
 
 Please refer to the [gluegun documentation](https://infinitered.github.io/gluegun/#/?id=quick-start) for instructions on how to develop commands and extensions.
 
 ## Web
 
-In many cases, you want to create a Webstone plugin to provide UI components to a Webstone application. This is where `packages/web` comes into play. It is a basic SvelteKit `skeletonlib` project ([docs](https://kit.svelte.dev/docs/packaging)). Developers working on a Webstone application will be able to import your UI components as regular Svelte components.
+In many cases, you want to create a Webstone Plugin to provide UI components, actions, or other web-based functionality. This is where `packages/web` comes into play. It is a basic SvelteKit `skeletonlib` project ([docs](https://kit.svelte.dev/docs/packaging)). Developers working on a SvelteKit application will be able to import your UI components as regular Svelte components. The same is true for actions or other web-based functionality your plugin provides.
 
 ## Development
 

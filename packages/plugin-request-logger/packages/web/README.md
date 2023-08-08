@@ -1,4 +1,4 @@
-# `request-logger` Web - Webstone Plugin
+# `request-logger` (Web) - Webstone Plugin
 
 ## About
 
