@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.7.0
+
+### Minor Changes
+
+- a37c021: Make sure the plugin's web's prepublishOnly script runs pnpm package.
+
 ## 0.6.0
 
 ### Minor Changes
