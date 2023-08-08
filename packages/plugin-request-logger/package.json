@@ -2,6 +2,7 @@
 	"name": "webstone-plugin-request-logger",
 	"version": "0.1.0",
 	"description": "Template Plugin for Webstone - PLEASE UPDATE THIS",
+	"private": true,
 	"scripts": {
 		"build": "pnpm --recursive --parallel build",
 		"changeset": "changeset && pnpm install",
