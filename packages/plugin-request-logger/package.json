@@ -1,5 +1,5 @@
 {
-	"name": "plugin-request-logger",
+	"name": "webstone-plugin-request-logger",
 	"version": "0.0.1",
 	"scripts": {
 		"build": "npm run clean:build && npm run build:cli && npm run build:web",
