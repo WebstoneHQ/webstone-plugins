@@ -13,7 +13,7 @@
 		"paths": {
 			"$lib": ["./src/lib"],
 			"$lib/*": ["./src/lib/*"],
-			"webstone-plugin-request-logger-web": ["../src/lib/index.js"]
+			"webstone-plugin-request-logger": ["./src/lib/index.js"]
 		}
 	}
 }
