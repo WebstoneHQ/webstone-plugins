@@ -201,96 +201,6 @@ importers:
         specifier: ^0.34.1
         version: 0.34.1
 
-  packages/plugin-request-logger-old:
-    devDependencies:
-      '@changesets/cli':
-        specifier: ^2.26.0
-        version: 2.26.2
-      rimraf:
-        specifier: ^3.0.2
-        version: 3.0.2
-
-  packages/plugin-request-logger-old/packages/cli:
-    devDependencies:
-      copyfiles:
-        specifier: ^2.4.1
-        version: 2.4.1
-      gluegun:
-        specifier: ^5.1.2
-        version: 5.1.2
-      npm-run-all:
-        specifier: ^4.1.5
-        version: 4.1.5
-      npm-watch:
-        specifier: ^0.11.0
-        version: 0.11.0
-      prettier:
-        specifier: ^2.8.1
-        version: 2.8.8
-      typescript:
-        specifier: ^4.7.4
-        version: 4.9.4
-
-  packages/plugin-request-logger-old/packages/web:
-    devDependencies:
-      '@playwright/test':
-        specifier: ^1.36.2
-        version: 1.36.2
-      '@sveltejs/adapter-auto':
-        specifier: ^2.1.0
-        version: 2.1.0(@sveltejs/kit@1.22.4)
-      '@sveltejs/kit':
-        specifier: ^1.22.4
-        version: 1.22.4(svelte@4.1.2)(vite@4.4.9)
-      '@sveltejs/package':
-        specifier: ^2.2.0
-        version: 2.2.0(svelte@4.1.2)(typescript@5.1.6)
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^6.3.0
-        version: 6.3.0(@typescript-eslint/parser@6.3.0)(eslint@8.46.0)(typescript@5.1.6)
-      '@typescript-eslint/parser':
-        specifier: ^6.3.0
-        version: 6.3.0(eslint@8.46.0)(typescript@5.1.6)
-      '@webstone/cli':
-        specifier: ^0.12.0
-        version: link:../../../cli
-      eslint:
-        specifier: ^8.46.0
-        version: 8.46.0
-      eslint-config-prettier:
-        specifier: ^9.0.0
-        version: 9.0.0(eslint@8.46.0)
-      eslint-plugin-svelte:
-        specifier: ^2.32.4
-        version: 2.32.4(eslint@8.46.0)(svelte@4.1.2)(ts-node@10.9.1)
-      prettier:
-        specifier: ^3.0.1
-        version: 3.0.1
-      prettier-plugin-svelte:
-        specifier: ^3.0.3
-        version: 3.0.3(prettier@3.0.1)(svelte@4.1.2)
-      publint:
-        specifier: ^0.2.0
-        version: 0.2.0
-      svelte:
-        specifier: ^4.1.2
-        version: 4.1.2
-      svelte-check:
-        specifier: ^3.4.6
-        version: 3.4.6(postcss@8.4.27)(svelte@4.1.2)
-      tslib:
-        specifier: ^2.6.1
-        version: 2.6.1
-      typescript:
-        specifier: ^5.1.6
-        version: 5.1.6
-      vite:
-        specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.4.8)
-      webstone-plugin-request-logger-cli:
-        specifier: workspace:^
-        version: link:../cli
-
   packages/plugin-trpc/cli:
     dependencies:
       '@mrleebo/prisma-ast':
@@ -2280,11 +2190,6 @@ packages:
       type-fest: 1.4.0
     dev: false
 
-  /ansi-regex@4.1.1:
-    resolution: {integrity: sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g==}
-    engines: {node: '>=6'}
-    dev: true
-
   /ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
     engines: {node: '>=8'}
@@ -2667,16 +2572,6 @@ packages:
   /cli-spinners@2.6.1:
     resolution: {integrity: sha512-x/5fWmGMnbKQAaNwN+UZlV79qBLM9JFnJuJ03gIi5whrob0xV0ofNVHy9DhwGdsMJQc2OKv0oGmLzvaqvAVv+g==}
     engines: {node: '>=6'}
-
-  /cli-table3@0.6.0:
-    resolution: {integrity: sha512-gnB85c3MGC7Nm9I/FkiasNBOKjOiO1RNuXXarQms37q4QMpWdlbBgD/VnOStA2faG1dpXMv31RFApjX1/QdgWQ==}
-    engines: {node: 10.* || >= 12.*}
-    dependencies:
-      object-assign: 4.1.1
-      string-width: 4.2.3
-    optionalDependencies:
-      colors: 1.4.0
-    dev: true
 
   /cli-table3@0.6.3:
     resolution: {integrity: sha512-w5Jac5SykAeZJKntOxJCrm63Eg5/4dhMWIcuTbo9rpE+brgaSZo0RuNJZeOyMgsUdhDeojvgyQLmjI+K50ZGyg==}
@@ -3105,14 +3000,6 @@ packages:
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
-
-  /ejs@3.1.6:
-    resolution: {integrity: sha512-9lt9Zse4hPucPkoP7FHDF0LQAlGyF9JVpnClFLFH3aSSbxmyoqINRpp/9wePWJTUl4KOQwRL72Iw3InHPDkoGw==}
-    engines: {node: '>=0.10.0'}
-    hasBin: true
-    dependencies:
-      jake: 10.8.5
-    dev: true
 
   /ejs@3.1.8:
     resolution: {integrity: sha512-/sXZeMlhS0ArkfX2Aw780gJzXSMPnKjtspYZv+f3NiKLlubezAHDU5+9xz6gd3/NhG3txQCo6xlglmTS+oTGEQ==}
@@ -3715,13 +3602,6 @@ packages:
       universalify: 2.0.0
     dev: true
 
-  /fs-jetpack@4.3.1:
-    resolution: {integrity: sha512-dbeOK84F6BiQzk2yqqCVwCPWTxAvVGJ3fMQc6E2wuEohS28mR6yHngbrKuVCK1KHRx/ccByDylqu4H5PCP2urQ==}
-    dependencies:
-      minimatch: 3.1.2
-      rimraf: 2.7.1
-    dev: true
-
   /fs-jetpack@5.0.0:
     resolution: {integrity: sha512-0f9QoIbfAq/DuafAQisvsHJmLnJB2D53d9FXIu0UZPUg4Kzocez1+AinToPON6JD/C60kDlye121puiR5ivfdg==}
     dependencies:
@@ -3898,44 +3778,6 @@ packages:
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
-    dev: true
-
-  /gluegun@5.1.2:
-    resolution: {integrity: sha512-Cwx/8S8Z4YQg07a6AFsaGnnnmd8mN17414NcPS3OoDtZRwxgsvwRNJNg69niD6fDa8oNwslCG0xH7rEpRNNE/g==}
-    hasBin: true
-    dependencies:
-      apisauce: 2.1.6
-      app-module-path: 2.2.0
-      cli-table3: 0.6.0
-      colors: 1.4.0
-      cosmiconfig: 7.0.1
-      cross-spawn: 7.0.3
-      ejs: 3.1.6
-      enquirer: 2.3.6
-      execa: 5.1.1
-      fs-jetpack: 4.3.1
-      lodash.camelcase: 4.3.0
-      lodash.kebabcase: 4.1.1
-      lodash.lowercase: 4.3.0
-      lodash.lowerfirst: 4.3.1
-      lodash.pad: 4.5.1
-      lodash.padend: 4.6.1
-      lodash.padstart: 4.6.1
-      lodash.repeat: 4.1.0
-      lodash.snakecase: 4.1.1
-      lodash.startcase: 4.4.0
-      lodash.trim: 4.5.1
-      lodash.trimend: 4.5.1
-      lodash.trimstart: 4.5.1
-      lodash.uppercase: 4.3.0
-      lodash.upperfirst: 4.3.1
-      ora: 4.0.2
-      pluralize: 8.0.0
-      semver: 7.3.5
-      which: 2.0.2
-      yargs-parser: 21.1.1
-    transitivePeerDependencies:
-      - debug
     dev: true
 
   /gopd@1.0.1:
@@ -4640,13 +4482,6 @@ packages:
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
 
-  /log-symbols@3.0.0:
-    resolution: {integrity: sha512-dSkNGuI7iG3mfvDzUuYZyvk5dD9ocYCYzNU6CYDE6+Xqd+gwme6Z00NS3dUh8mq/73HaEtT7m6W+yUPtU6BZnQ==}
-    engines: {node: '>=8'}
-    dependencies:
-      chalk: 2.4.2
-    dev: true
-
   /log-symbols@4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
     engines: {node: '>=10'}
@@ -5080,19 +4915,6 @@ packages:
       levn: 0.4.1
       prelude-ls: 1.2.1
       type-check: 0.4.0
-    dev: true
-
-  /ora@4.0.2:
-    resolution: {integrity: sha512-YUOZbamht5mfLxPmk4M35CD/5DuOkAacxlEUbStVXpBAt4fyhBf+vZHI/HRkI++QUp3sNoeA2Gw4C+hi4eGSig==}
-    engines: {node: '>=8'}
-    dependencies:
-      chalk: 2.4.2
-      cli-cursor: 3.1.0
-      cli-spinners: 2.6.1
-      is-interactive: 1.0.0
-      log-symbols: 3.0.0
-      strip-ansi: 5.2.0
-      wcwidth: 1.0.1
     dev: true
 
   /ora@5.4.1:
@@ -5756,14 +5578,6 @@ packages:
     hasBin: true
     dev: true
 
-  /semver@7.3.5:
-    resolution: {integrity: sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      lru-cache: 6.0.0
-    dev: true
-
   /semver@7.3.7:
     resolution: {integrity: sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==}
     engines: {node: '>=10'}
@@ -6057,13 +5871,6 @@ packages:
     resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==}
     dependencies:
       safe-buffer: 5.2.1
-
-  /strip-ansi@5.2.0:
-    resolution: {integrity: sha512-DuRs1gKbBqsMKIZlrffwlug8MHkcnpjs5VPmL1PAh+mA30U0DTotfDZ0d2UUsXpPmPmMMJ6W773MaA3J+lbiWA==}
-    engines: {node: '>=6'}
-    dependencies:
-      ansi-regex: 4.1.1
-    dev: true
 
   /strip-ansi@6.0.1:
     resolution: {integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==}
