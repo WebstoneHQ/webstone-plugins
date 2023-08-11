@@ -4,4 +4,4 @@
 
 ### Minor Changes
 
-- 23575e3: Release the webstone-plugin-request-logger package.
+- 39a1c96: Initial release with the new plugin structure.
