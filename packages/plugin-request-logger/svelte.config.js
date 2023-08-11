@@ -13,7 +13,7 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter(),
 		alias: {
-			'webstone-plugin-request-logger-web': 'src/lib/index.js'
+			'webstone-plugin-request-logger': 'src/lib/index.js'
 		}
 	}
 };
