@@ -11,7 +11,7 @@
 		"prepublishOnly": "pnpm remove webstone-plugin-trpc-cli @webstone/cli"
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.36.2",
+		"@playwright/test": "^1.37.0",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.22.5",
 		"@sveltejs/package": "^2.2.1",

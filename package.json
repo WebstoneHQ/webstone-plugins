@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
-    "@playwright/test": "^1.36.2",
+    "@playwright/test": "^1.37.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "20.4.10",
     "@types/sinon": "^10.0.16",
