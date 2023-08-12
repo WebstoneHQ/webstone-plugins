@@ -14,7 +14,7 @@
 		"@playwright/test": "^1.36.2",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.22.5",
-		"@sveltejs/package": "^2.2.0",
+		"@sveltejs/package": "^2.2.1",
 		"@typescript-eslint/eslint-plugin": "^6.3.0",
 		"@typescript-eslint/parser": "^6.3.0",
 		"@webstone/cli": "workspace:^0.12.0",
