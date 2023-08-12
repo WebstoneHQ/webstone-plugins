@@ -2,6 +2,7 @@ import fs from "fs-extra";
 import chalk from "chalk";
 import enquirer from "enquirer";
 import { displayWelcome } from "./helpers";
+import { createWebstone } from "./index";
 
 const { version } = JSON.parse(
   fs.readFileSync(new URL("../package.json", import.meta.url), "utf-8"),
@@ -55,8 +56,12 @@ const promptType: { type: "Webstone App" | "Webstone Plugin" } =
 const typeMap = {
   "Webstone App": "app",
   "Webstone Plugin": "plugin",
-};
+} as const;
 
 const type = typeMap[promptType.type];
 
-console.log(type);
+await createWebstone(cwd, { type });
+
+console.log(
+  chalk.green.bold(`Successfully created Webstone project at ./${cwd}`),
+);
