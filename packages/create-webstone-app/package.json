@@ -2,19 +2,6 @@
   "name": "create-webstone-app",
   "version": "0.7.0",
   "description": "Start your next web application with Webstone and configure it as you go.",
-  "author": "Mike Nikles, @mikenikles",
-  "type": "module",
-  "bin": "./bin.js",
-  "scripts": {
-    "build": "node ./scripts/build.js build",
-    "clean": "rm -fr ./dist",
-    "dev": "node ./scripts/build.js dev",
-    "prepublishOnly": "pnpm build",
-    "prepare": "pnpm build",
-    "test": "pnpm test:unit",
-    "test:unit": "c8 --all --include=src --reporter=html pnpm test:unit:only",
-    "test:unit:only": "NODE_OPTIONS='--loader tsx' uvu tests"
-  },
   "keywords": [
     "svelte",
     "sveltekit",
@@ -24,21 +11,32 @@
     "graphql"
   ],
   "license": "MIT",
-  "devDependencies": {
-    "@types/command-line-args": "^5.2.0",
-    "@types/node": "20.4.10",
-    "esbuild": "^0.19.1",
-    "esbuild-node-externals": "^1.8.0",
-    "typescript": "^5.1.6"
+  "author": "Mike Nikles, @mikenikles",
+  "type": "module",
+  "bin": "./bin.js",
+  "scripts": {
+    "build": "node ./scripts/build.js build",
+    "clean": "rm -fr ./dist",
+    "dev": "node ./scripts/build.js dev",
+    "prepare": "pnpm build",
+    "prepublishOnly": "pnpm build",
+    "test": "pnpm test:unit",
+    "test:unit": "c8 --all --include=src --reporter=html pnpm test:unit:only",
+    "test:unit:only": "NODE_OPTIONS='--loader tsx' uvu tests"
   },
   "dependencies": {
     "chalk": "5.3.0",
     "command-line-args": "^5.2.1",
     "create-svelte": "^5.0.5",
     "enquirer": "2.4.1",
-    "execa": "7.2.0",
+    "execa": "^7.2.0",
     "fs-extra": "11.1.1",
-    "json5": "^2.2.3",
-    "listr2": "6.6.1"
+    "listr2": "^6.6.1"
+  },
+  "devDependencies": {
+    "@types/command-line-args": "^5.2.0",
+    "@types/node": "20.4.10",
+    "tsup": "^6.7.0",
+    "typescript": "^5.1.6"
   }
 }
