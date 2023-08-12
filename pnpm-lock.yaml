@@ -95,8 +95,8 @@ importers:
         specifier: ^5.2.1
         version: 5.2.1
       create-svelte:
-        specifier: ^5.0.4
-        version: 5.0.4
+        specifier: ^5.0.5
+        version: 5.0.5
       enquirer:
         specifier: 2.4.1
         version: 2.4.1
@@ -553,17 +553,17 @@ packages:
     resolution: {integrity: sha512-hBzuU5+JjB2cqNZyszkDHZgOSrUUT8V3dhgRl8Q9Gp6dAj/H5+KILGjbhDpc3Iy9qmqlm/akuOI2ut9VUtzJxQ==}
     dev: false
 
-  /@clack/core@0.3.2:
-    resolution: {integrity: sha512-FZnsNynwGDIDktx6PEZK1EuCkFpY4ldEX6VYvfl0dqeoLPb9Jpw1xoUXaVcGR8ExmYNm1w2vdGdJkEUYD/2pqg==}
+  /@clack/core@0.3.3:
+    resolution: {integrity: sha512-5ZGyb75BUBjlll6eOa1m/IZBxwk91dooBWhPSL67sWcLS0zt9SnswRL0l26TVdBhb0wnWORRxUn//uH6n4z7+A==}
     dependencies:
       picocolors: 1.0.0
       sisteransi: 1.0.5
     dev: false
 
-  /@clack/prompts@0.6.3:
-    resolution: {integrity: sha512-AM+kFmAHawpUQv2q9+mcB6jLKxXGjgu/r2EQjEwujgpCdzrST6BJqYw00GRn56/L/Izw5U7ImoLmy00X/r80Pw==}
+  /@clack/prompts@0.7.0:
+    resolution: {integrity: sha512-0MhX9/B4iL6Re04jPrttDm+BsP8y6mS7byuv0BvXgdXhbV5PdlsHt55dvNsuBCPZ7xq1oTAOOuotR9NFbQyMSA==}
     dependencies:
-      '@clack/core': 0.3.2
+      '@clack/core': 0.3.3
       picocolors: 1.0.0
       sisteransi: 1.0.5
     dev: false
@@ -2706,11 +2706,11 @@ packages:
     requiresBuild: true
     dev: true
 
-  /create-svelte@5.0.4:
-    resolution: {integrity: sha512-DJ+SPqHBKN5s4j0F4DyXTyZbenb6XFV3yWJkTxTpLIeOMrMGAMBaTsTTb2p/D92Dqc+/ujIydF16MvN6n0h6xw==}
+  /create-svelte@5.0.5:
+    resolution: {integrity: sha512-+Pki3j1WjBy4FGxaoz5mrYNYDTFmVX6qLf7MLBEruPFCV1xVQAiUZozvABJneWQojjqTJOriksrDDdoiwTGUAg==}
     hasBin: true
     dependencies:
-      '@clack/prompts': 0.6.3
+      '@clack/prompts': 0.7.0
       kleur: 4.1.5
     dev: false
 
