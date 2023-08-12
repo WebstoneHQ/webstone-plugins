@@ -150,8 +150,8 @@ importers:
         specifier: ^6.3.0
         version: 6.3.0(eslint@8.46.0)(typescript@5.1.6)
       '@webstone/gluegun':
-        specifier: ^0.0.4
-        version: 0.0.4
+        specifier: ^0.0.5
+        version: 0.0.5
       eslint:
         specifier: ^8.46.0
         version: 8.46.0
@@ -2002,44 +2002,6 @@ packages:
       diff-sequences: 29.4.3
       loupe: 2.3.6
       pretty-format: 29.6.2
-    dev: true
-
-  /@webstone/gluegun@0.0.4:
-    resolution: {integrity: sha512-yV/zyjVF8b+0E0iuh4G9THr4gVxKu4j1YAn0gzGcFsrKi7j1NFjAE17cJyWkD04a/dFxwevhC8v3Eh9PN8/Lnw==}
-    hasBin: true
-    dependencies:
-      apisauce: 2.1.6
-      app-module-path: 2.2.0
-      cli-table3: 0.6.3
-      colors: 1.4.0
-      cosmiconfig: 7.0.1
-      cross-spawn: 7.0.3
-      ejs: 3.1.8
-      enquirer: 2.3.6
-      execa: 5.1.1
-      fs-jetpack: 5.0.0
-      lodash.camelcase: 4.3.0
-      lodash.kebabcase: 4.1.1
-      lodash.lowercase: 4.3.0
-      lodash.lowerfirst: 4.3.1
-      lodash.pad: 4.5.1
-      lodash.padend: 4.6.1
-      lodash.padstart: 4.6.1
-      lodash.repeat: 4.1.0
-      lodash.snakecase: 4.1.1
-      lodash.startcase: 4.4.0
-      lodash.trim: 4.5.1
-      lodash.trimend: 4.5.1
-      lodash.trimstart: 4.5.1
-      lodash.uppercase: 4.3.0
-      lodash.upperfirst: 4.3.1
-      ora: 5.4.1
-      pluralize: 8.0.0
-      semver: 7.3.7
-      which: 2.0.2
-      yargs-parser: 21.1.1
-    transitivePeerDependencies:
-      - debug
     dev: true
 
   /@webstone/gluegun@0.0.5:
