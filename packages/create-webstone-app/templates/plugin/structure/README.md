@@ -1,58 +1,62 @@
-# create-svelte
+# Webstone Plugin
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This is a monorepo managed by [pnpm](https://pnpm.io/) that contains two optional, independent parts that make up a [Webstone](https://github.com/WebstoneHQ/webstone/) plugin:
 
-Read more about creating a library [in the docs](https://kit.svelte.dev/docs/packaging).
+- `packages/cli` ([docs](#cli))
+- `packages/web` ([docs](#web))
 
-## Creating a project
+Your plugin could only extend the Webstone CLI, only extend the web aspect of Webstone Plugins, or both.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## CLI
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+Webstone Plugins provides a `webstone` CLI used by developers to enhance their projects. You can extend this CLI with `packages/cli`.
 
-# create a new project in my-app
-npm create svelte@latest my-app
+Please refer to the [gluegun documentation](https://infinitered.github.io/gluegun/#/?id=quick-start) for instructions on how to develop commands and extensions.
+
+## Web
+
+In many cases, you want to create a Webstone Plugin to provide UI components, actions, or other web-based functionality. This is where `packages/web` comes into play. It is a basic SvelteKit `skeletonlib` project ([docs](https://kit.svelte.dev/docs/packaging)). Developers working on a SvelteKit application will be able to import your UI components as regular Svelte components. The same is true for actions or other web-based functionality your plugin provides.
+
+## Development
+
+Please make sure you have [pnpm](https://pnpm.io/) installed:
+
+```
+npm i -g pnpm
 ```
 
-## Developing
+Start the development scripts for both packages:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```
+pnpm dev
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+Alternatively, you can start the development script for either package as follows:
 
-## Building
-
-To build your library:
-
-```bash
-npm run package
+```
+pnpm --filter ./packages/[cli|web]
 ```
 
-To create a production version of your showcase app:
+## Publish to NPM
 
-```bash
-npm run build
+Each package, `packages/cli` and `packages/web`, is deployed to NPM as independent package. Before you proceed, please open the `package.json` file for the package(s) you want to publish to NPM and set the `private` property to `false`.
+
+```diff
+{
+-  "private": true,
++  "private: false,
+}
 ```
 
-You can preview the production build with `npm run preview`.
+### Changesets
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+To simplify the publishing process, we configured [Changesets](https://github.com/changesets/changesets).
 
-## Publishing
+When you are ready to publish your package(s), please run `pnpm changeset` from the root of this project. Follow the instructions in the terminal and commit your changes. Once you pushed your commits, watch out for a new pull request titled "Version Packages". When you merge that PR, the package(s) will be published to NPM automatically.
 
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
+**`NPM_TOKEN` required**
 
-To publish your library to [npm](https://www.npmjs.com):
+To make the publish process described above work automatically, please configure a NPM_TOKEN accessible in your GitHub Actions.
 
-```bash
-npm publish
-```
+- [Docs on how to create a new NPM token](https://docs.npmjs.com/creating-and-viewing-access-tokens)
+- [Docs on how to create a `NPM_TOKEN` encrypted secret on GitHub](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
