@@ -1,7 +1,5 @@
 import chalk from "chalk";
 
-import { ListrTaskWrapper, ListrRenderer } from "listr2/dist/index";
-
 export interface Ctx {
   appDir: string;
   type: "application" | "plugin";
@@ -42,10 +40,9 @@ export const getAppName = (appDir: string, isPlugin = false) => {
   return appDir;
 };
 
-export const displayWelcome = () =>
-  new Promise<void>((resolve) => {
-    // https://textfancy.com/ascii-art/
-    console.log(`
+export const displayWelcome = () => {
+  // https://textfancy.com/ascii-art/
+  console.log(`
   ▄     ▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄    ▄ ▄▄▄▄▄▄▄ 
   █ █ ▄ █ █       █  ▄    █       █       █       █  █  █ █       █
   █ ██ ██ █    ▄▄▄█ █▄█   █  ▄▄▄▄▄█▄     ▄█   ▄   █   █▄█ █    ▄▄▄█
@@ -55,8 +52,7 @@ export const displayWelcome = () =>
   █▄▄█ █▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█▄▄▄▄▄▄▄█ █▄▄▄█ █▄▄▄▄▄▄▄█▄█  █▄▄█▄▄▄▄▄▄▄█
   
   `);
-    resolve();
-  });
+};
 
 export const displayNextSteps = async (ctx: Ctx) => {
   const wsDevCommandPerPackageManager = {
