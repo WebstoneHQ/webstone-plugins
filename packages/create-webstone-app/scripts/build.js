@@ -13,7 +13,7 @@ if (!["build", "dev"].includes(mode)) {
 }
 
 const config = defineConfig({
-  entry: ["src/index.ts"],
+  entry: ["src/index.ts", "src/bin.ts"],
   target: "esnext",
   format: "esm",
   treeshake: true,
