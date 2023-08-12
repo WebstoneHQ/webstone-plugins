@@ -1,4 +1,4 @@
-import { GluegunCommand } from 'gluegun';
+import type { GluegunCommand } from '@webstone/gluegun';
 
 const command: GluegunCommand = {
 	name: 'hello',
