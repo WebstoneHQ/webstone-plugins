@@ -1,7 +1,5 @@
-import { fileURLToPath } from "node:url";
-import path from "node:path";
-import fs from "fs-extra";
 import { CreateWebstoneOptions, WebstoneAppType } from "../types";
+import { create } from "create-svelte";
 
 export async function createWebstone(
   cwd: string,
@@ -9,8 +7,10 @@ export async function createWebstone(
 ) {
   const { type } = options;
   const appName = getAppName(cwd, type);
+
+  createBaseApp(cwd, { type, appName });
+
   console.log("appName", appName);
-  copyTemplate(cwd, type);
 }
 
 function getAppName(cwd: string, type: WebstoneAppType) {
@@ -34,18 +34,18 @@ function toValidPackageName(name: string) {
     .replace(/[^a-z0-9~.-]+/g, "-");
 }
 
-function copyTemplate(cwd: string, type: WebstoneAppType) {
-  const templateDir = path.resolve(
-    fileURLToPath(import.meta.url),
-    "../..",
-    "templates",
-    type,
-    "structure",
-  );
-  const files = fs.readdirSync(templateDir);
-  for (const file of files.filter((f) => f !== "package.json")) {
-    const targetPath = path.join(cwd, file);
-
-    console.log(targetPath);
-  }
+function createBaseApp(
+  cwd: string,
+  options: { type: WebstoneAppType; appName: string },
+) {
+  const { appName, type } = options;
+  create(cwd, {
+    name: appName,
+    template: type === "app" ? "skeleton" : "skeletonlib",
+    types: "typescript",
+    eslint: true,
+    prettier: true,
+    playwright: true,
+    vitest: true,
+  });
 }

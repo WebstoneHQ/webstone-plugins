@@ -60,7 +60,18 @@ const typeMap = {
 
 const type = typeMap[promptType.type];
 
-await createWebstone(cwd, { type });
+let extendCLI = false;
+if (type === "plugin") {
+  const extendCLIAnswer: { extendCLI: boolean } = await enquirer.prompt({
+    type: "confirm",
+    name: "extendCLI",
+    message: "Does your plugin extend the Webstone CLI?",
+    initial: false,
+  });
+  extendCLI = extendCLIAnswer.extendCLI;
+}
+
+await createWebstone(cwd, { type, extendCLI });
 
 console.log(
   chalk.green.bold(`Successfully created Webstone project at ./${cwd}`),
