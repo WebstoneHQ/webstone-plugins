@@ -3,6 +3,7 @@ import fs from "fs-extra";
 import path from "node:path";
 import { PackageJson } from "type-fest";
 import { appPackageJson, pluginPackageJson } from "./package";
+import merge from "ts-deepmerge";
 import { create } from "create-svelte";
 
 export async function createWebstone(
@@ -11,9 +12,7 @@ export async function createWebstone(
 ) {
   const { type } = options;
   const appName = getAppName(cwd, type);
-
   createBaseApp(cwd, { type, appName });
-
   updatePackageJSON(cwd, { type });
 }
 
@@ -55,7 +54,7 @@ function createBaseApp(
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function sortObjectKeys(obj: any) {
+function sortKeys(obj: any) {
   if (typeof obj !== "object" || obj === null)
     throw new Error("Invalid object");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -71,32 +70,43 @@ function sortObjectKeys(obj: any) {
 function updatePackageJSON(cwd: string, options: { type: WebstoneAppType }) {
   const { type } = options;
   const pkg: PackageJson = fs.readJSONSync(path.resolve(`${cwd}/package.json`));
-
+  let newPkg: PackageJson = pkg;
   if (type === "app") {
-    const updatedDevDeps = sortObjectKeys({
-      ...pkg.devDependencies,
-      ...appPackageJson.devDependencies,
-    });
-
-    pkg.devDependencies = updatedDevDeps;
-
-    fs.writeJSONSync(`${cwd}/package.json`, pkg, {
-      encoding: "utf-8",
-      spaces: "\t",
-    });
+    newPkg = deepMergeWithSortedKeys(pkg, appPackageJson);
   }
-
   if (type === "plugin") {
-    const updatedDevDeps = sortObjectKeys({
-      ...pkg.devDependencies,
-      ...pluginPackageJson.devDependencies,
-    });
-
-    pkg.devDependencies = updatedDevDeps;
-
-    fs.writeJSONSync(path.resolve(`${cwd}/package.json`), pkg, {
-      encoding: "utf-8",
-      spaces: "\t",
-    });
+    newPkg = deepMergeWithSortedKeys(pkg, pluginPackageJson);
   }
+
+  fs.writeJsonSync(path.resolve(`${cwd}/package.json`), newPkg, {
+    encoding: "utf-8",
+    spaces: "\t",
+  });
+}
+
+function deepMergeWithSortedKeys(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  target: Record<string, any>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  source: Record<string, any>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): Record<string, any> {
+  const merged = merge(target, source);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function recursiveSort(obj: Record<string, any>): Record<string, any> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const sortedObj: Record<string, any> = {};
+
+    Object.keys(obj).forEach((key) => {
+      if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+        sortedObj[key] = sortKeys(recursiveSort(obj[key]));
+      } else {
+        sortedObj[key] = obj[key];
+      }
+    });
+
+    return sortedObj;
+  }
+
+  return recursiveSort(merged);
 }
