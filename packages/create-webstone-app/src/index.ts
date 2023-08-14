@@ -1,4 +1,8 @@
 import { CreateWebstoneOptions, WebstoneAppType } from "../types";
+import fs from "fs-extra";
+import path from "node:path";
+import { PackageJson } from "type-fest";
+import { appPackageJson, pluginPackageJson } from "./package";
 import { create } from "create-svelte";
 
 export async function createWebstone(
@@ -10,7 +14,7 @@ export async function createWebstone(
 
   createBaseApp(cwd, { type, appName });
 
-  console.log("appName", appName);
+  updatePackageJSON(cwd, { type });
 }
 
 function getAppName(cwd: string, type: WebstoneAppType) {
@@ -48,4 +52,51 @@ function createBaseApp(
     playwright: true,
     vitest: true,
   });
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function sortObjectKeys(obj: any) {
+  if (typeof obj !== "object" || obj === null)
+    throw new Error("Invalid object");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const sortedObj: Record<string, any> = {};
+  Object.keys(obj)
+    .sort()
+    .forEach((key) => {
+      sortedObj[key] = obj[key];
+    });
+  return sortedObj;
+}
+
+function updatePackageJSON(cwd: string, options: { type: WebstoneAppType }) {
+  const { type } = options;
+  const pkg: PackageJson = fs.readJSONSync(path.resolve(`${cwd}/package.json`));
+
+  if (type === "app") {
+    const updatedDevDeps = sortObjectKeys({
+      ...pkg.devDependencies,
+      ...appPackageJson.devDependencies,
+    });
+
+    pkg.devDependencies = updatedDevDeps;
+
+    fs.writeJSONSync(`${cwd}/package.json`, pkg, {
+      encoding: "utf-8",
+      spaces: "\t",
+    });
+  }
+
+  if (type === "plugin") {
+    const updatedDevDeps = sortObjectKeys({
+      ...pkg.devDependencies,
+      ...pluginPackageJson.devDependencies,
+    });
+
+    pkg.devDependencies = updatedDevDeps;
+
+    fs.writeJSONSync(path.resolve(`${cwd}/package.json`), pkg, {
+      encoding: "utf-8",
+      spaces: "\t",
+    });
+  }
 }

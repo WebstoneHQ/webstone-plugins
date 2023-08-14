@@ -73,6 +73,4 @@ if (type === "plugin") {
 
 await createWebstone(cwd, { type, extendCLI });
 
-console.log(
-  chalk.green.bold(`Successfully created Webstone project at ./${cwd}`),
-);
+console.log(chalk.green.bold(`Successfully created Webstone project`));
