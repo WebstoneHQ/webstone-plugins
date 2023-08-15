@@ -28,4 +28,12 @@ export const pluginPackageJson: PackageJson = {
     rimraf: "^3.0.2",
     tsup: "^6.7.0",
   },
+  svelte: "./dist/web/index.js",
+  types: "./dist/web/index.d.ts",
+  exports: {
+    ".": {
+      types: "./dist/web/index.d.ts",
+      svelte: "./dist/web/index.js",
+    },
+  },
 };

@@ -105,8 +105,8 @@ function deepMergeWithSortedKeys(
     const sortedObj: Record<string, any> = {};
 
     Object.keys(obj).forEach((key) => {
-      if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
-        sortedObj[key] = sortKeys(recursiveSort(obj[key]));
+      if (["dependencies", "devdependencies", "scripts"].includes(key)) {
+        sortedObj[key] = sortKeys(obj[key]);
       } else {
         sortedObj[key] = obj[key];
       }
