@@ -3,12 +3,34 @@ import chalk from "chalk";
 import enquirer from "enquirer";
 import { displayNextSteps, displayWelcome } from "./helpers";
 import { createWebstone } from "./index";
+import { parseArgs } from "node:util";
+
+// argparsing
+const { values: argValues } = parseArgs({
+  allowPositionals: true,
+  options: {
+    type: {
+      type: "string",
+      alias: "t",
+    },
+    "extend-cli": {
+      type: "boolean",
+    },
+  },
+});
+
+let extendCLI = argValues["extend-cli"] || false;
+let type: "app" | "plugin" | null = null;
+if (argValues.type && ["app", "plugin"].includes(argValues.type)) {
+  type = argValues.type as "app" | "plugin";
+}
 
 const { version } = JSON.parse(
   fs.readFileSync(new URL("../package.json", import.meta.url), "utf-8"),
 );
 
-let cwd = process.argv[2] || ".";
+let cwd =
+  process.argv[2] && !process.argv[2].startsWith("--") ? process.argv[2] : ".";
 
 displayWelcome();
 console.log(chalk.bold(`create-webstone v${version}`));
@@ -45,23 +67,24 @@ if (fs.existsSync(cwd)) {
   }
 }
 
-const promptType: { type: "Webstone App" | "Webstone Plugin" } =
-  await enquirer.prompt({
-    type: "select",
-    name: "type",
-    message: "What type of Webstone project do you want to create?",
-    choices: ["Webstone App", "Webstone Plugin"],
-  });
+if (!type) {
+  const promptType: { type: "Webstone App" | "Webstone Plugin" } =
+    await enquirer.prompt({
+      type: "select",
+      name: "type",
+      message: "What type of Webstone project do you want to create?",
+      choices: ["Webstone App", "Webstone Plugin"],
+    });
 
-const typeMap = {
-  "Webstone App": "app",
-  "Webstone Plugin": "plugin",
-} as const;
+  const typeMap = {
+    "Webstone App": "app",
+    "Webstone Plugin": "plugin",
+  } as const;
 
-const type = typeMap[promptType.type];
+  type = typeMap[promptType.type];
+}
 
-let extendCLI = false;
-if (type === "plugin") {
+if (type === "plugin" && !extendCLI) {
   const extendCLIAnswer: { extendCLI: boolean } = await enquirer.prompt({
     type: "confirm",
     name: "extendCLI",
