@@ -7,6 +7,19 @@ export const appPackageJson: PackageJson = {
 };
 
 export const pluginPackageJson: PackageJson = {
+  scripts: {
+    build: "npm run clean:build && npm run cli:build && npm run web:build",
+    "clean:build": "rimraf ./dist",
+    "cli:build": "node scripts/build-cli.js build && npm run templates:copy",
+    "cli:dev": "node scripts/build-cli.js dev",
+    dev: "npm run clean:build && npm-run-all --parallel cli:dev web:dev templates:dev",
+    package: "svelte-kit sync && svelte-package -o ./dist/web && publint",
+    "templates:copy": "cp -a ./src/cli/templates ./dist/cli",
+    "templates:dev":
+      "nodemon --watch src/cli/templates --ext '.ejs' --exec 'npm run templates:copy'",
+    "web:build": "vite build && npm run package",
+    "web:dev": "vite dev",
+  },
   devDependencies: {
     "@webstone/gluegun": "0.0.5",
     "fs-jetpack": "^5.1.0",
