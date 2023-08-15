@@ -14,13 +14,20 @@ export async function createWebstone(
   const appName = getAppName(cwd, type);
   createBaseApp(cwd, { type, appName });
   updatePackageJSON(cwd, { type });
+  copyBuildScript(cwd);
+  copyCLIExtension(cwd);
 }
 
-function getAppName(cwd: string, type: WebstoneAppType) {
+function getRawAppName(cwd: string) {
   let appName: string = cwd;
   if (cwd === ".") {
     appName = process.cwd().split("/").pop() || "webstone-project";
   }
+  return appName;
+}
+
+function getAppName(cwd: string, type: WebstoneAppType) {
+  let appName = getRawAppName(cwd);
   if (type === "plugin") {
     appName = `webstone-plugin-${appName}`;
     return toValidPackageName(appName);
@@ -109,4 +116,35 @@ function deepMergeWithSortedKeys(
   }
 
   return recursiveSort(merged);
+}
+
+function copyBuildScript(cwd: string) {
+  fs.copySync(
+    new URL("../templates/plugin-structure/build-cli.js", import.meta.url)
+      .pathname,
+    `${cwd}/scripts/build-cli.js`,
+  );
+}
+
+function copyCLIExtension(cwd: string) {
+  // copy command
+  fs.copySync(
+    new URL("../templates/plugin-structure/command.ts", import.meta.url)
+      .pathname,
+    `${cwd}/src/cli/commands/${getRawAppName(cwd)}/hello-world.ts`,
+  );
+
+  //copy extension
+  fs.copySync(
+    new URL("../templates/plugin-structure/extension.ts", import.meta.url)
+      .pathname,
+    `${cwd}/src/cli/extensions/hello-world.ts`,
+  );
+
+  // copy templates
+  fs.copySync(
+    new URL("../templates/plugin-structure/template.ejs", import.meta.url)
+      .pathname,
+    `${cwd}/src/cli/templates/template.ejs`,
+  );
 }
