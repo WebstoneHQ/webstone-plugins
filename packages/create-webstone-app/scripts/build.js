@@ -18,6 +18,7 @@ const config = defineConfig({
   format: "esm",
   treeshake: true,
   minify: true,
+  dts: true,
   watch: mode === "dev" ? ["src"] : false,
 });
 
