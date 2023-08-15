@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import chalk from "chalk";
 import enquirer from "enquirer";
-import { displayWelcome } from "./helpers";
+import { displayNextSteps, displayWelcome } from "./helpers";
 import { createWebstone } from "./index";
 
 const { version } = JSON.parse(
@@ -73,4 +73,4 @@ if (type === "plugin") {
 
 await createWebstone(cwd, { type, extendCLI });
 
-console.log(chalk.green.bold(`Successfully created Webstone project`));
+displayNextSteps(cwd);
