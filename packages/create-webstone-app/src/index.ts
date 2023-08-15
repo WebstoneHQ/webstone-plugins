@@ -10,12 +10,14 @@ export async function createWebstone(
   cwd: string,
   options: CreateWebstoneOptions,
 ) {
-  const { type } = options;
+  const { type, extendCLI } = options;
   const appName = getAppName(cwd, type);
   createBaseApp(cwd, { type, appName });
-  updatePackageJSON(cwd, { type });
-  copyBuildScript(cwd);
-  copyCLIExtension(cwd);
+  updatePackageJSON(cwd, { type, extendCLI });
+  if (type === "plugin" && extendCLI) {
+    copyBuildScript(cwd);
+    copyCLIExtension(cwd);
+  }
 }
 
 function getRawAppName(cwd: string) {
@@ -74,14 +76,17 @@ function sortKeys(obj: any) {
   return sortedObj;
 }
 
-function updatePackageJSON(cwd: string, options: { type: WebstoneAppType }) {
-  const { type } = options;
+function updatePackageJSON(
+  cwd: string,
+  options: { type: WebstoneAppType; extendCLI: boolean },
+) {
+  const { type, extendCLI } = options;
   const pkg: PackageJson = fs.readJSONSync(path.resolve(`${cwd}/package.json`));
   let newPkg: PackageJson = pkg;
   if (type === "app") {
     newPkg = deepMergeWithSortedKeys(pkg, appPackageJson);
   }
-  if (type === "plugin") {
+  if (type === "plugin" && extendCLI) {
     newPkg = deepMergeWithSortedKeys(pkg, pluginPackageJson);
   }
 
