@@ -24,7 +24,7 @@
     "dev": "node ./scripts/build.js dev",
     "prepare": "pnpm build",
     "prepublishOnly": "pnpm build",
-    "test": "pnpm test:unit",
+    "test": "node --loader tsx --test src/*.spec.ts",
     "test:unit": "c8 --all --include=src --reporter=html pnpm test:unit:only",
     "test:unit:only": "NODE_OPTIONS='--loader tsx' uvu tests"
   },
