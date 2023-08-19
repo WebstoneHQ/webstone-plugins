@@ -8,6 +8,7 @@ import {
   getRawAppName,
   updatePackageJSON,
   copyBuildScript,
+  copyCLIExtension,
 } from "./functions";
 import { WebstoneAppType } from "../types";
 import fs from "fs-extra";
@@ -255,6 +256,33 @@ describe("copyBuildScript", () => {
       // TODO find a solution for import.meta.url
       mockCopySync.mock.calls[0].arguments[1],
       "dummy/scripts/build-cli.js",
+    );
+  });
+});
+
+describe("copyCLIExtension", () => {
+  it("should copy the CLI extension properly", (ctx) => {
+    const mockCopySync = ctx.mock.fn(fs.copySync, () => {});
+    ctx.mock.method(fs, "copySync", mockCopySync);
+    copyCLIExtension("dummy");
+    strictEqual(mockCopySync.mock.callCount(), 3);
+
+    //Commands
+    deepStrictEqual(
+      mockCopySync.mock.calls[0].arguments[1],
+      "dummy/src/cli/commands/dummy/hello-world.ts",
+    );
+
+    // Extensions
+    deepStrictEqual(
+      mockCopySync.mock.calls[1].arguments[1],
+      "dummy/src/cli/extensions/hello-world.ts",
+    );
+
+    // Templates
+    deepStrictEqual(
+      mockCopySync.mock.calls[2].arguments[1],
+      "dummy/src/cli/templates/template.ejs",
     );
   });
 });
