@@ -4,7 +4,7 @@
   "description": "Start your next web application with Webstone Plugins and configure it as you go.",
   "private": true,
   "engines": {
-    "node": ">=v20.5.1"
+    "node": ">=v20"
   },
   "scripts": {
     "build": "pnpm --recursive --parallel build",
