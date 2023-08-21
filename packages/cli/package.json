@@ -4,7 +4,7 @@
   "description": "The Webstone command line interface",
   "types": "build/types/types.d.ts",
   "engines": {
-    "node": ">=v20.5.1"
+    "node": ">=v20"
   },
   "bin": {
     "webstone": "./bin",

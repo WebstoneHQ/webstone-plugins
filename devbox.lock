@@ -1,11 +1,11 @@
 {
   "lockfile_version": "1",
   "packages": {
-    "nodePackages.pnpm@latest": {
-      "last_modified": "2023-07-23T03:35:12Z",
-      "resolved": "github:NixOS/nixpkgs/af8cd5ded7735ca1df1a1174864daab75feeb64a#nodePackages.pnpm",
+    "nodePackages_latest.pnpm@latest": {
+      "last_modified": "2023-08-08T03:07:33Z",
+      "resolved": "github:NixOS/nixpkgs/844ffa82bbe2a2779c86ab3a72ff1b4176cec467#nodePackages_latest.pnpm",
       "source": "devbox-search",
-      "version": "8.6.9"
+      "version": "8.6.11"
     },
     "nodejs@latest": {
       "last_modified": "2023-07-23T03:35:12Z",

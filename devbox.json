@@ -1,5 +1,5 @@
 {
-  "packages": ["nodejs@latest", "nodePackages.pnpm@latest"],
+  "packages": ["nodejs@latest", "nodePackages_latest.pnpm@latest"],
   "shell": {
     "init_hook": ["sh ./.config/devbox/init.sh"],
     "scripts": {
