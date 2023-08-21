@@ -2,13 +2,13 @@ import { defineConfig, build } from 'tsup';
 import jetpack from 'fs-jetpack';
 
 /**
- * //type {"build" | "dev"}
+ * @type {"build" | "dev"}
  */
 const mode = process.argv[2];
 
 // check if mode is valid
 if (!['build', 'dev'].includes(mode)) {
-	console.log('Invalid mode');
+	console.log('Usage: node ./scripts/build-cli.js build|dev');
 	process.exit(1);
 }
 
