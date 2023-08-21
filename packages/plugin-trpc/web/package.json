@@ -17,7 +17,7 @@
 		"@sveltejs/package": "^2.2.1",
 		"@typescript-eslint/eslint-plugin": "^6.3.0",
 		"@typescript-eslint/parser": "^6.3.0",
-		"@webstone/cli": "workspace:^0.12.0",
+		"@webstone/cli": "workspace:^0.13.0",
 		"eslint": "^8.46.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -28,7 +28,7 @@
 		"tslib": "^2.6.1",
 		"typescript": "^5.1.6",
 		"vite": "^4.4.9",
-		"webstone-plugin-trpc-cli": "workspace:^0.1.0"
+		"webstone-plugin-trpc-cli": "workspace:^0.2.0"
 	},
 	"type": "module",
 	"private": true,

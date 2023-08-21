@@ -1,5 +1,12 @@
 # @webstone/cli
 
+## 0.13.0
+
+### Minor Changes
+
+- e4954e6: bump gluegun version
+- cbcfb98: follow-up fixes for new plugin structure
+
 ## 0.12.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.8.0
+
+### Minor Changes
+
+- 01f44e5: refactor create-webstone-app to use new flow & new plugin template
+
 ## 0.7.0
 
 ### Minor Changes
