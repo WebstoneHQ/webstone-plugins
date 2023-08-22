@@ -270,7 +270,7 @@ describe("copyCLIExtension", () => {
     //Commands
     deepStrictEqual(
       mockCopySync.mock.calls[0].arguments[1],
-      "dummy/src/cli/commands/dummy/hello-world.ts",
+      "dummy/src/cli/commands/plugins/dummy/hello-world.ts",
     );
 
     // Extensions

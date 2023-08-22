@@ -1402,7 +1402,7 @@ packages:
       sade: 1.8.1
       semver: 7.5.4
       svelte: 4.1.2
-      svelte2tsx: 0.6.19(svelte@4.1.2)(typescript@5.1.6)
+      svelte2tsx: 0.6.20(svelte@4.1.2)(typescript@5.1.6)
     transitivePeerDependencies:
       - typescript
     dev: true
@@ -2379,7 +2379,7 @@ packages:
       esbuild: '>=0.17'
     dependencies:
       esbuild: 0.17.19
-      load-tsconfig: 0.2.3
+      load-tsconfig: 0.2.5
     dev: true
 
   /bundle-require@4.0.1(esbuild@0.18.20):
@@ -4367,11 +4367,6 @@ packages:
       strip-bom: 3.0.0
     dev: true
 
-  /load-tsconfig@0.2.3:
-    resolution: {integrity: sha512-iyT2MXws+dc2Wi6o3grCFtGXpeMvHmJqS27sMPGtV2eUu4PeFnG+33I8BlFK1t1NWMjOpcx9bridn5yxLDX2gQ==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dev: true
-
   /load-tsconfig@0.2.5:
     resolution: {integrity: sha512-IXO6OCs9yg8tMKzfPZ1YmheJbZCiEsnBdcB03l0OcfK9prKnJb96siuHCr5Fl37/yo9DnKU+TLpxzTUspw9shg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -5170,11 +5165,6 @@ packages:
   /pify@4.0.1:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
-    dev: true
-
-  /pirates@4.0.5:
-    resolution: {integrity: sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==}
-    engines: {node: '>= 6'}
     dev: true
 
   /pirates@4.0.6:
@@ -6013,19 +6003,6 @@ packages:
       acorn: 8.10.0
     dev: true
 
-  /sucrase@3.28.0:
-    resolution: {integrity: sha512-TK9600YInjuiIhVM3729rH4ZKPOsGeyXUwY+Ugu9eilNbdTFyHr6XcAGYbRVZPDgWj6tgI7bx95aaJjHnbffag==}
-    engines: {node: '>=8'}
-    hasBin: true
-    dependencies:
-      commander: 4.1.1
-      glob: 7.1.6
-      lines-and-columns: 1.2.4
-      mz: 2.7.0
-      pirates: 4.0.5
-      ts-interface-checker: 0.1.13
-    dev: true
-
   /sucrase@3.34.0:
     resolution: {integrity: sha512-70/LQEZ07TEcxiU2dz51FKaE6hCTWC6vr7FOk3Gr0U60C3shtAN+H+BFr9XlYe5xqf3RA8nrc+VIwzCfnxuXJw==}
     engines: {node: '>=8'}
@@ -6241,8 +6218,8 @@ packages:
       typescript: 5.1.6
     dev: true
 
-  /svelte2tsx@0.6.19(svelte@4.1.2)(typescript@5.1.6):
-    resolution: {integrity: sha512-h3b5OtcO8zyVL/RiB2zsDwCopeo/UH+887uyhgb2mjnewOFwiTxu+4IGuVwrrlyuh2onM2ktfUemNrNmQwXONQ==}
+  /svelte2tsx@0.6.20(svelte@4.1.2)(typescript@5.1.6):
+    resolution: {integrity: sha512-zaSnHSERYceKxugFbjiZ3YiNcC2fNbVjpQ9qaE5hrYI4tIOX9ZqHS+I30Hp2HF+MVXLOVWVErgn/6pAlQNnheA==}
     peerDependencies:
       svelte: ^3.55 || ^4.0.0-next.0 || ^4.0
       typescript: ^4.9.4 || ^5.0.0
@@ -6541,7 +6518,7 @@ packages:
       resolve-from: 5.0.0
       rollup: 3.28.0
       source-map: 0.8.0-beta.0
-      sucrase: 3.28.0
+      sucrase: 3.34.0
       tree-kill: 1.2.2
       typescript: 5.1.6
     transitivePeerDependencies:
