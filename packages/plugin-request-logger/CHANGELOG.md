@@ -1,5 +1,11 @@
 # webstone-plugin-request-logger
 
+## 0.3.1
+
+### Patch Changes
+
+- 5c020b9: Populate the `README.md` with installation and usage instructions.
+
 ## 0.3.0
 
 ### Minor Changes
