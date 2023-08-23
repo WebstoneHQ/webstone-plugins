@@ -1,6 +1,14 @@
 {
 	"name": "webstone-plugin-request-logger",
 	"version": "0.3.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/WebstoneHQ/webstone-plugins",
+		"directory": "packages/plugin-request-logger"
+	},
+	"bugs": {
+		"url": "https://github.com/WebstoneHQ/webstone-plugins/issues?q=is%3Aopen+is%3Aissue+label%3Aplugin%3Arequest-logger"
+	},
 	"scripts": {
 		"build": "npm run clean:build && npm run cli:build && npm run web:build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

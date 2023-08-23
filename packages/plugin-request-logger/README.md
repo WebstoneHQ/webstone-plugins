@@ -1,58 +1,79 @@
-# create-svelte
+# `request-logger` Webstone Plugin
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## About
 
-Read more about creating a library [in the docs](https://kit.svelte.dev/docs/packaging).
+This library provides an `event.locals.logger` object for [SvelteKit](https://kit.svelte.dev/) applications. It can be accessed wherever `event.locals` is available. This includes hooks (`handle`, and `handleError`), server-only `load` functions, and `+server.js` files. See [the docs](https://kit.svelte.dev/docs/types#app-locals) for potential future locations.
 
-## Creating a project
+## Installation
 
-If you're seeing this, you've probably already done this step. Congrats!
+Install this plugin with the following command:
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+```shell
+npm install -D webstone-plugin-request-logger
 ```
 
-## Developing
+## Usage
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Create a `src/hooks.server.js` file, if it doesn't already exist, with the following code:
 
-```bash
-npm run dev
+```js
+import { sequence } from '@sveltejs/kit/hooks';
+import { addRequestLogger, logRequestDetails } from 'webstone-plugin-request-logger';
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+/** @type {import('@sveltejs/kit').Handle} */
+export const handle = sequence(addRequestLogger, logRequestDetails /*, yourHandlers*/);
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+### `locals.logger`
 
-## Building
+The logger is available wherever `event.locals` is available ([docs](https://kit.svelte.dev/docs/types#app-locals)). For example, to use it in a server-only `load` function or an action within a `+page.server.js` file:
 
-To build your library:
+```ts
+import type { Actions, PageServerLoad } from './$types';
 
-```bash
-npm run package
+import { fail } from '@sveltejs/kit';
+
+export const load = (async ({ locals }) => {
+	locals.logger.debug('Fetching posts from database...');
+
+	try {
+		// TODO: Fetch posts from database
+		locals.logger.debug(`Successfully fetched ${posts.length} posts`);
+	} catch (error) {
+		locals.logger.error(`Failed to fetched ${posts.length} posts`, error);
+	}
+
+	return {};
+}) satisfies PageServerLoad;
+
+export const actions = {
+	create_post: async (event) => {
+		const data = await event.request.formData();
+		const author = data.get('author')?.toString() || '';
+		const content = data.get('content')?.toString() || '';
+		event.locals.logger.log('Creating a new post...', {
+			author,
+			content
+		});
+
+		try {
+			// TODO: Persist the new post in the database
+			event.locals.logger.debug('Successfully created the post');
+		} catch (error) {
+			event.locals.logger.error('Could not persist the post', { error });
+			return fail(500, {
+				id: 'form_create_post',
+				reason: 'unexpected'
+			});
+		}
+	}
+} satisfies Actions;
 ```
 
-To create a production version of your showcase app:
+## Feedback / bugs / ideas
 
-```bash
-npm run build
-```
+If you have any feedback, run into bugs, or have ideas on how to improve thie plugin, please [open a GitHub issue](https://github.com/WebstoneHQ/webstone-plugins/issues/new?labels=plugin:request-logger).
 
-You can preview the production build with `npm run preview`.
+## Learn more about Webstone Plugins
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```bash
-npm publish
-```
+This plugin is part of a wider ecosystem called [Webstone Plugins](https://github.com/WebstoneHQ/webstone-plugins).
