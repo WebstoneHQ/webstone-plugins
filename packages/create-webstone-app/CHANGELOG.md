@@ -1,5 +1,11 @@
 # create-webstone-app
 
+## 0.9.0
+
+### Minor Changes
+
+- 28e2615: Group plugin commands under a "plugins" sub-command.
+
 ## 0.8.0
 
 ### Minor Changes

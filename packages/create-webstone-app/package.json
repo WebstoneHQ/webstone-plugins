@@ -1,6 +1,6 @@
 {
   "name": "create-webstone-app",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Start your next web application with Webstone and configure it as you go.",
   "keywords": [
     "svelte",

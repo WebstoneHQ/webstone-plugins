@@ -1,6 +1,6 @@
 {
 	"name": "webstone-plugin-request-logger",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"scripts": {
 		"build": "npm run clean:build && npm run cli:build && npm run web:build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
