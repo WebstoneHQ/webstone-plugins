@@ -122,7 +122,7 @@ export function copyCLIExtension(cwd: string) {
   fs.copySync(
     new URL("../templates/plugin-structure/command.ts", import.meta.url)
       .pathname,
-    `${cwd}/src/cli/commands/${getRawAppName(cwd)}/hello-world.ts`,
+    `${cwd}/src/cli/commands/plugins/${getRawAppName(cwd)}/hello-world.ts`,
   );
 
   //copy extension
