@@ -1,8 +1,7 @@
 // See https://kit.svelte.dev/docs/types#app
-
+// for information about these interfaces
 import type { RequestLogger } from '$lib/request-logger.ts';
 
-// for information about these interfaces
 declare global {
 	namespace App {
 		// interface Error {}
