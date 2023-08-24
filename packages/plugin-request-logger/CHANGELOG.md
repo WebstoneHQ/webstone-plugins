@@ -1,5 +1,11 @@
 # webstone-plugin-request-logger
 
+## 0.3.3
+
+### Patch Changes
+
+- Export the `RequestLogger` type from the generated index.d.ts file. ([#412](https://github.com/WebstoneHQ/webstone-plugins/pull/412))
+
 ## 0.3.2
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
 	"name": "webstone-plugin-request-logger",
-	"version": "0.3.2",
+	"version": "0.3.3",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/WebstoneHQ/webstone-plugins",
