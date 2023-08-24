@@ -1,5 +1,11 @@
 # webstone-plugin-request-logger
 
+## 0.3.4
+
+### Patch Changes
+
+- Revert v0.3.3, there is no need to export types manually. ([`77dfdf9`](https://github.com/WebstoneHQ/webstone-plugins/commit/77dfdf9949cdf0c03f59f0eaaa571ade25a3e877))
+
 ## 0.3.3
 
 ### Patch Changes
