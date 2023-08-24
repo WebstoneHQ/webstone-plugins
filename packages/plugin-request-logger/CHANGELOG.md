@@ -1,5 +1,11 @@
 # webstone-plugin-request-logger
 
+## 0.3.2
+
+### Patch Changes
+
+- Export the RequestLogger Typescript interface. ([#410](https://github.com/WebstoneHQ/webstone-plugins/pull/410))
+
 ## 0.3.1
 
 ### Patch Changes
