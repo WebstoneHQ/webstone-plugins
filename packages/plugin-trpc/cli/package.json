@@ -39,6 +39,6 @@
 	},
 	"dependencies": {
 		"@mrleebo/prisma-ast": "^0.4.3",
-		"ts-morph": "^17.0.1"
+		"ts-morph": "^19.0.0"
 	}
 }
