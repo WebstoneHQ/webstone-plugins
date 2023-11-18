@@ -29,6 +29,6 @@
     "@webstone/cli": "workspace:*"
   },
   "devDependencies": {
-    "tsup": "^6.7.0"
+    "tsup": "^7.3.0"
   }
 }
