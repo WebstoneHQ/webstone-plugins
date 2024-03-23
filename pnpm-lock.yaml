@@ -198,8 +198,8 @@ importers:
   packages/plugin-trpc/cli:
     dependencies:
       '@mrleebo/prisma-ast':
-        specifier: ^0.4.3
-        version: 0.4.3
+        specifier: ^0.12.0
+        version: 0.12.0
       ts-morph:
         specifier: ^17.0.1
         version: 17.0.1
@@ -1238,11 +1238,12 @@ packages:
       read-yaml-file: 1.1.0
     dev: true
 
-  /@mrleebo/prisma-ast@0.4.3:
-    resolution: {integrity: sha512-yqb3cbLFr/zc9W4nKAxkbxWZRoKcjvSU7OD3cuX26HkYYLYSuyVI9luwP3PIHv7FkqLoF40lFaWxNaukNowrhQ==}
-    engines: {node: '>=12'}
+  /@mrleebo/prisma-ast@0.12.0:
+    resolution: {integrity: sha512-qQsScED+KOMbnKP946Tiyi0Jzxq3YjvxkjD7MsR+SI815JLyoc2Ca6pi3t7ub8DJzO6kv3PC9Ly4ru7JufFnyQ==}
+    engines: {node: '>=16'}
     dependencies:
       chevrotain: 10.5.0
+      lilconfig: 2.1.0
     dev: false
 
   /@nodelib/fs.scandir@2.1.5:
@@ -4341,7 +4342,6 @@ packages:
   /lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
     engines: {node: '>=10'}
-    dev: true
 
   /lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}

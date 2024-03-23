@@ -38,7 +38,7 @@
 		"typescript": "^4.7.4"
 	},
 	"dependencies": {
-		"@mrleebo/prisma-ast": "^0.4.3",
+		"@mrleebo/prisma-ast": "^0.12.0",
 		"ts-morph": "^17.0.1"
 	}
 }
